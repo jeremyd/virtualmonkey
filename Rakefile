@@ -5,12 +5,18 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "virtualmonkey"
-    gem.summary = %Q{TODO: one-line summary of your gem}
-    gem.description = %Q{TODO: longer description of your gem}
+    gem.summary = %Q{testing cluster deployments}
+    gem.description = %Q{monkey see, monkey do, monkey repeat}
     gem.email = "jeremy@rightscale.com"
     gem.homepage = "http://github.com/jeremyd/virtualmonkey"
     gem.authors = ["Jeremy Deininger"]
     gem.add_development_dependency "rspec", ">= 1.2.9"
+    gem.add_dependency('json')
+    gem.add_dependency "rest_connection"
+    gem.add_dependency "fog"
+    gem.add_dependency "highline"
+    gem.add_dependency "rspec"
+    gem.add_dependency "cucumber"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
   Jeweler::GemcutterTasks.new

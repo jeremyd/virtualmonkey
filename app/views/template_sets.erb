@@ -1,0 +1,16 @@
+<%= color("Template Sets Menu>", :headline) %>
+% row_color_toggle = true
+<%= color("    ----1----    ", :question) %>
+<%= color("create new template set", :odd_row) %>
+% TemplateSet.all.each_with_index do |ts,index|
+% row_color = row_color_toggle ? :even_row : :odd_row
+% row_color_toggle = !row_color_toggle
+<%= color("    ----#{index+2}----    ", :question) %>
+%   set_list = []
+%   ts.templates.each do |t|
+%     st = ServerTemplate.find(t.id)
+%     st.is_head_version ? show_version = 'HEAD' : show_version = st.version
+<%= color("#{st.nickname} (#{show_version})", row_color) %>
+%   end
+% end
+<%= color("Pick a set of templates -or- Create:", :question) %>
