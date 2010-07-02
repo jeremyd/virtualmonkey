@@ -14,10 +14,6 @@ Then /I should test promotion operations on the deployment/ do
   @runner.run_promotion_operations
 end
 
-Then /I should test reboot operations on the deployment/ do
-  @runner.run_reboot_operations
-end
-
 Then /I should set a chef variation lineage/ do
   @runner.set_variation_lineage("chef")
 end
