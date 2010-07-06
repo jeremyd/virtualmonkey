@@ -1,5 +1,4 @@
 require 'rubygems'
-require 'dm-core'
 require 'fog'
 require 'fog/credentials'
 

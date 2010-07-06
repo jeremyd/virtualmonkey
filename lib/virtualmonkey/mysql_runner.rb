@@ -80,12 +80,19 @@ module VirtualMonkey
       run_script("backup", server)
     end
 
+    def terminate_server(server)
+      run_script("terminate", server)
+      server.stop
+      server.dns_name = nil
+    end
+
     def run_promotion_operations
       config_master_from_scratch(@servers.first)
       @servers.first.relaunch
 # need to wait for ebs snapshot, otherwise this could easily fail
       restore_server(@servers.last)
-      sleep 900
+      @servers.first.wait_for_operational_with_dns
+      sleep 400
       slave_init_server(@servers.first)
       promote_server(@servers.first)
     end
@@ -185,7 +192,7 @@ module VirtualMonkey
     end
 
     def restore_server(server)
-      run_script("restore")
+      run_script("restore", server)
     end
 
   end
