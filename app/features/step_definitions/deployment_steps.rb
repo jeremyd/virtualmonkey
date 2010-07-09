@@ -1,6 +1,6 @@
 require "rubygems"
-require "rest_connection"
-require "virtualmonkey"
+#require "virtualmonkey"
+require File.expand_path(File.join(File.dirname(__FILE__) , '..','..','..','spec','spec_helper'))
 
 Given /A MySQL deployment/ do
   raise "FATAL:  Please set the environment variable $DEPLOYMENT" unless ENV['DEPLOYMENT']

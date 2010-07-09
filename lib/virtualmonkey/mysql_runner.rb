@@ -1,21 +1,26 @@
+require 'ruby-debug'
+
 module VirtualMonkey
   class MysqlRunner
     include VirtualMonkey::DeploymentRunner
     attr_accessor :scripts_to_run
+    attr_accessor :lineage
+    attr_accessor :stripe_count
+    attr_accessor :db_ebs_prefix
 
     # sets the lineage for the deployment
     # * kind<~String> can be "chef" or nil
     def set_variation_lineage(kind = nil)
-      @lineage = "text:testlineage#{rand(1000000)}"
+      @lineage = "testlineage#{rand(1000000)}"
       if kind == "chef"
-        @deployment.set_input('db/backup/lineage', @lineage)
+        @deployment.set_input('db/backup/lineage', "text:#{@lineage}")
         # unset all server level inputs in the deployment to ensure use of 
         # the setting from the deployment level
         @deployment.servers_no_reload.each do |s|
           s.set_input('db/backup/lineage', "text:")
         end
       else
-        @deployment.set_input('DB_LINEAGE_NAME', @lineage)
+        @deployment.set_input('DB_LINEAGE_NAME', "text:#{@lineage}")
         # unset all server level inputs in the deployment to ensure use of 
         # the setting from the deployment level
         @deployment.servers_no_reload.each do |s|
@@ -65,7 +70,7 @@ module VirtualMonkey
               "DB_SCHEMA_NAME" => "ignore:$ignore",
               "DBAPPLICATION_PASSWORD" => "text:somepass", 
               "EBS_TOTAL_VOLUME_GROUP_SIZE_GB" => "text:1",
-              "EBS_LINEAGE" => @lineage }
+              "EBS_LINEAGE" => "text:#{@lineage}" }
       server.run_executable(@scripts_to_run['create_mysql_ebs_stripe'], options)
     end
 
@@ -75,7 +80,7 @@ module VirtualMonkey
       create_stripe(server)
       run_query("create database mynewtest", server)
       set_master_dns(server)
-      # This sleep is to wait for DNS to settle
+      # This sleep is to wait for DNS to settle - must sleep
       sleep 120
       run_script("backup", server)
     end
@@ -89,10 +94,12 @@ module VirtualMonkey
     def run_promotion_operations
       config_master_from_scratch(@servers.first)
       @servers.first.relaunch
+      @servers.first.dns_name = nil
+      wait_for_snapshots
 # need to wait for ebs snapshot, otherwise this could easily fail
       restore_server(@servers.last)
       @servers.first.wait_for_operational_with_dns
-      sleep 400
+      wait_for_snapshots
       slave_init_server(@servers.first)
       promote_server(@servers.first)
     end
@@ -141,7 +148,6 @@ module VirtualMonkey
       @scripts_to_run['master_init'] = RightScript.new('href' => "/api/acct/2901/right_scripts/195053")
       @scripts_to_run['create_stripe'] = RightScript.new('href' => "/api/acct/2901/right_scripts/198381")
       @scripts_to_run['create_mysql_ebs_stripe'] = RightScript.new('href' => "/api/acct/2901/right_scripts/212492")
-
     end
 
     # Use the termination script to stop all the servers (this cleans up the volumes)
@@ -172,6 +178,7 @@ module VirtualMonkey
     def run_checks
       #check monitoring is enabled on all servers
       @servers.each do |server|
+        server.settings
         server.monitoring
       end
 
@@ -195,5 +202,39 @@ module VirtualMonkey
       run_script("restore", server)
     end
 
+    # take the lineage name, find all snapshots and sleep until none are in the pending state.
+    def wait_for_snapshots
+      timeout=900
+      step=10
+      while timeout > 0
+        puts "Checking for snapshot completed"
+        snapshots =Ec2EbsSnapshot.find_by_cloud_id(@servers.first.cloud_id).select { |n| n.nickname =~ /#{@lineage}.*$/ }
+        status= snapshots.map &:aws_status
+        break unless status.include?("pending")
+        sleep step
+        timeout -= step
+      end
+      raise "FATAL: timed out waiting for all snapshots in lineage #{@lineage} to complete" if timeout == 0
+    end
+
+    def create_migration_script
+      @scripts_to_run['create_migrate_script'] = RightScript.new('href' => "/api/acct/2901/right_scripts/48830")
+      options = { "DB_EBS_PREFIX" => "text:regmysql",
+              "DB_EBS_SIZE_MULTIPLIER" => "text:1",
+              "EBS_STRIPE_COUNT" => "text:#{@stripe_count}" }
+      @servers.first.run_executable(@scripts_to_run['create_migrate_script'], options)
+    end
+
+    def migrate_slave
+      @servers.first.settings
+      @servers.first.spot_check_command("/tmp/init_slave.sh")
+      #puts 'ssh -i ~/.ssh/publish-test-west /tmp/init_slave.sh'
+    end
+   
+    def launch_v2_slave
+      @servers.last.settings
+      wait_for_snapshots
+      run_script("slave_init",@servers.last)
+    end
   end
 end

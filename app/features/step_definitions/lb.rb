@@ -1,7 +1,6 @@
 require "rubygems"
-require "rest_connection"
-require "net/ssh"
-require 'virtualmonkey'
+#require "virtualmonkey"
+require File.expand_path(File.join(File.dirname(__FILE__) , '..','..','..','spec','spec_helper'))
 
 Then /^I should cross connect the frontends/ do
   @runner.cross_connect_frontends

@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Jeremy Deininger"]
-  s.date = %q{2010-06-30}
+  s.date = %q{2010-07-07}
   s.default_executable = %q{monkey}
   s.description = %q{monkey see, monkey do, monkey repeat}
   s.email = %q{jeremy@rightscale.com}
@@ -59,10 +59,11 @@ Gem::Specification.new do |s|
      "lib/virtualmonkey/fe_app_runner.rb",
      "lib/virtualmonkey/index.html.erb",
      "lib/virtualmonkey/mysql_runner.rb",
-     "lib/virtualmonkey/shared.db",
-     "lib/virtualmonkey/shared.db.BACKUP",
+     "lib/virtualmonkey/shared_dns.rb",
      "lib/virtualmonkey/storage.rb",
+     "spec/bug3518.rb",
      "spec/concurrent_writes_spec.rb",
+     "spec/shared_resources_spec.rb",
      "spec/spec.opts",
      "spec/spec_helper.rb",
      "spec/virtualmonkey_spec.rb",
@@ -71,19 +72,23 @@ Gem::Specification.new do |s|
   s.homepage = %q{http://github.com/jeremyd/virtualmonkey}
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.3.7}
+  s.rubygems_version = %q{1.3.6}
   s.summary = %q{testing cluster deployments}
   s.test_files = [
-    "spec/concurrent_writes_spec.rb",
+    "spec/virtualmonkey_spec.rb",
+     "spec/shared_resources_spec.rb",
      "spec/spec_helper.rb",
-     "spec/virtualmonkey_spec.rb"
+     "spec/ek.rb",
+     "spec/concurrent_writes_spec.rb",
+     "spec/bug3518.rb",
+     "spec/mini.rb"
   ]
 
   if s.respond_to? :specification_version then
     current_version = Gem::Specification::CURRENT_SPECIFICATION_VERSION
     s.specification_version = 3
 
-    if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
+    if Gem::Version.new(Gem::RubyGemsVersion) >= Gem::Version.new('1.2.0') then
       s.add_development_dependency(%q<rspec>, [">= 1.2.9"])
       s.add_runtime_dependency(%q<json>, [">= 0"])
       s.add_runtime_dependency(%q<rest_connection>, [">= 0"])
