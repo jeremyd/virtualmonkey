@@ -36,5 +36,5 @@ Feature: mysql 5.x v1 to v2 upgrade tests
 # PHASE 3) Initialize additional slave from v2 snapshots
 #
     Then I should init a new v2 slave
-#    Then I should test the new v2 slave
+    Then I should test the new v2 slave
 

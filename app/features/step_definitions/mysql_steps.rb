@@ -42,6 +42,10 @@ Then /^I should init a new v2 slave/ do
   @runner.launch_v2_slave
 end
 
+Then /^I should test the new v2 slave/ do
+  @runner.run_checks
+end
+
 Then /^I should release the dns records for use with other deployments$/ do
   @runner.release_dns
 end
