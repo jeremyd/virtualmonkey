@@ -207,7 +207,7 @@ module VirtualMonkey
 
     # take the lineage name, find all snapshots and sleep until none are in the pending state.
     def wait_for_snapshots
-      timeout=900
+      timeout=1500
       step=10
       while timeout > 0
         puts "Checking for snapshot completed"
@@ -229,15 +229,11 @@ module VirtualMonkey
 
     def migrate_slave
       @servers.first.settings
-puts "INIT SLAVE"
       @servers.first.spot_check_command("/tmp/init_slave.sh")
-      #puts 'ssh -i ~/.ssh/publish-test-west /tmp/init_slave.sh'
-puts "BACKUP"
       run_script("backup", @servers.first)
     end
    
     def launch_v2_slave
-puts "LAUNCH"
       @servers.last.settings
       wait_for_snapshots
       run_script("slave_init",@servers.last)
