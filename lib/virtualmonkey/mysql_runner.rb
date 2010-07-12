@@ -148,6 +148,9 @@ module VirtualMonkey
       @scripts_to_run['master_init'] = RightScript.new('href' => "/api/acct/2901/right_scripts/195053")
       @scripts_to_run['create_stripe'] = RightScript.new('href' => "/api/acct/2901/right_scripts/198381")
       @scripts_to_run['create_mysql_ebs_stripe'] = RightScript.new('href' => "/api/acct/2901/right_scripts/212492")
+      tbx = ServerTemplate.find_by(:nickname) { |n| n =~ /MySQL EBS Toolbox v2/ }
+      # Use the HEAD revision.
+      @scripts_to_run['create_migrate_script'] = tbx[0].executables.detect { |ex| ex.name =~ /DB EBS create migrate script from EBS non-stripe master/ }
     end
 
     # Use the termination script to stop all the servers (this cleans up the volumes)
@@ -218,7 +221,6 @@ module VirtualMonkey
     end
 
     def create_migration_script
-      @scripts_to_run['create_migrate_script'] = RightScript.new('href' => "/api/acct/2901/right_scripts/48830")
       options = { "DB_EBS_PREFIX" => "text:regmysql",
               "DB_EBS_SIZE_MULTIPLIER" => "text:1",
               "EBS_STRIPE_COUNT" => "text:#{@stripe_count}" }
@@ -227,11 +229,15 @@ module VirtualMonkey
 
     def migrate_slave
       @servers.first.settings
+puts "INIT SLAVE"
       @servers.first.spot_check_command("/tmp/init_slave.sh")
       #puts 'ssh -i ~/.ssh/publish-test-west /tmp/init_slave.sh'
+puts "BACKUP"
+      run_script("backup", @servers.first)
     end
    
     def launch_v2_slave
+puts "LAUNCH"
       @servers.last.settings
       wait_for_snapshots
       run_script("slave_init",@servers.last)
