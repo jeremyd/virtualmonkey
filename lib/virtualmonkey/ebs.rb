@@ -12,12 +12,23 @@ module VirtualMonkey
       @deployment.set_input("EBS_STRIPE_COUNT", "text:#{@stripe_count}")
     end
 
+    # * server<~Server> the server to restore to
+    # * lineage<~String> the lineage to restore from
+    # * mnt<~String> the mount point to backup
+    def terminate_server(server,count,mnt)
+      options = { "EBS_MOUNT_POINT" => "text:#{mnt}",
+              "EBS_STRIPE_COUNT" => "text:#{count}",
+              "EBS_TERMINATE_SAFETY" => "text:off" }
+      audit = server.run_executable(@scripts_to_run['terminate'], options)
+      audit.wait_for_completed
+    end
+
     # Terminates a server using the terminate/suicide script
     # * server<~Server> the server to terminate
-    def terminate_server(server)
-      run_script("terminate", server)
-      server.stop
-      server.dns_name = nil
+    def terminate_server_and_wait
+      server=@servers.last
+      terminate_server(server,@stripe_count,@mount_point)
+      server.wait_for_state("stopped")
     end
 
     # This is where we perform multiple checks on the deployment after a reboot.
@@ -49,40 +60,42 @@ module VirtualMonkey
       end
     end
 
-    # Run operational script to enable continuous backups
-    def enable_backups
-    end
-
-    def verify_backups_enabled
-    end
-
-    def freeze_backups
-    end
-
-    def verfiy_backups_frozen
-    end
-
-    def unfreeze_backups
-    end
-
-    def verify_backup_scripts
+    # take the lineage name, find all snapshots and sleep until none are in the pending state.
+    def wait_for_snapshots
+      timeout=1500
+      step=10
+      while timeout > 0
+        puts "Checking for snapshot completed"
+        snapshots =Ec2EbsSnapshot.find_by_cloud_id(@servers.first.cloud_id).select { |n| n.nickname =~ /#{@lineage}.*$/ }
+        status= snapshots.map &:aws_status
+        break unless status.include?("pending")
+        sleep step
+        timeout -= step
+      end
+      raise "FATAL: timed out waiting for all snapshots in lineage #{@lineage} to complete" if timeout == 0
     end
 
     # * server<~Server> the server to backup
-    def create_backup(server)
+    def create_backup
+      server = @servers.first
+      run_script("backup",server)
+      wait_for_snapshots
     end
 
     # * server<~Server> the server to restore to
     # * lineage<~String> the lineage to restore from
-    def restore_from_backup(server,lineage)
+    # * mnt<~String> the mount point to backup
+    def restore_from_backup(server,lineage,mnt)
+      options = { "EBS_MOUNT_POINT" => "text:#{mnt}", 
+              "EBS_LINEAGE" => "text:#{lineage}" }
+      audit = server.run_executable(@scripts_to_run['create_stripe'], options)
+      audit.wait_for_completed
     end
 
-    # * server<~Server> the server to verify the volume data on
-    def verify_volume_data(server)
-    end
-
-    # * server<~Server> the server to verify is stopped.
-    def verify_server_stopped(server)
+    def restore_and_test_volume
+      server=@servers.last
+      restore_from_backup(server,@lineage,@mount_point)
+      server.spot_check_command("test -f #{@mount_point}/data.txt")
     end
 
   end

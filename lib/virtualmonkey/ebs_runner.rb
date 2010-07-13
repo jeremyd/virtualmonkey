@@ -84,14 +84,27 @@ module VirtualMonkey
       server.spot_check_command("test -x #{backup_script}")
 # enable continuous backups
       run_script("continuous_backup",server)
-      server.spot_check_command("egrep ^[0-6].*#{backup_script}")
+      server.spot_check_command("egrep \"^[0-6].*#{backup_script}\" /etc/crontab")
 # freeze backups
       run_script("freeze",server)
-      server.spot_check_command("egrep ^#[0-6].*#{backup_script}")
+      server.spot_check_command("egrep \"^#[0-6].*#{backup_script}\" /etc/crontab")
 # unfreeze backups
       run_script("unfreeze",server)
-      server.spot_check_command("egrep ^[0-6].*#{backup_script}")
+      server.spot_check_command("egrep \"^[0-6].*#{backup_script}\" /etc/crontab")
     end
 
+    def restore_and_grow(server,lineage,size,mnt)
+      options = { "EBS_MOUNT_POINT" => "text:#{mnt}",
+              "EBS_TOTAL_VOLUME_GROUP_SIZE_GB" => "text:#{size}",
+              "EBS_LINEAGE" => "text:#{lineage}" }
+      audit = server.run_executable(@scripts_to_run['grow_volume'], options)
+      audit.wait_for_completed
+    end    
+
+    def restore_grow_and_test
+      restore_and_grow(@servers.last,@lineage,100,@mount_point)
+# TODO - make this a function - used in multiple places
+      server.spot_check_command("test -f #{@mount_point}/data.txt")
+    end
   end
 end

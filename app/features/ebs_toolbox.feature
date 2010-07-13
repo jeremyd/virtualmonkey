@@ -15,24 +15,26 @@ Feature: EBS toolbox tests
     Then I should set a variation EBS mount point "/mnt/ebs"
     Then I should launch all servers
     Then I should wait for the state of "all" servers to be "operational"
-#    Then I should create a new EBS stripe with data
+    Then I should create a new EBS stripe with data
 
 #
 # PHASE 2) Run checks for the basic scripts
 #
    Then I should test the backup script operations
+
 #
-##
-## PHASE 3) restore the snapshot on another server
-##
-#   Then I should backup the volume
-#   Then I should restore the volume
-#   Then I should verify EBS volume is populated
+# PHASE 3) restore the snapshot on another server
 #
-##
-## PHASE 4) Do the grow EBS tests
-##
+   Then I should backup the volume
+   Then I should restore and test the volume
+
+#
+# PHASE 4) Do the grow EBS tests
+#
+    Then I should stop the servers
+    Then I should launch all servers
+    Then I should wait for the state of "all" servers to be "operational"
+    Then I should restore grow and test the volume
 #
 #
-#  When I terminate the server
-#  Then I should see the server stopped
+#  Then I should terminate the server

@@ -23,23 +23,19 @@ end
 Then /^I should test the backup script operations$/ do
   @runner.test_backup_script_operations
 end
-#
+
 Then /^I should backup the volume$/ do
-  @runner.create_backup(@servers.first)
+  @runner.create_backup
 end
-#
-Then /^I should restore the volume$/ do
-  @runner.restore_from_backup(@servers.last)
+
+Then /^I should restore and test the volume$/ do
+  @runner.restore_and_test_volume
 end
-#
-Then /^I should verify EBS volume is populated$/ do
-  @runner.verify_volume_data(@servers.last)
+
+Then /^I should restore grow and test the volume$/ do
+  @runner.restore_grow_and_test
 end
-#
-When /^I terminate the server$/ do
-  @runner.terminate_server(@servers.last)
-end
-#
-Then /^I should see the server stopped$/ do
-  @runner.verify_server_stopped(@servers.last)
+
+Then /^I should terminate the server$/ do
+  @runner.terminate_server_and_wait
 end
