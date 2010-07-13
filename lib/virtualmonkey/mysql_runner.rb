@@ -85,6 +85,8 @@ module VirtualMonkey
       run_script("backup", server)
     end
 
+    # Terminates a server using the terminate/suicide script
+    # * server<~Server> the server to terminate
     def terminate_server(server)
       run_script("terminate", server)
       server.stop
