@@ -8,11 +8,11 @@ Feature: EBS toolbox tests
 #  How many servers do we need?  Launch them all and figure it out later.
 #
     Given A EBS Toolbox deployment
-#    Then I should stop the servers
     Then I should set a variation lineage
     Then I should set a variation stripe count of "3"
     Then I should set a variation EBS volume size "3"
     Then I should set a variation EBS mount point "/mnt/ebs"
+    Then I should stop all ebs servers
     Then I should launch all servers
     Then I should wait for the state of "all" servers to be "operational"
     Then I should create a new EBS stripe with data
@@ -31,7 +31,7 @@ Feature: EBS toolbox tests
 #
 # PHASE 4) Do the grow EBS tests
 #
-    Then I should stop the servers
+    Then I should stop all ebs servers
     Then I should launch all servers
     Then I should wait for the state of "all" servers to be "operational"
     Then I should restore grow and test the volume

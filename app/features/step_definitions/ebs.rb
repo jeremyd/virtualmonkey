@@ -39,3 +39,7 @@ end
 Then /^I should terminate the server$/ do
   @runner.terminate_server_and_wait
 end
+
+Then /^I should stop all ebs servers$/ do
+  @runner.stop_all_ebs
+end
