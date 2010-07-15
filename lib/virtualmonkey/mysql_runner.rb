@@ -97,11 +97,11 @@ module VirtualMonkey
       config_master_from_scratch(@servers.first)
       @servers.first.relaunch
       @servers.first.dns_name = nil
-      wait_for_snapshots
+      wait_for_snapshots(@lineage)
 # need to wait for ebs snapshot, otherwise this could easily fail
       restore_server(@servers.last)
       @servers.first.wait_for_operational_with_dns
-      wait_for_snapshots
+      wait_for_snapshots(@lineage)
       slave_init_server(@servers.first)
       promote_server(@servers.first)
     end
@@ -207,21 +207,6 @@ module VirtualMonkey
       run_script("restore", server)
     end
 
-    # take the lineage name, find all snapshots and sleep until none are in the pending state.
-    def wait_for_snapshots
-      timeout=1500
-      step=10
-      while timeout > 0
-        puts "Checking for snapshot completed"
-        snapshots =Ec2EbsSnapshot.find_by_cloud_id(@servers.first.cloud_id).select { |n| n.nickname =~ /#{@lineage}.*$/ }
-        status= snapshots.map &:aws_status
-        break unless status.include?("pending")
-        sleep step
-        timeout -= step
-      end
-      raise "FATAL: timed out waiting for all snapshots in lineage #{@lineage} to complete" if timeout == 0
-    end
-
     def create_migration_script
       options = { "DB_EBS_PREFIX" => "text:regmysql",
               "DB_EBS_SIZE_MULTIPLIER" => "text:1",
@@ -237,7 +222,7 @@ module VirtualMonkey
    
     def launch_v2_slave
       @servers.last.settings
-      wait_for_snapshots
+      wait_for_snapshots(@lineage)
       run_script("slave_init",@servers.last)
     end
   end
