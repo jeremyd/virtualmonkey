@@ -31,10 +31,9 @@ Feature: EBS toolbox tests
 #
 # PHASE 4) Do the grow EBS tests
 #
-    Then I should stop the servers
-    Then I should launch all servers
-    Then I should wait for the state of "all" servers to be "operational"
     Then I should test the restore grow operations
 #
 #
-#  Then I should terminate the server
+    Then I should test reboot operations on the deployment
+#
+    Then I should stop the servers

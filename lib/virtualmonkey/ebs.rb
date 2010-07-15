@@ -77,7 +77,7 @@ module VirtualMonkey
     def restore_from_backup(server,lineage,mnt)
       options = { "EBS_MOUNT_POINT" => "text:#{mnt}",
               "EBS_LINEAGE" => "text:#{lineage}" }
-      audit = server.run_executable(@scripts_to_run['create_stripe'], options)
+      audit = server.run_executable(@scripts_to_run['restore'], options)
       audit.wait_for_completed
     end
 
@@ -114,7 +114,7 @@ module VirtualMonkey
     # Use the termination script to stop all the servers (this cleans up the volumes)
     def stop_all
       @servers.each do |s|
-        terminate_server(s,@stripe_count,@mount_point) unless s.state == 'stopped'
+        terminate_server(s,@stripe_count,@mount_point) if s.state == 'operational' || s.state == 'stranded'
       end
       @servers.each { |s| s.wait_for_state("stopped") }
       # unset dns in our local cached copy..

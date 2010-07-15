@@ -47,16 +47,16 @@ module VirtualMonkey
       backup_script="/usr/local/bin/ebs-backup.rb"
 # create backup scripts
       run_script("create_backup_scripts",@s_main)
-      server.spot_check_command("test -x #{backup_script}")
+      @s_main.spot_check_command("test -x #{backup_script}")
 # enable continuous backups
       run_script("continuous_backup",@s_main)
-      server.spot_check_command("egrep \"^[0-6].*#{backup_script}\" /etc/crontab")
+      @s_main.spot_check_command("egrep \"^[0-6].*#{backup_script}\" /etc/crontab")
 # freeze backups
       run_script("freeze",@s_main)
-      server.spot_check_command("egrep \"^#[0-6].*#{backup_script}\" /etc/crontab")
+      @s_main.spot_check_command("egrep \"^#[0-6].*#{backup_script}\" /etc/crontab")
 # unfreeze backups
       run_script("unfreeze",@s_main)
-      server.spot_check_command("egrep \"^[0-6].*#{backup_script}\" /etc/crontab")
+      @s_main.spot_check_command("egrep \"^[0-6].*#{backup_script}\" /etc/crontab")
     end
 
     def test_restore_grow
@@ -66,8 +66,13 @@ module VirtualMonkey
 
     def test_restore
       restore_from_backup(@s_restore,@lineage,@mount_point)
-      test_volume_data(@s_restore)
+      test_volume_data(@s_restore,@mount_point)
     end
-
+   
+    def run_reboot_operations
+      @s_main.reboot(true)
+      @s_main.wait_for_state("operational")
+      create_backup
+    end
   end
 end
