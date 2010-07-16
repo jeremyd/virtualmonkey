@@ -53,3 +53,7 @@ end
 Then /^I should setup master dns to point at server "([^\"]*)"$/ do |server_index|
   @runner.set_master_dns(server_index)
 end
+
+Then /^I should create master from scratch$/ do
+  @runner.create_master
+end

@@ -105,7 +105,6 @@ module VirtualMonkey
     # * mnt<~String> the mount point to backup
     def terminate_server(server,count,mnt)
       options = { "EBS_MOUNT_POINT" => "text:#{mnt}",
-              "EBS_STRIPE_COUNT" => "text:#{count}",
               "EBS_TERMINATE_SAFETY" => "text:off" }
       audit = server.run_executable(@scripts_to_run['terminate'], options)
       audit.wait_for_completed
