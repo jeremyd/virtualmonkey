@@ -8,10 +8,12 @@ module VirtualMonkey
     attr_accessor :scripts_to_run
     attr_accessor :s_one
     attr_accessor :s_two
+    attr_accessor :s_three
 
     def setup_server_vars
       @s_one=@servers[0]
       @s_two=@servers[1]
+      @s_three=@servers[2]
     end
 
     # lookup all the RightScripts that we will want to run
@@ -38,6 +40,21 @@ module VirtualMonkey
 
     def create_master
       config_master_from_scratch(@s_one)
+    end
+
+    def create_backup
+      run_script("backup",@s_one)
+      wait_for_snapshots(@lineage)
+    end
+
+    def test_restore_grow
+      restore_and_grow(@s_three,@lineage,100,@mount_point,false)
+      test_volume_data(@s_three,@mount_point)
+    end
+
+    def test_restore
+      restore_from_backup(@s_two,@lineage,@mount_point,false)
+      test_volume_data(@s_two,@mount_point)
     end
   end
 end

@@ -38,11 +38,6 @@ module VirtualMonkey
       populate_volume(@s_main,@mount_point)
     end
 
-    def create_backup
-      run_script("backup",s_main)
-      wait_for_snapshots(@lineage)
-    end
-
     def test_backup_script_operations
       backup_script="/usr/local/bin/ebs-backup.rb"
 # create backup scripts
@@ -74,5 +69,11 @@ module VirtualMonkey
       @s_main.wait_for_state("operational")
       create_backup
     end
+
+    def create_backup
+      run_script("backup",s_main)
+      wait_for_snapshots(@lineage)
+    end
+
   end
 end

@@ -74,16 +74,18 @@ module VirtualMonkey
     # * server<~Server> the server to restore to
     # * lineage<~String> the lineage to restore from
     # * mnt<~String> the mount point to backup
-    def restore_from_backup(server,lineage,mnt)
+    def restore_from_backup(server,lineage,mnt,force)
       options = { "EBS_MOUNT_POINT" => "text:#{mnt}",
+              "OPT_DB_FORCE_RESTORE" => "text:#{force}",
               "EBS_LINEAGE" => "text:#{lineage}" }
       audit = server.run_executable(@scripts_to_run['restore'], options)
       audit.wait_for_completed
     end
 
-    def restore_and_grow(server,lineage,size,mnt)
+    def restore_and_grow(server,lineage,size,mnt,force)
       options = { "EBS_MOUNT_POINT" => "text:#{mnt}",
               "EBS_TOTAL_VOLUME_GROUP_SIZE_GB" => "text:#{size}",
+              "OPT_DB_FORCE_RESTORE" => "text:#{force}",
               "EBS_LINEAGE" => "text:#{lineage}" }
       audit = server.run_executable(@scripts_to_run['grow_volume'], options)
       audit.wait_for_completed

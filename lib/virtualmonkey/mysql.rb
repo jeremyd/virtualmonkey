@@ -72,6 +72,7 @@ module VirtualMonkey
     # * server<~Server> the server to use as MASTER
     def config_master_from_scratch(server)
       create_stripe(server)
+      server.spot_check_command("service mysql start")
       run_query("create database mynewtest", server)
       set_master_dns(server)
       # This sleep is to wait for DNS to settle - must sleep
