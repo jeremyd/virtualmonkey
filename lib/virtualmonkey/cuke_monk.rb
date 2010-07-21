@@ -1,148 +1,117 @@
-class CukeMonk
-  # what we want is a class that helps us run cuke tests
-  #
-  # this class should:
-  #  - have the ability to run in user mode or batch mode
-  #    - user mode
-  #      - run one test
-  #      - allow user to tail the results
-  #      - have a notification when the task is complete
-  #    - batch mode
-  #      - run a set of tests
-  #      - aggreate the results and push to s3 and send email
-  #
-  #
-  # to achive this, we need to expose:
-  #  - run user test(feature)
-  #    - returns handle to tail file
-  #  - run batch test(features)
-  #    - returns nothing
-  #
-  # on init we need to:
-  #  - get a path to look for features
-  
-  REPORT_DIR = "log"
-  LOG_DIR = "/tmp/vmonk"
+require 'rubygems'
+require 'erb'
+require 'fog'
+require 'fog/credentials'
+require 'eventmachine'
+require 'right_popen'
 
-  attr_accessor :feature_tag, :feature_tag_path
+class CukeJob
+  attr_accessor :status, :output, :logfile, :deployment
+  def on_read_stdout(data)
+    @output ||= ""
+    @output << data
+  end
+
+  def on_read_stderr(data)
+    @output ||= ""
+    @output << data
+  end
+    
+  def receive_data data
+    @output += data
+  end
+
+  def unbind
+    @status = get_status.exitstatus
+  end
+
+  def on_exit(status)
+    @status = status.exitstatus
+    File.open(@logfile, "a") { |f| f.write(@output) }
+  end
+
+  def run(deployment, cmd)
+    RightScale.popen3(:command        => cmd,
+                        :target         => self,
+                        :environment    => {"DEPLOYMENT" => deployment},
+                        :stdout_handler => :on_read_stdout,
+                        :stderr_handler => :on_read_stderr,
+                        :exit_handler   => :on_exit)
+  end
+end
+
+class CukeMonk
+  attr_accessor :jobs
+  # Runs a cucumber test on a single Deployment
+  # * deployment<~String> the nickname of the deployment
+  # * feature<~String> the feature filename 
+  def run_test(deployment, feature)
+    new_job = CukeJob.new
+    new_job.logfile = File.join(@log_dir, "#{deployment}.html")
+    new_job.deployment = deployment
+    ENV['REST_CONNECTION_LOG'] = "#{@log_dir}/#{deployment}.rest_connection.log"
+    cmd = "cucumber #{feature} --out '#{new_job.logfile}' -f html"
+    @jobs << new_job   
+    puts "running #{cmd}"
+    new_job.run(deployment, cmd)
+  end
 
   def initialize()
     @jobs = []
-    @feature_tag = feature_tag
-    @feature_tag_path = feature_tag_path
-    @threads = []
-    Dir.mkdir LOG_DIR unless File.directory? LOG_DIR
+    @log_dir = "log" 
+    FileUtils.mkdir_p(@log_dir)
+    @feature_dir = File.join(File.dirname(__FILE__), '..', '..', 'app', 'features')
   end
  
-  def CukeMonk.finalize(id)
-    self.join(@threads)
+  # runs a feature on an array of deployments
+  # * deployments<~Array> array of strings containing the nicknames of the deployments
+  # * feature_name<~String> the feature filename 
+  def run_tests(deployments,cmd)
+    deployments.each { |d| run_test(d,cmd) }
   end
 
-
-  def run_test(deployment,cmd,format=nil)
-    Kernel.exit 1 if deployment.nil?  || cmd.nil? 
-    cmd = "cucumber #{cmd} --format html"
-    execute_cuke_cmd(cmd,deployment) 
+  def show_jobs
+    passed = @jobs.select { |s| s.status == 0 }
+    failed = @jobs.select { |s| s.status == 1 }
+    running = @jobs.select { |s| s.status == nil }
+    puts "#{passed.size} features passed.  #{failed.size} features failed.  #{running.size} features running."
   end
 
-  
-  def run_tests(deployments,cmd,format=nil)
-    Kernel.exit 1 if deployments.nil?  || cmd.nil? 
-    jobs = []
-    deployments.each { |d| jobs << run_test(d,cmd,"html") }
-    jobs
+  def all_done?
+    running = @jobs.select { |s| s.status == nil }
+    running.size == 0 && @jobs.size > 0
   end
 
-  def join(threads)
-    threads.each { |t|   t.join }
-  end
+  def generate_reports
+    passed = @jobs.select { |s| s.status == 0 }
+    failed = @jobs.select { |s| s.status == 1 }
+    running = @jobs.select { |s| s.status == nil }
 
-  def generate_reports(jobs=@jobs)
-    #puts "jobs is nil in generate_reports method" && Kernel.exit 1 if jobs.nil? 
-    jobs.each { |j| j[0].join }
-
-    require 'rubygems'
-    require 'erb'
-    require 'fog'
-    require 'fog/credentials'
     index = ERB.new  File.read(File.dirname(__FILE__)+"/index.html.erb")
     time = Time.now
-    date = time.strftime("%Y-%m-%d-%H-%M-%S")
-
-    num_tests = jobs.size
-    failed_tests = jobs.select{|j|!j[2][0]}.size
-    successful_tests = jobs.select{|j|j[2][0]}.size
-
+    dir = time.strftime("%Y-%m-%d-%H-%M-%S")
     bucket_name = "virtual_monkey"
-    dir = date
-
-    ## Log a local copy of the results
-    FileUtils.mkdir_p(File.join("log",dir))
-    File.open(File.join("log",dir,"index.html"), 'w') {|f| f.write(index.result(binding)) }
-    jobs.each do |j|
-      File.open(File.join("log",dir,"#{j[4]}.html"), "w") {|f| f.write(j[3][0])}
-    end 
 
     ## upload to s3
     # setup credentials in ~/.fog
     s3 = Fog::AWS::S3.new(:aws_access_key_id => Fog.credentials[:aws_access_key_id], :aws_secret_access_key => Fog.credentials[:aws_secret_access_key])
-    unless s3.directories.detect { |d| d.key == bucket_name } 
+    if directory = s3.directories.detect { |d| d.key == bucket_name } 
+      puts "found directory, re-using"
+    else
       directory = s3.directories.create(:key => bucket_name)
     end
-    directory.files.create(:key => "#{dir}/index.html", :body => index.result(binding))
+    raise 'could not create directory' unless directory
+    s3.put_object(bucket_name, "#{dir}/index.html", index.result(binding), 'x-amz-acl' => 'public-read', 'ContentType' => 'text/html')
  
-    jobs.each do |j|
-      directory.files.create(:key => "#{dir}/#{j[4]}.html", :data => j[3][0])
+    @jobs.each do |j|
+      s3.put_object(bucket_name, "#{dir}/#{File.basename(j.logfile)}", IO.read(j.logfile), 'x-amz-acl' => 'public-read', 'ContentType' => 'text/html')
     end
     
     msg = <<END_OF_MESSAGE
-    ran #{num_tests} jobs
-    #{failed_tests} tests failed
-    #{successful_tests} tests passed
-
-    results avilable at http://s3.amazonaws.com/#{bucket}/#{dir}/index.html
+    results avilable at http://s3.amazonaws.com/#{bucket_name}/#{dir}/index.html
 END_OF_MESSAGE
     puts msg
-    File.open("#{LOG_DIR}/#{bucket}-#{date}.log", "w") { |f| f.puts msg }
-    return msg
   end
-
-
-  private 
-
   
-  def execute_cuke_cmd(cmd,deployment)
-    Kernel.exit 1 if cmd.nil? 
-    # common variables that we want to share with the thread
-    *stream_ptr = ""
-    *success_ptr = false
-    # set environments 
-    ENV['DEPLOYMENT']=deployment
-    # fork thread
-    thread = Thread.fork {
-      IO.popen(cmd) { |trickle|
-        until trickle.eof?
-          thread_out = trickle.gets
-          File.open("#{LOG_DIR}/#{deployment}.out","a") { |f| f.puts(thread_out) }
-          stream_ptr[0] += thread_out
-        end
-      }
-
-      #success = ($?.success? && true ) || false
-      success_ptr[0] = $?.success?
-    }
-    @threads << thread
-
-    job = [thread,cmd,success_ptr,stream_ptr,deployment]
-    @jobs << job
-    job
-  end
-
-
-  def puts_results_to_s3()
-
-  end
-
-
 end
 

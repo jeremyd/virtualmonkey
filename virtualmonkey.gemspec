@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Jeremy Deininger"]
-  s.date = %q{2010-06-30}
+  s.date = %q{2010-07-21}
   s.default_executable = %q{monkey}
   s.description = %q{monkey see, monkey do, monkey repeat}
   s.email = %q{jeremy@rightscale.com}
@@ -38,31 +38,39 @@ Gem::Specification.new do |s|
      "app/features/reboot.feature",
      "app/features/rightlink.feature",
      "app/features/rsgrid.feature",
+     "app/features/simple.feature",
      "app/features/step_definitions/app.rb",
      "app/features/step_definitions/deployment_steps.rb",
      "app/features/step_definitions/lb.rb",
      "app/features/step_definitions/mysql_steps.rb",
      "app/features/tomcat6-tests-TODO",
-     "app/views/template_sets.erb",
      "bin/monkey",
      "config/app/apache_haproxy.json",
      "config/app/php.json",
      "config/app/rails.json",
      "config/app/tomcat.json",
+     "config/cloud_variables.json",
      "config/haproxy.json",
      "config/mysql/common_inputs.json",
      "config/rsgrid.json",
+     "config/west.json",
      "lib/virtualmonkey.rb",
+     "lib/virtualmonkey/command.rb",
+     "lib/virtualmonkey/command/create.rb",
+     "lib/virtualmonkey/command/destroy.rb",
+     "lib/virtualmonkey/command/run.rb",
      "lib/virtualmonkey/cuke_monk.rb",
      "lib/virtualmonkey/deployment_monk.rb",
      "lib/virtualmonkey/deployment_runner.rb",
      "lib/virtualmonkey/fe_app_runner.rb",
+     "lib/virtualmonkey/file_locations.rb",
      "lib/virtualmonkey/index.html.erb",
      "lib/virtualmonkey/mysql_runner.rb",
-     "lib/virtualmonkey/shared.db",
-     "lib/virtualmonkey/shared.db.BACKUP",
-     "lib/virtualmonkey/storage.rb",
+     "lib/virtualmonkey/shared_dns.rb",
+     "spec/bug3518.rb",
      "spec/concurrent_writes_spec.rb",
+     "spec/cuke_job_spec.rb",
+     "spec/shared_resources_spec.rb",
      "spec/spec.opts",
      "spec/spec_helper.rb",
      "spec/virtualmonkey_spec.rb",
@@ -74,7 +82,10 @@ Gem::Specification.new do |s|
   s.rubygems_version = %q{1.3.7}
   s.summary = %q{testing cluster deployments}
   s.test_files = [
-    "spec/concurrent_writes_spec.rb",
+    "spec/bug3518.rb",
+     "spec/concurrent_writes_spec.rb",
+     "spec/cuke_job_spec.rb",
+     "spec/shared_resources_spec.rb",
      "spec/spec_helper.rb",
      "spec/virtualmonkey_spec.rb"
   ]
@@ -86,28 +97,43 @@ Gem::Specification.new do |s|
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_development_dependency(%q<rspec>, [">= 1.2.9"])
       s.add_runtime_dependency(%q<json>, [">= 0"])
+      s.add_runtime_dependency(%q<trollop>, [">= 0"])
       s.add_runtime_dependency(%q<rest_connection>, [">= 0"])
       s.add_runtime_dependency(%q<fog>, [">= 0"])
       s.add_runtime_dependency(%q<highline>, [">= 0"])
       s.add_runtime_dependency(%q<rspec>, [">= 0"])
+      s.add_runtime_dependency(%q<gherkin>, [">= 0"])
       s.add_runtime_dependency(%q<cucumber>, [">= 0"])
+      s.add_runtime_dependency(%q<uuidtools>, [">= 0"])
+      s.add_runtime_dependency(%q<eventmachine>, [">= 0"])
+      s.add_runtime_dependency(%q<right_popen>, [">= 0"])
     else
       s.add_dependency(%q<rspec>, [">= 1.2.9"])
       s.add_dependency(%q<json>, [">= 0"])
+      s.add_dependency(%q<trollop>, [">= 0"])
       s.add_dependency(%q<rest_connection>, [">= 0"])
       s.add_dependency(%q<fog>, [">= 0"])
       s.add_dependency(%q<highline>, [">= 0"])
       s.add_dependency(%q<rspec>, [">= 0"])
+      s.add_dependency(%q<gherkin>, [">= 0"])
       s.add_dependency(%q<cucumber>, [">= 0"])
+      s.add_dependency(%q<uuidtools>, [">= 0"])
+      s.add_dependency(%q<eventmachine>, [">= 0"])
+      s.add_dependency(%q<right_popen>, [">= 0"])
     end
   else
     s.add_dependency(%q<rspec>, [">= 1.2.9"])
     s.add_dependency(%q<json>, [">= 0"])
+    s.add_dependency(%q<trollop>, [">= 0"])
     s.add_dependency(%q<rest_connection>, [">= 0"])
     s.add_dependency(%q<fog>, [">= 0"])
     s.add_dependency(%q<highline>, [">= 0"])
     s.add_dependency(%q<rspec>, [">= 0"])
+    s.add_dependency(%q<gherkin>, [">= 0"])
     s.add_dependency(%q<cucumber>, [">= 0"])
+    s.add_dependency(%q<uuidtools>, [">= 0"])
+    s.add_dependency(%q<eventmachine>, [">= 0"])
+    s.add_dependency(%q<right_popen>, [">= 0"])
   end
 end
 

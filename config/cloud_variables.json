@@ -1,0 +1,30 @@
+{
+  "1":{
+    "ec2_ssh_key_href":"https://my.rightscale.com/api/acct/2901/ec2_ssh_keys/7053",
+    "parameters":{
+      "PRIVATE_SSH_KEY":"key:publish-test:1"
+    },
+    "ec2_security_groups_href":"https://my.rightscale.com/api/acct/2901/ec2_security_groups/6411"
+  },
+  "2":{
+    "ec2_ssh_key_href":"https://my.rightscale.com/api/acct/2901/ec2_ssh_keys/198006",
+    "parameters":{
+      "PRIVATE_SSH_KEY":"key:publish-test-eu:2"
+    },
+    "ec2_security_groups_href":"https://my.rightscale.com/api/acct/2901/ec2_security_groups/48972"
+  },
+  "3":{
+    "ec2_ssh_key_href":"https://my.rightscale.com/api/acct/2901/ec2_ssh_keys/197758",
+    "parameters":{
+      "PRIVATE_SSH_KEY":"key:publish-test-west:3"
+    },
+    "ec2_security_groups_href":"https://my.rightscale.com/api/acct/2901/ec2_security_groups/97863"
+  },
+  "4":{
+    "ec2_ssh_key_href":"https://my.rightscale.com/api/acct/2901/ec2_ssh_keys/209603",
+    "parameters":{
+      "PRIVATE_SSH_KEY":"key:publish-test-ap:4"
+    },
+    "ec2_security_groups_href":"https://my.rightscale.com/api/acct/2901/ec2_security_groups/126284"
+  }
+}

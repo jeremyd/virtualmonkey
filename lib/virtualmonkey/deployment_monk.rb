@@ -4,9 +4,8 @@ require 'rest_connection'
 class DeploymentMonk
   attr_accessor :common_inputs
   attr_accessor :variables_for_cloud
-  attr_accessor :variations
+  attr_accessor :deployments
   attr_reader :tag
-  attr_accessor :clouds
 
   def from_tag
     variations = Deployment.find_by(:nickname) {|n| n =~ /^#{@tag}/ }
@@ -15,17 +14,17 @@ class DeploymentMonk
   end
 
   def initialize(tag, server_templates = [], extra_images = [])
-    @clouds = [1,2,3,4]
-    @cloud_names = { 1 => "ec2-east", 2 => "ec2-eu", 3 => "ec2-west", 4 => "ec2-ap"}
-    #@clouds = [1]
+    @clouds = ["1","2","3","4"]
+    @cloud_names = { "1" => "ec2-east", "2" => "ec2-eu", "3" => "ec2-west", "4" => "ec2-ap"}
     @tag = tag
-    @variations = from_tag
+    @deployments = from_tag
     @server_templates = []
     @common_inputs = {}
-    raise "Need either populated deployments or passed in server_template ids" if server_templates.empty? && @variations.empty?
+    @variables_for_cloud = {}
+    raise "Need either populated deployments or passed in server_template ids" if server_templates.empty? && @deployments.empty?
     if server_templates.empty?
       puts "loading server templates from servers in the first deployment"
-      @variations.first.servers.each do |s|
+      @deployments.first.servers.each do |s|
         server_templates << s.server_template_href.split(/\//).last.to_i
       end
     end
@@ -39,23 +38,6 @@ class DeploymentMonk
       st.multi_cloud_images = new_st.multi_cloud_images
       @image_count = st.multi_cloud_images.size if st.multi_cloud_images.size > @image_count
     end
-
-    @variables_for_cloud = { 
-      1 => { "ec2_ssh_key_href" => "https://my.rightscale.com/api/acct/2901/ec2_ssh_keys/7053",
-             "ec2_security_groups_href" => "https://my.rightscale.com/api/acct/2901/ec2_security_groups/6411",
-             "parameters" => { "PRIVATE_SSH_KEY" => "key:publish-test:1" }},
-
-      2 => { "ec2_ssh_key_href" => "https://my.rightscale.com/api/acct/2901/ec2_ssh_keys/198006",
-             "ec2_security_groups_href" => "https://my.rightscale.com/api/acct/2901/ec2_security_groups/48972",
-             "parameters" => {"PRIVATE_SSH_KEY" => "key:publish-test-eu:2"}},
-
-      3 => { "ec2_ssh_key_href" => "https://my.rightscale.com/api/acct/2901/ec2_ssh_keys/197758",
-             "ec2_security_groups_href" => "https://my.rightscale.com/api/acct/2901/ec2_security_groups/97863",
-             "parameters" => { "PRIVATE_SSH_KEY" => "key:publish-test-west:3"}},
-      4 => { "ec2_ssh_key_href" => "https://my.rightscale.com/api/acct/2901/ec2_ssh_keys/209603",
-             "ec2_security_groups_href" => "https://my.rightscale.com/api/acct/2901/ec2_security_groups/126284",
-             "parameters" => { "PRIVATE_SSH_KEY" => "key:publish-test-ap:4"}}
-      }
   end
 
   def generate_variations
@@ -68,7 +50,7 @@ class DeploymentMonk
         dep_tempname = "#{@tag}-#{@cloud_names[cloud]}-#{rand(1000000)}-"
         dep_image_list = []
         new_deploy = Deployment.create(:nickname => dep_tempname)
-        @variations << new_deploy
+        @deployments << new_deploy
         @server_templates.each do |st|
           server_params = { :nickname => "tempserver-#{st.nickname}", 
                             :deployment_href => new_deploy.href, 
@@ -120,17 +102,17 @@ class DeploymentMonk
   end
 
   def destroy_all
-    @variations.each do |v|
+    @deployments.each do |v|
       v.reload
       v.servers.each { |s| s.stop }
     end 
-    @variations.each { |v| v.destroy }
-    @variations = []
+    @deployments.each { |v| v.destroy }
+    @deployments = []
   end
 
   def get_deployments
     deployments = []
-    @variations.each { |v| deployments << v.nickname }
+    @deployments.each { |v| deployments << v.nickname }
     deployments 
   end
 
