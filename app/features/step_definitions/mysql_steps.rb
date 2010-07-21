@@ -30,10 +30,30 @@ Then /^I should set a variation MySQL DNS/ do
   @runner.setup_dns
 end
 
+Then /^I should create the migration script/ do
+  @runner.create_migration_script
+end
+
+Then /^I should migrate a new slave/ do
+  @runner.migrate_slave
+end
+
+Then /^I should init a new v2 slave/ do
+  @runner.launch_v2_slave
+end
+
+Then /^I should test the new v2 slave/ do
+  @runner.run_checks
+end
+
 Then /^I should release the dns records for use with other deployments$/ do
   @runner.release_dns
 end
 
 Then /^I should setup master dns to point at server "([^\"]*)"$/ do |server_index|
   @runner.set_master_dns(server_index)
+end
+
+Then /^I should create master from scratch$/ do
+  @runner.create_master
 end
