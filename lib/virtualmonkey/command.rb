@@ -5,6 +5,7 @@ require 'highline/import'
 require 'virtualmonkey/command/create'
 require 'virtualmonkey/command/destroy'
 require 'virtualmonkey/command/run'
+require 'virtualmonkey/command/list'
 
 module VirtualMonkey
   module Command
@@ -18,10 +19,12 @@ module VirtualMonkey
           VirtualMonkey::Command.destroy
         when "run"
           VirtualMonkey::Command.run
+        when "list"
+          VirtualMonkey::Command.list
         when "help" || "--help" || "-h"
           "Help usage: monkey <command> --help"
         else
-          raise "Invalid command #{command}: You need to specify a command for monkey: create, destroy, run or help\n"
+          raise "Invalid command #{command}: You need to specify a command for monkey: create, destroy, list, run or help\n"
       end
     end
   end
