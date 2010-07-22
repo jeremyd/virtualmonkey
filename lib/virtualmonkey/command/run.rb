@@ -9,27 +9,25 @@ module VirtualMonkey
       options = Trollop::options do
         opt :feature, "path to feature(s) to run against the deployments", :type => :string, :required => true
         opt :tag, "Tag to match prefix of the deployments.", :type => :string, :required => true
-        opt :only, "regex string(s) to use for subselection matching on deployments.  Eg. --only x86_64 --only East", :type => :strings
+        opt :only, "regex string to use for subselection matching on deployments.  Eg. --only x86_64", :type => :string
       end
       EM.run {
         cm = CukeMonk.new
         dm = DeploymentMonk.new(options[:tag])
-        dm.deployments.each do |deploy|
-          cm.run_test(deploy.nickname, options[:feature])
+        if options[:only]
+          do_these = dm.deployments.select { |s| s.nickname =~ /#{options[:only]}/ }
+        else
+          do_these = dm.deployments
+        end
+        do_these.each do |deploy|
+          cm.run_test(deploy, options[:feature])
         end
 
-        EM.add_periodic_timer(5) {
-          cm.show_jobs
+        watch = EM.add_periodic_timer(10) {
+          watch.cancel if cm.all_done?
+          cm.watch_and_report
         }
 
-        donetime = EM.add_periodic_timer(5) {
-          if cm.all_done?
-            donetime.cancel
-            cm.generate_reports
-            puts "monkey done."
-            EM.stop
-          end
-        }
       }
     end
   end

@@ -24,6 +24,10 @@ Given /A frontend with application servers deployment/ do
   @runner = VirtualMonkey::FeAppRunner.new(ENV['DEPLOYMENT'])
 end
 
+Then /I will fail/ do
+  raise "Test failure simulation!"
+end
+
 Then /I should test reboot operations on the deployment/ do
   @runner.run_reboot_operations
 end
