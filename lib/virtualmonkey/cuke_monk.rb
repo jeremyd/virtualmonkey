@@ -7,6 +7,12 @@ require 'right_popen'
 
 class CukeJob
   attr_accessor :status, :output, :logfile, :deployment
+
+  def link_to_rightscale
+    i = deployment.href.split(/\//).last
+    "https://my.rightscale.com/deployments/#{i}#audit_entries"
+  end
+
   def on_read_stdout(data)
     @output ||= ""
     @output << data
@@ -33,7 +39,7 @@ class CukeJob
   def run(deployment, cmd)
     RightScale.popen3(:command        => cmd,
                         :target         => self,
-                        :environment    => {"DEPLOYMENT" => deployment},
+                        :environment    => {"DEPLOYMENT" => deployment.nickname},
                         :stdout_handler => :on_read_stdout,
                         :stderr_handler => :on_read_stderr,
                         :exit_handler   => :on_exit)
@@ -47,9 +53,9 @@ class CukeMonk
   # * feature<~String> the feature filename 
   def run_test(deployment, feature)
     new_job = CukeJob.new
-    new_job.logfile = File.join(@log_dir, "#{deployment}.html")
+    new_job.logfile = File.join(@log_dir, "#{deployment.nickname}.html")
     new_job.deployment = deployment
-    ENV['REST_CONNECTION_LOG'] = "#{@log_dir}/#{deployment}.rest_connection.log"
+    ENV['REST_CONNECTION_LOG'] = "#{@log_dir}/#{deployment.nickname}.rest_connection.log"
     cmd = "cucumber #{feature} --out '#{new_job.logfile}' -f html"
     @jobs << new_job   
     puts "running #{cmd}"
@@ -58,7 +64,12 @@ class CukeMonk
 
   def initialize()
     @jobs = []
-    @log_dir = "log" 
+    @passed = []
+    @failed = []
+    @running = []
+    dirname = Time.now.strftime("%Y/%m/%d/%H-%M-%S")
+    @log_dir = File.join("log", dirname)
+    @log_started = dirname
     FileUtils.mkdir_p(@log_dir)
     @feature_dir = File.join(File.dirname(__FILE__), '..', '..', 'app', 'features')
   end
@@ -70,11 +81,24 @@ class CukeMonk
     deployments.each { |d| run_test(d,cmd) }
   end
 
-  def show_jobs
-    passed = @jobs.select { |s| s.status == 0 }
-    failed = @jobs.select { |s| s.status == 1 }
-    running = @jobs.select { |s| s.status == nil }
-    puts "#{passed.size} features passed.  #{failed.size} features failed.  #{running.size} features running."
+  def watch_and_report
+    old_passed = @passed
+    old_failed = @failed
+    @passed = @jobs.select { |s| s.status == 0 }
+    @failed = @jobs.select { |s| s.status == 1 }
+    @running = @jobs.select { |s| s.status == nil }
+      puts "#{@passed.size} features passed.  #{@failed.size} features failed.  #{@running.size} features running."
+    if old_passed != @passed || old_failed != @failed
+      status_change_hook
+    end
+  end
+
+  def status_change_hook
+    generate_reports
+    if all_done?
+      puts "monkey done."
+      EM.stop
+    end
   end
 
   def all_done?
@@ -86,10 +110,8 @@ class CukeMonk
     passed = @jobs.select { |s| s.status == 0 }
     failed = @jobs.select { |s| s.status == 1 }
     running = @jobs.select { |s| s.status == nil }
-
+    report_on = @jobs.select { |s| s.status == 0 || s.status == 1 }
     index = ERB.new  File.read(File.dirname(__FILE__)+"/index.html.erb")
-    time = Time.now
-    dir = time.strftime("%Y-%m-%d-%H-%M-%S")
     bucket_name = "virtual_monkey"
 
     ## upload to s3
@@ -101,14 +123,14 @@ class CukeMonk
       directory = s3.directories.create(:key => bucket_name)
     end
     raise 'could not create directory' unless directory
-    s3.put_object(bucket_name, "#{dir}/index.html", index.result(binding), 'x-amz-acl' => 'public-read', 'ContentType' => 'text/html')
+    s3.put_object(bucket_name, "#{@log_started}/index.html", index.result(binding), 'x-amz-acl' => 'public-read', 'Content-Type' => 'text/html')
  
-    @jobs.each do |j|
-      s3.put_object(bucket_name, "#{dir}/#{File.basename(j.logfile)}", IO.read(j.logfile), 'x-amz-acl' => 'public-read', 'ContentType' => 'text/html')
+    report_on.each do |j|
+      s3.put_object(bucket_name, "#{@log_started}/#{File.basename(j.logfile)}", IO.read(j.logfile), 'Content-Type' => 'text/html', 'x-amz-acl' => 'public-read')
     end
     
     msg = <<END_OF_MESSAGE
-    results avilable at http://s3.amazonaws.com/#{bucket_name}/#{dir}/index.html
+    new results avilable at http://s3.amazonaws.com/#{bucket_name}/#{@log_started}/index.html\n-OR-\nin #{@log_dir}/index.html"
 END_OF_MESSAGE
     puts msg
   end
