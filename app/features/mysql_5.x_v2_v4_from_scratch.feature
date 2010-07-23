@@ -21,3 +21,5 @@ Feature: mysql 5.x v2 or v4 promote operations test
 #
 
     Then I should test reboot operations on the deployment
+
+    Then I should stop the servers
