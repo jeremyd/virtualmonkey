@@ -1,3 +1,5 @@
+require File.expand_path(File.join(File.dirname(__FILE__) , '..','..','spec','spec_helper'))
+
 Then /I should run mysql checks/ do
   @runner.run_checks
 end
