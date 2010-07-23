@@ -96,6 +96,11 @@ module VirtualMonkey
       server.spot_check_command("test -f #{mnt}/data.txt")
     end
 
+    # Verify that the volume is the expected size
+    def test_volume_size(server,mnt,expected_size)
+      server.spot_check_command("test -f TODO#{mnt}/data.txt")
+    end
+
     # Writes data to the EBS volume so snapshot restores can be verified
     # Not sure what to write...... Maybe pass a string to write to a file??..
     def populate_volume(server,mnt)

@@ -48,8 +48,10 @@ module VirtualMonkey
     end
 
     def test_restore_grow
-      restore_and_grow(@s_three,@lineage,100,@mount_point,false)
+      grow_to_size=100
+      restore_and_grow(@s_three,@lineage,grow_to_size,@mount_point,false)
       test_volume_data(@s_three,@mount_point)
+      test_volume_size(@s_three,@mount_point,grow_to_size)
     end
 
     def test_restore
