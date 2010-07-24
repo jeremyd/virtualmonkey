@@ -145,19 +145,6 @@ module VirtualMonkey
       @scripts_to_run['create_migrate_script'] = tbx[0].executables.detect { |ex| ex.name =~ /DB EBS create migrate script from MySQL EBS v1 master/ }
     end
 
-    # Use the termination script to stop all the servers (this cleans up the volumes)
-    def stop_all
-      if @scripts_to_run['terminate']
-        @servers.each { |s| s.run_executable(@scripts_to_run['terminate']) unless s.state == 'stopped' }
-      else
-        @servers.each { |s| s.stop }
-      end
-
-      @servers.each { |s| s.wait_for_state("stopped") }
-      # unset dns in our local cached copy..
-      @servers.each { |s| s.params['dns-name'] = nil } 
-    end
-
     # uses SharedDns to find an available set of DNS records and sets them on the deployment
     def setup_dns
       owner="NotSureWhoOwnerIs"
