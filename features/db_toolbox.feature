@@ -26,7 +26,7 @@ Feature: mysql toolbox
 # PHASE 3) restore the snapshot on another server
 #
    Then I should backup the volume
-   Then I should test the restore operations
+#   Then I should test the restore operations
 
 #
 # PHASE 4) Do the grow EBS tests
@@ -34,4 +34,4 @@ Feature: mysql toolbox
     Then I should test the restore grow operations
 #
 #
-    Then I should stop the servers
+#    Then I should stop the servers
