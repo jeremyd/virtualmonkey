@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Jeremy Deininger"]
-  s.date = %q{2010-07-21}
+  s.date = %q{2010-07-23}
   s.default_executable = %q{monkey}
   s.description = %q{monkey see, monkey do, monkey repeat}
   s.email = %q{jeremy@rightscale.com}
@@ -29,18 +29,23 @@ Gem::Specification.new do |s|
      "app/features/Steps-TODO",
      "app/features/app_state.feature",
      "app/features/app_test.feature",
+     "app/features/db_toolbox.feature",
+     "app/features/ebs_toolbox.feature",
      "app/features/lb-apache-haproxy.feature",
      "app/features/mysql_5.x_v2_v4_from_scratch.feature",
      "app/features/mysql_chef_premium.feature",
      "app/features/mysql_chef_premium_from_scratch.feature",
+     "app/features/mysql_v1_upgrade_v2.feature",
      "app/features/php.feature",
      "app/features/rails.feature",
      "app/features/reboot.feature",
      "app/features/rightlink.feature",
      "app/features/rsgrid.feature",
      "app/features/simple.feature",
+     "app/features/simple_fail.feature",
      "app/features/step_definitions/app.rb",
      "app/features/step_definitions/deployment_steps.rb",
+     "app/features/step_definitions/ebs.rb",
      "app/features/step_definitions/lb.rb",
      "app/features/step_definitions/mysql_steps.rb",
      "app/features/tomcat6-tests-TODO",
@@ -58,18 +63,26 @@ Gem::Specification.new do |s|
      "lib/virtualmonkey/command.rb",
      "lib/virtualmonkey/command/create.rb",
      "lib/virtualmonkey/command/destroy.rb",
+     "lib/virtualmonkey/command/list.rb",
      "lib/virtualmonkey/command/run.rb",
      "lib/virtualmonkey/cuke_monk.rb",
      "lib/virtualmonkey/deployment_monk.rb",
      "lib/virtualmonkey/deployment_runner.rb",
+     "lib/virtualmonkey/ebs.rb",
+     "lib/virtualmonkey/ebs_runner.rb",
      "lib/virtualmonkey/fe_app_runner.rb",
      "lib/virtualmonkey/file_locations.rb",
      "lib/virtualmonkey/index.html.erb",
+     "lib/virtualmonkey/mysql.rb",
      "lib/virtualmonkey/mysql_runner.rb",
+     "lib/virtualmonkey/mysql_toolbox_runner.rb",
      "lib/virtualmonkey/shared_dns.rb",
      "spec/bug3518.rb",
      "spec/concurrent_writes_spec.rb",
      "spec/cuke_job_spec.rb",
+     "spec/ek.rb",
+     "spec/mini.rb",
+     "spec/release_dns.rb",
      "spec/shared_resources_spec.rb",
      "spec/spec.opts",
      "spec/spec_helper.rb",
@@ -79,25 +92,25 @@ Gem::Specification.new do |s|
   s.homepage = %q{http://github.com/jeremyd/virtualmonkey}
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.3.6}
+  s.rubygems_version = %q{1.3.7}
   s.summary = %q{testing cluster deployments}
   s.test_files = [
     "spec/bug3518.rb",
      "spec/concurrent_writes_spec.rb",
      "spec/cuke_job_spec.rb",
+     "spec/ek.rb",
+     "spec/mini.rb",
+     "spec/release_dns.rb",
      "spec/shared_resources_spec.rb",
      "spec/spec_helper.rb",
-     "spec/ek.rb",
-     "spec/concurrent_writes_spec.rb",
-     "spec/bug3518.rb",
-     "spec/mini.rb"
+     "spec/virtualmonkey_spec.rb"
   ]
 
   if s.respond_to? :specification_version then
     current_version = Gem::Specification::CURRENT_SPECIFICATION_VERSION
     s.specification_version = 3
 
-    if Gem::Version.new(Gem::RubyGemsVersion) >= Gem::Version.new('1.2.0') then
+    if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_development_dependency(%q<rspec>, [">= 1.2.9"])
       s.add_runtime_dependency(%q<json>, [">= 0"])
       s.add_runtime_dependency(%q<trollop>, [">= 0"])

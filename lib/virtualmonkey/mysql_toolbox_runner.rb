@@ -1,5 +1,3 @@
-require 'ruby-debug'
-
 module VirtualMonkey
   class MysqlToolboxRunner
     include VirtualMonkey::DeploymentRunner
