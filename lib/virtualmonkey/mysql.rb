@@ -96,7 +96,8 @@ module VirtualMonkey
     # Use the termination script to stop all the servers (this cleans up the volumes)
     def stop_all
       if @scripts_to_run['terminate']
-        @servers.each { |s| s.run_executable(@scripts_to_run['terminate']) unless s.state == 'stopped' }
+        options = { "DB_TERMINATE_SAFETY" => "text:off" }
+        @servers.each { |s| s.run_executable(@scripts_to_run['terminate'], options) unless s.state == 'stopped' }
       else
         @servers.each { |s| s.stop }
       end

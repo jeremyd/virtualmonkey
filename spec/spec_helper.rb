@@ -4,6 +4,7 @@ require 'rubygems'
 require 'virtualmonkey'
 require 'spec'
 require 'spec/autorun'
+require 'ruby-debug'
 
 Spec::Runner.configure do |config|
   

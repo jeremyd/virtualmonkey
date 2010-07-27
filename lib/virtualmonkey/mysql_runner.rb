@@ -2,6 +2,7 @@ module VirtualMonkey
   class MysqlRunner
     include VirtualMonkey::DeploymentRunner
     include VirtualMonkey::EBS
+    include VirtualMonkey::Mysql
     attr_accessor :scripts_to_run
     attr_accessor :db_ebs_prefix
     attr_accessor :s_one
@@ -145,7 +146,7 @@ module VirtualMonkey
 
     # uses SharedDns to find an available set of DNS records and sets them on the deployment
     def setup_dns
-      owner="NotSureWhoOwnerIs"
+      owner="Erik"
       @dns = SharedDns.new
       raise "Unable to reserve DNS" unless @dns.reserve_dns(owner)
       @dns.set_dns_inputs(@deployment)
