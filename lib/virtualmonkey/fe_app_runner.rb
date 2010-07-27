@@ -1,4 +1,5 @@
 require 'timeout'
+require 'spec'
 
 module VirtualMonkey
   class FeAppRunner
@@ -64,7 +65,7 @@ module VirtualMonkey
       fe_servers.each do |fe|
         fe.settings
         haproxy_config = fe.spot_check_command('cat /home/haproxy/rightscale_lb.cfg | grep server')
-        server_ips.each { |ip|  haproxy_config.to_s.should include(ip) }
+        server_ips.each { |ip|  haproxy_config.to_s.include?(ip).should == true }
       end
 
       # restart haproxy and check that it succeeds
@@ -88,7 +89,7 @@ module VirtualMonkey
 
       # restart apache and check that it succeeds
       statuses = Array.new
-      fe_servers.each { |s| statuses << s.run_executable(@scripts_to_run['apache restart']) }
+      fe_servers.each { |s| statuses << s.run_executable(@scripts_to_run['apache_restart']) }
       statuses.each { |status| status.wait_for_completed }
       fe_servers.each_with_index do |server,i|
         response = nil
@@ -131,16 +132,18 @@ module VirtualMonkey
         count += 1
         sleep 10
       end
-      raise "Log file does not exist" unless response
+      raise "Log file does not exist: #{logfile}" unless response
     end
 
 
     def log_rotation_checks
       app_servers.each do |server|
+        force_log_rotation(server)
         log_check(server,"/mnt/log/#{server.apache_str}/access.log.1")
       end
 
       fe_servers.each do |server|
+        force_log_rotation(server)
         log_check(server, "/mnt/log/#{server.apache_str}/haproxy.log.1")
       end
     end
