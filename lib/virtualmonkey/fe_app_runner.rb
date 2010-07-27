@@ -40,14 +40,14 @@ module VirtualMonkey
     def test_http_response(expected_string, url, port)
       cmd = "curl -s #{url} 2> /dev/null "
       puts cmd
-      timeout=60 * 5
+      timeout=30
       begin
         status = Timeout::timeout(timeout) do
           while true
             response = `#{cmd}` 
-            break if response.include?(message)
+            break if response.include?(expected_string)
             puts "Retrying..."
-            sleep 10
+            sleep 5
           end
         end
       rescue Timeout::Error => e
@@ -55,7 +55,7 @@ module VirtualMonkey
       end
     end
 
-    def run_frontend_checks
+    def frontend_checks
       detect_os
 
       # check that all application servers exist in the haproxy config file on all fe_servers
@@ -169,10 +169,10 @@ module VirtualMonkey
     def run_unified_application_checks(run_on=@servers, port=8000)
       run_on.each do |server| 
         url_base = "#{server.dns_name}:#{port}"
-        test_http_response("html serving succeeded", "#{url_base}/index.html") 
-        test_http_response("configuration=succeeded", "#{url_base}/appserver/") 
-        test_http_response("I am in the db", "#{url_base}/dbread/") 
-        test_http_response("hostname=", "#{url_base}/serverid/") 
+        test_http_response("html serving succeeded", "#{url_base}/index.html", port) 
+        test_http_response("configuration=succeeded", "#{url_base}/appserver/", port) 
+        test_http_response("I am in the db", "#{url_base}/dbread/", port) 
+        test_http_response("hostname=", "#{url_base}/serverid/", port) 
       end
     end
 
@@ -184,6 +184,7 @@ module VirtualMonkey
     end
 
     def lookup_scripts
+      @scripts_to_run = {}
       st = ServerTemplate.find(fe_servers.first.server_template_href)
       @scripts_to_run['connect'] = st.executables.detect { |ex| ex.name =~  /LB [app|mongrels]+ to HA proxy connect/i }
       @scripts_to_run['apache_restart'] = st.executables.detect { |ex| ex.name =~  /WEB apache \(re\)start v2/i }

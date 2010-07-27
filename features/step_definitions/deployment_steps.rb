@@ -20,6 +20,7 @@ Given /A frontend with application servers deployment/ do
   raise "FATAL:  Please set the environment variable $DEPLOYMENT" unless ENV['DEPLOYMENT']
 
   @runner = VirtualMonkey::FeAppRunner.new(ENV['DEPLOYMENT'])
+  @runner.lookup_scripts
 end
 
 Then /I will fail/ do
