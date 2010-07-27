@@ -63,7 +63,9 @@ module VirtualMonkey
     end
 
     def stop_all
-      raise "not implemented!"
+      @servers.each { |s| s.stop }
+      wait_for_all("stopped")
+      @servers.each { |s| s.dns_name = nil }
     end
 
     def reboot_all

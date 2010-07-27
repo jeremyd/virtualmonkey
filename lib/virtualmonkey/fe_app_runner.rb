@@ -193,7 +193,7 @@ module VirtualMonkey
     # Assumes the host machine is EC2, uses the meta-data to grab the IP address of this
     # 'tester server' eg. used for the input variation MASTER_DB_DNSNAME
     def get_tester_ip_addr
-      if File.exists?("/var/spool/ec2/meta-data")
+      if File.exists?("/var/spool/ec2/meta-data.rb")
         require "/var/spool/ec2/meta-data" 
       else
         ENV['EC2_PUBLIC_HOSTNAME'] = "127.0.0.1"

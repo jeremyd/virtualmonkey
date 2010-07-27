@@ -6,6 +6,7 @@ Feature: PHP Server Test
 Scenario: PHP server test
 
   Given A frontend with application servers deployment
+  Then I should stop the servers
   Then I should set a variation MASTER_DB_DNSNAME 
 
   When I launch the "Front End" servers
