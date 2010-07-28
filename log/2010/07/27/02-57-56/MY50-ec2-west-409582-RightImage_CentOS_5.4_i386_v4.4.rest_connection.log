@@ -1,8 +1,0 @@
-# Logfile created on Tue Jul 27 02:58:11 +0000 2010 by logger.rb/22285
-I, [2010-07-27T02:58:11.594677 #6497]  INFO -- : GET: https://my.rightscale.com/api/acct/2901/deployments.js?filter[]=nickname=MY50-ec2-west-409582-RightImage_CentOS_5.4_i386_v4.4&
-I, [2010-07-27T02:58:11.992069 #6497]  INFO -- : GET: /api/acct/2901/ec2_server_templates/27418.js?
-I, [2010-07-27T02:58:12.171659 #6497]  INFO -- : GET: /api/acct/2901/ec2_server_templates/27418/executables.js?
-I, [2010-07-27T02:58:12.362513 #6497]  INFO -- : GET: https://my.rightscale.com/api/acct/2901/server_templates.js?
-I, [2010-07-27T02:58:14.564272 #6497]  INFO -- : GET: /api/acct/2901/ec2_server_templates/42160/executables.js?
-I, [2010-07-27T02:58:14.765043 #6497]  INFO -- : POST: /api/acct/2901/servers/795770/run_executable
-I, [2010-07-27T02:58:14.765193 #6497]  INFO -- : 	request body: {"server":{"right_script_href":"https://my.rightscale.com/api/acct/2901/right_scripts/202320","parameters":{"DB_TERMINATE_SAFETY":"text:off"}}}

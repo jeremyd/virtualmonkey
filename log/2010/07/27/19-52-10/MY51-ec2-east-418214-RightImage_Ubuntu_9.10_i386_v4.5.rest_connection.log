@@ -1,3 +1,0 @@
-# Logfile created on Tue Jul 27 19:52:27 +0000 2010 by logger.rb/22285
-I, [2010-07-27T19:52:27.183024 #10263]  INFO -- : GET: https://my.rightscale.com/api/acct/2901/deployments.js?filter[]=nickname=MY51-ec2-west-580204-RightImage_Ubuntu_9.10_x64_v4.5&
-I, [2010-07-27T19:52:27.295349 #10265]  INFO -- : GET: https://my.rightscale.com/api/acct/2901/deployments.js?filter[]=nickname=MY51-ec2-east-418214-RightImage_Ubuntu_9.10_i386_v4.5&
