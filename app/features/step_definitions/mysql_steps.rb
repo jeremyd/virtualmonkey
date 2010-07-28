@@ -1,3 +1,5 @@
+require File.expand_path(File.join(File.dirname(__FILE__) , '..','..','..','spec','spec_helper'))
+
 Then /I should run mysql checks/ do
   @runner.run_checks
 end
@@ -22,12 +24,21 @@ Then /I should set a variation lineage/ do
   @runner.set_variation_lineage
 end
 
+Then /^I should set a v1 variation lineage$/ do
+  @runner_v1.deployment.set_input('DB_EBS_PREFIX', "text:#{@runner.lineage}")
+end
+
 Then /^I should set a variation stripe count of "([^\"]*)"$/ do |stripe|
   @runner.set_variation_stripe_count(stripe)
 end
 
 Then /^I should set a variation MySQL DNS/ do
   @runner.setup_dns
+end
+
+Then /^I should set a v1 variation MySQL DNS/ do
+  @runner_v1.deployment.set_input('MASTER_DB_DNSNAME', @runner.dns.reservation.body["Attributes"]["MASTER_DB_DNSNAME"].first )
+  @runner_v1.deployment.set_input('MASTER_DB_DNSID', @runner.dns.reservation.body["Attributes"]["MASTER_DB_DNSID"].first )
 end
 
 Then /^I should create the migration script/ do
@@ -56,4 +67,8 @@ end
 
 Then /^I should create master from scratch$/ do
   @runner.create_master
+end
+
+Then /^I should migrate from v1$/ do
+  @runner.migrate_from_v1 @runner_v1
 end

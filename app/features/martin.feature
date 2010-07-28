@@ -13,29 +13,19 @@ Feature: mysql 5.x v1 to v2 upgrade tests
 # Old school hand crafted deployment: https://my.rightscale.com/deployments/49925.  Make sure
 # The one server is still up and running as master DB.
 #
-
-    Given A Mysql deployment
-    And A Mysql v1 deployment
-    #Then I should stop the servers
-    #Then I should stop the v1 servers
+    Given A MySQL deployment
+    Then I should stop the servers
     Then I should set a variation lineage
-    Then I should set a v1 variation lineage
-    Then I should set a variation MySQL DNS
-    Then I should set a v1 variation MySQL DNS
     Then I should set a variation stripe count of "3"
-    Then I should migrate from v1
+# This is done when the deployment is setup - the master never changes the scripts use the inputs as set
+#    Then I should set the master DNS to a hardcoded value
+#    Then I should set the v1 ebs prefix to a hardcoded value
 
-
-
-
-
-
-
-
-
-
-Then I should fail
-
+#
+# PHASE 2) Launch a new v2 server and migrate from v1
+#
+    Then I should launch all servers
+    Then I should wait for the state of "all" servers to be "operational"
 # Run "DB EBS create migrate script from EBS non-stripe master"
     Then I should create the migration script
 # ssh to box and run "/tmp/init_slave.sh"
@@ -46,5 +36,5 @@ Then I should fail
 # PHASE 3) Initialize additional slave from v2 snapshots
 #
     Then I should init a new v2 slave
-    Then I should test the new v2 slave
+    Then I should test the new v2 slave                                                                                                                               d
 

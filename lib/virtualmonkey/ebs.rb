@@ -121,6 +121,19 @@ module VirtualMonkey
       # unset dns in our local cached copy..
       @servers.each { |s| s.params['dns-name'] = nil }
     end
+    def attach_volume(name,description,zone,size,server,mount_point,mount)
+      vol = Ec2EbsVolume.create (
+        :nickname => name,
+        :description => description,
+        :ec2_availability_zone => zone,
+        :aws_size => size )
+
+      vol.attach(
+        :ec2_ebs_volume_href => vol.href,
+        :component_href => server.href,
+        :device => mount_point,
+        :mount => mount )
+    end
 
   end
 end

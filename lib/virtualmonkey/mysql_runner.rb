@@ -8,6 +8,9 @@ module VirtualMonkey
     attr_accessor :db_ebs_prefix
     attr_accessor :s_one
     attr_accessor :s_two
+    attr_accessor :deployment
+    attr_accessor :dns
+    attr_accessor :servers
 
     # sets the lineage for the deployment
     # * kind<~String> can be "chef" or nil
@@ -68,6 +71,50 @@ module VirtualMonkey
       server.run_executable(@scripts_to_run['create_mysql_ebs_stripe'], options)
     end
 
+    # Performs steps necessary to bootstrap a v1 MySQL Master server from a pristine state.
+    # * server<~Server> the server to use as MASTER
+    def config_v1_master_from_scratch(server,new_db_name)
+      server.reload
+
+      attach_volume( "virtualmonkey-#{rand 10000}",
+        "This volume was created automatically by virtualmonkey",
+        server.settings["ec2-availability-zone"],
+        1,
+        server,
+        "/dev/sdj",
+        'boot' )
+
+      sleep 10
+      server.dns_name = nil
+      server.start
+      server.wait_for_operational_with_dns
+     
+      # format, mount ebs volume, start mysql
+      res = server.spot_check_command("true")
+      raise "can not ssh into server" unless res[:status] 
+      server.spot_check_command("service mysqld stop")
+      server.spot_check_command("mkfs.xfs -f  /dev/sdj")
+      server.spot_check_command("mount /dev/sdj /mnt/mysql")
+      server.spot_check_command("chown -R mysql:mysql /mnt/")
+      server.spot_check_command("su mysql /etc/init.d/mysqld start")
+
+      # seed the db
+      server.spot_check_command("echo create database #{new_db_name} | mysql")
+
+      # init the ip on the master
+      dns_script = RightScript.new(  "href" => "https://my.rightscale.com/api/acct/2901/right_scripts/195053" )
+      server.run_executable dns_script
+
+      # This sleep is to wait for DNS to settle 
+      sleep 120
+
+      # take a backup
+      st = ServerTemplate.find(server.server_template_href)
+      backup_script = st.executables.detect { |ex| ex.name =~  /DB EBS backup/i }
+      server.run_executable(backup_script)
+      sleep 120 # to wait for the backup to complete
+    end
+
     # Performs steps necessary to bootstrap a MySQL Master server from a pristine state.
     # * server<~Server> the server to use as MASTER
     def config_master_from_scratch(server)
@@ -79,6 +126,42 @@ module VirtualMonkey
       run_script("backup", server)
     end
 
+<<<<<<< HEAD
+=======
+    # Terminates a server using the terminate/suicide script
+    # * server<~Server> the server to terminate
+    def terminate_server(server)
+      run_script("terminate", server)
+      server.stop
+      server.dns_name = nil
+    end
+
+    def migrate_from_v1( v1_runner)
+      self.config_v1_master_from_scratch(v1_runner.servers.first,self.lineage)
+      self.deployment.set_input('INIT_SLAVE_AT_BOOT', "text:false") 
+      self.servers.first.dns_name = nil
+      self.servers.first.start
+      self.servers.first.wait_for_operational_with_dns
+      migrate_script = RightScript.new(  "href" => "https://my.rightscale.com/api/acct/2901/right_scripts/238292" )
+      opts = { :EBS_STRIPE_COUNT => 'text:3',:DB_EBS_PREFIX =>"text:#{self.lineage}", :DB_EBS_SIZE_MULTIPLIER => 'text:6' }
+      self.servers.first.run_executable(migrate_script, opts)
+      sleep 10
+      self.servers.first.spot_check_command("/tmp/init_slave.sh")
+
+      # take a backup
+      st = ServerTemplate.find(self.servers.first.server_template_href)
+      backup_script = st.executables.detect { |ex| ex.name =~  /DB EBS backup/i }
+      self.servers.first.run_executable(backup_script)
+      sleep 120 # to wait for the backup to complete
+
+      # promote
+      promote_script = st.executables.detect { |ex| ex.name =~  /DB EBS promote to master/i }
+      self.servers.first.run_executable(promote_script)
+      sleep 120 # to wait for the backup to complete
+
+    end
+
+>>>>>>> added v1 upgrade path
     def run_promotion_operations
       config_master_from_scratch(@s_one)
       @s_one.relaunch
@@ -129,7 +212,11 @@ module VirtualMonkey
     end
     # lookup all the RightScripts that we will want to run
     def lookup_scripts
+<<<<<<< HEAD
       st = ServerTemplate.find(@s_two.server_template_href)
+=======
+      st = ServerTemplate.find(@servers.first.server_template_href)
+>>>>>>> added v1 upgrade path
       @scripts_to_run = {}
       @scripts_to_run['restore'] = st.executables.detect { |ex| ex.name =~  /restore and become/i }
       @scripts_to_run['slave_init'] = st.executables.detect { |ex| ex.name =~ /slave init v2/ }
@@ -163,6 +250,7 @@ module VirtualMonkey
       @dns = SharedDns.new
       raise "Unable to reserve DNS" unless @dns.reserve_dns
       @dns.set_dns_inputs(@deployment)
+      @dns
     end
 
     # releases records back into the shared DNS pool

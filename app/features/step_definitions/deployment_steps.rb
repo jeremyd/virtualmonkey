@@ -10,12 +10,17 @@ Given /^A MySQL Toolbox deployment$/ do
   @runner.lookup_scripts
 end
 
-Given /A MySQL deployment/ do
+Given /^A Mysql deployment$/ do
   raise "FATAL:  Please set the environment variable $DEPLOYMENT" unless ENV['DEPLOYMENT']
 
   @runner = VirtualMonkey::MysqlRunner.new(ENV['DEPLOYMENT'])
   @runner.setup_server_vars
   @runner.lookup_scripts
+end
+
+Given /^A Mysql v1 deployment$/ do 
+  raise "FATAL:  Please set the environment variable $DEPLOYMENT2" unless ENV['DEPLOYMENT2']
+  @runner_v1 = VirtualMonkey::MysqlRunner.new(ENV['DEPLOYMENT2'])
 end
 
 Given /A frontend with application servers deployment/ do
@@ -46,6 +51,10 @@ end
 
 Then /I should stop the servers$/ do
   @runner.stop_all
+end
+
+Then /I should stop the v1 servers$/ do
+  @runner_v1.stop_all
 end
 
 Then /I should launch all servers$/ do

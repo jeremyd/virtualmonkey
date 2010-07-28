@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Jeremy Deininger"]
-  s.date = %q{2010-07-07}
+  s.date = %q{2010-07-28}
   s.default_executable = %q{monkey}
   s.description = %q{monkey see, monkey do, monkey repeat}
   s.email = %q{jeremy@rightscale.com}
@@ -29,10 +29,12 @@ Gem::Specification.new do |s|
      "app/features/Steps-TODO",
      "app/features/app_state.feature",
      "app/features/app_test.feature",
+     "app/features/ebs_toolbox.feature",
      "app/features/lb-apache-haproxy.feature",
      "app/features/mysql_5.x_v2_v4_from_scratch.feature",
      "app/features/mysql_chef_premium.feature",
      "app/features/mysql_chef_premium_from_scratch.feature",
+     "app/features/mysql_v1_upgrade_v2.feature",
      "app/features/php.feature",
      "app/features/rails.feature",
      "app/features/reboot.feature",
@@ -40,6 +42,7 @@ Gem::Specification.new do |s|
      "app/features/rsgrid.feature",
      "app/features/step_definitions/app.rb",
      "app/features/step_definitions/deployment_steps.rb",
+     "app/features/step_definitions/ebs.rb",
      "app/features/step_definitions/lb.rb",
      "app/features/step_definitions/mysql_steps.rb",
      "app/features/tomcat6-tests-TODO",
@@ -56,6 +59,8 @@ Gem::Specification.new do |s|
      "lib/virtualmonkey/cuke_monk.rb",
      "lib/virtualmonkey/deployment_monk.rb",
      "lib/virtualmonkey/deployment_runner.rb",
+     "lib/virtualmonkey/ebs.rb",
+     "lib/virtualmonkey/ebs_runner.rb",
      "lib/virtualmonkey/fe_app_runner.rb",
      "lib/virtualmonkey/index.html.erb",
      "lib/virtualmonkey/mysql_runner.rb",
@@ -63,6 +68,9 @@ Gem::Specification.new do |s|
      "lib/virtualmonkey/storage.rb",
      "spec/bug3518.rb",
      "spec/concurrent_writes_spec.rb",
+     "spec/ek.rb",
+     "spec/mini.rb",
+     "spec/release_dns.rb",
      "spec/shared_resources_spec.rb",
      "spec/spec.opts",
      "spec/spec_helper.rb",
@@ -72,16 +80,17 @@ Gem::Specification.new do |s|
   s.homepage = %q{http://github.com/jeremyd/virtualmonkey}
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.3.6}
+  s.rubygems_version = %q{1.3.5}
   s.summary = %q{testing cluster deployments}
   s.test_files = [
-    "spec/virtualmonkey_spec.rb",
+    "spec/bug3518.rb",
+     "spec/concurrent_writes_spec.rb",
+     "spec/ek.rb",
+     "spec/mini.rb",
+     "spec/release_dns.rb",
      "spec/shared_resources_spec.rb",
      "spec/spec_helper.rb",
-     "spec/ek.rb",
-     "spec/concurrent_writes_spec.rb",
-     "spec/bug3518.rb",
-     "spec/mini.rb"
+     "spec/virtualmonkey_spec.rb"
   ]
 
   if s.respond_to? :specification_version then

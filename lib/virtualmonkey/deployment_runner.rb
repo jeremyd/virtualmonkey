@@ -1,6 +1,6 @@
 module VirtualMonkey
   module DeploymentRunner
-    attr_accessor :deployment, :servers
+    attr_accessor :deployment, :servers, :lineage
     attr_accessor :scripts_to_run
     
     def initialize(deployment)
@@ -12,6 +12,11 @@ module VirtualMonkey
     # Launch all servers in the deployment.
     def launch_all
       @servers.each { |s| s.start }
+    end
+
+    # Launch the first server in the deployment
+    def launch_first
+      @servers.first.start
     end
 
     # Helper method, performs selection of a subset of servers to operate on based on the server's nicknames.
