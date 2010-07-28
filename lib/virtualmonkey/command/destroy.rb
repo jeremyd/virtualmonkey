@@ -18,7 +18,7 @@ module VirtualMonkey
 
       if options[:mysql]
         @dm.deployments.each do |deploy|
-          @runner = VirtualMonkey::MysqlRunner.new(deploy)
+          @runner = VirtualMonkey::MysqlRunner.new(deploy.nickname)
           @runner.lookup_scripts
           @runner.stop_all
         end

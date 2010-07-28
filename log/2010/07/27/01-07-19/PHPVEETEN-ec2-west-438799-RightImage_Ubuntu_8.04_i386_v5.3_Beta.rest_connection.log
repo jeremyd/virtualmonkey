@@ -1,0 +1,790 @@
+# Logfile created on Tue Jul 27 01:07:35 +0000 2010 by logger.rb/22285
+I, [2010-07-27T01:07:35.407837 #5955]  INFO -- : GET: https://my.rightscale.com/api/acct/2901/deployments.js?filter[]=nickname=PHPVEETEN-ec2-west-438799-RightImage_Ubuntu_8.04_i386_v5.3_Beta&
+I, [2010-07-27T01:07:35.580435 #5955]  INFO -- : GET: /api/acct/2901/ec2_server_templates/52800.js?
+I, [2010-07-27T01:07:35.732708 #5955]  INFO -- : GET: /api/acct/2901/ec2_server_templates/52800/executables.js?
+I, [2010-07-27T01:07:35.947782 #5955]  INFO -- : POST: /api/acct/2901/servers/795889/stop
+I, [2010-07-27T01:07:38.138466 #5955]  INFO -- : POST: /api/acct/2901/servers/795890/stop
+I, [2010-07-27T01:07:41.575475 #5955]  INFO -- : POST: /api/acct/2901/servers/795886/stop
+I, [2010-07-27T01:07:43.320134 #5955]  INFO -- : POST: /api/acct/2901/servers/795888/stop
+I, [2010-07-27T01:07:45.207790 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:07:45.294042 #5955]  INFO -- : tempserver-PHP App Server v10 (Beta) is decommissioning
+I, [2010-07-27T01:07:50.302531 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go stopped, state is decommissioning
+I, [2010-07-27T01:07:50.339324 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:07:55.882544 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go stopped, state is decommissioning
+I, [2010-07-27T01:07:55.912687 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:08:01.022560 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go stopped, state is decommissioning
+I, [2010-07-27T01:08:01.056734 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:08:06.342551 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go stopped, state is decommissioning
+I, [2010-07-27T01:08:06.372930 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:08:11.512550 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go stopped, state is decommissioning
+I, [2010-07-27T01:08:11.546608 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:08:16.622622 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go stopped, state is decommissioning
+I, [2010-07-27T01:08:16.657719 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:08:21.752546 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go stopped, state is decommissioning
+I, [2010-07-27T01:08:21.822352 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:08:26.922549 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go stopped, state is decommissioning
+I, [2010-07-27T01:08:26.953392 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:08:32.052555 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go stopped, state is decommissioning
+I, [2010-07-27T01:08:32.086956 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:08:37.442529 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go stopped, state is decommissioning
+I, [2010-07-27T01:08:37.472647 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:08:42.762545 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go stopped, state is decommissioning
+I, [2010-07-27T01:08:42.797578 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:08:48.732551 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go stopped, state is decommissioning
+I, [2010-07-27T01:08:48.763224 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:08:54.582552 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go stopped, state is decommissioning
+I, [2010-07-27T01:08:54.616668 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:08:59.702534 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go stopped, state is decommissioning
+I, [2010-07-27T01:08:59.732521 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:09:04.822544 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go stopped, state is decommissioning
+I, [2010-07-27T01:09:04.856307 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:09:09.962557 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go stopped, state is decommissioning
+I, [2010-07-27T01:09:09.993331 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:09:15.162567 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go stopped, state is decommissioning
+I, [2010-07-27T01:09:15.224361 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:09:20.332541 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go stopped, state is decommissioning
+I, [2010-07-27T01:09:20.373653 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:09:25.492539 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go stopped, state is decommissioning
+I, [2010-07-27T01:09:25.526876 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:09:30.642535 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go stopped, state is decommissioning
+I, [2010-07-27T01:09:30.706151 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:09:35.972540 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go stopped, state is decommissioning
+I, [2010-07-27T01:09:36.040109 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:09:41.142554 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go stopped, state is decommissioning
+I, [2010-07-27T01:09:41.180556 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:09:46.272540 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go stopped, state is decommissioning
+I, [2010-07-27T01:09:46.334930 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:09:51.367991 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go stopped, state is decommissioning
+I, [2010-07-27T01:09:51.398695 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:09:56.517970 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go stopped, state is decommissioning
+I, [2010-07-27T01:09:56.552386 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:10:01.688063 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go stopped, state is decommissioning
+I, [2010-07-27T01:10:01.722650 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:10:06.847979 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go stopped, state is decommissioning
+I, [2010-07-27T01:10:06.881854 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:10:12.417970 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go stopped, state is decommissioning
+I, [2010-07-27T01:10:12.448163 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:10:17.927987 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go stopped, state is decommissioning
+I, [2010-07-27T01:10:17.962695 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:10:23.077977 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go stopped, state is decommissioning
+I, [2010-07-27T01:10:23.109444 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:10:28.207978 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go stopped, state is decommissioning
+I, [2010-07-27T01:10:28.241917 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:10:33.467994 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go stopped, state is decommissioning
+I, [2010-07-27T01:10:33.499088 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:10:39.667966 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go stopped, state is decommissioning
+I, [2010-07-27T01:10:39.705328 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:10:44.797963 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go stopped, state is decommissioning
+I, [2010-07-27T01:10:44.828389 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:10:50.508033 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go stopped, state is decommissioning
+I, [2010-07-27T01:10:50.542413 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:10:55.657968 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go stopped, state is decommissioning
+I, [2010-07-27T01:10:55.687932 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:11:00.857983 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go stopped, state is decommissioning
+I, [2010-07-27T01:11:00.947178 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:11:06.067985 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go stopped, state is decommissioning
+I, [2010-07-27T01:11:06.098926 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:11:11.258074 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go stopped, state is decommissioning
+I, [2010-07-27T01:11:11.294103 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:11:16.397965 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go stopped, state is decommissioning
+I, [2010-07-27T01:11:16.430416 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:11:21.547978 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go stopped, state is decommissioning
+I, [2010-07-27T01:11:21.582189 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:11:26.737984 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go stopped, state is decommissioning
+I, [2010-07-27T01:11:26.768412 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:11:31.877981 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go stopped, state is decommissioning
+I, [2010-07-27T01:11:31.919201 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:11:37.657985 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go stopped, state is decommissioning
+I, [2010-07-27T01:11:37.687812 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:11:42.937976 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go stopped, state is decommissioning
+I, [2010-07-27T01:11:42.971464 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:11:48.068051 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go stopped, state is decommissioning
+I, [2010-07-27T01:11:48.151543 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:11:53.267982 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go stopped, state is decommissioning
+I, [2010-07-27T01:11:53.301614 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:11:58.497983 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go stopped, state is decommissioning
+I, [2010-07-27T01:11:58.535660 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:12:03.647987 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go stopped, state is decommissioning
+I, [2010-07-27T01:12:03.683109 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:12:08.787961 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go stopped, state is decommissioning
+I, [2010-07-27T01:12:08.818237 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:12:13.957975 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go stopped, state is decommissioning
+I, [2010-07-27T01:12:14.017561 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:12:19.137979 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go stopped, state is decommissioning
+I, [2010-07-27T01:12:19.168363 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:12:24.327964 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go stopped, state is decommissioning
+I, [2010-07-27T01:12:24.361186 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:12:30.267966 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go stopped, state is decommissioning
+I, [2010-07-27T01:12:30.298951 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:12:35.438055 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go stopped, state is decommissioning
+I, [2010-07-27T01:12:35.472571 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:12:35.626832 #5955]  INFO -- : GET: /api/acct/2901/servers/795890.js?
+I, [2010-07-27T01:12:35.774388 #5955]  INFO -- : tempserver-PHP App Server v10 (Beta) is stopped
+I, [2010-07-27T01:12:35.808331 #5955]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T01:12:35.944653 #5955]  INFO -- : tempserver-PHP Front End v10 (Beta) is stopped
+I, [2010-07-27T01:12:35.974773 #5955]  INFO -- : GET: /api/acct/2901/servers/795888.js?
+I, [2010-07-27T01:12:36.048470 #5955]  INFO -- : tempserver-PHP Front End v10 (Beta) is stopped
+I, [2010-07-27T01:12:36.083841 #5955]  INFO -- : POST: /api/acct/2901/servers/795886/start
+I, [2010-07-27T01:12:40.677937 #5955]  INFO -- : POST: /api/acct/2901/servers/795888/start
+I, [2010-07-27T01:12:44.175808 #5955]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T01:12:44.271429 #5955]  INFO -- : tempserver-PHP Front End v10 (Beta) is bidding
+I, [2010-07-27T01:12:49.277966 #5955]  INFO -- : waiting for server tempserver-PHP Front End v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:12:49.316522 #5955]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T01:12:54.617979 #5955]  INFO -- : waiting for server tempserver-PHP Front End v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:12:54.652307 #5955]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T01:13:00.117987 #5955]  INFO -- : waiting for server tempserver-PHP Front End v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:13:00.160865 #5955]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T01:13:05.248198 #5955]  INFO -- : waiting for server tempserver-PHP Front End v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:13:05.283135 #5955]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T01:13:11.087964 #5955]  INFO -- : waiting for server tempserver-PHP Front End v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:13:11.122290 #5955]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T01:13:16.207959 #5955]  INFO -- : waiting for server tempserver-PHP Front End v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:13:16.243390 #5955]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T01:13:21.347997 #5955]  INFO -- : waiting for server tempserver-PHP Front End v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:13:21.379080 #5955]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T01:13:26.508001 #5955]  INFO -- : waiting for server tempserver-PHP Front End v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:13:26.542433 #5955]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T01:13:32.547961 #5955]  INFO -- : waiting for server tempserver-PHP Front End v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:13:32.578323 #5955]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T01:13:37.677966 #5955]  INFO -- : waiting for server tempserver-PHP Front End v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:13:37.712300 #5955]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T01:13:42.817963 #5955]  INFO -- : waiting for server tempserver-PHP Front End v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:13:42.848295 #5955]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T01:13:47.957964 #5955]  INFO -- : waiting for server tempserver-PHP Front End v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:13:47.992168 #5955]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T01:13:53.085909 #5955]  INFO -- : waiting for server tempserver-PHP Front End v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:13:53.116093 #5955]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T01:13:58.245916 #5955]  INFO -- : waiting for server tempserver-PHP Front End v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:13:58.280045 #5955]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T01:14:03.405918 #5955]  INFO -- : waiting for server tempserver-PHP Front End v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:14:03.442029 #5955]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T01:14:09.005906 #5955]  INFO -- : waiting for server tempserver-PHP Front End v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:14:09.090266 #5955]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T01:14:14.225902 #5955]  INFO -- : waiting for server tempserver-PHP Front End v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:14:14.262050 #5955]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T01:14:19.355912 #5955]  INFO -- : waiting for server tempserver-PHP Front End v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:14:19.392900 #5955]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T01:14:24.665927 #5955]  INFO -- : waiting for server tempserver-PHP Front End v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:14:24.696844 #5955]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T01:14:29.825902 #5955]  INFO -- : waiting for server tempserver-PHP Front End v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:14:29.859488 #5955]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T01:14:34.975931 #5955]  INFO -- : waiting for server tempserver-PHP Front End v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:14:35.006157 #5955]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T01:14:40.155969 #5955]  INFO -- : waiting for server tempserver-PHP Front End v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:14:40.191042 #5955]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T01:14:45.315936 #5955]  INFO -- : waiting for server tempserver-PHP Front End v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:14:45.373650 #5955]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T01:14:50.455936 #5955]  INFO -- : waiting for server tempserver-PHP Front End v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:14:50.489781 #5955]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T01:14:55.635914 #5955]  INFO -- : waiting for server tempserver-PHP Front End v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:14:55.666168 #5955]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T01:15:00.755914 #5955]  INFO -- : waiting for server tempserver-PHP Front End v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:15:00.791026 #5955]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T01:15:05.955924 #5955]  INFO -- : waiting for server tempserver-PHP Front End v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:15:05.991125 #5955]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T01:15:11.135913 #5955]  INFO -- : waiting for server tempserver-PHP Front End v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:15:11.170673 #5955]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T01:15:16.275917 #5955]  INFO -- : waiting for server tempserver-PHP Front End v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:15:16.308576 #5955]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T01:15:21.475912 #5955]  INFO -- : waiting for server tempserver-PHP Front End v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:15:21.517909 #5955]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T01:15:26.635902 #5955]  INFO -- : waiting for server tempserver-PHP Front End v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:15:26.666728 #5955]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T01:15:31.815928 #5955]  INFO -- : waiting for server tempserver-PHP Front End v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:15:31.849789 #5955]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T01:15:37.135905 #5955]  INFO -- : waiting for server tempserver-PHP Front End v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:15:37.172406 #5955]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T01:15:42.255925 #5955]  INFO -- : waiting for server tempserver-PHP Front End v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:15:42.290268 #5955]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T01:15:47.515914 #5955]  INFO -- : waiting for server tempserver-PHP Front End v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:15:47.547193 #5955]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T01:15:52.735918 #5955]  INFO -- : waiting for server tempserver-PHP Front End v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:15:52.792276 #5955]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T01:15:57.895898 #5955]  INFO -- : waiting for server tempserver-PHP Front End v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:15:57.925730 #5955]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T01:16:06.175951 #5955]  INFO -- : waiting for server tempserver-PHP Front End v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:16:06.209774 #5955]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T01:16:11.315906 #5955]  INFO -- : waiting for server tempserver-PHP Front End v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:16:11.346532 #5955]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T01:16:16.485909 #5955]  INFO -- : waiting for server tempserver-PHP Front End v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:16:16.520058 #5955]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T01:16:21.805901 #5955]  INFO -- : waiting for server tempserver-PHP Front End v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:16:21.837950 #5955]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T01:16:26.975900 #5955]  INFO -- : waiting for server tempserver-PHP Front End v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:16:27.010276 #5955]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T01:16:32.165912 #5955]  INFO -- : waiting for server tempserver-PHP Front End v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:16:32.256088 #5955]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T01:16:37.375913 #5955]  INFO -- : waiting for server tempserver-PHP Front End v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:16:37.410344 #5955]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T01:16:42.616008 #5955]  INFO -- : waiting for server tempserver-PHP Front End v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:16:42.649202 #5955]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T01:16:47.745887 #5955]  INFO -- : waiting for server tempserver-PHP Front End v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:16:47.781885 #5955]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T01:16:52.925923 #5955]  INFO -- : waiting for server tempserver-PHP Front End v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:16:52.956036 #5955]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T01:16:58.065902 #5955]  INFO -- : waiting for server tempserver-PHP Front End v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:16:58.100376 #5955]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T01:17:03.275935 #5955]  INFO -- : waiting for server tempserver-PHP Front End v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:17:03.308709 #5955]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T01:17:09.195923 #5955]  INFO -- : waiting for server tempserver-PHP Front End v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:17:09.298561 #5955]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T01:17:15.015915 #5955]  INFO -- : waiting for server tempserver-PHP Front End v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:17:15.046283 #5955]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T01:17:20.165900 #5955]  INFO -- : waiting for server tempserver-PHP Front End v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:17:20.199799 #5955]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T01:17:25.415924 #5955]  INFO -- : waiting for server tempserver-PHP Front End v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:17:25.446444 #5955]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T01:17:31.565909 #5955]  INFO -- : waiting for server tempserver-PHP Front End v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:17:31.600439 #5955]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T01:17:36.895916 #5955]  INFO -- : waiting for server tempserver-PHP Front End v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:17:36.925774 #5955]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T01:17:42.115927 #5955]  INFO -- : waiting for server tempserver-PHP Front End v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:17:42.150037 #5955]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T01:17:48.105912 #5955]  INFO -- : waiting for server tempserver-PHP Front End v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:17:48.154066 #5955]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T01:17:54.035902 #5955]  INFO -- : waiting for server tempserver-PHP Front End v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:17:54.070679 #5955]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T01:17:59.245982 #5955]  INFO -- : waiting for server tempserver-PHP Front End v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:17:59.276065 #5955]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T01:18:04.505958 #5955]  INFO -- : waiting for server tempserver-PHP Front End v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:18:04.553046 #5955]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T01:18:09.775943 #5955]  INFO -- : waiting for server tempserver-PHP Front End v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:18:09.810721 #5955]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T01:18:14.915908 #5955]  INFO -- : waiting for server tempserver-PHP Front End v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:18:14.975729 #5955]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T01:18:20.215929 #5955]  INFO -- : waiting for server tempserver-PHP Front End v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:18:20.250708 #5955]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T01:18:25.375925 #5955]  INFO -- : waiting for server tempserver-PHP Front End v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:18:25.406836 #5955]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T01:18:30.495908 #5955]  INFO -- : waiting for server tempserver-PHP Front End v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:18:30.530116 #5955]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T01:18:35.665926 #5955]  INFO -- : waiting for server tempserver-PHP Front End v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:18:35.695832 #5955]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T01:18:41.765900 #5955]  INFO -- : waiting for server tempserver-PHP Front End v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:18:41.800023 #5955]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T01:18:46.895903 #5955]  INFO -- : waiting for server tempserver-PHP Front End v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:18:46.925730 #5955]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T01:18:52.015922 #5955]  INFO -- : waiting for server tempserver-PHP Front End v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:18:52.049925 #5955]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T01:18:57.155902 #5955]  INFO -- : waiting for server tempserver-PHP Front End v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:18:57.186303 #5955]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T01:19:02.305994 #5955]  INFO -- : waiting for server tempserver-PHP Front End v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:19:02.348108 #5955]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T01:19:07.485897 #5955]  INFO -- : waiting for server tempserver-PHP Front End v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:19:07.515586 #5955]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T01:19:12.625930 #5955]  INFO -- : waiting for server tempserver-PHP Front End v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:19:12.667337 #5955]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T01:19:17.845952 #5955]  INFO -- : waiting for server tempserver-PHP Front End v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:19:18.019573 #5955]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T01:19:24.095916 #5955]  INFO -- : waiting for server tempserver-PHP Front End v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:19:24.137170 #5955]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T01:19:29.245922 #5955]  INFO -- : waiting for server tempserver-PHP Front End v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:19:29.275864 #5955]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T01:19:34.525930 #5955]  INFO -- : waiting for server tempserver-PHP Front End v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:19:34.569171 #5955]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T01:19:39.725921 #5955]  INFO -- : waiting for server tempserver-PHP Front End v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:19:39.760210 #5955]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T01:19:45.125921 #5955]  INFO -- : waiting for server tempserver-PHP Front End v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:19:45.159899 #5955]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T01:19:50.246281 #5955]  INFO -- : waiting for server tempserver-PHP Front End v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:19:50.277605 #5955]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T01:19:58.995907 #5955]  INFO -- : waiting for server tempserver-PHP Front End v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:19:59.030333 #5955]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T01:20:04.185902 #5955]  INFO -- : waiting for server tempserver-PHP Front End v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:20:04.216084 #5955]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T01:20:09.456000 #5955]  INFO -- : waiting for server tempserver-PHP Front End v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:20:09.492654 #5955]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T01:20:14.875924 #5955]  INFO -- : waiting for server tempserver-PHP Front End v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:20:14.906270 #5955]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T01:20:20.025909 #5955]  INFO -- : waiting for server tempserver-PHP Front End v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:20:20.076954 #5955]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T01:20:25.955925 #5955]  INFO -- : waiting for server tempserver-PHP Front End v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:20:25.987555 #5955]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T01:20:31.275915 #5955]  INFO -- : waiting for server tempserver-PHP Front End v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:20:31.309899 #5955]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T01:20:36.425905 #5955]  INFO -- : waiting for server tempserver-PHP Front End v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:20:36.495229 #5955]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T01:20:41.575931 #5955]  INFO -- : waiting for server tempserver-PHP Front End v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:20:41.609910 #5955]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T01:20:46.706018 #5955]  INFO -- : waiting for server tempserver-PHP Front End v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:20:46.737132 #5955]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T01:20:51.845902 #5955]  INFO -- : waiting for server tempserver-PHP Front End v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:20:51.880002 #5955]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T01:20:57.025915 #5955]  INFO -- : waiting for server tempserver-PHP Front End v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:20:57.056323 #5955]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T01:21:02.185947 #5955]  INFO -- : waiting for server tempserver-PHP Front End v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:21:02.220971 #5955]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T01:21:02.337655 #5955]  INFO -- : waiting for dns-name for tempserver-PHP Front End v10 (Beta)
+I, [2010-07-27T01:21:02.368520 #5955]  INFO -- : GET: /api/acct/2901/servers/795886/settings.js?
+I, [2010-07-27T01:21:04.645896 #5955]  INFO -- : waiting for dns-name for tempserver-PHP Front End v10 (Beta)
+I, [2010-07-27T01:21:04.646071 #5955]  INFO -- : got DNS: ec2-204-236-144-65.us-west-1.compute.amazonaws.com
+I, [2010-07-27T01:21:04.680742 #5955]  INFO -- : GET: /api/acct/2901/servers/795888.js?
+I, [2010-07-27T01:21:04.884181 #5955]  INFO -- : tempserver-PHP Front End v10 (Beta) is operational
+I, [2010-07-27T01:21:04.884312 #5955]  INFO -- : waiting for dns-name for tempserver-PHP Front End v10 (Beta)
+I, [2010-07-27T01:21:04.914202 #5955]  INFO -- : GET: /api/acct/2901/servers/795888/settings.js?
+I, [2010-07-27T01:21:07.045892 #5955]  INFO -- : waiting for dns-name for tempserver-PHP Front End v10 (Beta)
+I, [2010-07-27T01:21:07.046097 #5955]  INFO -- : got DNS: ec2-204-236-150-111.us-west-1.compute.amazonaws.com
+I, [2010-07-27T01:21:07.085173 #5955]  INFO -- : POST: /api/acct/2901/servers/795889/start
+I, [2010-07-27T01:21:11.020825 #5955]  INFO -- : POST: /api/acct/2901/servers/795890/start
+I, [2010-07-27T01:21:15.166456 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:21:15.252927 #5955]  INFO -- : tempserver-PHP App Server v10 (Beta) is bidding
+I, [2010-07-27T01:21:20.265922 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:21:20.296218 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:21:29.275915 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:21:29.310540 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:21:34.435911 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:21:34.483586 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:21:39.585898 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:21:39.620895 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:21:45.385923 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:21:45.416846 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:21:50.596000 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:21:50.631292 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:21:55.845901 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:21:55.876468 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:22:01.005916 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:22:01.052943 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:22:06.195922 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:22:06.235094 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:22:11.335924 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:22:11.370865 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:22:16.485928 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:22:16.516738 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:22:21.655924 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:22:21.718830 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:22:29.275909 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:22:29.305878 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:22:34.835899 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:22:34.869628 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:22:40.045928 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:22:40.075973 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:22:46.035945 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:22:46.070341 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:22:51.256009 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:22:51.287172 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:22:56.405932 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:22:56.445398 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:23:01.555920 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:23:01.589096 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:23:06.735924 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:23:06.772316 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:23:11.915923 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:23:11.945884 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:23:17.045915 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:23:17.083289 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:23:22.905907 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:23:22.971129 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:23:28.065902 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:23:28.100038 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:23:33.235924 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:23:33.266049 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:23:38.475931 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:23:38.510407 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:23:43.625922 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:23:43.656335 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:23:48.755923 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:23:48.790254 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:23:53.875900 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:23:53.905599 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:23:59.005919 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:23:59.039145 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:24:04.355918 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:24:04.385663 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:24:09.455906 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:24:09.491436 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:24:14.615920 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:24:14.649651 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:24:19.815922 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:24:19.850300 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:24:25.005907 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:24:25.036107 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:24:30.125925 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:24:30.160333 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:24:35.225898 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:24:35.256370 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:24:40.405921 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:24:40.440399 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:24:45.545925 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:24:45.599962 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:24:50.715926 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:24:50.750061 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:24:55.835902 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:24:55.866213 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:25:01.005999 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:25:01.051665 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:25:06.155925 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:25:06.187073 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:25:11.355931 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:25:11.389636 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:25:16.505909 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:25:16.537000 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:25:21.665921 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is bidding
+I, [2010-07-27T01:25:21.731701 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:25:26.935910 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:25:26.966153 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:25:32.095919 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:25:32.137959 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:25:37.315919 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:25:37.346438 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:25:42.485906 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:25:42.520246 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:25:48.345917 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:25:48.383620 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:25:53.465906 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:25:53.500110 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:25:58.645917 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:25:58.676885 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:26:03.785913 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:26:03.820653 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:26:08.935944 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:26:08.988001 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:26:14.115913 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:26:14.150056 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:26:19.265921 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:26:19.296686 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:26:24.395908 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:26:24.453580 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:26:29.575900 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:26:29.605794 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:26:34.766028 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:26:34.800908 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:26:39.925931 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:26:39.956007 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:26:45.165903 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:26:45.200198 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:26:50.396322 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:26:50.426517 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:26:55.605904 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:26:55.639590 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:27:00.805915 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:27:00.836503 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:27:06.696004 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:27:06.730445 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:27:11.825918 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:27:11.856394 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:27:16.985900 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:27:17.020362 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:27:22.205884 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:27:22.236028 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:27:27.355900 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:27:27.390385 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:27:32.485903 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:27:32.516131 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:27:37.595926 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:27:37.630650 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:27:42.735910 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:27:42.765743 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:27:47.895923 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:27:47.958036 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:27:53.165945 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:27:53.195569 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:27:58.345928 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:27:58.381702 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:28:03.565906 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:28:03.598023 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:28:08.745920 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:28:08.779943 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:28:14.115909 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:28:14.150131 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:28:19.355906 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:28:19.387982 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:28:24.485911 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:28:24.520073 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:28:30.395942 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:28:30.474420 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:28:35.555943 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:28:35.612264 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:28:40.735931 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:28:40.765864 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:28:45.875908 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:28:45.910451 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:28:51.005908 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:28:51.065550 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:28:56.155924 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:28:56.190117 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:29:01.295938 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:29:01.326545 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:29:06.415907 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:29:06.451123 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:29:11.535924 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:29:11.582905 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:29:16.685901 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:29:16.719651 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:29:21.885931 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:29:21.916232 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:29:27.065930 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:29:27.100094 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:29:32.175901 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:29:32.206093 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:29:37.295917 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:29:37.329487 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:29:42.435908 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:29:42.466686 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:29:47.635918 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:29:47.672284 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:29:52.785921 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:29:52.848945 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:29:57.955908 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:29:57.989942 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:30:03.196063 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:30:03.226526 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:30:08.545940 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:30:08.579890 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:30:13.785902 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:30:13.815975 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:30:18.965919 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:30:18.999619 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:30:24.296007 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:30:24.375183 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:30:30.535917 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:30:30.569931 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:30:35.665909 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:30:35.696277 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:30:40.986004 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:30:41.020025 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:30:46.115906 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:30:46.145927 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:30:51.285912 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:30:51.320073 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:30:56.715918 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:30:56.746217 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:31:03.165950 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:31:03.244642 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:31:08.355919 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:31:08.386400 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:31:13.575906 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:31:13.632999 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:31:19.075911 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:31:19.106742 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:31:24.235910 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:31:24.334125 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:31:29.485924 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:31:29.516617 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:31:34.615911 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:31:34.652553 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:31:39.835922 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:31:39.891257 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:31:47.785901 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:31:47.819931 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:31:52.985907 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:31:53.015942 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:31:58.155906 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:31:58.190207 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:32:03.285928 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:32:03.315980 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:32:08.865901 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:32:08.900339 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:32:14.175910 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:32:14.206452 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:32:20.205927 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:32:20.240631 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:32:25.495911 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:32:25.526525 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:32:30.675957 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:32:30.710420 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:32:35.845902 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:32:35.923553 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:32:41.866321 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:32:41.900200 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:32:47.045907 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:32:47.076348 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:32:52.385926 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:32:52.419741 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:32:58.285902 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:32:58.316397 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:33:03.495908 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:33:03.530336 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:33:09.445906 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:33:09.483479 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:33:14.565901 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:33:14.600012 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:33:19.725900 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:33:19.755775 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:33:24.875917 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:33:24.953564 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:33:30.375910 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:33:30.406514 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:33:35.725916 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:33:35.762730 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:33:40.855901 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:33:40.886872 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:33:45.995928 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:33:46.031130 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:33:51.125917 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:33:51.156683 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:33:56.575901 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:33:56.610202 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:34:01.705995 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:34:01.737163 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:34:06.835911 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:34:06.870506 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:34:12.045910 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:34:12.076150 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:34:17.825926 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:34:17.860123 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:34:23.225927 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:34:23.256093 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:34:28.375933 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:34:28.410822 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:34:33.535928 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:34:33.605674 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:34:39.105907 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:34:39.141344 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:34:44.425899 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:34:44.455669 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:34:49.615908 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:34:49.655124 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:34:54.765911 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:34:54.796711 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:34:59.905900 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:34:59.943144 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:35:05.845939 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:35:05.907760 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:35:11.095905 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:35:11.178080 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:35:16.355902 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:35:16.386667 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:35:21.545998 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:35:21.580907 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:35:26.845907 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:35:26.876473 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:35:31.975926 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:35:32.010292 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:35:37.965924 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:35:37.996453 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:35:43.175925 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:35:43.210836 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:35:48.945925 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:35:48.976391 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:35:54.055909 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:35:54.097605 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:35:59.225908 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:35:59.262607 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:36:04.775924 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:36:04.840680 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:36:09.965900 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:36:09.995887 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:36:15.105909 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:36:15.139965 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:36:20.265909 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:36:20.297404 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:36:25.525905 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:36:25.560246 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:36:30.666002 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:36:30.696567 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:36:36.226066 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:36:36.260348 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:36:41.445902 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:36:41.478967 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:36:46.625909 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:36:46.660679 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:36:51.985902 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:36:52.015395 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:36:57.105909 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:36:57.140558 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:37:02.255935 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:37:02.287018 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:37:07.395909 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:37:07.430673 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:37:12.535993 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:37:12.571589 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:37:17.655917 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:37:17.689882 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:37:22.845916 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:37:22.875544 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:37:28.005912 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:37:28.040423 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:37:33.156009 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:37:33.186993 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:37:38.275922 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:37:38.310129 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:37:43.435926 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:37:43.484014 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:37:48.705911 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:37:48.740044 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:37:54.005907 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:37:54.036084 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:37:59.215913 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:37:59.276556 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:38:04.405919 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:38:04.436155 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:38:09.575926 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:38:09.606750 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:38:14.875917 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:38:14.921372 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:38:20.045901 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:38:20.076771 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:38:25.175916 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:38:25.211004 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:38:30.305908 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:38:30.336189 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:38:35.675907 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:38:35.710755 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:38:40.805942 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:38:40.836896 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:38:45.925901 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:38:45.990237 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:38:51.065926 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:38:51.097255 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:38:56.245921 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:38:56.280080 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:39:01.585903 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:39:01.617221 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:39:07.035908 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:39:07.070355 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:39:12.175923 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:39:12.210858 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:39:17.295911 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:39:17.330657 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:39:22.415942 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:39:22.447818 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:39:28.169485 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:39:28.204651 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:39:33.339474 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:39:33.371709 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:39:38.469464 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:39:38.504227 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:39:43.599467 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:39:43.629559 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:39:48.729475 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:39:48.814401 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:39:54.229489 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:39:54.267076 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:40:00.289462 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:40:00.326581 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:40:05.623399 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:40:05.704877 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:40:10.819493 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:40:10.849664 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:40:15.959521 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:40:15.997655 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:40:21.099467 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:40:21.133500 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:40:26.299501 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:40:26.367636 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:40:31.459559 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:40:31.521132 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:40:36.799492 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:40:36.878748 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:40:42.659484 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:40:42.694576 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:40:47.799482 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:40:47.829735 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:40:53.279482 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:40:53.313052 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:40:59.009494 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:40:59.040212 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:41:04.229470 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:41:04.261324 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:41:10.119469 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:41:10.153379 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:41:15.519490 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:41:15.550792 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:41:20.699472 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:41:20.783313 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:41:25.889482 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:41:25.919410 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:41:31.409470 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:41:31.443543 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T01:41:37.349488 #5955]  INFO -- : waiting for server tempserver-PHP App Server v10 (Beta) to go operational, state is booting
+I, [2010-07-27T01:41:37.380080 #5955]  INFO -- : GET: /api/acct/2901/servers/795889.js?

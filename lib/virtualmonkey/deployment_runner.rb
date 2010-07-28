@@ -7,6 +7,27 @@ module VirtualMonkey
       @deployment = Deployment.find_by_nickname_speed(deployment).first
       raise "Fatal: Could not find a deployment named #{deployment}" unless @deployment
       @servers = @deployment.servers_no_reload
+      lookup_scripts
+    end
+
+    def lookup_scripts
+      raise "FATAL: lookup_scripts is undefined, this must be set in mixin classes"
+    end
+
+    def s_one
+      @servers[0]
+    end
+
+    def s_two
+      @servers[1]
+    end
+
+    def s_three
+      @servers[2]
+    end
+
+    def s_four
+      @servers[3]
     end
 
     # Launch all servers in the deployment.

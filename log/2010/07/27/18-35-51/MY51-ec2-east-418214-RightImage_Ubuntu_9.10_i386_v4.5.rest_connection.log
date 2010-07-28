@@ -1,0 +1,355 @@
+# Logfile created on Tue Jul 27 18:36:07 +0000 2010 by logger.rb/22285
+I, [2010-07-27T18:36:07.857217 #9014]  INFO -- : GET: https://my.rightscale.com/api/acct/2901/deployments.js?filter[]=nickname=MY51-ec2-east-418214-RightImage_Ubuntu_9.10_i386_v4.5&
+I, [2010-07-27T18:36:07.865221 #9012]  INFO -- : GET: https://my.rightscale.com/api/acct/2901/deployments.js?filter[]=nickname=MY51-ec2-west-580204-RightImage_Ubuntu_9.10_x64_v4.5&
+I, [2010-07-27T18:36:08.062497 #9012]  INFO -- : GET: /api/acct/2901/ec2_server_templates/46536.js?
+I, [2010-07-27T18:36:08.560786 #9014]  INFO -- : GET: /api/acct/2901/ec2_server_templates/46536.js?
+I, [2010-07-27T18:36:08.985799 #9012]  INFO -- : GET: /api/acct/2901/ec2_server_templates/46536/executables.js?
+I, [2010-07-27T18:36:10.488262 #9014]  INFO -- : GET: /api/acct/2901/ec2_server_templates/46536/executables.js?
+I, [2010-07-27T18:36:10.569837 #9012]  INFO -- : GET: https://my.rightscale.com/api/acct/2901/server_templates.js?
+I, [2010-07-27T18:36:10.724851 #9014]  INFO -- : GET: https://my.rightscale.com/api/acct/2901/server_templates.js?
+I, [2010-07-27T18:36:13.504135 #9014]  INFO -- : GET: /api/acct/2901/ec2_server_templates/42160/executables.js?
+I, [2010-07-27T18:36:13.512615 #9012]  INFO -- : GET: /api/acct/2901/ec2_server_templates/42160/executables.js?
+I, [2010-07-27T18:36:13.713858 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:36:13.770720 #9012]  INFO -- : GET: /api/acct/2901/servers/796343.js?
+I, [2010-07-27T18:36:13.809243 #9014]  INFO -- : tempserver-MySQL 5.1 EBS v2 (Sprint 19) is stopped
+I, [2010-07-27T18:36:13.839695 #9014]  INFO -- : GET: /api/acct/2901/servers/796348.js?
+I, [2010-07-27T18:36:14.453633 #9012]  INFO -- : tempserver-MySQL 5.1 EBS v2 (Sprint 19) is stopped
+I, [2010-07-27T18:36:14.487517 #9012]  INFO -- : GET: /api/acct/2901/servers/796344.js?
+I, [2010-07-27T18:36:14.628232 #9012]  INFO -- : tempserver-MySQL 5.1 EBS v2 (Sprint 19) is stopped
+I, [2010-07-27T18:36:14.654576 #9014]  INFO -- : tempserver-MySQL 5.1 EBS v2 (Sprint 19) is stopped
+I, [2010-07-27T18:36:14.668644 #9012]  INFO -- : PUT: /api/acct/2901/deployments/51749
+I, [2010-07-27T18:36:14.668765 #9012]  INFO -- : 	request body: {"deployment":{"parameters":{"DB_LINEAGE_NAME":"text:testlineage698259"}}}
+I, [2010-07-27T18:36:14.690408 #9014]  INFO -- : PUT: /api/acct/2901/deployments/51751
+I, [2010-07-27T18:36:14.690534 #9014]  INFO -- : 	request body: {"deployment":{"parameters":{"DB_LINEAGE_NAME":"text:testlineage992870"}}}
+I, [2010-07-27T18:36:15.047089 #9012]  INFO -- : PUT: /api/acct/2901/servers/796343
+I, [2010-07-27T18:36:15.047215 #9012]  INFO -- : 	request body: {"server":{"parameters":{"DB_LINEAGE_NAME":"text:"}}}
+I, [2010-07-27T18:36:15.320304 #9014]  INFO -- : PUT: /api/acct/2901/servers/796347
+I, [2010-07-27T18:36:15.320436 #9014]  INFO -- : 	request body: {"server":{"parameters":{"DB_LINEAGE_NAME":"text:"}}}
+I, [2010-07-27T18:36:15.352274 #9012]  INFO -- : PUT: /api/acct/2901/servers/796344
+I, [2010-07-27T18:36:15.352390 #9012]  INFO -- : 	request body: {"server":{"parameters":{"DB_LINEAGE_NAME":"text:"}}}
+I, [2010-07-27T18:36:15.797819 #9014]  INFO -- : PUT: /api/acct/2901/servers/796348
+I, [2010-07-27T18:36:15.797939 #9014]  INFO -- : 	request body: {"server":{"parameters":{"DB_LINEAGE_NAME":"text:"}}}
+I, [2010-07-27T18:36:16.138363 #9014]  INFO -- : PUT: /api/acct/2901/deployments/51751
+I, [2010-07-27T18:36:16.138483 #9014]  INFO -- : 	request body: {"deployment":{"parameters":{"EBS_STRIPE_COUNT":"text:1"}}}
+I, [2010-07-27T18:36:16.510954 #9014]  INFO -- : PUT: /api/acct/2901/deployments/51751
+I, [2010-07-27T18:36:16.511071 #9014]  INFO -- : 	request body: {"deployment":{"parameters":{"MASTER_DB_DNSID":"text:5264483"}}}
+I, [2010-07-27T18:36:16.712127 #9012]  INFO -- : PUT: /api/acct/2901/deployments/51749
+I, [2010-07-27T18:36:16.712252 #9012]  INFO -- : 	request body: {"deployment":{"parameters":{"EBS_STRIPE_COUNT":"text:1"}}}
+I, [2010-07-27T18:36:16.747078 #9014]  INFO -- : PUT: /api/acct/2901/deployments/51751
+I, [2010-07-27T18:36:16.747207 #9014]  INFO -- : 	request body: {"deployment":{"parameters":{"SLAVE_DB_DNSID":"text:5264506"}}}
+I, [2010-07-27T18:36:16.950084 #9014]  INFO -- : PUT: /api/acct/2901/deployments/51751
+I, [2010-07-27T18:36:16.950204 #9014]  INFO -- : 	request body: {"deployment":{"parameters":{"SLAVE_DB_DNSNAME":"text:vmonk4-slave.test.rightscale.com"}}}
+I, [2010-07-27T18:36:17.156238 #9014]  INFO -- : PUT: /api/acct/2901/deployments/51751
+I, [2010-07-27T18:36:17.156373 #9014]  INFO -- : 	request body: {"deployment":{"parameters":{"MASTER_DB_DNSNAME":"text:vmonk4-master.test.rightscale.com"}}}
+I, [2010-07-27T18:36:17.393678 #9014]  INFO -- : POST: /api/acct/2901/servers/796347/start
+I, [2010-07-27T18:36:17.971391 #9012]  INFO -- : POST: /api/acct/2901/servers/796343/start
+I, [2010-07-27T18:36:21.365029 #9014]  INFO -- : POST: /api/acct/2901/servers/796348/start
+I, [2010-07-27T18:36:22.176786 #9012]  INFO -- : POST: /api/acct/2901/servers/796344/start
+I, [2010-07-27T18:36:25.039703 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:36:25.132418 #9014]  INFO -- : tempserver-MySQL 5.1 EBS v2 (Sprint 19) is bidding
+I, [2010-07-27T18:36:26.380000 #9012]  INFO -- : GET: /api/acct/2901/servers/796343.js?
+I, [2010-07-27T18:36:27.215044 #9012]  INFO -- : tempserver-MySQL 5.1 EBS v2 (Sprint 19) is bidding
+I, [2010-07-27T18:36:30.144116 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is bidding
+I, [2010-07-27T18:36:30.174579 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:36:32.224152 #9012]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is bidding
+I, [2010-07-27T18:36:32.263501 #9012]  INFO -- : GET: /api/acct/2901/servers/796343.js?
+I, [2010-07-27T18:36:36.544129 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is bidding
+I, [2010-07-27T18:36:36.574710 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:36:37.434164 #9012]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is bidding
+I, [2010-07-27T18:36:37.468252 #9012]  INFO -- : GET: /api/acct/2901/servers/796343.js?
+I, [2010-07-27T18:36:41.734122 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is bidding
+I, [2010-07-27T18:36:41.765914 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:36:42.874132 #9012]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is bidding
+I, [2010-07-27T18:36:42.908396 #9012]  INFO -- : GET: /api/acct/2901/servers/796343.js?
+I, [2010-07-27T18:36:47.234156 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is bidding
+I, [2010-07-27T18:36:47.264432 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:36:48.204144 #9012]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is bidding
+I, [2010-07-27T18:36:48.237778 #9012]  INFO -- : GET: /api/acct/2901/servers/796343.js?
+I, [2010-07-27T18:36:52.364121 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is bidding
+I, [2010-07-27T18:36:52.414162 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:36:53.384147 #9012]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is bidding
+I, [2010-07-27T18:36:53.419074 #9012]  INFO -- : GET: /api/acct/2901/servers/796343.js?
+I, [2010-07-27T18:36:57.514143 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is bidding
+I, [2010-07-27T18:36:57.543558 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:36:59.314129 #9012]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is bidding
+I, [2010-07-27T18:36:59.356782 #9012]  INFO -- : GET: /api/acct/2901/servers/796343.js?
+I, [2010-07-27T18:37:02.684225 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is bidding
+I, [2010-07-27T18:37:02.715830 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:37:04.474127 #9012]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is bidding
+I, [2010-07-27T18:37:04.521482 #9012]  INFO -- : GET: /api/acct/2901/servers/796343.js?
+I, [2010-07-27T18:37:07.834156 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is bidding
+I, [2010-07-27T18:37:07.866922 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:37:09.664126 #9012]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is bidding
+I, [2010-07-27T18:37:09.729974 #9012]  INFO -- : GET: /api/acct/2901/servers/796343.js?
+I, [2010-07-27T18:37:13.014123 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is bidding
+I, [2010-07-27T18:37:13.044244 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:37:14.854110 #9012]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is bidding
+I, [2010-07-27T18:37:14.884691 #9012]  INFO -- : GET: /api/acct/2901/servers/796343.js?
+I, [2010-07-27T18:37:18.134158 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is bidding
+I, [2010-07-27T18:37:18.168269 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:37:19.994124 #9012]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is bidding
+I, [2010-07-27T18:37:20.024962 #9012]  INFO -- : GET: /api/acct/2901/servers/796343.js?
+I, [2010-07-27T18:37:23.334103 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is bidding
+I, [2010-07-27T18:37:23.368566 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:37:25.144154 #9012]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is bidding
+I, [2010-07-27T18:37:25.178469 #9012]  INFO -- : GET: /api/acct/2901/servers/796343.js?
+I, [2010-07-27T18:37:28.474130 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is bidding
+I, [2010-07-27T18:37:28.509809 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:37:30.344173 #9012]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is bidding
+I, [2010-07-27T18:37:30.374922 #9012]  INFO -- : GET: /api/acct/2901/servers/796343.js?
+I, [2010-07-27T18:37:33.674131 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is bidding
+I, [2010-07-27T18:37:33.715076 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:37:35.614122 #9012]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is bidding
+I, [2010-07-27T18:37:35.647109 #9012]  INFO -- : GET: /api/acct/2901/servers/796343.js?
+I, [2010-07-27T18:37:38.844161 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is bidding
+I, [2010-07-27T18:37:38.905164 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:37:40.774169 #9012]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is bidding
+I, [2010-07-27T18:37:40.808421 #9012]  INFO -- : GET: /api/acct/2901/servers/796343.js?
+I, [2010-07-27T18:37:44.014175 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is bidding
+I, [2010-07-27T18:37:44.049963 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:37:45.924128 #9012]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is bidding
+I, [2010-07-27T18:37:45.955462 #9012]  INFO -- : GET: /api/acct/2901/servers/796343.js?
+I, [2010-07-27T18:37:49.204157 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is bidding
+I, [2010-07-27T18:37:49.238251 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:37:51.104145 #9012]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is bidding
+I, [2010-07-27T18:37:51.138198 #9012]  INFO -- : GET: /api/acct/2901/servers/796343.js?
+I, [2010-07-27T18:37:54.407092 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is bidding
+I, [2010-07-27T18:37:54.552475 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:37:56.347517 #9012]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is bidding
+I, [2010-07-27T18:37:56.453378 #9012]  INFO -- : GET: /api/acct/2901/servers/796343.js?
+I, [2010-07-27T18:37:59.664116 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is bidding
+I, [2010-07-27T18:37:59.696514 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:38:01.554131 #9012]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is bidding
+I, [2010-07-27T18:38:01.613992 #9012]  INFO -- : GET: /api/acct/2901/servers/796343.js?
+I, [2010-07-27T18:38:04.784126 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is bidding
+I, [2010-07-27T18:38:04.814535 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:38:06.764152 #9012]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is bidding
+I, [2010-07-27T18:38:06.798255 #9012]  INFO -- : GET: /api/acct/2901/servers/796343.js?
+I, [2010-07-27T18:38:10.014146 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is bidding
+I, [2010-07-27T18:38:10.045514 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:38:11.994142 #9012]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is bidding
+I, [2010-07-27T18:38:12.027365 #9012]  INFO -- : GET: /api/acct/2901/servers/796343.js?
+I, [2010-07-27T18:38:15.894127 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is bidding
+I, [2010-07-27T18:38:15.937954 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:38:17.134155 #9012]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is bidding
+I, [2010-07-27T18:38:17.193356 #9012]  INFO -- : GET: /api/acct/2901/servers/796343.js?
+I, [2010-07-27T18:38:21.684151 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is bidding
+I, [2010-07-27T18:38:21.715898 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:38:22.354237 #9012]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is bidding
+I, [2010-07-27T18:38:22.388433 #9012]  INFO -- : GET: /api/acct/2901/servers/796343.js?
+I, [2010-07-27T18:38:26.824176 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is bidding
+I, [2010-07-27T18:38:26.865893 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:38:27.484150 #9012]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is bidding
+I, [2010-07-27T18:38:27.555810 #9012]  INFO -- : GET: /api/acct/2901/servers/796343.js?
+I, [2010-07-27T18:38:32.684267 #9012]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is bidding
+I, [2010-07-27T18:38:32.714229 #9012]  INFO -- : GET: /api/acct/2901/servers/796343.js?
+I, [2010-07-27T18:38:32.834134 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is bidding
+I, [2010-07-27T18:38:32.869708 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:38:37.874193 #9012]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is bidding
+I, [2010-07-27T18:38:37.950766 #9012]  INFO -- : GET: /api/acct/2901/servers/796343.js?
+I, [2010-07-27T18:38:37.974113 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is bidding
+I, [2010-07-27T18:38:38.007981 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:38:43.124145 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is bidding
+I, [2010-07-27T18:38:43.144110 #9012]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is bidding
+I, [2010-07-27T18:38:43.178362 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:38:43.209890 #9012]  INFO -- : GET: /api/acct/2901/servers/796343.js?
+I, [2010-07-27T18:38:48.294132 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is bidding
+I, [2010-07-27T18:38:48.345627 #9012]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is bidding
+I, [2010-07-27T18:38:48.361754 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:38:48.387646 #9012]  INFO -- : GET: /api/acct/2901/servers/796343.js?
+I, [2010-07-27T18:38:53.464147 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is bidding
+I, [2010-07-27T18:38:53.494115 #9012]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is bidding
+I, [2010-07-27T18:38:53.495020 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:38:53.529031 #9012]  INFO -- : GET: /api/acct/2901/servers/796343.js?
+I, [2010-07-27T18:38:58.594128 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is bidding
+I, [2010-07-27T18:38:58.626089 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:38:58.744105 #9012]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is bidding
+I, [2010-07-27T18:38:58.778372 #9012]  INFO -- : GET: /api/acct/2901/servers/796343.js?
+I, [2010-07-27T18:39:03.784157 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is bidding
+I, [2010-07-27T18:39:03.820003 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:39:03.914116 #9012]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is booting
+I, [2010-07-27T18:39:03.948757 #9012]  INFO -- : GET: /api/acct/2901/servers/796343.js?
+I, [2010-07-27T18:39:09.108458 #9012]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is booting
+I, [2010-07-27T18:39:09.121813 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is bidding
+I, [2010-07-27T18:39:09.222060 #9012]  INFO -- : GET: /api/acct/2901/servers/796343.js?
+I, [2010-07-27T18:39:09.259492 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:39:14.324123 #9012]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is booting
+I, [2010-07-27T18:39:14.358322 #9012]  INFO -- : GET: /api/acct/2901/servers/796343.js?
+I, [2010-07-27T18:39:14.484105 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is bidding
+I, [2010-07-27T18:39:14.513621 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:39:19.474130 #9012]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is booting
+I, [2010-07-27T18:39:19.512996 #9012]  INFO -- : GET: /api/acct/2901/servers/796343.js?
+I, [2010-07-27T18:39:19.794232 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is bidding
+I, [2010-07-27T18:39:19.827892 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:39:24.954155 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is bidding
+I, [2010-07-27T18:39:24.988963 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:39:25.334145 #9012]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is booting
+I, [2010-07-27T18:39:25.365578 #9012]  INFO -- : GET: /api/acct/2901/servers/796343.js?
+I, [2010-07-27T18:39:30.524132 #9012]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is booting
+I, [2010-07-27T18:39:30.558157 #9012]  INFO -- : GET: /api/acct/2901/servers/796343.js?
+I, [2010-07-27T18:39:30.714121 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is bidding
+I, [2010-07-27T18:39:30.745053 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:39:35.694122 #9012]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is booting
+I, [2010-07-27T18:39:35.728411 #9012]  INFO -- : GET: /api/acct/2901/servers/796343.js?
+I, [2010-07-27T18:39:35.871037 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is bidding
+I, [2010-07-27T18:39:35.930970 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:39:40.874220 #9012]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is booting
+I, [2010-07-27T18:39:40.909737 #9012]  INFO -- : GET: /api/acct/2901/servers/796343.js?
+I, [2010-07-27T18:39:41.124140 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is bidding
+I, [2010-07-27T18:39:41.155657 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:39:46.024128 #9012]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is booting
+I, [2010-07-27T18:39:46.058301 #9012]  INFO -- : GET: /api/acct/2901/servers/796343.js?
+I, [2010-07-27T18:39:46.374147 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is bidding
+I, [2010-07-27T18:39:46.412477 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:39:51.184163 #9012]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is booting
+I, [2010-07-27T18:39:51.217973 #9012]  INFO -- : GET: /api/acct/2901/servers/796343.js?
+I, [2010-07-27T18:39:51.554151 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is bidding
+I, [2010-07-27T18:39:51.589337 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:39:56.734129 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is bidding
+I, [2010-07-27T18:39:56.768472 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:39:57.164130 #9012]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is booting
+I, [2010-07-27T18:39:57.195087 #9012]  INFO -- : GET: /api/acct/2901/servers/796343.js?
+I, [2010-07-27T18:40:01.904123 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is bidding
+I, [2010-07-27T18:40:01.942683 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:40:02.324254 #9012]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is booting
+I, [2010-07-27T18:40:02.355259 #9012]  INFO -- : GET: /api/acct/2901/servers/796343.js?
+I, [2010-07-27T18:40:07.104125 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is bidding
+I, [2010-07-27T18:40:07.336411 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:40:07.600918 #9012]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is booting
+I, [2010-07-27T18:40:07.934287 #9012]  INFO -- : GET: /api/acct/2901/servers/796343.js?
+I, [2010-07-27T18:40:12.852657 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is bidding
+I, [2010-07-27T18:40:12.882477 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:40:13.172690 #9012]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is booting
+I, [2010-07-27T18:40:13.207067 #9012]  INFO -- : GET: /api/acct/2901/servers/796343.js?
+I, [2010-07-27T18:40:18.802657 #9012]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is booting
+I, [2010-07-27T18:40:18.836682 #9012]  INFO -- : GET: /api/acct/2901/servers/796343.js?
+I, [2010-07-27T18:40:19.052703 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is bidding
+I, [2010-07-27T18:40:19.121588 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:40:24.052659 #9012]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is booting
+I, [2010-07-27T18:40:24.084506 #9012]  INFO -- : GET: /api/acct/2901/servers/796343.js?
+I, [2010-07-27T18:40:24.302664 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is booting
+I, [2010-07-27T18:40:24.336406 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:40:29.269366 #9012]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is booting
+I, [2010-07-27T18:40:29.306179 #9012]  INFO -- : GET: /api/acct/2901/servers/796343.js?
+I, [2010-07-27T18:40:29.440981 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is booting
+I, [2010-07-27T18:40:29.507733 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:40:34.421755 #9012]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is booting
+I, [2010-07-27T18:40:34.452235 #9012]  INFO -- : GET: /api/acct/2901/servers/796343.js?
+I, [2010-07-27T18:40:34.691802 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is booting
+I, [2010-07-27T18:40:34.725387 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:40:39.791757 #9012]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is booting
+I, [2010-07-27T18:40:39.826727 #9012]  INFO -- : GET: /api/acct/2901/servers/796343.js?
+I, [2010-07-27T18:40:39.851742 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is booting
+I, [2010-07-27T18:40:39.882024 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:40:45.021755 #9012]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is booting
+I, [2010-07-27T18:40:45.053277 #9012]  INFO -- : GET: /api/acct/2901/servers/796343.js?
+I, [2010-07-27T18:40:45.251732 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is booting
+I, [2010-07-27T18:40:45.288872 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:40:50.141761 #9012]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is booting
+I, [2010-07-27T18:40:50.184221 #9012]  INFO -- : GET: /api/acct/2901/servers/796343.js?
+I, [2010-07-27T18:40:50.481825 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is booting
+I, [2010-07-27T18:40:50.512368 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:40:55.351758 #9012]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is booting
+I, [2010-07-27T18:40:55.434643 #9012]  INFO -- : GET: /api/acct/2901/servers/796343.js?
+I, [2010-07-27T18:40:55.671731 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is booting
+I, [2010-07-27T18:40:55.702307 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:41:00.571805 #9012]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is booting
+I, [2010-07-27T18:41:00.627189 #9012]  INFO -- : GET: /api/acct/2901/servers/796343.js?
+I, [2010-07-27T18:41:01.031906 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is booting
+I, [2010-07-27T18:41:01.063783 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:41:05.901857 #9012]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is booting
+I, [2010-07-27T18:41:05.935723 #9012]  INFO -- : GET: /api/acct/2901/servers/796343.js?
+I, [2010-07-27T18:41:06.741803 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is booting
+I, [2010-07-27T18:41:06.772891 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:41:13.441750 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is booting
+I, [2010-07-27T18:41:13.475855 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:41:13.491831 #9012]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is booting
+I, [2010-07-27T18:41:13.522193 #9012]  INFO -- : GET: /api/acct/2901/servers/796343.js?
+I, [2010-07-27T18:41:18.601805 #9012]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is booting
+I, [2010-07-27T18:41:18.635888 #9012]  INFO -- : GET: /api/acct/2901/servers/796343.js?
+I, [2010-07-27T18:41:19.131784 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is booting
+I, [2010-07-27T18:41:19.192438 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:41:24.401752 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is booting
+I, [2010-07-27T18:41:24.435484 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:41:29.871763 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is booting
+I, [2010-07-27T18:41:29.902956 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:41:35.021804 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is booting
+I, [2010-07-27T18:41:35.055709 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:41:40.151752 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is booting
+I, [2010-07-27T18:41:40.182678 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:41:45.471802 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is booting
+I, [2010-07-27T18:41:45.506136 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:41:50.641752 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is booting
+I, [2010-07-27T18:41:50.674349 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:41:55.861787 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is booting
+I, [2010-07-27T18:41:55.961990 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:42:01.071889 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is booting
+I, [2010-07-27T18:42:01.110464 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:42:06.371796 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is booting
+I, [2010-07-27T18:42:06.409783 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:42:11.571765 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is booting
+I, [2010-07-27T18:42:11.601930 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:42:16.701920 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is booting
+I, [2010-07-27T18:42:16.738241 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:42:21.861809 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is booting
+I, [2010-07-27T18:42:21.892434 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:42:27.021752 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is booting
+I, [2010-07-27T18:42:27.056456 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:42:32.191762 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is booting
+I, [2010-07-27T18:42:32.252107 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:42:37.341803 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is booting
+I, [2010-07-27T18:42:37.431846 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:42:42.581760 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is booting
+I, [2010-07-27T18:42:42.615752 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:42:47.741751 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is booting
+I, [2010-07-27T18:42:47.772971 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:42:52.961806 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is booting
+I, [2010-07-27T18:42:52.996006 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:42:58.101754 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is booting
+I, [2010-07-27T18:42:58.138927 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:43:03.261819 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is booting
+I, [2010-07-27T18:43:03.343693 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:43:08.471758 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is booting
+I, [2010-07-27T18:43:08.503013 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:43:13.631801 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is booting
+I, [2010-07-27T18:43:13.662097 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:43:18.761792 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is booting
+I, [2010-07-27T18:43:18.796556 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:43:23.881792 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is booting
+I, [2010-07-27T18:43:23.912514 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:43:29.041751 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is booting
+I, [2010-07-27T18:43:29.074681 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:43:34.262635 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is booting
+I, [2010-07-27T18:43:34.301903 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:43:39.451928 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is booting
+I, [2010-07-27T18:43:39.486700 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:43:44.662006 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is booting
+I, [2010-07-27T18:43:44.696418 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:43:49.788692 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is booting
+I, [2010-07-27T18:43:49.929444 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:43:55.901749 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is booting
+I, [2010-07-27T18:43:55.932805 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:44:01.031759 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is booting
+I, [2010-07-27T18:44:01.098339 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:44:06.521805 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is booting
+I, [2010-07-27T18:44:06.553243 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:44:11.661847 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is booting
+I, [2010-07-27T18:44:11.742983 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:44:16.891950 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is booting
+I, [2010-07-27T18:44:16.924865 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:44:22.021789 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is booting
+I, [2010-07-27T18:44:22.061607 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:44:27.181819 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is booting
+I, [2010-07-27T18:44:27.213105 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:44:32.401758 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is booting
+I, [2010-07-27T18:44:32.435587 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:44:37.521825 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is booting
+I, [2010-07-27T18:44:37.560215 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:44:42.681858 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is booting
+I, [2010-07-27T18:44:42.755202 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:44:47.931765 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is booting
+I, [2010-07-27T18:44:48.013436 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:44:53.151824 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is booting
+I, [2010-07-27T18:44:53.187087 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:44:58.311814 #9014]  INFO -- : waiting for server tempserver-MySQL 5.1 EBS v2 (Sprint 19) to go operational, state is booting
+I, [2010-07-27T18:44:58.357806 #9014]  INFO -- : GET: /api/acct/2901/servers/796347.js?

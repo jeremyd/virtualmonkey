@@ -4,7 +4,6 @@ Given /A EBS Toolbox deployment/ do
   raise "FATAL:  Please set the environment variable $DEPLOYMENT" unless ENV['DEPLOYMENT']
 
   @runner = VirtualMonkey::EBSRunner.new(ENV['DEPLOYMENT'])
-  @runner.setup_server_vars
   @runner.lookup_scripts
 end
 

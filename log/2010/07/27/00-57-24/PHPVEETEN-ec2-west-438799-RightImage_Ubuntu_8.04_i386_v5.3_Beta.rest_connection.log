@@ -1,0 +1,48 @@
+# Logfile created on Tue Jul 27 00:57:40 +0000 2010 by logger.rb/22285
+I, [2010-07-27T00:57:40.090447 #5803]  INFO -- : GET: https://my.rightscale.com/api/acct/2901/deployments.js?filter[]=nickname=PHPVEETEN-ec2-west-438799-RightImage_Ubuntu_8.04_i386_v5.3_Beta&
+I, [2010-07-27T00:57:40.313455 #5803]  INFO -- : GET: /api/acct/2901/ec2_server_templates/52800.js?
+I, [2010-07-27T00:57:40.438768 #5803]  INFO -- : GET: /api/acct/2901/ec2_server_templates/52800/executables.js?
+I, [2010-07-27T00:57:41.259343 #5803]  INFO -- : PUT: /api/acct/2901/deployments/51583
+I, [2010-07-27T00:57:41.259479 #5803]  INFO -- : 	request body: {"deployment":{"parameters":{"MASTER_DB_DNSNAME":"text:ec2-184-73-124-122.compute-1.amazonaws.com"}}}
+I, [2010-07-27T00:57:41.468861 #5803]  INFO -- : WARNING: was in operational so skiping start call
+I, [2010-07-27T00:57:41.468979 #5803]  INFO -- : WARNING: was in operational so skiping start call
+I, [2010-07-27T00:57:41.501060 #5803]  INFO -- : GET: /api/acct/2901/servers/795886.js?
+I, [2010-07-27T00:57:41.604422 #5803]  INFO -- : tempserver-PHP Front End v10 (Beta) is operational
+I, [2010-07-27T00:57:41.604546 #5803]  INFO -- : waiting for dns-name for tempserver-PHP Front End v10 (Beta)
+I, [2010-07-27T00:57:41.660681 #5803]  INFO -- : GET: /api/acct/2901/servers/795886/settings.js?
+I, [2010-07-27T00:57:43.862537 #5803]  INFO -- : waiting for dns-name for tempserver-PHP Front End v10 (Beta)
+I, [2010-07-27T00:57:43.862733 #5803]  INFO -- : got DNS: ec2-184-72-3-1.us-west-1.compute.amazonaws.com
+I, [2010-07-27T00:57:43.893139 #5803]  INFO -- : GET: /api/acct/2901/servers/795888.js?
+I, [2010-07-27T00:57:43.978135 #5803]  INFO -- : tempserver-PHP Front End v10 (Beta) is operational
+I, [2010-07-27T00:57:43.978263 #5803]  INFO -- : waiting for dns-name for tempserver-PHP Front End v10 (Beta)
+I, [2010-07-27T00:57:44.030863 #5803]  INFO -- : GET: /api/acct/2901/servers/795888/settings.js?
+I, [2010-07-27T00:57:46.122549 #5803]  INFO -- : waiting for dns-name for tempserver-PHP Front End v10 (Beta)
+I, [2010-07-27T00:57:46.122720 #5803]  INFO -- : got DNS: ec2-184-72-18-47.us-west-1.compute.amazonaws.com
+I, [2010-07-27T00:57:46.154460 #5803]  INFO -- : GET: /api/acct/2901/servers/795886/settings.js?
+I, [2010-07-27T00:57:46.324520 #5803]  INFO -- : GET: /api/acct/2901/servers/795888/settings.js?
+I, [2010-07-27T00:57:46.644215 #5803]  INFO -- : PUT: /api/acct/2901/deployments/51583
+I, [2010-07-27T00:57:46.644340 #5803]  INFO -- : 	request body: {"deployment":{"parameters":{"LB_HOSTNAME":"text:ip-10-162-155-66.us-west-1.compute.internal ip-10-162-155-51.us-west-1.compute.internal "}}}
+I, [2010-07-27T00:57:47.956128 #5803]  INFO -- : WARNING: was in operational so skiping start call
+I, [2010-07-27T00:57:47.956262 #5803]  INFO -- : WARNING: was in operational so skiping start call
+I, [2010-07-27T00:57:48.043680 #5803]  INFO -- : GET: /api/acct/2901/servers/795889.js?
+I, [2010-07-27T00:57:48.114759 #5803]  INFO -- : tempserver-PHP App Server v10 (Beta) is operational
+I, [2010-07-27T00:57:48.114900 #5803]  INFO -- : waiting for dns-name for tempserver-PHP App Server v10 (Beta)
+I, [2010-07-27T00:57:48.144935 #5803]  INFO -- : GET: /api/acct/2901/servers/795889/settings.js?
+I, [2010-07-27T00:57:50.302547 #5803]  INFO -- : waiting for dns-name for tempserver-PHP App Server v10 (Beta)
+I, [2010-07-27T00:57:50.302726 #5803]  INFO -- : got DNS: ec2-184-72-20-116.us-west-1.compute.amazonaws.com
+I, [2010-07-27T00:57:50.336831 #5803]  INFO -- : GET: /api/acct/2901/servers/795890.js?
+I, [2010-07-27T00:57:50.598090 #5803]  INFO -- : tempserver-PHP App Server v10 (Beta) is operational
+I, [2010-07-27T00:57:50.598236 #5803]  INFO -- : waiting for dns-name for tempserver-PHP App Server v10 (Beta)
+I, [2010-07-27T00:57:50.628337 #5803]  INFO -- : GET: /api/acct/2901/servers/795890/settings.js?
+I, [2010-07-27T00:57:52.922543 #5803]  INFO -- : waiting for dns-name for tempserver-PHP App Server v10 (Beta)
+I, [2010-07-27T00:57:52.922714 #5803]  INFO -- : got DNS: ec2-184-72-9-95.us-west-1.compute.amazonaws.com
+I, [2010-07-27T00:57:52.958111 #5803]  INFO -- : GET: /api/acct/2901/servers/795886/settings.js?
+I, [2010-07-27T00:57:53.121114 #5803]  INFO -- : GET: /api/acct/2901/servers/795888/settings.js?
+I, [2010-07-27T00:57:53.318610 #5803]  INFO -- : POST: /api/acct/2901/servers/795886/run_executable
+I, [2010-07-27T00:57:53.318725 #5803]  INFO -- : 	request body: {"server":{"right_script_href":"https://my.rightscale.com/api/acct/2901/right_scripts/204307","parameters":{"LB_HOSTNAME":"text:ip-10-162-155-66.us-west-1.compute.internal ip-10-162-155-51.us-west-1.compute.internal "}}}
+I, [2010-07-27T00:57:58.725364 #5803]  INFO -- : POST: /api/acct/2901/servers/795888/run_executable
+I, [2010-07-27T00:57:58.725484 #5803]  INFO -- : 	request body: {"server":{"right_script_href":"https://my.rightscale.com/api/acct/2901/right_scripts/204307","parameters":{"LB_HOSTNAME":"text:ip-10-162-155-66.us-west-1.compute.internal ip-10-162-155-51.us-west-1.compute.internal "}}}
+I, [2010-07-27T00:58:04.005452 #5803]  INFO -- : GET: /api/acct/2901/audit_entries/34805263.js?
+I, [2010-07-27T00:58:04.245426 #5803]  INFO -- : state is completed, waiting for completed
+I, [2010-07-27T00:58:09.282895 #5803]  INFO -- : GET: /api/acct/2901/audit_entries/34805265.js?
+I, [2010-07-27T00:58:09.623713 #5803]  INFO -- : state is completed, waiting for completed

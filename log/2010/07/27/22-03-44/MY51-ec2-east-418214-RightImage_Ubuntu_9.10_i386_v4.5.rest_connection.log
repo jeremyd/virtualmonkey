@@ -1,0 +1,11 @@
+# Logfile created on Tue Jul 27 22:03:57 +0000 2010 by logger.rb/22285
+I, [2010-07-27T22:03:57.171094 #10508]  INFO -- : GET: https://my.rightscale.com/api/acct/2901/deployments.js?filter[]=nickname=MY51-ec2-west-580204-RightImage_Ubuntu_9.10_x64_v4.5&
+I, [2010-07-27T22:03:57.456451 #10510]  INFO -- : GET: https://my.rightscale.com/api/acct/2901/deployments.js?filter[]=nickname=MY51-ec2-east-418214-RightImage_Ubuntu_9.10_i386_v4.5&
+I, [2010-07-27T22:03:57.547064 #10508]  INFO -- : GET: /api/acct/2901/ec2_server_templates/46536.js?
+I, [2010-07-27T22:03:57.651188 #10510]  INFO -- : GET: /api/acct/2901/ec2_server_templates/46536.js?
+I, [2010-07-27T22:03:57.694953 #10508]  INFO -- : GET: /api/acct/2901/ec2_server_templates/46536/executables.js?
+I, [2010-07-27T22:03:57.794607 #10510]  INFO -- : GET: /api/acct/2901/ec2_server_templates/46536/executables.js?
+I, [2010-07-27T22:03:57.923296 #10508]  INFO -- : GET: https://my.rightscale.com/api/acct/2901/server_templates.js?
+I, [2010-07-27T22:03:58.671898 #10510]  INFO -- : GET: https://my.rightscale.com/api/acct/2901/server_templates.js?
+I, [2010-07-27T22:04:00.510537 #10508]  INFO -- : GET: /api/acct/2901/ec2_server_templates/42160/executables.js?
+I, [2010-07-27T22:04:01.184106 #10510]  INFO -- : GET: /api/acct/2901/ec2_server_templates/42160/executables.js?

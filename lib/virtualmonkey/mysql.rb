@@ -1,11 +1,10 @@
+require 'ruby-debug'
 module VirtualMonkey
   module Mysql
     include VirtualMonkey::DeploymentRunner
     include VirtualMonkey::EBS
     attr_accessor :scripts_to_run
     attr_accessor :db_ebs_prefix
-    attr_accessor :s_one
-    attr_accessor :s_two
 
     # sets the lineage for the deployment
     # * kind<~String> can be "chef" or nil
@@ -109,8 +108,9 @@ module VirtualMonkey
 
     # uses SharedDns to find an available set of DNS records and sets them on the deployment
     def setup_dns
+      owner="Erik"
       @dns = SharedDns.new
-      raise "Unable to reserve DNS" unless @dns.reserve_dns
+      raise "Unable to reserve DNS" unless @dns.reserve_dns(owner)
       @dns.set_dns_inputs(@deployment)
     end
 
@@ -135,7 +135,7 @@ module VirtualMonkey
       options = { "DB_EBS_PREFIX" => "text:regmysql",
               "DB_EBS_SIZE_MULTIPLIER" => "text:1",
               "EBS_STRIPE_COUNT" => "text:#{@stripe_count}" }
-      @s_one.run_executable(@scripts_to_run['create_migrate_script'], options)
+      s_one.run_executable(@scripts_to_run['create_migrate_script'], options)
     end
   end
 end

@@ -1,0 +1,7 @@
+{
+	"DB_LINEAGE_NAME"	: "text:testlineage901347",
+	"PRIVATE_SSH_KEY"	: "key:publish-test:1",
+	"EBS_LINEAGE"		: "text:testlineage239935",
+	"EBS_STRIPE_COUNT"	: "text:1",
+	"EBS_VOLUME_SIZE_GB"	: "text:3"
+}

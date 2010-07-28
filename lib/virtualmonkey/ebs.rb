@@ -123,6 +123,22 @@ puts "Check that the server's volumes are #{expected_size}"
       # unset dns in our local cached copy..
       @servers.each { |s| s.params['dns-name'] = nil }
     end
+    def test_restore_grow
+      grow_to_size=100
+      restore_and_grow(s_three,grow_to_size,false)
+      test_volume_data(s_three)
+      test_volume_size(s_three,grow_to_size)
+    end
+
+    def test_restore
+      restore_from_backup(s_two,false)
+      test_volume_data(s_two)
+    end
+
+    def create_backup
+      run_script("backup",s_one)
+      wait_for_snapshots
+    end
 
   end
 end

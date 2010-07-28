@@ -1,0 +1,23 @@
+# Logfile created on Tue Jul 27 18:56:01 +0000 2010 by logger.rb/22285
+I, [2010-07-27T18:56:01.989927 #9846]  INFO -- : GET: https://my.rightscale.com/api/acct/2901/deployments.js?filter[]=nickname=MY51-ec2-west-580204-RightImage_Ubuntu_9.10_x64_v4.5&
+I, [2010-07-27T18:56:02.117711 #9845]  INFO -- : GET: https://my.rightscale.com/api/acct/2901/deployments.js?filter[]=nickname=MY51-ec2-east-418214-RightImage_Ubuntu_9.10_i386_v4.5&
+I, [2010-07-27T18:56:02.164526 #9846]  INFO -- : GET: /api/acct/2901/ec2_server_templates/46536.js?
+I, [2010-07-27T18:56:02.323416 #9846]  INFO -- : GET: /api/acct/2901/ec2_server_templates/46536/executables.js?
+I, [2010-07-27T18:56:02.410767 #9845]  INFO -- : GET: /api/acct/2901/ec2_server_templates/46536.js?
+I, [2010-07-27T18:56:02.605617 #9845]  INFO -- : GET: /api/acct/2901/ec2_server_templates/46536/executables.js?
+I, [2010-07-27T18:56:02.805094 #9845]  INFO -- : GET: https://my.rightscale.com/api/acct/2901/server_templates.js?
+I, [2010-07-27T18:56:03.590149 #9846]  INFO -- : GET: https://my.rightscale.com/api/acct/2901/server_templates.js?
+I, [2010-07-27T18:56:05.142220 #9845]  INFO -- : GET: /api/acct/2901/ec2_server_templates/42160/executables.js?
+I, [2010-07-27T18:56:05.469676 #9845]  INFO -- : POST: /api/acct/2901/servers/796347/run_executable
+I, [2010-07-27T18:56:05.469828 #9845]  INFO -- : 	request body: {"server":{"right_script_href":"https://my.rightscale.com/api/acct/2901/right_scripts/202320","parameters":{"DB_TERMINATE_SAFETY":"text:off"}}}
+I, [2010-07-27T18:56:06.119204 #9846]  INFO -- : GET: /api/acct/2901/ec2_server_templates/42160/executables.js?
+I, [2010-07-27T18:56:06.390395 #9846]  INFO -- : POST: /api/acct/2901/servers/796343/run_executable
+I, [2010-07-27T18:56:06.390538 #9846]  INFO -- : 	request body: {"server":{"right_script_href":"https://my.rightscale.com/api/acct/2901/right_scripts/202320","parameters":{"DB_TERMINATE_SAFETY":"text:off"}}}
+I, [2010-07-27T18:56:10.720350 #9845]  INFO -- : POST: /api/acct/2901/servers/796348/run_executable
+I, [2010-07-27T18:56:10.720489 #9845]  INFO -- : 	request body: {"server":{"right_script_href":"https://my.rightscale.com/api/acct/2901/right_scripts/202320","parameters":{"DB_TERMINATE_SAFETY":"text:off"}}}
+I, [2010-07-27T18:56:11.644631 #9846]  INFO -- : POST: /api/acct/2901/servers/796344/run_executable
+I, [2010-07-27T18:56:11.644767 #9846]  INFO -- : 	request body: {"server":{"right_script_href":"https://my.rightscale.com/api/acct/2901/right_scripts/202320","parameters":{"DB_TERMINATE_SAFETY":"text:off"}}}
+I, [2010-07-27T18:56:16.328079 #9845]  INFO -- : GET: /api/acct/2901/servers/796347.js?
+I, [2010-07-27T18:56:16.479043 #9845]  INFO -- : tempserver-MySQL 5.1 EBS v2 (Sprint 19) is stranded in booting
+I, [2010-07-27T18:56:16.896223 #9846]  INFO -- : GET: /api/acct/2901/servers/796343.js?
+I, [2010-07-27T18:56:16.997221 #9846]  INFO -- : tempserver-MySQL 5.1 EBS v2 (Sprint 19) is stranded in booting
