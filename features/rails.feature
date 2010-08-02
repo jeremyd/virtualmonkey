@@ -6,8 +6,8 @@ Feature: Rails Server Test
 Scenario: Rails server test
 
   Given A frontend with application servers deployment
-  Then I should set a variation MASTER_DB_DNSNAME 
-
+  Then I should stop the servers
+  Then I should set a variation for connecting to shared database host
   When I launch the "Front End" servers
   Then I should wait for the state of "Front End" servers to be "operational"
   Then I should set a variation LB_HOSTNAME

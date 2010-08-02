@@ -1,5 +1,16 @@
 require File.expand_path(File.join(File.dirname(__FILE__) , '..','..','spec','spec_helper'))
 
+
+Given /A Rails AIO Developer Chef deployment/ do
+  raise "FATAL:  Please set the environment variable $DEPLOYMENT" unless ENV['DEPLOYMENT']
+  @runner = VirtualMonkey::RailsAioDeveloperChefRunner.new(ENV['DEPLOYMENT'])
+end
+
+Given /^A PHP AIO Trial Chef deployment/ do
+  raise "FATAL:  Please set the environment variable $DEPLOYMENT" unless ENV['DEPLOYMENT']
+  @runner = VirtualMonkey::PhpAioTrialChefRunner.new(ENV['DEPLOYMENT'])
+end
+
 Given /^A MySQL Toolbox deployment$/ do
   raise "FATAL:  Please set the environment variable $DEPLOYMENT" unless ENV['DEPLOYMENT']
 

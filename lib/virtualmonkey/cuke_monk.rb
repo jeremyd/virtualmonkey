@@ -10,7 +10,7 @@ class CukeJob
 
   def link_to_rightscale
     i = deployment.href.split(/\//).last
-    "https://my.rightscale.com/deployments/#{i}#audit_entries"
+    "https://my.rightscale.com/deployments/#{i}#auditentries"
   end
 
   def on_read_stdout(data)

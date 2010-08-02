@@ -1,0 +1,10 @@
+{
+  "rs_utils/hostname": "env:EC2_PUBLIC_HOSTNAME",
+  "db/admin/user": "cred:DB_ADMIN_USER",
+  "db/admin/password": "cred:DB_ADMIN_PASSWORD",
+  "rails/code/url": "text:http://github.com/rightscale/examples",
+  "rails/db_app_passwd": "cred:DB_APPLICATION_PASSWORD",
+  "rails/db_app_user": "cred:DB_APPLICATION_USER",
+  "rails/db_schema_name": "text:duno",
+  "rails/code/branch": "text:unified_application"
+}

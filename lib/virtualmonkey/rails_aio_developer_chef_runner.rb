@@ -1,6 +1,8 @@
 module VirtualMonkey
-  class FeAppRunner
+  class RailsAioDeveloperChefRunner
     include VirtualMonkey::DeploymentRunner
     include VirtualMonkey::ApplicationFrontend
-   end
+
+  end
 end
+ 
