@@ -1,0 +1,9 @@
+{
+  "1":{
+    "ec2_ssh_key_href":"https://my.rightscale.com/api/acct/2901/ec2_ssh_keys/7053",
+    "parameters":{
+      "PRIVATE_SSH_KEY":"key:publish-test:1"
+    },
+    "ec2_security_groups_href":"https://my.rightscale.com/api/acct/2901/ec2_security_groups/6411"
+  }
+}

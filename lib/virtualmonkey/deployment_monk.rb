@@ -40,7 +40,7 @@ class DeploymentMonk
     end
   end
 
-  def generate_variations
+  def generate_variations(options = {})
     @image_count.times do |index|
       @clouds.each do |cloud|
         if @variables_for_cloud[cloud] == nil
@@ -78,15 +78,17 @@ class DeploymentMonk
           sint.set_multi_cloud_image(use_this_image)
 
           # finally, set the spot price
-          server.reload
-          server.settings
-          if server.ec2_instance_type =~ /small/ 
-            server.max_spot_price = "0.085"
-          elsif server.ec2_instance_type =~ /large/
-            server.max_spot_price = "0.38"
+          unless options[:no_spot]
+            server.reload
+            server.settings
+            if server.ec2_instance_type =~ /small/ 
+              server.max_spot_price = "0.085"
+            elsif server.ec2_instance_type =~ /large/
+              server.max_spot_price = "0.38"
+            end
+            server.pricing = "spot"
+            server.save
           end
-          server.pricing = "spot"
-          server.save
         end
         new_deploy.nickname = dep_tempname + dep_image_list.uniq.join("_AND_")
         new_deploy.save
