@@ -42,7 +42,7 @@ module VirtualMonkey
     def test_http_response(expected_string, url, port)
       cmd = "curl -s #{url} 2> /dev/null "
       puts cmd
-      timeout=30
+      timeout=120
       begin
         status = Timeout::timeout(timeout) do
           while true
@@ -59,6 +59,8 @@ module VirtualMonkey
 
     def frontend_checks
       detect_os
+
+      run_unified_application_checks(fe_servers, 80)
 
       # check that all application servers exist in the haproxy config file on all fe_servers
       server_ips = Array.new
@@ -113,7 +115,6 @@ module VirtualMonkey
 
     def run_reboot_operations
       reboot_all
-      wait_for_all("operational")
       # This sleep is for waiting for the slave to catch up to the master since they both reboot at once
       sleep 120
       run_reboot_checks

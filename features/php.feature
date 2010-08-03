@@ -9,7 +9,6 @@ Scenario: PHP server test
   Then I should stop the servers
   Then I should set a variation for connecting to shared database host
 
-
   When I launch the "Front End" servers
   Then I should wait for the state of "Front End" servers to be "operational"
   Then I should set a variation LB_HOSTNAME

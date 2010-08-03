@@ -91,7 +91,9 @@ module VirtualMonkey
 
     def reboot_all
       wait_for_reboot = true
-      @servers.each { |s| s.reboot(wait_for_reboot) }
+      @servers.each { |s| s.reboot }
+      sleep 60
+      @servers.each { |s| s.wait_for_state("operational") }
     end
 
     # Run a script on server in the deployment

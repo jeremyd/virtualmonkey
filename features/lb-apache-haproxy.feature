@@ -6,43 +6,22 @@ Feature: LB Server Test
 Scenario: LB server test
 
   Given A deployment
-  
-  When I setup deployment input "MASTER_DB_DNSNAME" to "tester_ip"
+  Then I should stop the servers
+  Then I should set a variation for connecting to shared database host
 
   When I launch the "Apache" servers
   Then the "Apache" servers become operational
 
-  When I setup deployment input "LB_HOSTNAME" to current "Apache"
-
+  Then I should set a variation LB_HOSTNAME
   When I launch the "App Server" servers
-  Then the "App Server" servers become operational
+  Then I should wait for the state of "App Server" servers to be "operational"
 
-  Given I am testing the "Apache"
-  Given with a known OS
-  Given I am using port "80"
-  
-  Then I should see "html serving succeeded." from "/index.html" on the servers
-  Then I should see "configuration=succeeded" from "/appserver/" on the servers
-  Then I should see "I am in the db" from "/dbread/" on the servers
-  Then I should see "hostname=" from "/serverid/" on the servers
+  Then I should run unified application checks
+  Then I should run frontend checks
+  Then I should run log rotation checks
 
-  Then I should see all "App Server" servers in the haproxy config
+# TODO?
+  #When I restart apache
+  #Then apache status should be good
 
-  When I restart haproxy
-  Then haproxy status should be good
-
-  When I restart apache
-  Then apache status should be good
-
-  When I force log rotation
-  Then I should see rotated apache log "haproxy.log.1" in base dir "/mnt/log" 
-  Then I should see rotated apache log "access.log.1" in base dir "/mnt/log" 
-
-  When I reboot the servers
-  Then the "Apache" servers become operational
-
-  Then I should see "html serving succeeded." from "/index.html" on the servers
-  Then I should see "configuration=succeeded" from "/appserver/" on the servers
-  Then I should see "I am in the db" from "/dbread/" on the servers
-
-# Disconnect test - todo
+  Then I should test reboot operations on the deployment
