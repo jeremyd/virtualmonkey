@@ -18,7 +18,7 @@ module VirtualMonkey
 
     # returns an Array of the Front End servers in the deployment
     def fe_servers
-      @servers.select { |s| s.nickname =~ /Front End/ }
+      @servers.select { |s| s.nickname =~ /Front End/ || s.nickname =~ /FrontEnd/ }
     end
 
     # sets LB_HOSTNAME on the deployment using the private dns of the fe_servers
@@ -106,6 +106,20 @@ module VirtualMonkey
         raise "Apache status failed" unless response
       end
       
+    end
+
+    # a custom startup sequence is required for fe/app deployments (inputs workaround)
+    def startup_sequence
+      fe_servers.each { |s| s.start }
+      fe_servers.each { |s| s.wait_for_operational_with_dns }
+      
+      set_lb_hostname
+
+      app_servers.each { |s| s.start }
+      app_servers.each { |s| s.wait_for_operational_with_dns }
+
+      fe_servers.each { |s| s.wait_for_operational_with_dns }
+
     end
 
     def force_log_rotation(server)

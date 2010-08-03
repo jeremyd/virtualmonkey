@@ -11,3 +11,7 @@ end
 Then /^I should set a variation for connecting to shared database host/ do
   @runner.set_master_db_dnsname
 end
+
+Then /^I should launch the deployment/ do
+  @runner.startup_sequence
+end

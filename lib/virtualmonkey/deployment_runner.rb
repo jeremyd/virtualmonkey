@@ -11,7 +11,7 @@ module VirtualMonkey
     end
 
     def lookup_scripts
-      raise "FATAL: lookup_scripts is undefined, this must be set in mixin classes"
+      puts "WARNING: lookup_scripts is undefined, this must be set in mixin classes"
     end
 
     def s_one
@@ -62,6 +62,13 @@ module VirtualMonkey
     # * state<~String> - state to wait for, eg. operational
     def wait_for_set(nickname_substr, state)
       set = select_set(nickname_substr)  
+      state_wait(set, state)
+    end
+
+    # Wait for server(s) matching nickname_substr to enter state
+    # * servers<~Array> - Array of Servers to wait on
+    # * state<~String> - state to wait for, eg. operational
+    def wait_for_servers(servers, state)
       state_wait(set, state)
     end
 
