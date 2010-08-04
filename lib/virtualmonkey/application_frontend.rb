@@ -14,6 +14,7 @@ module VirtualMonkey
       the_name = get_tester_ip_addr
       @deployment.set_input("MASTER_DB_DNSNAME", the_name) 
       @deployment.set_input("DB_HOST_NAME", the_name) 
+      @deployment.set_input("php/db_dns_name", the_name) 
     end
 
     # returns an Array of the Front End servers in the deployment
@@ -24,6 +25,7 @@ module VirtualMonkey
     # sets LB_HOSTNAME on the deployment using the private dns of the fe_servers
     def set_lb_hostname
       @deployment.set_input("LB_HOSTNAME", get_lb_hostname_input)
+      @deployment.set_input("lb_haproxy/host", get_lb_hostname_input)
     end
 
     # returns String with all the private dns of the Front End servers
@@ -117,9 +119,6 @@ module VirtualMonkey
 
       app_servers.each { |s| s.start }
       app_servers.each { |s| s.wait_for_operational_with_dns }
-
-      fe_servers.each { |s| s.wait_for_operational_with_dns }
-
     end
 
     def force_log_rotation(server)

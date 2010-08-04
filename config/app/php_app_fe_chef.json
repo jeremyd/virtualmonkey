@@ -1,10 +1,11 @@
 {
   "lb_haproxy/health_check_uri" : "text:/index.html",
   "lb_haproxy/host" : "text:localhost",
-  "php/code/url"  : "text:http://github.com/rightscale/examples",
+  "php/code/url"  : "text:git://github.com/rightscale/examples",
   "php/code/branch"  : "text:unified_application",
   "php/db_dns_name" : "text:notsure",
   "php/db_schema_name" : "text:app_test",
   "php/modules_list"  : "text:mysql",
-  "php/server_name" : "text:localhost"
+  "php/server_name" : "text:reg-php.test.rightscale.com",
+  "rs_utils/hostname" : "env:EC2_HOSTNAME"
 }
