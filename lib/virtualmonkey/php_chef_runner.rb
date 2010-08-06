@@ -3,6 +3,15 @@ module VirtualMonkey
     include VirtualMonkey::DeploymentRunner
     include VirtualMonkey::ApplicationFrontend
 
+    def set_lb_hostname
+      @deployment.set_input("lb_haproxy/host", get_lb_hostname_input)
+    end
+
+    # sets the MASTER_DB_DNSNAME to this machine's ip address
+    def set_master_db_dnsname
+      @deployment.set_input("php/db_dns_name", the_name) 
+    end
+ 
     def frontend_checks
       detect_os
 

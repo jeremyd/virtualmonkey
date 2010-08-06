@@ -14,7 +14,6 @@ module VirtualMonkey
       the_name = get_tester_ip_addr
       @deployment.set_input("MASTER_DB_DNSNAME", the_name) 
       @deployment.set_input("DB_HOST_NAME", the_name) 
-      @deployment.set_input("php/db_dns_name", the_name) 
     end
 
     # returns an Array of the Front End servers in the deployment
@@ -25,7 +24,6 @@ module VirtualMonkey
     # sets LB_HOSTNAME on the deployment using the private dns of the fe_servers
     def set_lb_hostname
       @deployment.set_input("LB_HOSTNAME", get_lb_hostname_input)
-      @deployment.set_input("lb_haproxy/host", get_lb_hostname_input)
     end
 
     # returns String with all the private dns of the Front End servers
@@ -219,7 +217,7 @@ module VirtualMonkey
     # 'tester server' eg. used for the input variation MASTER_DB_DNSNAME
     def get_tester_ip_addr
       if File.exists?("/var/spool/ec2/meta-data.rb")
-        require "/var/spool/ec2/meta-data" 
+        require "/var/spool/ec2/meta-data-cache" 
       else
         ENV['EC2_PUBLIC_HOSTNAME'] = "127.0.0.1"
       end
