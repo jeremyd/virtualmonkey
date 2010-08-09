@@ -1,0 +1,41 @@
+#!/usr/bin/env ruby
+
+require 'rubygems'
+require 'rest_connection'
+require 'trollop'
+require 'highline/import'
+
+options = Trollop::options do
+  opt :from, "Copy MCIs from this Server Template (id)", :type => :integer, :required => :true
+  opt :to, "Copy MCIs to this Server Template (id)", :type => :integer, :required => :true
+  opt :nice, "Non-Destructive update of the destination Server Template"
+end
+
+class MciCp
+  def self.go(options)
+    temp1 = ServerTemplate.find(options[:from])
+    temp2 = ServerTemplate.find(options[:to])
+    from_st = ServerTemplateInternal.new(:href => temp1.href)
+    mci_payload = from_st.multi_cloud_images
+    to_st = ServerTemplateInternal.new(:href => temp2.href)
+    to_delete = to_st.multi_cloud_images
+    mci_payload.each do |mci|
+      begin
+        to_st.add_multi_cloud_image(mci['href'])
+      rescue => e
+        puts "image already added, skipping"
+        to_delete.delete(mci)
+      end
+    end
+# TODO: need to set the 'right' default, but we can't lookup the default from the orig so we need some hax like a command line option regex for setting default (optional)
+    to_st.set_default_multi_cloud_image(mci_payload.first['href'])
+    unless options[:nice]
+      to_delete.each do |mci|
+        to_st.delete_multi_cloud_image(mci['href'])
+      end
+    end
+    puts 'done.'
+  end
+end
+
+MciCp.go(options)
