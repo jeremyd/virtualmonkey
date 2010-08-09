@@ -28,7 +28,12 @@ class MciCp
       end
     end
 # TODO: need to set the 'right' default, but we can't lookup the default from the orig so we need some hax like a command line option regex for setting default (optional)
-    to_st.set_default_multi_cloud_image(mci_payload.first['href'])
+    ubuntu_i386 = mci_payload.detect {|d| d['name'] =~ /Ubuntu.+i386/}
+    if ubuntu_i386
+      to_st.set_default_multi_cloud_image(ubuntu_i386['href'])
+    else
+      to_st.set_default_multi_cloud_image(mci_payload.first['href'])
+    end
     unless options[:nice]
       to_delete.each do |mci|
         to_st.delete_multi_cloud_image(mci['href'])
