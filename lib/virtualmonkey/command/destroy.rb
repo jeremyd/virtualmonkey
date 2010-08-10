@@ -9,7 +9,8 @@ module VirtualMonkey
         opt :yes, "Turn off confirmation for destroy operation"
       end
       @dm = DeploymentMonk.new(options[:tag])
-      nicks = @dm.deployments.map &:nickname
+#      nicks = @dm.deployments.map &:nickname
+      nicks = @dm.deployments.map { |d| d.nickname }
       nicks.each { |n| say n }
       unless options[:yes]
         confirm = ask("Really destroy all these deployments (y/n)?", lambda { |ans| true if (ans =~ /^[y,Y]{1}/) })
