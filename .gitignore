@@ -21,3 +21,4 @@ pkg
 log
 
 ## PROJECT::SPECIFIC
+virtualmonkey.gemspec
