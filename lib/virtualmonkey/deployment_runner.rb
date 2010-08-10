@@ -111,6 +111,14 @@ module VirtualMonkey
       audit = server.run_executable(@scripts_to_run[friendly_name])
       audit.wait_for_completed
     end
+
+    # Checks that monitoring is enabled on all servers in the deployment.  Will raise an error if monitoring is not enabled.
+    def check_monitoring
+      @servers.each do |server|
+        server.settings
+        server.monitoring
+      end
+    end
     
   end
 end

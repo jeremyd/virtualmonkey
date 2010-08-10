@@ -222,8 +222,8 @@ module VirtualMonkey
         ENV['EC2_PUBLIC_HOSTNAME'] = "127.0.0.1"
       end
       my_ip_input = "text:" 
-      my_ip_input << ENV['EC2_PUBLIC_HOSTNAME']
-      my_ip_input.strip
+      my_ip_input += ENV['EC2_PUBLIC_HOSTNAME']
+      my_ip_input
     end
 
     # Run spot checks for APP servers in the deployment

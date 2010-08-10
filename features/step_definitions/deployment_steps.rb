@@ -72,3 +72,7 @@ end
 Then /I should launch all servers$/ do
   @runner.launch_all
 end
+
+Then /I should check that monitoring is enabled$/ do
+  @runner.check_monitoring
+end

@@ -9,6 +9,7 @@ module VirtualMonkey
 
     # sets the MASTER_DB_DNSNAME to this machine's ip address
     def set_master_db_dnsname
+      the_name = get_tester_ip_addr
       @deployment.set_input("php/db_dns_name", the_name) 
     end
  

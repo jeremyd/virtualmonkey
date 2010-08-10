@@ -53,13 +53,8 @@ module VirtualMonkey
       @scripts_to_run['create_migrate_script'] = tbx[0].executables.detect { |ex| ex.name =~ /DB EBS create migrate script from MySQL EBS v1 master/ }
     end
 
+    # These are mysql specific checks
     def run_checks
-      #check monitoring is enabled on all servers
-      @servers.each do |server|
-        server.settings
-        server.monitoring
-      end
-
       # check that mysql tmpdir is custom setup on all servers
       query = "show variables like 'tmpdir'"
       query_command = "echo -e \"#{query}\"| mysql"

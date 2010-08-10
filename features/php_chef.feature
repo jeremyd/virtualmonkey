@@ -18,3 +18,4 @@ Scenario: PHP Chef Server Templates, PHP FrontEnd and PHP App
   Then I should run log rotation checks
 
   Then I should test reboot operations on the deployment
+  Then I should check that monitoring is enabled
