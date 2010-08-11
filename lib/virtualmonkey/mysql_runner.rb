@@ -126,8 +126,6 @@ module VirtualMonkey
       run_script("backup", server)
     end
 
-<<<<<<< HEAD
-=======
     # Terminates a server using the terminate/suicide script
     # * server<~Server> the server to terminate
     def terminate_server(server)
@@ -161,7 +159,6 @@ module VirtualMonkey
 
     end
 
->>>>>>> added v1 upgrade path
     def run_promotion_operations
       config_master_from_scratch(@s_one)
       @s_one.relaunch
@@ -212,11 +209,8 @@ module VirtualMonkey
     end
     # lookup all the RightScripts that we will want to run
     def lookup_scripts
-<<<<<<< HEAD
       st = ServerTemplate.find(@s_two.server_template_href)
-=======
       st = ServerTemplate.find(@servers.first.server_template_href)
->>>>>>> added v1 upgrade path
       @scripts_to_run = {}
       @scripts_to_run['restore'] = st.executables.detect { |ex| ex.name =~  /restore and become/i }
       @scripts_to_run['slave_init'] = st.executables.detect { |ex| ex.name =~ /slave init v2/ }
