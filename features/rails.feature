@@ -21,4 +21,4 @@ Scenario: Rails server test
 
   Then I should test reboot operations on the deployment
 
-  I should check that monitoring is enabled
+  Then I should check that monitoring is enabled

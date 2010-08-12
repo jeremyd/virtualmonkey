@@ -14,8 +14,8 @@ class DeploymentMonk
   end
 
   def initialize(tag, server_templates = [], extra_images = [])
-    @clouds = ["1","2","3","4"]
-    @cloud_names = { "1" => "ec2-east", "2" => "ec2-eu", "3" => "ec2-west", "4" => "ec2-ap"}
+    @clouds = ["1","2","3","4", "232"]
+    @cloud_names = { "1" => "ec2-east", "2" => "ec2-eu", "3" => "ec2-west", "4" => "ec2-ap", "232" => "rackspace"}
     @tag = tag
     @deployments = from_tag
     @server_templates = []
