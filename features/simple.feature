@@ -5,4 +5,4 @@ Feature: PHP Server Test
 
 Scenario: PHP server test
 
-  Given A frontend with application servers deployment
+  Given A simple deployment

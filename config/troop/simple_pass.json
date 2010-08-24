@@ -1,0 +1,11 @@
+{
+  "runner":"SimpleRunner",
+  "common_inputs":"mysql.json",
+  "tag":"SIMPLECRUISE",
+  "server_template_ids":[
+    "27418",
+    "27418"
+  ],
+  "cloud_variables":"west.json",
+  "feature":"simple.feature"
+}
