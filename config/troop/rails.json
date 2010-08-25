@@ -1,0 +1,13 @@
+{
+  "feature":"rails.feature",
+  "runner":"SimpleRunner",
+  "server_template_ids":[
+    "53376",
+    " 53376",
+    " 53377",
+    " 53377"
+  ],
+  "cloud_variables":"all_clouds.json",
+  "common_inputs":"rails.json",
+  "tag":"VM Rails"
+}
