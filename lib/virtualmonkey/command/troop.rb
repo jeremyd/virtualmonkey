@@ -24,6 +24,7 @@ module VirtualMonkey
         troop_config = {}
         troop_config[:tag] = ask("What tag to use for creating the deployments?")
         troop_config[:server_template_ids] = ask("What Server Template ids would you like to use to create the deployments (comma delimited)?").split(",")
+        troop_config[:server_template_ids].each {|st| st.strip!}
 
         troop_config[:runner] = 
           choose do |menu|
@@ -79,7 +80,6 @@ module VirtualMonkey
           watch = EM.add_periodic_timer(10) {
             if cm.all_done?
               # DESTROY PHASE
-              watch.cancel 
               cm.jobs.each do |job|
                 # destroy on success only (keep failed deploys)
                 if job.status == 0
@@ -90,6 +90,7 @@ module VirtualMonkey
                 end
               end    
             end
+            watch.cancel 
             cm.watch_and_report
           }
         }
