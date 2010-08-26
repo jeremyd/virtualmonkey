@@ -41,6 +41,9 @@ class DeploymentMonk
   end
 
   def generate_variations(options = {})
+    if options[:mci_override]
+      @image_count = options[:mci_override].size
+    end
     @image_count.times do |index|
       @clouds.each do |cloud|
         if @variables_for_cloud[cloud] == nil
@@ -67,7 +70,10 @@ class DeploymentMonk
           end
          
           # uses a special internal call for setting the MCI on the server
-          if st.multi_cloud_images[index]
+          if options[:mci_override]
+            use_this_image = options[:mci_override][index]
+            dep_image_list << MultiCloudImage.find(options[:mci_override][index]).name.gsub(/ /,'_')
+          elsif st.multi_cloud_images[index]
             dep_image_list << st.multi_cloud_images[index]['name'].gsub(/ /,'_')
             use_this_image = st.multi_cloud_images[index]['href']
           else

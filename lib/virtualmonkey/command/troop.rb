@@ -6,6 +6,7 @@ module VirtualMonkey
         text "This command performs all the operations of the monkey in one execution.  Create/Run/Destroy"
         opt :file, "troop config, see config/troop/*sample.json for example format", :type => :string, :required => true
         opt :create, "interactive mode: create troop config"
+        opt :mci_override, "list of mcis to use instead of the ones from the server template. expects full hrefs.", :type => :string, :multi => true, :required => false
       end
      
       # PATHs SETUP
@@ -69,7 +70,7 @@ module VirtualMonkey
         config['common_inputs'].each do |cipath|
           @dm.load_common_inputs(File.join(config_dir, "common_inputs", cipath))
         end  
-        @dm.generate_variations(:no_spot => false)
+        @dm.generate_variations(:no_spot => false, :mci_override => options[:mci_override])
         # RUN PHASE
         EM.run {
           cm = CukeMonk.new
