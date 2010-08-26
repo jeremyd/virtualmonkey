@@ -80,6 +80,7 @@ module VirtualMonkey
           watch = EM.add_periodic_timer(10) {
             if cm.all_done?
               # DESTROY PHASE
+              watch.cancel 
               cm.jobs.each do |job|
                 # destroy on success only (keep failed deploys)
                 if job.status == 0
@@ -90,7 +91,6 @@ module VirtualMonkey
                 end
               end    
             end
-            watch.cancel 
             cm.watch_and_report
           }
         }
