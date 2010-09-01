@@ -5,10 +5,11 @@ module VirtualMonkey
       options = Trollop::options do
         text "This command performs all the operations of the monkey in one execution.  Create/Run/Destroy"
         opt :file, "troop config, see config/troop/*sample.json for example format", :type => :string, :required => true
+        opt :no_spot, "do not use spot instances"
         opt :create, "interactive mode: create troop config"
         opt :mci_override, "list of mcis to use instead of the ones from the server template. expects full hrefs.", :type => :string, :multi => true, :required => false
       end
-     
+
       # PATHs SETUP
       features_dir = File.join(File.dirname(__FILE__), "..", "..", "..", "features")
       features_glob = Dir.glob(File.join(features_dir, "**"))
@@ -70,7 +71,7 @@ module VirtualMonkey
         config['common_inputs'].each do |cipath|
           @dm.load_common_inputs(File.join(config_dir, "common_inputs", cipath))
         end  
-        @dm.generate_variations(:no_spot => false, :mci_override => options[:mci_override])
+        @dm.generate_variations(options)
         # RUN PHASE
         EM.run {
           cm = CukeMonk.new
@@ -87,7 +88,7 @@ module VirtualMonkey
                 if job.status == 0
                   runner = eval("VirtualMonkey::#{config['runner']}.new(job.deployment.nickname)")
                   puts "destroying successful deployment: #{runner.deployment.nickname}"
-                  runner.stop_all
+                  runner.stop_all(false)
                   runner.deployment.destroy
                 end
               end    

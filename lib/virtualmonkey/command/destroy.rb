@@ -6,6 +6,7 @@ module VirtualMonkey
       options = Trollop::options do
         opt :tag, "Tag to match prefix of the deployments to destroy.", :type => :string, :required => true, :short => '-t'
         opt :mysql, "Use special MySQL TERMINATE script, instead of normal shutdown of all servers."
+        opt :no_delete, "only terminate, no deletion."
         opt :yes, "Turn off confirmation for destroy operation"
       end
       @dm = DeploymentMonk.new(options[:tag])
@@ -17,14 +18,16 @@ module VirtualMonkey
         raise "Aborting." unless confirm
       end
 
-      if options[:mysql]
-        @dm.deployments.each do |deploy|
+      @dm.deployments.each do |deploy|
+        if options[:mysql]
           @runner = VirtualMonkey::MysqlRunner.new(deploy.nickname)
-          @runner.lookup_scripts
-          @runner.stop_all
+        else
+          @runner = VirtualMonkey::SimpleRunner.new(deploy.nickname)
         end
+        @runner.stop_all
       end
-      @dm.destroy_all
+
+      @dm.destroy_all unless options[:no_delete]
       say "monkey done."
     end
 

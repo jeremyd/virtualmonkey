@@ -7,7 +7,7 @@
     "52799",
     "52799"
   ],
-  "cloud_variables":"east.json",
+  "cloud_variables":"all_clouds.json",
   "common_inputs":"php.json",
-  "tag":"VM PHP"
+  "tag":"TROOP-php-v10-head"
 }

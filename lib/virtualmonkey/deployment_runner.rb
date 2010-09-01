@@ -90,9 +90,9 @@ module VirtualMonkey
       state_wait(@servers, state)
     end
 
-    def stop_all
+    def stop_all(wait=true)
       @servers.each { |s| s.stop }
-      wait_for_all("stopped")
+      wait_for_all("stopped") if wait
       @servers.each { |s| s.dns_name = nil }
     end
 

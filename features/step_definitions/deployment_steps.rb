@@ -37,6 +37,11 @@ end
 Given /A frontend with application servers deployment/ do
   raise "FATAL:  Please set the environment variable $DEPLOYMENT" unless ENV['DEPLOYMENT']
 
+# EXPERIMENTAL
+# sleep here to delay the run of the cucumber initial calls to the api. (be nice)
+  num = rand(120)
+  puts "delaying start of test by #{num} seconds"
+  sleep num
   @runner = VirtualMonkey::FeAppRunner.new(ENV['DEPLOYMENT'])
   @runner.lookup_scripts
 end

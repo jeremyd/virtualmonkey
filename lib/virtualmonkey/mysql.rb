@@ -93,7 +93,7 @@ module VirtualMonkey
     end
 
     # Use the termination script to stop all the servers (this cleans up the volumes)
-    def stop_all
+    def stop_all(wait=true)
       if @scripts_to_run['terminate']
         options = { "DB_TERMINATE_SAFETY" => "text:off" }
         @servers.each { |s| s.run_executable(@scripts_to_run['terminate'], options) unless s.state == 'stopped' }
@@ -101,7 +101,7 @@ module VirtualMonkey
         @servers.each { |s| s.stop }
       end
 
-      @servers.each { |s| s.wait_for_state("stopped") }
+      wait_for_all("stopped") if wait
       # unset dns in our local cached copy..
       @servers.each { |s| s.params['dns-name'] = nil } 
     end

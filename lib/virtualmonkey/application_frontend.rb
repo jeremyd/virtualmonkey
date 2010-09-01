@@ -42,7 +42,7 @@ module VirtualMonkey
     def test_http_response(expected_string, url, port)
       cmd = "curl -s #{url} 2> /dev/null "
       puts cmd
-      timeout=120
+      timeout=300
       begin
         status = Timeout::timeout(timeout) do
           while true

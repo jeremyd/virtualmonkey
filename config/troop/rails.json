@@ -7,7 +7,7 @@
     "53377",
     "53377"
   ],
-  "cloud_variables":"east.json",
+  "cloud_variables":"all_clouds.json",
   "common_inputs":"rails.json",
-  "tag":"VM Rails"
+  "tag":"TROOP-rails-v10-head"
 }
