@@ -68,7 +68,13 @@ module VirtualMonkey
       fe_servers.each do |fe|
         fe.settings
         haproxy_config = fe.spot_check_command('flock -n /home/haproxy/rightscale_lb.cfg -c "cat /home/haproxy/rightscale_lb.cfg | grep server"')
-        server_ips.each { |ip|  haproxy_config.to_s.include?(ip).should == true }
+        puts "INFO: flock status was #{haproxy_config[:status]}"
+        server_ips.each do |ip|
+          if haproxy_config.to_s.include?(ip) == false
+            puts haproxy_config[:output]
+            raise "FATAL: haproxy config did not contain server ip #{ip}"
+          end
+        end
       end
 
       # restart haproxy and check that it succeeds
