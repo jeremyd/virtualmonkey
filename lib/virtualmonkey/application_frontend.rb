@@ -67,7 +67,7 @@ module VirtualMonkey
       app_servers.each { |app| server_ips << app['private-ip-address'] }
       fe_servers.each do |fe|
         fe.settings
-        haproxy_config = fe.spot_check_command('cat /home/haproxy/rightscale_lb.cfg | grep server')
+        haproxy_config = fe.spot_check_command('flock -n /home/haproxy/rightscale_lb.cfg -c "cat /home/haproxy/rightscale_lb.cfg | grep server"')
         server_ips.each { |ip|  haproxy_config.to_s.include?(ip).should == true }
       end
 
