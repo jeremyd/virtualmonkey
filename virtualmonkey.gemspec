@@ -9,11 +9,10 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Jeremy Deininger"]
-  s.date = %q{2010-07-23}
-  s.default_executable = %q{monkey}
+  s.date = %q{2010-08-26}
   s.description = %q{monkey see, monkey do, monkey repeat}
   s.email = %q{jeremy@rightscale.com}
-  s.executables = ["monkey"]
+  s.executables = ["mcicp", "monkey"]
   s.extra_rdoc_files = [
     "LICENSE",
      "README.rdoc"
@@ -25,46 +24,67 @@ Gem::Specification.new do |s|
      "README.rdoc",
      "Rakefile",
      "VERSION",
-     "app/features/Rakefile",
-     "app/features/Steps-TODO",
-     "app/features/app_state.feature",
-     "app/features/app_test.feature",
-     "app/features/db_toolbox.feature",
-     "app/features/ebs_toolbox.feature",
-     "app/features/lb-apache-haproxy.feature",
-     "app/features/mysql_5.x_v2_v4_from_scratch.feature",
-     "app/features/mysql_chef_premium.feature",
-     "app/features/mysql_chef_premium_from_scratch.feature",
-     "app/features/mysql_v1_upgrade_v2.feature",
-     "app/features/php.feature",
-     "app/features/rails.feature",
-     "app/features/reboot.feature",
-     "app/features/rightlink.feature",
-     "app/features/rsgrid.feature",
-     "app/features/simple.feature",
-     "app/features/simple_fail.feature",
-     "app/features/step_definitions/app.rb",
-     "app/features/step_definitions/deployment_steps.rb",
-     "app/features/step_definitions/ebs.rb",
-     "app/features/step_definitions/lb.rb",
-     "app/features/step_definitions/mysql_steps.rb",
-     "app/features/tomcat6-tests-TODO",
+     "bin/mcicp",
      "bin/monkey",
-     "config/app/apache_haproxy.json",
-     "config/app/php.json",
-     "config/app/rails.json",
-     "config/app/tomcat.json",
-     "config/cloud_variables.json",
-     "config/haproxy.json",
-     "config/mysql/common_inputs.json",
-     "config/rsgrid.json",
-     "config/west.json",
+     "config/cloud_variables/all_clouds.json",
+     "config/cloud_variables/east.json",
+     "config/cloud_variables/rackspace.json",
+     "config/cloud_variables/west.json",
+     "config/common_inputs/apache_haproxy.json",
+     "config/common_inputs/ebs_toolbox.json",
+     "config/common_inputs/haproxy.json",
+     "config/common_inputs/mysql.json",
+     "config/common_inputs/php.json",
+     "config/common_inputs/php_aio_trial_chef_alpha.json",
+     "config/common_inputs/php_app_fe_chef.json",
+     "config/common_inputs/rails.json",
+     "config/common_inputs/rails_aio_demo_chef_alpha.json",
+     "config/common_inputs/rails_aio_developer_chef_alpha.json",
+     "config/common_inputs/rsgrid.json",
+     "config/common_inputs/tomcat.json",
+     "config/troop/mysqlv2.json",
+     "config/troop/php.json",
+     "config/troop/rails.json",
+     "config/troop/simple_fail.json",
+     "config/troop/simple_pass.json",
+     "features/Rakefile",
+     "features/Steps-TODO",
+     "features/app_state.feature",
+     "features/app_test.feature",
+     "features/db_toolbox.feature",
+     "features/ebs_toolbox.feature",
+     "features/fe_app_checks.feature",
+     "features/lb-apache-haproxy.feature",
+     "features/mysql_5.x_v2_v4_from_scratch.feature",
+     "features/mysql_chef_premium.feature",
+     "features/mysql_chef_premium_from_scratch.feature",
+     "features/mysql_v1_upgrade_v2.feature",
+     "features/php.feature",
+     "features/php_aio_trial_chef_alpha.feature",
+     "features/php_checks.feature",
+     "features/php_chef.feature",
+     "features/rails.feature",
+     "features/rails_aio_developer_chef.feature",
+     "features/reboot.feature",
+     "features/rightlink.feature",
+     "features/rsgrid.feature",
+     "features/simple.feature",
+     "features/simple_fail.feature",
+     "features/step_definitions/app.rb",
+     "features/step_definitions/deployment_steps.rb",
+     "features/step_definitions/ebs.rb",
+     "features/step_definitions/lb.rb",
+     "features/step_definitions/mysql_steps.rb",
+     "features/terminate.feature",
+     "features/tomcat6-tests-TODO",
      "lib/virtualmonkey.rb",
+     "lib/virtualmonkey/application_frontend.rb",
      "lib/virtualmonkey/command.rb",
      "lib/virtualmonkey/command/create.rb",
      "lib/virtualmonkey/command/destroy.rb",
      "lib/virtualmonkey/command/list.rb",
      "lib/virtualmonkey/command/run.rb",
+     "lib/virtualmonkey/command/troop.rb",
      "lib/virtualmonkey/cuke_monk.rb",
      "lib/virtualmonkey/deployment_monk.rb",
      "lib/virtualmonkey/deployment_runner.rb",
@@ -76,7 +96,11 @@ Gem::Specification.new do |s|
      "lib/virtualmonkey/mysql.rb",
      "lib/virtualmonkey/mysql_runner.rb",
      "lib/virtualmonkey/mysql_toolbox_runner.rb",
+     "lib/virtualmonkey/php_aio_trial_chef_runner.rb",
+     "lib/virtualmonkey/php_chef_runner.rb",
+     "lib/virtualmonkey/rails_aio_developer_chef_runner.rb",
      "lib/virtualmonkey/shared_dns.rb",
+     "lib/virtualmonkey/simple_runner.rb",
      "spec/bug3518.rb",
      "spec/concurrent_writes_spec.rb",
      "spec/cuke_job_spec.rb",
@@ -118,7 +142,7 @@ Gem::Specification.new do |s|
       s.add_runtime_dependency(%q<fog>, [">= 0"])
       s.add_runtime_dependency(%q<highline>, [">= 0"])
       s.add_runtime_dependency(%q<rspec>, [">= 0"])
-      s.add_runtime_dependency(%q<gherkin>, [">= 0"])
+      s.add_runtime_dependency(%q<gherkin>, ["= 2.1.4"])
       s.add_runtime_dependency(%q<cucumber>, [">= 0"])
       s.add_runtime_dependency(%q<uuidtools>, [">= 0"])
       s.add_runtime_dependency(%q<eventmachine>, [">= 0"])
@@ -131,7 +155,7 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<fog>, [">= 0"])
       s.add_dependency(%q<highline>, [">= 0"])
       s.add_dependency(%q<rspec>, [">= 0"])
-      s.add_dependency(%q<gherkin>, [">= 0"])
+      s.add_dependency(%q<gherkin>, ["= 2.1.4"])
       s.add_dependency(%q<cucumber>, [">= 0"])
       s.add_dependency(%q<uuidtools>, [">= 0"])
       s.add_dependency(%q<eventmachine>, [">= 0"])
@@ -145,7 +169,7 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<fog>, [">= 0"])
     s.add_dependency(%q<highline>, [">= 0"])
     s.add_dependency(%q<rspec>, [">= 0"])
-    s.add_dependency(%q<gherkin>, [">= 0"])
+    s.add_dependency(%q<gherkin>, ["= 2.1.4"])
     s.add_dependency(%q<cucumber>, [">= 0"])
     s.add_dependency(%q<uuidtools>, [">= 0"])
     s.add_dependency(%q<eventmachine>, [">= 0"])

@@ -17,7 +17,7 @@ begin
     gem.add_dependency "fog"
     gem.add_dependency "highline"
     gem.add_dependency "rspec"
-    gem.add_dependency "gherkin"
+    gem.add_dependency "gherkin", "=2.1.4" # A cuke dependency
     gem.add_dependency "cucumber"
     gem.add_dependency "uuidtools"
     gem.add_dependency "eventmachine"
