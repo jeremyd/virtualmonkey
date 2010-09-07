@@ -21,7 +21,7 @@
   "LB_APPLISTENER_NAME":"text:railsapp",
   "OPT_VHOST_PORT":"ignore:$ignore",
   "MAX_CONN_PER_SERVER":"text:100",
-  "HEALTH_CHECK_URI":"ignore:$ignore",
+  "HEALTH_CHECK_URI":"text:/index.html",
   "SVN_APP_REPOSITORY":"text:https://wush.net/svn/rightscale/unified_test_app/rails",
   "DB_SCHEMA_NAME":"text:app_test",
   "DBAPPLICATION_PASSWORD":"cred:DBAPPLICATION_PASSWORD"
