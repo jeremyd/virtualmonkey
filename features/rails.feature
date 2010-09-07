@@ -9,9 +9,11 @@ Scenario: Rails server test
   Then I should stop the servers
   Then I should set a variation for connecting to shared database host
   When I launch the "Front End" servers
+  Then I should wait for the state of "Front End" servers to be "booting"
   Then I should wait for the state of "Front End" servers to be "operational"
   Then I should set a variation LB_HOSTNAME
   When I launch the "App Server" servers
+  Then I should wait for the state of "App Server" servers to be "booting"
   Then I should wait for the state of "App Server" servers to be "operational"
   Then I should cross connect the frontends
 
