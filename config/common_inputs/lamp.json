@@ -16,7 +16,7 @@
   "DBAPPLICATION_USER":"cred:DBAPPLICATION_USER",
   "APPLICATION":"text:mephisto",
   "APPLICATION_CODE_PACKAGE":"text:php_unified.tgz",
-  "DB_MYSQLDUMP_PREFIX":"text:app_test.sql",
+  "DB_MYSQLDUMP_PREFIX":"text:app_test",
   "OPT_EXPLODE_WAR_FILES_IN_ARCHIVE":"text:false",
   "OPT_SERVE_TOMCAT_APP_AT_ROOT":"text:false",
   "MASTER_DB_DNSNAME":"text:localhost",
