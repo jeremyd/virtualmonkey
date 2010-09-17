@@ -8,7 +8,11 @@ module VirtualMonkey
         opt :common_inputs, "Paths to common input json files to load and set on all deployments.  Accepts space separated pathnames or one argument per pathname.  Eg. -c config/mysql_inputs.json -c config/other_inputs.json", :type => :strings, :required => true, :short => '-c'
         opt :tag, "Tag to use as nickname prefix for all deployments.", :type => :string, :required => true, :short => '-t'
         opt :cloud_variables, "Path to json file containing common inputs and variables per cloud. See config/cloud_variables.json.example", :type => :string, :required => true, :short => '-v'
+        opt :file, "Read configuration from this troop file (optional)", :type => :string, :required => true
         opt :no_spot, "Do not use spot instances"
+      end
+      if options[:file]
+        options = JSON::parse(IO.read(options[:file]))
       end
       @dm = DeploymentMonk.new(options[:tag], options[:server_template_ids])
       @dm.variables_for_cloud = JSON::parse(IO.read(options[:cloud_variables]))
