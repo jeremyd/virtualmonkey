@@ -1,0 +1,11 @@
+@lamp_test
+
+Feature: LAMP Server Template Test
+  Tests the deployment
+
+Scenario: LAMP Server Template Test
+
+  Given A LAMP deployment
+  Then I should stop the servers
+  Then I should launch all servers
+  Then I should wait for the state of "all" servers to be "operational"

@@ -93,7 +93,10 @@ module VirtualMonkey
     def stop_all(wait=true)
       @servers.each { |s| s.stop }
       wait_for_all("stopped") if wait
-      @servers.each { |s| s.dns_name = nil }
+      @servers.each { |s| 
+        s.dns_name = nil 
+        s.private_dns_name = nil
+        }
     end
 
     def reboot_all
