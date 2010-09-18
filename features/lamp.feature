@@ -9,3 +9,4 @@ Scenario: LAMP Server Template Test
   Then I should stop the servers
   Then I should launch all servers
   Then I should wait for the state of "all" servers to be "operational"
+  Then I should run LAMP checks

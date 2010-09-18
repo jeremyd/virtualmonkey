@@ -9,10 +9,10 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Jeremy Deininger"]
-  s.date = %q{2010-08-26}
+  s.date = %q{2010-09-18}
   s.description = %q{monkey see, monkey do, monkey repeat}
   s.email = %q{jeremy@rightscale.com}
-  s.executables = ["mcicp", "monkey"]
+  s.executables = ["monkey", "mcicp"]
   s.extra_rdoc_files = [
     "LICENSE",
      "README.rdoc"
@@ -33,6 +33,7 @@ Gem::Specification.new do |s|
      "config/common_inputs/apache_haproxy.json",
      "config/common_inputs/ebs_toolbox.json",
      "config/common_inputs/haproxy.json",
+     "config/common_inputs/lamp.json",
      "config/common_inputs/mysql.json",
      "config/common_inputs/php.json",
      "config/common_inputs/php_aio_trial_chef_alpha.json",
@@ -42,6 +43,7 @@ Gem::Specification.new do |s|
      "config/common_inputs/rails_aio_developer_chef_alpha.json",
      "config/common_inputs/rsgrid.json",
      "config/common_inputs/tomcat.json",
+     "config/troop/lamp.json",
      "config/troop/mysqlv2.json",
      "config/troop/php.json",
      "config/troop/rails.json",
@@ -54,6 +56,7 @@ Gem::Specification.new do |s|
      "features/db_toolbox.feature",
      "features/ebs_toolbox.feature",
      "features/fe_app_checks.feature",
+     "features/lamp.feature",
      "features/lb-apache-haproxy.feature",
      "features/mysql_5.x_v2_v4_from_scratch.feature",
      "features/mysql_chef_premium.feature",
@@ -61,7 +64,6 @@ Gem::Specification.new do |s|
      "features/mysql_v1_upgrade_v2.feature",
      "features/php.feature",
      "features/php_aio_trial_chef_alpha.feature",
-     "features/php_checks.feature",
      "features/php_chef.feature",
      "features/rails.feature",
      "features/rails_aio_developer_chef.feature",
@@ -93,6 +95,7 @@ Gem::Specification.new do |s|
      "lib/virtualmonkey/fe_app_runner.rb",
      "lib/virtualmonkey/file_locations.rb",
      "lib/virtualmonkey/index.html.erb",
+     "lib/virtualmonkey/lamp_runner.rb",
      "lib/virtualmonkey/mysql.rb",
      "lib/virtualmonkey/mysql_runner.rb",
      "lib/virtualmonkey/mysql_toolbox_runner.rb",
@@ -101,6 +104,7 @@ Gem::Specification.new do |s|
      "lib/virtualmonkey/rails_aio_developer_chef_runner.rb",
      "lib/virtualmonkey/shared_dns.rb",
      "lib/virtualmonkey/simple_runner.rb",
+     "lib/virtualmonkey/unified_application.rb",
      "spec/bug3518.rb",
      "spec/concurrent_writes_spec.rb",
      "spec/cuke_job_spec.rb",
@@ -119,15 +123,15 @@ Gem::Specification.new do |s|
   s.rubygems_version = %q{1.3.7}
   s.summary = %q{testing cluster deployments}
   s.test_files = [
-    "spec/bug3518.rb",
-     "spec/concurrent_writes_spec.rb",
-     "spec/cuke_job_spec.rb",
+    "spec/cuke_job_spec.rb",
      "spec/ek.rb",
      "spec/mini.rb",
-     "spec/release_dns.rb",
      "spec/shared_resources_spec.rb",
      "spec/spec_helper.rb",
-     "spec/virtualmonkey_spec.rb"
+     "spec/bug3518.rb",
+     "spec/concurrent_writes_spec.rb",
+     "spec/virtualmonkey_spec.rb",
+     "spec/release_dns.rb"
   ]
 
   if s.respond_to? :specification_version then

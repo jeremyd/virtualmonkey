@@ -6,6 +6,6 @@
     "27418",
     " 27418"
   ],
-  "features":"mysql_5.x_v2_v4_from_scratch.feature",
-  "cloud_variables":"all_clouds.json"
+  "feature":"mysql_5.x_v2_v4_from_scratch.feature",
+  "cloud_variables":"west.json"
 }

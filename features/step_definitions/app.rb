@@ -4,6 +4,10 @@ Then /I should run unified application checks/ do
   @runner.run_unified_application_checks
 end
 
+Then /I should run LAMP checks/ do
+  @runner.run_lamp_checks
+end
+
 Then /I should run AIO rails demo application checks/ do
   @runner.run_rails_demo_application_checks
 end

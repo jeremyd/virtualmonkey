@@ -7,7 +7,7 @@ end
 
 Given /^A LAMP deployment/ do
   raise "FATAL:  Please set the environment variable $DEPLOYMENT" unless ENV['DEPLOYMENT']
-  @runner = VirtualMonkey::SimpleRunner.new(ENV['DEPLOYMENT'])
+  @runner = VirtualMonkey::LampRunner.new(ENV['DEPLOYMENT'])
 end
 
 Given /^A PHP Chef deployment/ do

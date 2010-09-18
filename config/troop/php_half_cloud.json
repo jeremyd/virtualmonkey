@@ -1,0 +1,11 @@
+{
+  "feature":"php.feature",
+  "runner":"SimpleRunner",
+  "server_template_ids":[
+    "52800",
+    "52799"
+  ],
+  "cloud_variables":"all_clouds.json",
+  "common_inputs":"php.json",
+  "tag":"HALFTROOP-php-v10-head"
+}

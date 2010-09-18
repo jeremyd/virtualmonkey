@@ -48,7 +48,7 @@ module VirtualMonkey
       while timeout > 0
         puts "Checking for snapshot completed"
         snapshots =Ec2EbsSnapshot.find_by_cloud_id(@servers.first.cloud_id).select { |n| n.nickname =~ /#{@lineage}.*$/ }
-        status= snapshots.map &:aws_status
+        status= snapshots.map { |x| x.aws_status } 
         break unless status.include?("pending")
         sleep step
         timeout -= step

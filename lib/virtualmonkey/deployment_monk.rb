@@ -97,8 +97,10 @@ class DeploymentMonk
           end
         end
         new_deploy.nickname = dep_tempname + dep_image_list.uniq.join("_AND_")
-        new_deploy.parameters = @common_inputs
         new_deploy.save
+        @common_inputs.each do |key,val|
+          new_deploy.set_input(key,val)
+        end
       end
     end
   end
