@@ -10,6 +10,12 @@ Given /^A LAMP deployment/ do
   @runner = VirtualMonkey::LampRunner.new(ENV['DEPLOYMENT'])
 end
 
+Given /^An ELB Test deployment/ do
+  raise "FATAL:  Please set the environment variable $DEPLOYMENT" unless ENV['DEPLOYMENT']
+  @runner = VirtualMonkey::ELBRunner.new(ENV['DEPLOYMENT'])
+  @runner.lookup_scripts
+end
+
 Given /^A PHP Chef deployment/ do
   raise "FATAL:  Please set the environment variable $DEPLOYMENT" unless ENV['DEPLOYMENT']
   @runner = VirtualMonkey::PhpChefRunner.new(ENV['DEPLOYMENT'])

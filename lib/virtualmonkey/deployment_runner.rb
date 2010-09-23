@@ -83,7 +83,7 @@ module VirtualMonkey
         set.each { |server| server.wait_for_state(state) }
       end
     end
-
+    
     # Wait for all server(s) to enter state.
     # * state<~String> - state to wait for, eg. operational
     def wait_for_all(state)
@@ -103,6 +103,8 @@ module VirtualMonkey
       wait_for_reboot = true
       @servers.each do |s| 
         s.reboot(wait_for_reboot) 
+      end
+      @servers.each do |s| 
         s.wait_for_state("operational")
       end
     end
@@ -114,6 +116,58 @@ module VirtualMonkey
       audit = server.run_executable(@scripts_to_run[friendly_name])
       audit.wait_for_completed
     end
+
+    
+    # Detect operating system on each server and stuff the corresponding values for platform into the servers params (for temp storage only)
+    def detect_os
+      @server_os = Array.new
+      @servers.each do |server|
+        if server.spot_check_command?("lsb_release -is | grep Ubuntu")
+          puts "setting server to ubuntu"
+          server.os = "ubuntu"
+          server.apache_str = "apache2"
+          server.apache_check = "apache2ctl status"
+          server.haproxy_check = "service haproxy status"
+        else
+          puts "setting server to centos"
+          server.os = "centos"
+          server.apache_str = "httpd"
+          server.apache_check = "service httpd status"
+          server.haproxy_check = "service haproxy check"
+        end
+      end
+    end
+    
+    # Assumes the host machine is EC2, uses the meta-data to grab the IP address of this
+    # 'tester server' eg. used for the input variation MASTER_DB_DNSNAME
+    def get_tester_ip_addr
+      if File.exists?("/var/spool/ec2/meta-data.rb")
+        require "/var/spool/ec2/meta-data-cache" 
+      else
+        ENV['EC2_PUBLIC_HOSTNAME'] = "127.0.0.1"
+      end
+      my_ip_input = "text:" 
+      my_ip_input += ENV['EC2_PUBLIC_HOSTNAME']
+      my_ip_input
+    end
+    
+    # Log rotation
+    def force_log_rotation(server)
+      response = server.spot_check_command?('logrotate -f /etc/logrotate.conf')
+      raise "Logrotate restart failed" unless response
+    end
+    
+    def log_check(server, logfile)
+      response = nil
+      count = 0
+      until response || count > 3 do
+        response = server.spot_check_command?("test -f #{logfile}")
+        break if response
+        count += 1
+        sleep 10
+      end
+      raise "Log file does not exist: #{logfile}" unless response
+    end   
 
     # Checks that monitoring is enabled on all servers in the deployment.  Will raise an error if monitoring is not enabled.
     def check_monitoring

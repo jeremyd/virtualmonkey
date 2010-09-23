@@ -27,7 +27,7 @@ module VirtualMonkey
         when "help" || "--help" || "-h"
           "Help usage: monkey <command> --help"
         else
-          STDERR.puts "Invalid command #{command}: You need to specify a command for monkey: create, destroy, list, run or help\n"
+          STDERR.puts "Invalid command #{command}: You need to specify a command for monkey: create, destroy, list, run, troop or help\n"
           exit(1)
       end
     end
