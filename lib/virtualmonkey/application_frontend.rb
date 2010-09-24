@@ -1,12 +1,14 @@
 require 'timeout'
 require 'spec'
+require 'ruby-debug'
 
 module VirtualMonkey
   module VirtualMonkey::ApplicationFrontend
 
     # returns an Array of the App Servers in the deployment
     def app_servers
-      @servers.select { |s| s.nickname =~ /App Server/ }
+      @servers.select { |s| s.nickname =~ /App Server/ || s.nickname =~ /PHP App Server/ }
+      raise "No app servers in deployment" if @servers.count == 0
     end
     
     # sets the MASTER_DB_DNSNAME to this machine's ip address
@@ -18,7 +20,7 @@ module VirtualMonkey
 
     # returns an Array of the Front End servers in the deployment
     def fe_servers
-      @servers.select { |s| s.nickname =~ /Front End/ || s.nickname =~ /FrontEnd/ }
+      @servers.select { |s| s.nickname =~ /Front End/ || s.nickname =~ /FrontEnd/ || s.nickname =~ /Apache with HAproxy/ }
     end
 
     # sets LB_HOSTNAME on the deployment using the private dns of the fe_servers
@@ -29,9 +31,12 @@ module VirtualMonkey
     # returns String with all the private dns of the Front End servers
     # used for setting the LB_HOSTNAME input.
     def get_lb_hostname_input
+puts "getting lb_hostname"
       lb_hostname_input = "text:"
       fe_servers.each do |fe|
-        lb_hostname_input << fe.settings['private-dns-name'] + " " 
+puts "this is the fe.setting: #{fe.settings['private-dns-name']}"
+
+        lb_hostname_input << fe.settings['private-dns-name'] + " "
       end
       lb_hostname_input
     end
