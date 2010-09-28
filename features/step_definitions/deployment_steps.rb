@@ -50,9 +50,11 @@ Given /A frontend with application servers deployment/ do
 
 # EXPERIMENTAL
 # sleep here to delay the run of the cucumber initial calls to the api. (be nice)
-  num = rand(120)
-  puts "delaying start of test by #{num} seconds"
-  sleep num
+#  num = rand(120)
+#  puts "delaying start of test by #{num} seconds"
+#  sleep num
+#  Don't think this really helped, but, if we start really really pounding the site we may want to add
+#  it back in
   @runner = VirtualMonkey::FeAppRunner.new(ENV['DEPLOYMENT'])
   @runner.lookup_scripts
 end
