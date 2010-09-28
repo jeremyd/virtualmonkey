@@ -3,7 +3,7 @@
   "DBAPPLICATION_PASSWORD"   : "cred:DBAPPLICATION_PASSWORD",
   "DBAPPLICATION_USER"       : "cred:DBAPPLICATION_USER",
   "DB_SCHEMA_NAME"           : "text:app_test",
-  "HEALTH_CHECK_URI"         : "ignore:$ignore",
+  "HEALTH_CHECK_URI"         : "text:/index.html",
   "OPT_SVN_PASSWORD"         : "cred:martin_svn_passwd",
   "OPT_SVN_USERNAME"         : "cred:martin_svn_user",
   "SVN_APP_REPOSITORY"       : "text:https://wush.net/svn/rightscale/unified_test_app/tomcat/dist",
