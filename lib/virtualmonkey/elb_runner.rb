@@ -14,21 +14,12 @@ module VirtualMonkey
     AWS_ID = "you"
     AWS_KEY = "wish"
     
-    # Hardcoded to ELBs created in dash for now.
-    DNS = {
-      "1" => "MONKEY-TEST-ELB-500034796.us-east-1.elb.amazonaws.com",
-      "2" => "monkey-test-elb-2265692.us-west-1.elb.amazonaws.com",
-      "3" => "monkey-test-elb-1494529434.eu-west-1.elb.amazonaws.com",
-      "4" => "monkey-test-elb-498965605.ap-southeast-1.elb.amazonaws.com"
-    }
-    
     def initialize(args)
       super(args)
-      @elb = RightAws::ElbInterface.new(AWS_ID, AWS_KEY)
+      @elb = RightAws::ElbInterface.new(AWS_ID, AWS_KEY) #TODO: { :endpoint_url => "https://elasticloadbalancing."+ENV['EC2_PLACEMENT_AVAILABILITY_ZONE'].gsub(/[a-z]+$/,'')+".amazonaws.com"} )
       @elb_name = "#{ELB_PREFIX}-#{rand(1000000)}"
     end
     
-    # sets ELB_NAME on the deployment using hardcoded name
     def set_elb_name
       @deployment.set_input("ELB_NAME", "text:#{@elb_name}")
     end
@@ -40,7 +31,7 @@ module VirtualMonkey
     
     # Check if :all or :none of the app servers are registered
     def elb_registration_check(type)
-      details = @elb.describe_load_balancers("MONKEY-TEST-ELB")
+      details = @elb.describe_load_balancers(@elb_name)
       instances = details.first[:instances]
       case type
       when :all
@@ -56,7 +47,6 @@ module VirtualMonkey
       end
     end
     
-    # Disconnect everyone
     def elb_disconnect_all
       @servers.each do |server|
         disconnect_server(server)
@@ -76,7 +66,6 @@ module VirtualMonkey
       st = ServerTemplate.find(server.server_template_href)
       @scripts_to_run['connect'] = st.executables.detect { |ex| ex.name =~  /ELB connect/i }
       @scripts_to_run['disconnect'] = st.executables.detect { |ex| ex.name =~  /ELB disconnect/i }
-      # @scripts_to_run['apache_restart'] = st.executables.detect { |ex| ex.name =~  /WEB apache \(re\)start v2/i }
     end 
     
     # This is really just a PHP server check. relocate?
@@ -92,21 +81,21 @@ module VirtualMonkey
     end
     
     def create_elb
-      @elb.create_load_balancer(@elb_name,
+      @elb_dns = @elb.create_load_balancer(@elb_name,
                                  ['us-east-1a'],  #only one az.  make sure test launches server in other A.Z.
                                  [ { :protocol => :http, :load_balancer_port => ELB_PORT,  :instance_port => ELB_PORT_FORWARD } ] )
     end
     
     def destroy_elb
-      @elb.delete_load_balancer(@elb_name)
+      success = @elb.delete_load_balancer(@elb_name)
+      raise "ERROR: unable to delete ELB name=#{@elb_name}" unless success
     end
     
   private 
    
-    # How do we find our ELB?
     def elb_href
       cloud_id = get_cloud_id
-      "http:\/\/#{DNS[cloud_id]}"
+      "http:\/\/#{@elb_dns}"
     end
     
     # What cloud is the first server in?
