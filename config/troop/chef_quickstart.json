@@ -1,0 +1,10 @@
+{
+  "runner":"SimpleRunner",
+  "server_template_ids":[
+    "27641"
+  ],
+  "feature":"chef_quickstart.feature",
+  "cloud_variables":"east.json",
+  "tag":"TROOP-chef-quickstart",
+  "common_inputs":"none.json"
+}
