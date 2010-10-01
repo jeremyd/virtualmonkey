@@ -11,8 +11,8 @@ module VirtualMonkey
     ELB_PORT_FORWARD = 8000
     ELB_PREFIX = "MONKEY-TEST-ELB"
     
-    AWS_ID = "you"
-    AWS_KEY = "wish"
+    AWS_ID = ENV['AWS_ACCESS_KEY_ID']
+    AWS_KEY = ENV['AWS_SECRET_ACCESS_KEY']
     
     def initialize(args)
       super(args)
