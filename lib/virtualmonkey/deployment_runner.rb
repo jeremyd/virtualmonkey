@@ -35,6 +35,13 @@ module VirtualMonkey
       @servers.each { |s| s.start }
     end
 
+    # sets the MASTER_DB_DNSNAME to this machine's ip address
+    def set_master_db_dnsname
+      the_name = get_tester_ip_addr
+      @deployment.set_input("MASTER_DB_DNSNAME", the_name) 
+      @deployment.set_input("DB_HOST_NAME", the_name) 
+    end
+
     # Helper method, performs selection of a subset of servers to operate on based on the server's nicknames.
     # * nickname_substr<~String> - regex compatible string to match
     def select_set(nickname_substr)

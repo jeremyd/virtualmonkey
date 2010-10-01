@@ -9,13 +9,6 @@ module VirtualMonkey
       raise "No app servers in deployment" if @servers.count == 0
     end
     
-    # sets the MASTER_DB_DNSNAME to this machine's ip address
-    def set_master_db_dnsname
-      the_name = get_tester_ip_addr
-      @deployment.set_input("MASTER_DB_DNSNAME", the_name) 
-      @deployment.set_input("DB_HOST_NAME", the_name) 
-    end
-
     # sets LB_HOSTNAME on the deployment using the private dns of the fe_servers
     def set_lb_hostname
       @deployment.set_input("LB_HOSTNAME", get_lb_hostname_input)
