@@ -1,0 +1,10 @@
+{
+  "runner":"SimpleRunner",
+  "server_template_ids":[
+    "69025"
+  ],
+  "feature":"rightlink.feature",
+  "cloud_variables":"east.json",
+  "tag":"TROOP-rightlink",
+  "common_inputs":"none.json"
+}
