@@ -93,6 +93,7 @@ class DeploymentMonk
               server.max_spot_price = "0.38"
             end
             server.pricing = "spot"
+            server.parameters = {}
             server.save
           end
         end
