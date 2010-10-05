@@ -1,6 +1,6 @@
 module VirtualMonkey
   module ApplicationFrontend
-    #include VirtualMonkey::Application
+    include VirtualMonkey::Application
     include VirtualMonkey::Frontend
     include VirtualMonkey::UnifiedApplication
     
@@ -24,7 +24,7 @@ module VirtualMonkey
 
     def run_reboot_checks
       run_unified_application_checks(fe_servers, 80)
-      run_unified_application_checks
+#      run_unified_application_checks
     end
     
     def log_rotation_checks

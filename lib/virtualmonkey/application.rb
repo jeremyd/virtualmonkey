@@ -5,8 +5,9 @@ module VirtualMonkey
 
     # returns an Array of the App Servers in the deployment
     def app_servers
-      @servers.select { |s| s.nickname =~ /App Server/ }
-      raise "No app servers in deployment" if @servers.count == 0
+      app = @servers.select { |s| s.nickname =~ /App Server/ }
+      raise "No app servers in deployment" if @servers.size == 0
+      app
     end
     
     # sets the MASTER_DB_DNSNAME to this machine's ip address
