@@ -30,11 +30,7 @@ Scenario: Connect/Disconnect PHP App Server to ELB
  
    Then I should stop the servers
    Then no instances should be registered with ELB
-
-Scenario: Connect/Disconnect PHP App Server to missing ELB
-
-  Given An ELB Test deployment
-  
+      
     When I delete EC2 Elastic Load Balancer
     When I launch the "App Server" servers
     When I should wait for the state of "App Server" servers to be "booting"
