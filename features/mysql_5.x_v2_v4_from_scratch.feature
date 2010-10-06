@@ -24,4 +24,8 @@ Feature: mysql 5.x v2 or v4 promote operations test
 
     Then I should test reboot operations on the deployment
 
-    Then I should stop the servers
+#
+# PHASE 3) Additional Tests
+#
+
+    Then I should run a restore using OPT_DB_RESTORE_TIMESTAMP_OVERRIDE

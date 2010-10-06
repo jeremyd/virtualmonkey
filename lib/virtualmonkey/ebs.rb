@@ -47,13 +47,31 @@ module VirtualMonkey
       step=10
       while timeout > 0
         puts "Checking for snapshot completed"
-        snapshots =Ec2EbsSnapshot.find_by_cloud_id(@servers.first.cloud_id).select { |n| n.nickname =~ /#{@lineage}.*$/ }
+        snapshots = find_snapshots
         status= snapshots.map { |x| x.aws_status } 
         break unless status.include?("pending")
         sleep step
         timeout -= step
       end
       raise "FATAL: timed out waiting for all snapshots in lineage #{@lineage} to complete" if timeout == 0
+    end
+
+    # Find all snapshots associated with this deployment's lineage
+    def find_snapshots
+      unless @lineage
+        s = @servers.first
+        kind_params = s.transform_parameters(s.parameters)
+        @lineage = kind_params['DB_LINEAGE_NAME'].gsub(/text:/, "")
+      end
+      snapshots = Ec2EbsSnapshot.find_by_cloud_id(@servers.first.cloud_id).select { |n| n.nickname =~ /#{@lineage}.*$/ }
+    end
+
+    # Returns the timestamp of the latest snapshot for testing OPT_DB_RESTORE_TIMESTAMP_OVERRIDE
+    def find_snapshot_timestamp
+    debugger
+      last_snap = find_snapshots.last
+      last_snap.tags.detect { |t| t["name"] =~ /timestamp=(\d+)$/ }
+      timestamp = $1
     end
 
     # creates a EBS stripe on the server

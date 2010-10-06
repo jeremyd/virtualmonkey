@@ -74,5 +74,13 @@ module VirtualMonkey
       wait_for_snapshots
       run_script("slave_init",s_two)
     end
+
+    def run_restore_with_timestamp_override
+      s_one.relaunch
+      s_one.dns_name = nil
+      s_one.wait_for_operational_with_dns
+      audit = s_one.run_executable(@scripts_to_run['restore'], { "OPT_DB_RESTORE_TIMESTAMP_OVERRIDE" => "text:#{find_snapshot_timestamp}" } )
+      audit.wait_for_completed
+    end
   end
 end

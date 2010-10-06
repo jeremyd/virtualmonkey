@@ -59,3 +59,8 @@ end
 Then /^I should create master from scratch$/ do
   @runner.create_master
 end
+
+Then /^I should run a restore using OPT_DB_RESTORE_TIMESTAMP_OVERRIDE$/ do
+  @runner.run_restore_with_timestamp_override
+end
+

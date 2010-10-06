@@ -1,0 +1,11 @@
+{
+  "runner":"MysqlRunner",
+  "common_inputs":"mysql.json",
+  "tag":"MYSQL_51_FOREVER_V2",
+  "server_template_ids":[
+    "46536",
+    "46536"
+  ],
+  "feature":"mysql_5.x_v2_v4_from_scratch.feature",
+  "cloud_variables":"west.json"
+}
