@@ -1,0 +1,10 @@
+{
+  "common_inputs":"php_elb.json",
+  "runner":"SimpleRunner",
+  "server_template_ids":[
+    "23288 23288"
+  ],
+  "cloud_variables":"all_clouds.json",
+  "tag":"ELBBEATDOWN",
+  "feature":"elb_create_delete.feature"
+}

@@ -13,10 +13,30 @@ module VirtualMonkey
     
     AWS_ID = ENV['AWS_ACCESS_KEY_ID']
     AWS_KEY = ENV['AWS_SECRET_ACCESS_KEY']
+
+    ELBS = { 1 => { 
+								:endpoint => "https://elasticloadbalancing.us-east-1.amazonaws.com",
+							  :azs => [ "us-east-1a", "us-east-1b", "us-east-1c", "us-east-1d" ]
+						    },
+						 2 => {
+								:endpoint => "https://elasticloadbalancing.eu-west-1.amazonaws.com",
+							  :azs => [ "eu-west-1a", "eu-west-1b" ] 
+						    },
+						 3 => {
+								:endpoint => "https://elasticloadbalancing.us-west-1.amazonaws.com",
+							  :azs => [ "us-west-1a", "us-west-1b" ] 
+						    },
+						 4 => {
+								:endpoint => "https://elasticloadbalancing.ap-southeast-1.amazonaws.com",
+							  :azs => [ "ap-southeast-1a", "ap-southeast-1a" ] 
+						    }
+					}
     
     def initialize(args)
       super(args)
-      @elb = RightAws::ElbInterface.new(AWS_ID, AWS_KEY) #TODO: { :endpoint_url => "https://elasticloadbalancing."+ENV['EC2_PLACEMENT_AVAILABILITY_ZONE'].gsub(/[a-z]+$/,'')+".amazonaws.com"} )
+      endpoint_url=ELBS[get_cloud_id][:endpoint]
+puts "USING EP: #{endpoint_url}"
+      @elb = RightAws::ElbInterface.new(AWS_ID, AWS_KEY, { :endpoint_url => endpoint_url } )
       @elb_name = "#{ELB_PREFIX}-#{rand(1000000)}"
     end
     
@@ -81,8 +101,10 @@ module VirtualMonkey
     end
     
     def create_elb
+      az = ELBS[get_cloud_id][:azs]
+puts "Using az: #{az}"
       @elb_dns = @elb.create_load_balancer(@elb_name,
-                                 ['us-east-1a'],  #only one az.  make sure test launches server in other A.Z.
+                                 [az],
                                  [ { :protocol => :http, :load_balancer_port => ELB_PORT,  :instance_port => ELB_PORT_FORWARD } ] )
     end
     
@@ -94,15 +116,21 @@ module VirtualMonkey
   private 
    
     def elb_href
-      cloud_id = get_cloud_id
       "http:\/\/#{@elb_dns}"
     end
     
     # What cloud is the first server in?
     def get_cloud_id
-      server = @servers.first
-      server.settings 
-      server.cloud_id
+      case ENV['DEPLOYMENT']
+      when /ec2-east/
+        return 1
+      when /ec2-eu/
+        return 2
+      when /ec2-west/
+        return 3
+      when /ec2-ap/
+        return 4
+      end
     end
     
     # run the ELB connect script
