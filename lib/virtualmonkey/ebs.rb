@@ -68,7 +68,6 @@ module VirtualMonkey
 
     # Returns the timestamp of the latest snapshot for testing OPT_DB_RESTORE_TIMESTAMP_OVERRIDE
     def find_snapshot_timestamp
-    debugger
       last_snap = find_snapshots.last
       last_snap.tags.detect { |t| t["name"] =~ /timestamp=(\d+)$/ }
       timestamp = $1
