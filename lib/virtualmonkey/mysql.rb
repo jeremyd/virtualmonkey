@@ -62,7 +62,8 @@ module VirtualMonkey
               "DBAPPLICATION_PASSWORD" => "text:somepass", 
               "EBS_TOTAL_VOLUME_GROUP_SIZE_GB" => "text:1",
               "EBS_LINEAGE" => "text:#{@lineage}" }
-      server.run_executable(@scripts_to_run['create_mysql_ebs_stripe'], options)
+      audit = server.run_executable(@scripts_to_run['create_mysql_ebs_stripe'], options)
+      audit.wait_for_completed
     end
 
     # Performs steps necessary to bootstrap a MySQL Master server from a pristine state.
