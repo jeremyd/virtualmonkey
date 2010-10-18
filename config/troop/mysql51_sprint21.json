@@ -1,0 +1,11 @@
+{
+  "tag":"MYSQL-MONKEY-TROOP-51",
+  "feature":"mysql_5.x_v2_v4_from_scratch.feature",
+  "common_inputs":"mysql.json",
+  "runner":"MysqlRunner",
+  "server_template_ids":[
+    "56353",
+    "56353"
+  ],
+  "cloud_variables":"west.json"
+}
