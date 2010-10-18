@@ -28,8 +28,12 @@ Then /^I should set a variation stripe count of "([^\"]*)"$/ do |stripe|
   @runner.set_variation_stripe_count(stripe)
 end
 
+Then /^I should set a variation DNS provider/ do
+  @runner.setup_dns("virtualmonkey_dyndns")
+end
+
 Then /^I should set a variation MySQL DNS/ do
-  @runner.setup_dns
+  @runner.setup_dns("virtualmonkey_shared_resources")
 end
 
 Then /^I should create the migration script/ do
