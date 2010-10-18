@@ -180,7 +180,18 @@ module VirtualMonkey
     def check_monitoring
       @servers.each do |server|
         server.settings
-        server.monitoring
+	response = nil
+	count = 0
+	until response || count > 20 do
+	  begin
+	    response = server.monitoring
+	  rescue
+	    response = nil
+	    count += 1
+	    sleep 30
+	  end
+	end
+	response
       end
     end
     
