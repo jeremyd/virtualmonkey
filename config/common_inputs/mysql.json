@@ -12,6 +12,8 @@
     "DB_BACKUP_KEEP_YEARLY"       : "text:1",
     "DB_LINEAGE_NAME"             : "text:app_test51",
     "DB_TERMINATE_SAFETY"         : "text:off",
+    "DNS_PASSWORD"                : "cred:DNSMADEEASY_TEST_PASSWORD",
+    "DNS_USER"                    : "cred:DNSMADEEASY_TEST_USER",
     "DNSMADEEASY_PASSWORD"        : "cred:DNSMADEEASY_TEST_PASSWORD",
     "DNSMADEEASY_USER"            : "cred:DNSMADEEASY_TEST_USER",
     "INIT_SLAVE_AT_BOOT"          : "text:false",
