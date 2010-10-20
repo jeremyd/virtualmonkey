@@ -55,6 +55,11 @@ module VirtualMonkey
       set.each { |server| server.start }
     end
 
+    # Re-Launch all server
+    def relaunch_all
+      @servers.each { |s| s.relaunch }
+    end
+
     # un-set all tags on all servers in the deployment
     def unset_all_tags
       @deployment.servers_no_reload.each do |s|
@@ -95,6 +100,24 @@ module VirtualMonkey
     # * state<~String> - state to wait for, eg. operational
     def wait_for_all(state)
       state_wait(@servers, state)
+    end
+
+    def start_ebs_all(wait=true)
+      @servers.each { |s| s.start_ebs }
+      wait_for_all("operational") if wait
+      @servers.each { |s| 
+        s.dns_name = nil 
+        s.private_dns_name = nil
+        }
+    end
+
+    def stop_ebs_all(wait=true)
+      @servers.each { |s| s.stop_ebs }
+      wait_for_all("stopped") if wait
+      @servers.each { |s| 
+        s.dns_name = nil 
+        s.private_dns_name = nil
+        }
     end
 
     def stop_all(wait=true)

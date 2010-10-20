@@ -17,6 +17,7 @@ module VirtualMonkey
 
     # Copy configuration files into some location for usage after start
     def save_configuration_files
+      puts "Saving config files"
     end
 
     # Diff the new config file with the saved one and check that the only
@@ -42,6 +43,5 @@ module VirtualMonkey
       test_mail_config(server)
       test_syslog_config(server)
     end
-    
   end
 end
