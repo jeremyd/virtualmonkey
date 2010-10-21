@@ -191,7 +191,7 @@ module VirtualMonkey
             sleep 30
           end
         end
-        response
+        raise "Fatal: Failed to verify that monitoring is operational" unless response
       end
     end
     
