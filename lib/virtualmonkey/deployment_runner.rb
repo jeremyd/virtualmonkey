@@ -217,6 +217,64 @@ module VirtualMonkey
         raise "Fatal: Failed to verify that monitoring is operational" unless response
       end
     end
+
+
+
+# TODO - we do not know what the RS_INSTANCE_ID available to the testing.
+# For now we are checking at a high level that the services are working
+# and then assume that the config file changes done during start are
+# correct for the new instance data.
+#
+    def perform_start_stop_operations
+      detect_os
+      s=@servers.first
+      # Save configuration files for comparison after starting
+      save_configuration_files(s)
+      # Stop the servers
+      stop_ebs_all
+      # Verify all stopped
+      # Start the servers
+      start_ebs_all(true)
+#      Do this for all? Or just the one?
+#      @servers.each { |server| server.wait_for_operational_with_dns }
+      s=@servers.first
+      s.wait_for_operational_with_dns
+      # Verify operational
+      run_simple_check(s)
+    end
+
+# TODO there will be other files that need compares et al.  Create a list
+# of them and abstarct the tests
+    # Copy configuration files into some location for usage after start
+    def save_configuration_files(server)
+      puts "Saving config files"
+      server.spot_check_command('mkdir -p /root/start_stop_backup')
+      server.spot_check_command('cp /etc/postfix/main.cf /root/start_stop_backup/.')
+      server.spot_check_command('cp /etc/syslog-ng/syslog-ng.conf /root/start_stop_backup/.')
+    end
+
+    # Diff the new config file with the saved one and check that the only
+    # line that is different is the one that has the mydestination change
+    def test_mail_config(server)
+      res = server.spot_check_command('diff /etc/postfix/main.cf /root/start_stop_backup/main.cf')
+# This is lame - assuming if the file is modified then it's okay
+        raise "ERROR: postfix main.cf configuration file did not change when restarted" unless res
+    end
     
+    def test_syslog_config(server)
+      res = server.spot_check_command('diff /etc/syslog-ng/syslog-ng.conf /root/start_stop_backup/syslog-ng.conf')
+# This is lame - assuming if the file is modified then it's okay
+      raise "ERROR: syslog-ng configuration file did not change when restarted" unless res
+    end
+    
+    def run_simple_checks
+      @servers.each { |s| run_simple_check(s) }
+    end
+    
+    # this is where ALL the generic application server checks live, this could get rather long but for now it's a single method with a sequence of checks
+    def run_simple_check(server)
+      test_mail_config(server)
+      test_syslog_config(server)
+    end
   end
 end
