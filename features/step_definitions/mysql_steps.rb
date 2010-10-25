@@ -4,6 +4,10 @@ Then /I should run mysql checks/ do
   @runner.run_checks
 end
 
+Then /I should run mysqlslap stress test/ do
+  @runner.run_mysqlslap_check
+end
+
 Then /I should set a variation backup prefix/ do
   @runner.set_variation_backup_prefix
 end

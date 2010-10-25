@@ -16,6 +16,7 @@ Feature: mysql 5.x v2 or v4 promote operations test
     Then I should wait for the state of "all" servers to be "operational"
     Then I should test promotion operations on the deployment
     Then I should run mysql checks
+#    Then I should run mysqlslap stress test
     Then I should check that monitoring is enabled
 
 #
