@@ -20,10 +20,10 @@ module VirtualMonkey
     end
 
     def run_reboot_operations
-      reboot_all
+      reboot_all(true) # serially_reboot = true
       wait_for_all("operational")
       # This sleep is for waiting for the slave to catch up to the master since they both reboot at once
-      sleep 120
+      # sleep 120
       run_reboot_checks
     end
 
