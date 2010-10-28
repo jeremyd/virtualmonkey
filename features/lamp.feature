@@ -12,3 +12,4 @@ Scenario: LAMP Server Template Test
   Then I should run LAMP checks
   Then I should run mysql checks
 #  Then I should run mysqlslap stress test
+  Then I should check that ulimit was set correctly

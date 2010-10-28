@@ -35,6 +35,13 @@ module VirtualMonkey
       end
     end
 
+    # check that ulimit has been set correctly
+    def ulimit_check
+      @servers.each do |server|
+        result = server.spot_check_command("su -s /bin/bash -c \"ulimit -n\" mysql")
+        raise "FATAL: ulimit wasn't set correctly" unless result[:output].to_i > 1024
+      end
+    end
 
   end
 end

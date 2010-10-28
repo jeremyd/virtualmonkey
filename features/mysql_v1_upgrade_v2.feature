@@ -38,4 +38,5 @@ Feature: mysql 5.x v1 to v2 upgrade tests
     Then I should init a new v2 slave
     Then I should test the new v2 slave
 #    Then I should run mysqlslap stress test
+    Then I should check that ulimit was set correctly
 

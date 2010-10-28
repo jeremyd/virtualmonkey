@@ -8,6 +8,10 @@ Then /I should run mysqlslap stress test/ do
   @runner.run_mysqlslap_check
 end
 
+Then /I should check that ulimit was set correctly/ do
+  @runner.ulimit_check
+end
+
 Then /I should set a variation backup prefix/ do
   @runner.set_variation_backup_prefix
 end
