@@ -4,6 +4,14 @@ Then /I should run mysql checks/ do
   @runner.run_checks
 end
 
+Then /I should run mysqlslap stress test/ do
+  @runner.run_mysqlslap_check
+end
+
+Then /I should check that ulimit was set correctly/ do
+  @runner.ulimit_check
+end
+
 Then /I should set a variation backup prefix/ do
   @runner.set_variation_backup_prefix
 end
@@ -28,8 +36,12 @@ Then /^I should set a variation stripe count of "([^\"]*)"$/ do |stripe|
   @runner.set_variation_stripe_count(stripe)
 end
 
+Then /^I should set a variation DNS provider/ do
+  @runner.setup_dns("virtualmonkey_dyndns")
+end
+
 Then /^I should set a variation MySQL DNS/ do
-  @runner.setup_dns
+  @runner.setup_dns("virtualmonkey_shared_resources")
 end
 
 Then /^I should create the migration script/ do

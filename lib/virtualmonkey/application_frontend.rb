@@ -1,6 +1,6 @@
 module VirtualMonkey
   module ApplicationFrontend
-    #include VirtualMonkey::Application
+    include VirtualMonkey::Application
     include VirtualMonkey::Frontend
     include VirtualMonkey::UnifiedApplication
     
@@ -39,6 +39,6 @@ module VirtualMonkey
         log_check(server, "/mnt/log/#{server.apache_str}/haproxy.log.1")
       end
     end
-        
+    
   end
 end

@@ -10,7 +10,7 @@ Feature: mysql 5.x v2 or v4 promote operations test
     Then I should stop the servers
     Then I should set a variation lineage
     Then I should set a variation stripe count of "1"
-    Then I should set a variation MySQL DNS
+    Then I should set a variation DNS provider
     Then I should launch all servers
     Then I should wait for the state of "all" servers to be "booting"
     Then I should wait for the state of "all" servers to be "operational"

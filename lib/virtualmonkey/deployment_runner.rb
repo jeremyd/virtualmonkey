@@ -106,10 +106,14 @@ module VirtualMonkey
         }
     end
 
-    def reboot_all
+    def reboot_all(serially_reboot = false)
       wait_for_reboot = true
+      # Do NOT thread this each statement
       @servers.each do |s| 
-        s.reboot(wait_for_reboot) 
+        s.reboot(wait_for_reboot)
+        if serially_reboot
+          s.wait_for_state("operational")
+        end
       end
       @servers.each do |s| 
         s.wait_for_state("operational")
@@ -191,7 +195,7 @@ module VirtualMonkey
             sleep 30
           end
         end
-        response
+        raise "Fatal: Failed to verify that monitoring is operational" unless response
       end
     end
     

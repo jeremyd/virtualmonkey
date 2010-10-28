@@ -2,9 +2,9 @@ class SharedDns
   attr_accessor :reservation
   attr_accessor :owner
 
-  def initialize
+  def initialize(domain = "virtualmonkey_shared_resources")
     @sdb = Fog::AWS::SimpleDB.new(:aws_access_key_id => Fog.credentials[:aws_access_key_id], :aws_secret_access_key => Fog.credentials[:aws_secret_access_key])
-    @domain = "virtualmonkey_shared_resources"
+    @domain = domain
     @reservation = nil
   end
 

@@ -5,12 +5,13 @@ Feature: LB Server Test
 
 Scenario: LB server test
 
-  Given A deployment
+  Given An Apache with HAproxy deployment
   Then I should stop the servers
   Then I should set a variation for connecting to shared database host
 
   When I launch the "Apache" servers
-  Then the "Apache" servers become operational
+#  Then the "Apache" servers become operational
+  Then I should wait for the state of "Apache" servers to be "operational"
 
   Then I should set a variation LB_HOSTNAME
   When I launch the "App Server" servers

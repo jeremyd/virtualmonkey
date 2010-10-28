@@ -108,9 +108,9 @@ module VirtualMonkey
     end
 
     # uses SharedDns to find an available set of DNS records and sets them on the deployment
-    def setup_dns
+    def setup_dns(domain)
       owner="Erik"
-      @dns = SharedDns.new
+      @dns = SharedDns.new(domain)
       raise "Unable to reserve DNS" unless @dns.reserve_dns(owner)
       @dns.set_dns_inputs(@deployment)
     end
