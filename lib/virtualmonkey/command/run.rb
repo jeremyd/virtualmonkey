@@ -10,7 +10,8 @@ module VirtualMonkey
         opt :feature, "path to feature(s) to run against the deployments", :type => :string, :required => true
         opt :tag, "Tag to match prefix of the deployments.", :type => :string, :required => true, :short => "-t"
         opt :only, "regex string to use for subselection matching on deployments.  Eg. --only x86_64", :type => :string
-        opt :terminate, "Terminate if feature successfully completes.", :short => "-r"
+        opt :terminate, "Terminate if feature successfully completes. (No destroy)", :short => "-r"
+        opt :mysql, "Use special MySQL TERMINATE script, instead of normal shutdown of all servers. Specify --terminate also", :short => "-m"
       end
       EM.run {
         cm = CukeMonk.new
@@ -25,7 +26,21 @@ module VirtualMonkey
         end
 
         watch = EM.add_periodic_timer(10) {
-          watch.cancel if cm.all_done?
+          if cm.all_done?
+            watch.cancel
+            if options[:terminate]
+              cm.jobs.each do |job|
+                if job.status == 0
+                  if options[:mysql]
+                    @runner = VirtualMonkey::MysqlRunner.new(job.deployment.nickname)
+                  else
+                    @runner = VirtualMonkey::SimpleRunner.new(job.deployment.nickname)
+                  end
+                  @runner.stop_all(false)
+                end
+              end
+            end
+          end
           cm.watch_and_report
         }
 
