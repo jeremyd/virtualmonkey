@@ -1,0 +1,13 @@
+{
+  "feature":"tomcat6.feature",
+  "common_inputs":"tomcat.json",
+  "runner":"SimpleRunner",
+  "server_template_ids":[
+    "74592",
+    "74592",
+    "74591",
+    "74591"
+  ],
+  "tag":"TOMCAT6-MONKEY-TROOP",
+  "cloud_variables":"west.json"
+}

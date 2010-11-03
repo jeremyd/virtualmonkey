@@ -39,7 +39,9 @@ class CukeJob
   def run(deployment, cmd)
     RightScale.popen3(:command        => cmd,
                         :target         => self,
-                        :environment    => {"DEPLOYMENT" => deployment.nickname},
+                        :environment    => {"DEPLOYMENT" => deployment.nickname,
+                                            "AWS_ACCESS_KEY_ID" => Fog.credentials[:aws_access_key_id],
+                                            "AWS_SECRET_ACCESS_KEY" => Fog.credentials[:aws_secret_access_key]},
                         :stdout_handler => :on_read_stdout,
                         :stderr_handler => :on_read_stderr,
                         :exit_handler   => :on_exit)
@@ -116,7 +118,7 @@ class CukeMonk
 
     ## upload to s3
     # setup credentials in ~/.fog
-    s3 = Fog::AWS::S3.new(:aws_access_key_id => Fog.credentials[:aws_access_key_id], :aws_secret_access_key => Fog.credentials[:aws_secret_access_key])
+    s3 = Fog::AWS::S3.new(:aws_access_key_id => Fog.credentials[:aws_access_key_id_test], :aws_secret_access_key => Fog.credentials[:aws_secret_access_key_test])
     if directory = s3.directories.detect { |d| d.key == bucket_name } 
       puts "found directory, re-using"
     else

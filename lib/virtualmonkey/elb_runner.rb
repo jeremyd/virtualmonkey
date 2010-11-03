@@ -104,7 +104,7 @@ puts "USING EP: #{endpoint_url}"
       az = ELBS[get_cloud_id][:azs]
 puts "Using az: #{az}"
       @elb_dns = @elb.create_load_balancer(@elb_name,
-                                 [az],
+                                 az,
                                  [ { :protocol => :http, :load_balancer_port => ELB_PORT,  :instance_port => ELB_PORT_FORWARD } ] )
     end
     
