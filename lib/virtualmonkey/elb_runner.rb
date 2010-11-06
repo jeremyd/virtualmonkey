@@ -106,11 +106,6 @@ puts "Using az: #{az}"
       @elb_dns = @elb.create_load_balancer(@elb_name,
                                  az,
                                  [ { :protocol => :http, :load_balancer_port => ELB_PORT,  :instance_port => ELB_PORT_FORWARD } ] )
-      puts "elb_dns = #{@elb_dns}"
-      sleep 30
-      link = @elb.describe_load_balancers(@elb_name)
-      puts "load_balancer? #{link}"
-      @elb_dns
     end
     
     def destroy_elb
