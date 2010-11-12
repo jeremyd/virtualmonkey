@@ -6,7 +6,7 @@ module VirtualMonkey
     # returns an Array of the App Servers in the deployment
     def app_servers
       @servers.select { |s| s.nickname =~ /App Server/ }
-      raise "No app servers in deployment" if @servers.count == 0
+      raise "No app servers in deployment" if @servers.size == 0
     end
     
     # sets LB_HOSTNAME on the deployment using the private dns of the fe_servers
