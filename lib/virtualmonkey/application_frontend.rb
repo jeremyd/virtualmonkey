@@ -1,6 +1,6 @@
 module VirtualMonkey
   module ApplicationFrontend
-    #include VirtualMonkey::Application
+    include VirtualMonkey::Application
     include VirtualMonkey::Frontend
     include VirtualMonkey::UnifiedApplication
     
