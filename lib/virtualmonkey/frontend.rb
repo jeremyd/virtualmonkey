@@ -3,7 +3,7 @@ module VirtualMonkey
   
     # returns an Array of the Front End servers in the deployment
     def fe_servers
-      res = @servers.select { |s| s.nickname =~ /Front End/ || s.nickname =~ /FrontEnd/ || s.nickname =~ /Apache with HAproxy/ || s.nickname =~ /RightScale Load Balancer/ }
+      res = @servers.select { |s| s.nickname =~ /Front End/ || s.nickname =~ /FrontEnd/ || s.nickname =~ /Apache with HAproxy/ || s.nickname =~ /Load Balancer/ }
       raise "FATAL: No frontend servers found" unless res.length > 0
       res
     end
