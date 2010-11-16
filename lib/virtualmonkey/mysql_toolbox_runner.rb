@@ -5,16 +5,16 @@ module VirtualMonkey
     include VirtualMonkey::Mysql
     attr_accessor :scripts_to_run
 
-    @scripts_master = [
-                        [ 'promote', 'promote to master' ],
-                        [ 'backup', 'EBS backup' ],
-                        [ 'terminate', 'TERMINATE' ]
-                      ]
 
     def lookup_scripts
+      scripts_master = [
+                         [ 'promote', 'promote to master' ],
+                         [ 'backup', 'EBS backup' ],
+                         [ 'terminate', 'TERMINATE' ]
+                       ]
       st_master = ServerTemplate.find(s_one.server_template_href)
       @scripts_to_run = {}
-      @scripts_master.each |a| begin
+      scripts_master.each |a| begin
         @scripts_to_run[ a[0] ] = st_master.executables.detect { |ex| ex.name =~ /#{a[1]}/ }
         raise "FATAL: Script #{a[1]} not found" unless @scripts_to_run[ a[0] ]
       end
