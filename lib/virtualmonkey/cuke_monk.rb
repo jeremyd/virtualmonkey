@@ -118,7 +118,7 @@ class CukeMonk
 
     ## upload to s3
     # setup credentials in ~/.fog
-    s3 = Fog::AWS::S3.new(:aws_access_key_id => Fog.credentials[:aws_access_key_id_test], :aws_secret_access_key => Fog.credentials[:aws_secret_access_key_test])
+    s3 = Fog::AWS::Storage.new(:aws_access_key_id => Fog.credentials[:aws_access_key_id_test], :aws_secret_access_key => Fog.credentials[:aws_secret_access_key_test])
     if directory = s3.directories.detect { |d| d.key == bucket_name } 
       puts "found directory, re-using"
     else
