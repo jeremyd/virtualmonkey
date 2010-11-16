@@ -14,10 +14,10 @@ module VirtualMonkey
                        ]
       st_master = ServerTemplate.find(s_one.server_template_href)
       @scripts_to_run = {}
-      scripts_master.each |a| begin
+      scripts_master.each { |a| begin
         @scripts_to_run[ a[0] ] = st_master.executables.detect { |ex| ex.name =~ /#{a[1]}/ }
         raise "FATAL: Script #{a[1]} not found" unless @scripts_to_run[ a[0] ]
-      end
+      end }
 #      tbx = ServerTemplate.find_by(:nickname) { |n| n =~ /MySQL EBS Toolbox v2/ }
       # Use the HEAD revision.
  #     st_tool = tbx[0]
