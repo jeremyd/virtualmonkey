@@ -70,7 +70,9 @@ module VirtualMonkey
     # * server<~Server> the server to use as MASTER
     def config_master_from_scratch(server)
       create_stripe(server)
-      server.spot_check_command("service mysql start")
+      server.spot_check_command("service mysqld start")
+#TODO the service name depends on the OS
+#      server.spot_check_command("service mysql start")
       run_query("create database mynewtest", server)
       set_master_dns(server)
       # This sleep is to wait for DNS to settle - must sleep
@@ -109,7 +111,8 @@ module VirtualMonkey
 
     # uses SharedDns to find an available set of DNS records and sets them on the deployment
     def setup_dns(domain)
-      owner="Erik"
+# TODO should we just use the ID instead of the full href?
+      owner=@deployment.href
       @dns = SharedDns.new(domain)
       raise "Unable to reserve DNS" unless @dns.reserve_dns(owner)
       @dns.set_dns_inputs(@deployment)
