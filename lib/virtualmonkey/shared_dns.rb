@@ -3,7 +3,7 @@ class SharedDns
   attr_accessor :owner
 
   def initialize(domain = "virtualmonkey_shared_resources")
-    @sdb = Fog::AWS::SimpleDB.new(:aws_access_key_id => Fog.credentials[:aws_access_key_id], :aws_secret_access_key => Fog.credentials[:aws_secret_access_key])
+    @sdb = Fog::AWS::SimpleDB.new(:aws_access_key_id => Fog.credentials[:aws_access_key_id_test], :aws_secret_access_key => Fog.credentials[:aws_secret_access_key_test])
     @domain = domain
     @reservation = nil
   end
@@ -20,25 +20,33 @@ class SharedDns
   end
 
   def reserve_dns(owner, timeout = 0)
-    result = @sdb.select("SELECT * from #{@domain} where owner = 'available'")
-    return false if result.body["Items"].empty?
-    item_name = result.body["Items"].keys.first
-    response = @sdb.put_attributes(@domain, item_name, {'owner' => owner}, :expect => {'owner' => "available"}, :replace => ['owner'])
+    puts "Checking DNS reservation for #{owner}"
+    result = @sdb.select("SELECT * from #{@domain} where owner = '#{owner}'")
+    puts "Reusing DNS reservation" unless result.body["Items"].empty?
+    if result.body["Items"].empty?
+       result = @sdb.select("SELECT * from #{@domain} where owner = 'available'")
+       return false if result.body["Items"].empty?
+       puts "Aquired new DNS reservation"
+       item_name = result.body["Items"].keys.first
+       response = @sdb.put_attributes(@domain, item_name, {'owner' => owner}, :expect => {'owner' => "available"}, :replace => ['owner'])
+    end
     @owner = owner
-    @reservation = item_name
+    @reservation = result.body["Items"].keys.first
   rescue Excon::Errors::ServiceUnavailable
-    retry_reservation(timeout)
+    puts "Resuce: ServiceUnavailable"
+    retry_reservation(owner, timeout)
   rescue Excon::Errors::Conflict
-    retry_reservation(timeout)
+    puts "Resuce: Conflict"
+    retry_reservation(owner, timeout)
   end
 
-  def retry_reservation(timeout)
+  def retry_reservation(owner, timeout)
     STDOUT.flush
     if timeout > 20 
       return false
     end
     sleep(5)
-    reserve_dns(timeout + 1)
+    reserve_dns(owner, timeout + 1)
   end
 
   def release_all
