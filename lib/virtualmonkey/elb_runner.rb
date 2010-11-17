@@ -40,6 +40,27 @@ puts "USING EP: #{endpoint_url}"
       @elb_name = "#{ELB_PREFIX}-#{rand(1000000)}"
     end
     
+    def retry_elb_fn(fn, *args)
+      backoff = 60
+      retry_loop = 0
+      begin
+        begin
+          result = @elb.__send__(fn, *args)
+          done = true
+        rescue Exception => e
+          if e.message =~ /Throttling/
+            puts "Rescuing ELB error: #{e.message}"
+            raise "FATAL: Exceeded ELB retry limit" unless retry_loop < 10
+            sleep (rand(backoff))
+            retry_loop += 1
+          else
+            raise "#{e.message}"
+          end
+        end
+      end while !done
+      result
+    end
+
     def set_elb_name
       @deployment.set_input("ELB_NAME", "text:#{@elb_name}")
     end
@@ -51,7 +72,7 @@ puts "USING EP: #{endpoint_url}"
     
     # Check if :all or :none of the app servers are registered
     def elb_registration_check(type)
-      details = @elb.describe_load_balancers(@elb_name)
+      details = retry_elb_fn("describe_load_balancers",@elb_name)
       instances = details.first[:instances]
       case type
       when :all
@@ -103,13 +124,13 @@ puts "USING EP: #{endpoint_url}"
     def create_elb
       az = ELBS[get_cloud_id][:azs]
 puts "Using az: #{az}"
-      @elb_dns = @elb.create_load_balancer(@elb_name,
+      @elb_dns = retry_elb_fn("create_load_balancer",@elb_name,
                                  az,
                                  [ { :protocol => :http, :load_balancer_port => ELB_PORT,  :instance_port => ELB_PORT_FORWARD } ] )
     end
     
     def destroy_elb
-      success = @elb.delete_load_balancer(@elb_name)
+      success = retry_elb_fn("delete_load_balancer",@elb_name)
       raise "ERROR: unable to delete ELB name=#{@elb_name}" unless success
     end
     
