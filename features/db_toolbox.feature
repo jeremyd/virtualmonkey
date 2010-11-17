@@ -7,11 +7,12 @@ Feature: mysql toolbox
 # PHASE 1) Launch a few DB servers.  Make one the master.
 #
     Given A MySQL Toolbox deployment
+    Then I should set a variation MySQL DNS
     Then I should set a variation lineage
     Then I should set a variation stripe count of "3"
     Then I should set a variation volume size "3"
 
-    Then I should stop the servers
+#    Then I should stop the servers
     Then I should launch all servers
     Then I should wait for the state of "all" servers to be "operational"
     Then I should create master from scratch
