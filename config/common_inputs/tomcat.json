@@ -4,9 +4,12 @@
   "DBAPPLICATION_USER"       : "cred:DBAPPLICATION_USER",
   "DB_SCHEMA_NAME"           : "text:app_test",
   "HEALTH_CHECK_URI"         : "text:/index.html",
-  "OPT_SVN_PASSWORD"         : "cred:martin_svn_passwd",
-  "OPT_SVN_USERNAME"         : "cred:martin_svn_user",
+  "OPT_SVN_PASSWORD"         : "cred:cary_wush_svn",
+  "OPT_SVN_USERNAME"         : "text:cary",
   "SVN_APP_REPOSITORY"       : "text:https://wush.net/svn/rightscale/unified_test_app/tomcat/dist",
   "MASTER_DB_DNSNAME"        : "text:<%= ENV['EC2_PUBLIC_HOSTNAME'] %>",
-  "WEBSITE_DNS"              : "text:reg-tomcat.test.rightscale.com"
+  "WEBSITE_DNS"              : "text:reg-tomcat.test.rightscale.com",
+  "AWS_ACCESS_KEY_ID":"cred:AWS_ACCESS_KEY_ID",
+  "AWS_SECRET_ACCESS_KEY":"cred:AWS_SECRET_ACCESS_KEY"
+
 }
