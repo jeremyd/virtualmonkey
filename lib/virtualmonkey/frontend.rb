@@ -1,5 +1,7 @@
 module VirtualMonkey
   module Frontend
+ 
+    require File.expand_path(File.dirname(__FILE__), "application")
   
     # returns an Array of the Front End servers in the deployment
     def fe_servers
