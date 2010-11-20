@@ -9,7 +9,7 @@ module VirtualMonkey
     # sets the lineage for the deployment
     # * kind<~String> can be "chef" or nil
     def set_variation_lineage(kind = nil)
-      @lineage = "testlineage#{rand(1000000)}"
+      @lineage = "testlineage#{@deployment.href.split(/\//).last}"
       if kind == "chef"
         @deployment.set_input('db/backup/lineage', "text:#{@lineage}")
         # unset all server level inputs in the deployment to ensure use of 
