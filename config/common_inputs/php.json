@@ -1,7 +1,7 @@
 {
   "PHP_MODULES_LIST" : "ignore:$ignore",
   "OPT_TARGET_BIND_ADDRESS" : "ignore:$ignore",
-  "OPT_SVN_USERNAME" : "cred:martin_svn_user",
+  "OPT_SVN_USERNAME" : "cred:cary",
   "OPT_SSL_PASSPHRASE" : "ignore:$ignore",
   "LB_BACKEND_NAME" : "env:EC2_INSTANCE_ID",
   "SSL_KEY" : "cred:TEST_SSL_KEY",
@@ -10,7 +10,7 @@
   "OPT_TARGET_BIND_PORT" : "ignore:$ignore",
   "LB_BIND_PORT" : "text:85",
   "WEBSITE_DNS" : "text:reg-php.test.rightscale.com",
-  "OPT_SVN_PASSWORD" : "cred:martin_svn_passwd",
+  "OPT_SVN_PASSWORD" : "cred:cary_wush_svn",
   "LB_BIND_ADDRESS" : "text:127.0.0.1",
   "SSL_CERTIFICATE" : "cred:TEST_SSL_CERT",
   "DBAPPLICATION_USER" : "cred:DBAPPLICATION_USER",

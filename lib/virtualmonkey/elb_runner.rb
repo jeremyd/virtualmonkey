@@ -48,7 +48,7 @@ puts "USING EP: #{endpoint_url}"
           result = @elb.__send__(fn, *args)
           done = true
         rescue Exception => e
-          if e.message ~= /Throttling/
+          if e.message =~ /Throttling/
             puts "Rescuing ELB error: #{e.message}"
             raise "FATAL: Exceeded ELB retry limit" unless retry_loop < 10
             sleep (rand(backoff))

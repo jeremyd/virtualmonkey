@@ -2,7 +2,7 @@
   "SYSLOG_SERVER":"env:RS_SYSLOG",
   "PHP_MODULES_LIST":"ignore:$ignore",
   "OPT_TARGET_BIND_ADDRESS":"ignore:$ignore",
-  "OPT_SVN_USERNAME":"cred:martin_svn_user",
+  "OPT_SVN_USERNAME":"text:cary",
   "LB_BACKEND_NAME":"env:EC2_INSTANCE_ID",
   "SERVER_UUID":"env:RS_INSTANCE_UUID",
   "OPT_PHP_ENABLE":"text:yes",
@@ -11,7 +11,7 @@
   "RAILS_ENV":"text:production",
   "LB_BIND_PORT":"text:85",
   "WEBSITE_DNS":"text:reg-rails.test.rightscale.com",
-  "OPT_SVN_PASSWORD":"cred:martin_svn_passwd",
+  "OPT_SVN_PASSWORD":"cred:cary_wush_svn",
   "LB_BIND_ADDRESS":"text:127.0.0.1",
   "WEB_SITE_DNS":"text:reg-rails.test.rightscale.com",
   "RAILS_VERSION":"text:2.1.2",
@@ -24,5 +24,8 @@
   "HEALTH_CHECK_URI":"text:/index.html",
   "SVN_APP_REPOSITORY":"text:https://wush.net/svn/rightscale/unified_test_app/rails",
   "DB_SCHEMA_NAME":"text:app_test",
-  "DBAPPLICATION_PASSWORD":"cred:DBAPPLICATION_PASSWORD"
+  "DBAPPLICATION_PASSWORD":"cred:DBAPPLICATION_PASSWORD",
+  "AWS_ACCESS_KEY_ID":"cred:AWS_ACCESS_KEY_ID",
+  "AWS_SECRET_ACCESS_KEY":"cred:AWS_SECRET_ACCESS_KEY"
+
 }
