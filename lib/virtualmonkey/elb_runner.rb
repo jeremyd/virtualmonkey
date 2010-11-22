@@ -37,7 +37,8 @@ module VirtualMonkey
       endpoint_url=ELBS[get_cloud_id][:endpoint]
 puts "USING EP: #{endpoint_url}"
       @elb = RightAws::ElbInterface.new(AWS_ID, AWS_KEY, { :endpoint_url => endpoint_url } )
-      @elb_name = "#{ELB_PREFIX}-#{rand(1000000)}"
+#      @elb_name = "#{ELB_PREFIX}-#{rand(1000000)}"
+      @elb_name = @deployment.href.split(/\//).last
     end
     
     def retry_elb_fn(fn, *args)
@@ -122,11 +123,18 @@ puts "USING EP: #{endpoint_url}"
     end
     
     def create_elb
-      az = ELBS[get_cloud_id][:azs]
+      array = retry_elb_fn("describe_load_balancer",@elb_name)
+      if array.length == 1
+        @elb_dns = array.first[:dns_name]
+      else
+        raise "ERROR: No ELB with name \"#{@elb_name}\" found." if array.length < 1
+        raise "ERROR: More than one ELB with name \"#{@elb_name}\" found." if array.length > 1
+        az = ELBS[get_cloud_id][:azs]
 puts "Using az: #{az}"
-      @elb_dns = retry_elb_fn("create_load_balancer",@elb_name,
+        @elb_dns = retry_elb_fn("create_load_balancer",@elb_name,
                                  az,
                                  [ { :protocol => :http, :load_balancer_port => ELB_PORT,  :instance_port => ELB_PORT_FORWARD } ] )
+      end
     end
     
     def destroy_elb

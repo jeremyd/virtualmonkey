@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Jeremy Deininger"]
-  s.date = %q{2010-09-18}
+  s.date = %q{2010-11-16}
   s.description = %q{monkey see, monkey do, monkey repeat}
   s.email = %q{jeremy@rightscale.com}
   s.executables = ["monkey", "mcicp"]
@@ -35,36 +35,54 @@ Gem::Specification.new do |s|
      "config/common_inputs/haproxy.json",
      "config/common_inputs/lamp.json",
      "config/common_inputs/mysql.json",
+     "config/common_inputs/none.json",
      "config/common_inputs/php.json",
      "config/common_inputs/php_aio_trial_chef_alpha.json",
      "config/common_inputs/php_app_fe_chef.json",
+     "config/common_inputs/php_elb.json",
+     "config/common_inputs/qstart.json",
      "config/common_inputs/rails.json",
      "config/common_inputs/rails_aio_demo_chef_alpha.json",
      "config/common_inputs/rails_aio_developer_chef_alpha.json",
      "config/common_inputs/rsgrid.json",
      "config/common_inputs/tomcat.json",
+     "config/troop/apache_haproxy_10_sprint21.json",
+     "config/troop/chef_quickstart.json",
      "config/troop/lamp.json",
+     "config/troop/lamp_v5.json",
+     "config/troop/mysql51.json",
+     "config/troop/mysql51_sprint21.json",
      "config/troop/mysqlv2.json",
      "config/troop/php.json",
+     "config/troop/php_elb.json",
+     "config/troop/php_half_cloud.json",
      "config/troop/rails.json",
+     "config/troop/rightlink.json",
      "config/troop/simple_fail.json",
      "config/troop/simple_pass.json",
+     "config/troop/tomcat6_sprint21.json",
      "features/Rakefile",
      "features/Steps-TODO",
      "features/app_state.feature",
      "features/app_test.feature",
+     "features/chef_quickstart.feature",
      "features/db_toolbox.feature",
      "features/ebs_toolbox.feature",
+     "features/elb_create_delete.feature",
      "features/fe_app_checks.feature",
+     "features/just_elb",
      "features/lamp.feature",
      "features/lb-apache-haproxy.feature",
      "features/mysql_5.x_v2_v4_from_scratch.feature",
+     "features/mysql_5.x_v2_v4_from_scratch_dyndns.feature",
      "features/mysql_chef_premium.feature",
      "features/mysql_chef_premium_from_scratch.feature",
      "features/mysql_v1_upgrade_v2.feature",
      "features/php.feature",
      "features/php_aio_trial_chef_alpha.feature",
      "features/php_chef.feature",
+     "features/php_elb.feature",
+     "features/qstart.feature",
      "features/rails.feature",
      "features/rails_aio_developer_chef.feature",
      "features/reboot.feature",
@@ -75,11 +93,14 @@ Gem::Specification.new do |s|
      "features/step_definitions/app.rb",
      "features/step_definitions/deployment_steps.rb",
      "features/step_definitions/ebs.rb",
+     "features/step_definitions/elb.rb",
      "features/step_definitions/lb.rb",
      "features/step_definitions/mysql_steps.rb",
      "features/terminate.feature",
      "features/tomcat6-tests-TODO",
+     "features/tomcat6.feature",
      "lib/virtualmonkey.rb",
+     "lib/virtualmonkey/application.rb",
      "lib/virtualmonkey/application_frontend.rb",
      "lib/virtualmonkey/command.rb",
      "lib/virtualmonkey/command/create.rb",
@@ -92,8 +113,11 @@ Gem::Specification.new do |s|
      "lib/virtualmonkey/deployment_runner.rb",
      "lib/virtualmonkey/ebs.rb",
      "lib/virtualmonkey/ebs_runner.rb",
+     "lib/virtualmonkey/elb_runner.rb",
      "lib/virtualmonkey/fe_app_runner.rb",
      "lib/virtualmonkey/file_locations.rb",
+     "lib/virtualmonkey/frontend.rb",
+     "lib/virtualmonkey/http_checks.rb",
      "lib/virtualmonkey/index.html.erb",
      "lib/virtualmonkey/lamp_runner.rb",
      "lib/virtualmonkey/mysql.rb",
@@ -146,7 +170,7 @@ Gem::Specification.new do |s|
       s.add_runtime_dependency(%q<fog>, [">= 0"])
       s.add_runtime_dependency(%q<highline>, [">= 0"])
       s.add_runtime_dependency(%q<rspec>, [">= 0"])
-      s.add_runtime_dependency(%q<gherkin>, ["= 2.1.4"])
+      s.add_runtime_dependency(%q<gherkin>, [">= 0"])
       s.add_runtime_dependency(%q<cucumber>, [">= 0"])
       s.add_runtime_dependency(%q<uuidtools>, [">= 0"])
       s.add_runtime_dependency(%q<eventmachine>, [">= 0"])
@@ -159,7 +183,7 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<fog>, [">= 0"])
       s.add_dependency(%q<highline>, [">= 0"])
       s.add_dependency(%q<rspec>, [">= 0"])
-      s.add_dependency(%q<gherkin>, ["= 2.1.4"])
+      s.add_dependency(%q<gherkin>, [">= 0"])
       s.add_dependency(%q<cucumber>, [">= 0"])
       s.add_dependency(%q<uuidtools>, [">= 0"])
       s.add_dependency(%q<eventmachine>, [">= 0"])
@@ -173,7 +197,7 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<fog>, [">= 0"])
     s.add_dependency(%q<highline>, [">= 0"])
     s.add_dependency(%q<rspec>, [">= 0"])
-    s.add_dependency(%q<gherkin>, ["= 2.1.4"])
+    s.add_dependency(%q<gherkin>, [">= 0"])
     s.add_dependency(%q<cucumber>, [">= 0"])
     s.add_dependency(%q<uuidtools>, [">= 0"])
     s.add_dependency(%q<eventmachine>, [">= 0"])
