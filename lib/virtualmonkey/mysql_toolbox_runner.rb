@@ -41,21 +41,6 @@ module VirtualMonkey
       }
     end
 
-    # lookup all the RightScripts that we will want to run
-#    def lookup_scripts_old
-#      st = ServerTemplate.find(s_one.server_template_href)
-#      @scripts_to_run = {}
-#      tbx = ServerTemplate.find_by(:nickname) { |n| n =~ /MySQL EBS Toolbox v2/ }
-#      # Use the HEAD revision.
-#      st = tbx[0]
-#      @scripts_to_run['restore'] = st.executables.detect { |ex| ex.name =~ /EBS restore/ }
-#      @scripts_to_run['create_backup_scripts'] = st.executables.detect { |ex| ex.name =~  /EBS create backup scripts/i }
-#      @scripts_to_run['enable_network'] = st.executables.detect { |ex| ex.name =~  /DB MySQL Enable Networking/i }
-#      @scripts_to_run['create_migrate_script'] = st.executables.detect { |ex| ex.name =~ /DB EBS create migrate script from MySQL EBS v1 master/ }
-#      @scripts_to_run['create_mysql_ebs_stripe'] = st.executables.detect { |ex| ex.name =~ /DB Create MySQL EBS/ }
-#      @scripts_to_run['grow_volume'] = st.executables.detect { |ex| ex.name =~  /DB EBS slave init and grow volume/i }
-#    end
-
     def create_master
       config_master_from_scratch(s_one)
     end
