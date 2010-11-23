@@ -12,9 +12,9 @@ Then /I should check that ulimit was set correctly/ do
   @runner.ulimit_check
 end
 
-Then /I should set a variation backup prefix/ do
-  @runner.set_variation_backup_prefix
-end
+#Then /I should set a variation backup prefix/ do
+#  @runner.set_variation_backup_prefix
+#end
 
 Then /I should set a variation bucket/ do
   @runner.set_variation_bucket
@@ -24,9 +24,9 @@ Then /I should test promotion operations on the deployment/ do
   @runner.run_promotion_operations
 end
 
-Then /I should set a chef variation lineage/ do
-  @runner.set_variation_lineage("chef")
-end
+#Then /I should set a chef variation lineage/ do
+#  @runner.set_variation_lineage("chef")
+#end
 
 Then /I should set a variation lineage/ do
   @runner.set_variation_lineage
@@ -64,9 +64,9 @@ Then /^I should release the dns records for use with other deployments$/ do
   @runner.release_dns
 end
 
-Then /^I should setup master dns to point at server "([^\"]*)"$/ do |server_index|
-  @runner.set_master_dns(server_index)
-end
+#Then /^I should setup master dns to point at server "([^\"]*)"$/ do |server_index|
+#  @runner.set_master_dns(server_index)
+#end
 
 Then /^I should create master from scratch$/ do
   @runner.create_master

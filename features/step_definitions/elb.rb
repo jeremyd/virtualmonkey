@@ -30,6 +30,6 @@ When /^I delete EC2 Elastic Load Balancer$/ do
   @runner.destroy_elb
 end
 
-Then /^the servers should strand with "([^"]*)"$/ do |arg1|
-  pending # express the regexp above with the code you wish you had
-end
+#Then /^the servers should strand with "([^"]*)"$/ do |arg1|
+#  pending # express the regexp above with the code you wish you had
+#end

@@ -12,7 +12,7 @@ Feature: mysql toolbox
     Then I should set a variation stripe count of "3"
     Then I should set a variation volume size "3"
 
-#    Then I should stop the servers
+    Then I should stop the servers
     Then I should launch all servers
     Then I should wait for the state of "all" servers to be "operational"
     Then I should create master from scratch

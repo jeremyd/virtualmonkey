@@ -71,12 +71,24 @@ When /^I launch the "([^\"]*)" servers$/ do |server_set|
   @runner.launch_set(server_set)
 end
 
+Then /^I should relaunch all servers$/ do
+  @runner.relaunch_all
+end
+
 Then /I should wait for the state of \"(.*)\" servers to be \"(.*)\"/ do |set,state|
   if set == "all"
     @runner.wait_for_all(state)
   else
     @runner.wait_for_set(set, state)
   end
+end
+
+Then /^I should stop_ebs all servers$/ do
+  @runner.stop_ebs_all
+end
+
+Then /^I should start_ebs all servers$/ do
+  @runner.start_ebs_all
 end
 
 Then /I should reboot the servers$/ do
@@ -93,4 +105,8 @@ end
 
 Then /I should check that monitoring is enabled$/ do
   @runner.check_monitoring
+end
+
+Then /^I should perform start stop operations\.$/ do
+  @runner.perform_start_stop_operations
 end
