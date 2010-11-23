@@ -61,8 +61,8 @@ module VirtualMonkey
       @servers.each do |server|
         server.spot_check(query_command) { |result| raise "Failure: tmpdir was unset#{result}" unless result.include?("/mnt/mysqltmp") }
       end
-    # check that mysql can handle 5000 concurrent connections (file limits, etc.)
-    run_mysqlslap_check
+#    # check that mysql can handle 5000 concurrent connections (file limits, etc.)
+#    run_mysqlslap_check
     end
 
     def run_mysqlslap_check
@@ -83,8 +83,8 @@ module VirtualMonkey
     # check that ulimit has been set correctly
     def ulimit_check
       @servers.each do |server|
-        result = server.spot_check_command("su -s /bin/bash -c \"ulimit -n\" mysql")
-        raise "FATAL: ulimit wasn't set correctly" unless result[:output].to_i > 1024
+        result = server.spot_check_command("su - mysql -s /bin/bash -c \"ulimit -n\"")
+        raise "FATAL: ulimit wasn't set correctly" unless result[:output].to_i >= 1024
       end
     end
 
