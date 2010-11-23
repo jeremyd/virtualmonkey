@@ -51,6 +51,7 @@ module VirtualMonkey
       tbx = ServerTemplate.find_by(:nickname) { |n| n =~ /MySQL EBS Toolbox v2/ }
       # Use the HEAD revision.
       @scripts_to_run['create_migrate_script'] = tbx[0].executables.detect { |ex| ex.name =~ /DB EBS create migrate script from MySQL EBS v1 master/ }
+     raise "FATAL: Need 2 MySQL servers in the deployment" unless @servers.size == 2
     end
 
     def migrate_slave
