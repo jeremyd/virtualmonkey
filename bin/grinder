@@ -48,7 +48,7 @@ if File.directory?(state_dir)
   end while !done
   state_file.close
 end
-Dir.makedir(state_dir)
+Dir.mkdir(state_dir)
 state_file = File.open(File.join(state_dir, testname), "w")
 
 done = false
