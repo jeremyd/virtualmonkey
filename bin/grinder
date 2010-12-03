@@ -54,9 +54,10 @@ if File.directory?(state_dir)
     done = true
   end while !done
   state_file.close
+else
+  Dir.mkdir(test_states) unless File.directory?(test_states)
+  Dir.mkdir(state_dir)
 end
-Dir.mkdir(test_states) unless File.directory?(test_states)
-Dir.mkdir(state_dir)
 state_file = File.open(File.join(state_dir, testname), "w")
 
 done = false
