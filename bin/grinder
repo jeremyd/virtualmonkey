@@ -36,7 +36,8 @@ testname = ARGV[0].split(/\//).last
 linenum = 0
 resume = 0
 
-state_dir = File.join("testcase_state", ENV['DEPLOYMENT'])
+test_states = "test_states"
+state_dir = File.join(test_states, ENV['DEPLOYMENT'])
 if File.directory?(state_dir)
   puts "Resuming previous testcase..."
   state_file = File.open(File.join(state_dir, testname), "r")
@@ -48,6 +49,7 @@ if File.directory?(state_dir)
   end while !done
   state_file.close
 end
+Dir.mkdir(test_states) unless File.directory?(test_states)
 Dir.mkdir(state_dir)
 state_file = File.open(File.join(state_dir, testname), "w")
 
