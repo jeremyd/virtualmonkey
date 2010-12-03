@@ -8,6 +8,7 @@ module VirtualMonkey
     def self.run
       options = Trollop::options do
         opt :feature, "path to feature(s) to run against the deployments", :type => :string, :required => true
+        opt :breakpoint, "feature file line to stop at", :type => :integers, :short => '-b'
         opt :tag, "Tag to match prefix of the deployments.", :type => :string, :required => true, :short => "-t"
         opt :only, "regex string to use for subselection matching on deployments.  Eg. --only x86_64", :type => :string
         opt :terminate, "Terminate if feature successfully completes. (No destroy)", :short => "-r"
@@ -22,7 +23,11 @@ module VirtualMonkey
           do_these = dm.deployments
         end
         do_these.each do |deploy|
-          cm.run_test(deploy, options[:feature])
+          if options[:breakpoint]
+            cm.run_test(deploy, options[:feature], options[:breakpoint])
+          else
+            cm.run_test(deploy, options[:feature])
+          end
         end
 
         watch = EM.add_periodic_timer(10) {

@@ -6,6 +6,12 @@ module VirtualMonkey
     attr_accessor :scripts_to_run
     attr_accessor :db_ebs_prefix
 
+    # It's not that I'm a Java fundamentalist; I merely believe that mortals should
+    # not be calling the following methods directly. Instead, they should use the
+    # TestCaseInterface methods (behavior, verify, probe) to access these functions.
+    # Trust me, I know what's good for you. -- Tim R.
+    private
+
     def run_promotion_operations
       config_master_from_scratch(s_one)
       s_one.relaunch

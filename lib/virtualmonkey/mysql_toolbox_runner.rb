@@ -5,6 +5,12 @@ module VirtualMonkey
     include VirtualMonkey::Mysql
     attr_accessor :scripts_to_run
 
+    # It's not that I'm a Java fundamentalist; I merely believe that mortals should
+    # not be calling the following methods directly. Instead, they should use the
+    # TestCaseInterface methods (behavior, verify, probe) to access these functions.
+    # Trust me, I know what's good for you. -- Tim R.
+    private
+
     def lookup_scripts
       @scripts_mysql = [
                          [ 'promote', 'EBS promote to master' ],

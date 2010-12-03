@@ -7,6 +7,7 @@ require 'virtualmonkey/command/destroy'
 require 'virtualmonkey/command/run'
 require 'virtualmonkey/command/list'
 require 'virtualmonkey/command/troop'
+require 'virtualmonkey/command/clone'
 
 module VirtualMonkey
   module Command
@@ -24,6 +25,8 @@ module VirtualMonkey
           VirtualMonkey::Command.list
         when "troop"
           VirtualMonkey::Command.troop
+        when "clone"
+          VirtualMonkey::Command.clone
         when "help" || "--help" || "-h"
           "Help usage: monkey <command> --help"
         else

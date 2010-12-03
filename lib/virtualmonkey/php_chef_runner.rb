@@ -3,6 +3,12 @@ module VirtualMonkey
     include VirtualMonkey::DeploymentRunner
     include VirtualMonkey::ApplicationFrontend
 
+    # It's not that I'm a Java fundamentalist; I merely believe that mortals should
+    # not be calling the following methods directly. Instead, they should use the
+    # TestCaseInterface methods (behavior, verify, probe) to access these functions.
+    # Trust me, I know what's good for you. -- Tim R.
+    private
+
     def set_lb_hostname
       @deployment.set_input("lb_haproxy/host", get_lb_hostname_input)
     end

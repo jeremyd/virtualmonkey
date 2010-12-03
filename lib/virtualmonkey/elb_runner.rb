@@ -32,6 +32,12 @@ module VirtualMonkey
 						    }
 					}
     
+    # It's not that I'm a Java fundamentalist; I merely believe that mortals should
+    # not be calling the following methods directly. Instead, they should use the
+    # TestCaseInterface methods (behavior, verify, probe) to access these functions.
+    # Trust me, I know what's good for you. -- Tim R.
+    private
+
     def initialize(args)
       super(args)
       endpoint_url=ELBS[get_cloud_id][:endpoint]

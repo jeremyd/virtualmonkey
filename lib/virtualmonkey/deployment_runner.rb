@@ -1,5 +1,6 @@
 module VirtualMonkey
   module DeploymentRunner
+    include VirtualMonkey::TestCaseInterface
     attr_accessor :deployment, :servers
     attr_accessor :scripts_to_run
     
@@ -9,6 +10,12 @@ module VirtualMonkey
       @servers = @deployment.servers_no_reload
       lookup_scripts
     end
+
+    # It's not that I'm a Java fundamentalist; I merely believe that mortals should
+    # not be calling the following methods directly. Instead, they should use the
+    # TestCaseInterface methods (behavior, verify, probe) to access these functions.
+    # Trust me, I know what's good for you. -- Tim R.
+    private
 
     def lookup_scripts
       puts "WARNING: lookup_scripts is undefined, this must be set in mixin classes"

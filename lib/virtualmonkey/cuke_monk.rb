@@ -6,11 +6,12 @@ require 'eventmachine'
 require 'right_popen'
 
 class CukeJob
-  attr_accessor :status, :output, :logfile, :deployment
+  attr_accessor :status, :output, :logfile, :deployment, :rest_log
 
   def link_to_rightscale
     i = deployment.href.split(/\//).last
-    "https://my.rightscale.com/deployments/#{i}#auditentries"
+    d = deployment.href.split(/\./).first.split(/\//).last
+    "https://#{d}.rightscale.com/deployments/#{i}#auditentries"
   end
 
   def on_read_stdout(data)
@@ -41,7 +42,9 @@ class CukeJob
                         :target         => self,
                         :environment    => {"DEPLOYMENT" => deployment.nickname,
                                             "AWS_ACCESS_KEY_ID" => Fog.credentials[:aws_access_key_id],
-                                            "AWS_SECRET_ACCESS_KEY" => Fog.credentials[:aws_secret_access_key]},
+                                            "AWS_SECRET_ACCESS_KEY" => Fog.credentials[:aws_secret_access_key],
+                                            "REST_CONNECTION_LOG" => @rest_log,
+                                            "AUTO_MONKEY" => "1"},
                         :stdout_handler => :on_read_stdout,
                         :stderr_handler => :on_read_stderr,
                         :exit_handler   => :on_exit)
@@ -53,13 +56,13 @@ class CukeMonk
   # Runs a cucumber test on a single Deployment
   # * deployment<~String> the nickname of the deployment
   # * feature<~String> the feature filename 
-  def run_test(deployment, feature)
+  def run_test(deployment, feature, break_point = 1000000)
     new_job = CukeJob.new
-    new_job.logfile = File.join(@log_dir, "#{deployment.nickname}.html")
+    new_job.logfile = File.join(@log_dir, "#{deployment.nickname}.log")
+    new_job.rest_log = "#{@log_dir}/#{deployment.nickname}.rest_connection.log"
     new_job.deployment = deployment
-    ENV['REST_CONNECTION_LOG'] = "#{@log_dir}/#{deployment.nickname}.rest_connection.log"
-    cmd = "cucumber #{feature} --out '#{new_job.logfile}' -f html"
-    @jobs << new_job   
+    cmd = "bin/grinder #{feature} #{break_point} '#{new_job.logfile}'"
+    @jobs << new_job
     puts "running #{cmd}"
     new_job.run(deployment, cmd)
   end
@@ -73,7 +76,7 @@ class CukeMonk
     @log_dir = File.join("log", dirname)
     @log_started = dirname
     FileUtils.mkdir_p(@log_dir)
-    @feature_dir = File.join(File.dirname(__FILE__), '..', '..', 'app', 'features')
+    @feature_dir = File.join(File.dirname(__FILE__), '..', '..', 'features')
   end
  
   # runs a feature on an array of deployments
@@ -128,7 +131,7 @@ class CukeMonk
     s3.put_object(bucket_name, "#{@log_started}/index.html", index.result(binding), 'x-amz-acl' => 'public-read', 'Content-Type' => 'text/html')
  
     report_on.each do |j|
-      s3.put_object(bucket_name, "#{@log_started}/#{File.basename(j.logfile)}", IO.read(j.logfile), 'Content-Type' => 'text/html', 'x-amz-acl' => 'public-read')
+      s3.put_object(bucket_name, "#{@log_started}/#{File.basename(j.logfile)}", IO.read(j.logfile), 'Content-Type' => 'text/plain', 'x-amz-acl' => 'public-read')
     end
     
     msg = <<END_OF_MESSAGE

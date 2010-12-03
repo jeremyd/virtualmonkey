@@ -1,0 +1,68 @@
+#!/usr/bin/env ruby
+
+# Development ENV only
+$LOAD_PATH.unshift(File.dirname(__FILE__))
+$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
+###
+
+require 'rubygems'
+require 'virtualmonkey'
+require 'ruby-debug'
+
+usage = <<-EOS
+After setting the 'DEPLOYMENT' and 'REST_CONNECTION_LOG' environment variables, run the grinder using:
+
+grinder "testcase.rb" breakpoint_linenum "logfile.log"
+
+DEVELOPERS: Setting the 'MONKEY_DEBUG' environment variable will drop you into ruby-debug at an exception.
+EOS
+
+raise usage unless ARGV[0].class == "".class
+if ARGV[1]
+  raise usage unless ARGV[1].class == 1.class
+  breakpoint = ARGV[1].to_i
+else
+  breakpoint = 1000000
+end
+if ARGV[2]
+  raise usage unless ARGV[2].class == "".class
+  log = File.open(ARGV[2], "a")
+else
+  log = $stdout
+end
+
+feature = File.open(ARGV[0], "r")
+
+linenum = 0
+resume = 0
+
+state_dir = File.join("temp", ENV['DEPLOYMENT'])
+if File.directory?(state_dir)
+  puts "Resuming previous testcase..."
+  state_file = File.open(File.join(state_dir, ARGV[0]), "r")
+  begin
+    resume += state_file.readline.to_i
+  rescue EOFError => e
+    done = true
+  end while !done
+  state_file.close
+end
+File.makedirs(state_dir)
+state_file = File.open(File.join(state_dir, ARGV[0]), "w")
+
+done = false
+begin
+  line = feature.readline
+  if line =~ /runner =/ or (resume < linenum and linenum <= breakpoint)
+    eval(line)
+    state = linenum
+  end
+  if linenum > breakpoint
+    state_file.puts state
+    done = true
+  else
+    linenum += 1
+  end
+rescue EOFError => e
+  done = true
+end while !done
