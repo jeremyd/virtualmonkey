@@ -15,8 +15,14 @@ After setting the 'DEPLOYMENT' and 'REST_CONNECTION_LOG' environment variables, 
 grinder "testcase.rb" breakpoint_linenum "logfile.log"
 
 DEVELOPERS: Setting the 'MONKEY_DEBUG' environment variable will drop you into ruby-debug at an exception.
+
+Here are your environment variables:
+DEPLOYMENT            = #{ENV['DEPLOYMENT']}
+REST_CONNECTION_LOG   = #{ENV['REST_CONNECTION_LOG']}
+MONKEY_DEBUG          = #{ENV['MONKEY_DEBUG']}
 EOS
 
+raise usage unless ENV['DEPLOYMENT']
 raise usage unless ARGV[0].class == "".class
 if ARGV[1]
   breakpoint = ARGV[1].to_i
