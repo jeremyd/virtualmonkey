@@ -31,15 +31,17 @@ else
   log = $stdout
 end
 
-feature = File.open(ARGV[0], "r")
+testcase = File.open(ARGV[0], "r")
+testname = ARGV[0].split(/\//).last
 
 linenum = 0
 resume = 0
 
-state_dir = File.join("temp", ENV['DEPLOYMENT'])
+state_dir = File.join("testcase_state", ENV['DEPLOYMENT'])
 if File.directory?(state_dir)
   puts "Resuming previous testcase..."
-  state_file = File.open(File.join(state_dir, ARGV[0]), "r")
+  state_file = File.open(File.join(state_dir, testname), "r")
+  
   begin
     resume += state_file.readline.to_i
   rescue EOFError => e
@@ -48,21 +50,25 @@ if File.directory?(state_dir)
   state_file.close
 end
 File.makedirs(state_dir)
-state_file = File.open(File.join(state_dir, ARGV[0]), "w")
+state_file = File.open(File.join(state_dir, testname), "w")
 
 done = false
 begin
-  line = feature.readline
+  line = testcase.readline
   if line =~ /runner =/ or (resume < linenum and linenum <= breakpoint)
     eval(line)
     state = linenum
   end
   if linenum > breakpoint
     state_file.puts state
+    state_file.close
     done = true
   else
     linenum += 1
   end
 rescue EOFError => e
+  state_file.close
+  File.delete(File.join(state_dir, testname))
+  File.delete(state_dir)
   done = true
 end while !done
