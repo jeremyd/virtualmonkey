@@ -20,6 +20,7 @@ Here are your environment variables:
 DEPLOYMENT            = #{ENV['DEPLOYMENT']}
 REST_CONNECTION_LOG   = #{ENV['REST_CONNECTION_LOG']}
 MONKEY_DEBUG          = #{ENV['MONKEY_DEBUG']}
+MONKEY_NO_RESUME      = #{ENV['MONKEY_NO_RESUME']}
 EOS
 
 raise usage unless ENV['DEPLOYMENT']
@@ -45,15 +46,17 @@ resume = 0
 test_states = "test_states"
 state_dir = File.join(test_states, ENV['DEPLOYMENT'])
 if File.directory?(state_dir)
-  puts "Resuming previous testcase..."
-  state_file = File.open(File.join(state_dir, testname), "r")
+  unless ENV['MONKEY_NO_RESUME']
+    puts "Resuming previous testcase..."
+    state_file = File.open(File.join(state_dir, testname), "r")
   
-  begin
-    resume += state_file.readline.to_i
-  rescue EOFError => e
-    done = true
-  end while !done
-  state_file.close
+    begin
+      resume += state_file.readline.to_i
+    rescue EOFError => e
+      done = true
+    end while !done
+    state_file.close
+  end
 else
   Dir.mkdir(test_states) unless File.directory?(test_states)
   Dir.mkdir(state_dir)
@@ -64,7 +67,8 @@ done = false
 begin
   line = testcase.readline
   if line =~ /runner =/ or (resume < linenum and linenum <= breakpoint)
-    eval(line)
+    log.puts line
+    log.puts eval(line)
     state = linenum
   end
   if linenum > breakpoint
