@@ -15,7 +15,18 @@ module VirtualMonkey
     def get_lb_hostname_input
       lb_hostname_input = "text:"
       fe_servers.each do |fe|
-        lb_hostname_input << fe.settings['private-dns-name'] + " " 
+        timeout = 30
+        loopcounter = 0
+        begin
+          if fe.settings['private-dns-name'] == nil
+            raise "FATAL: private DNS name is empty" if loopcounter > 10
+            sleep(timeout)
+            loopcounter += 1
+            next
+          end
+          lb_hostname_input << fe.settings['private-dns-name'] + " "
+          done = true
+        end while !done
       end
       lb_hostname_input
     end
