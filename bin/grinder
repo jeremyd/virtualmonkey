@@ -19,7 +19,6 @@ EOS
 
 raise usage unless ARGV[0].class == "".class
 if ARGV[1]
-  raise usage unless ARGV[1].class == 1.class
   breakpoint = ARGV[1].to_i
 else
   breakpoint = 1000000
