@@ -19,7 +19,6 @@ module VirtualMonkey
       end
       origin = dm.deployments.first
       # clone deployment
-      # is it this: https://my.rightscale.com/deployments/61132/duplicate
       for i in 1 .. options[:copies]
         new_deploy = origin.clone
         new_deploy.nickname = "#{origin.nickname}-clone-#{i}"
