@@ -1,7 +1,7 @@
 {
   "PHP_MODULES_LIST" : "ignore:$ignore",
   "OPT_TARGET_BIND_ADDRESS" : "ignore:$ignore",
-  "OPT_SVN_USERNAME" : "cred:cary",
+  "OPT_SVN_USERNAME" : "text:cary",
   "OPT_SSL_PASSPHRASE" : "ignore:$ignore",
   "LB_BACKEND_NAME" : "env:EC2_INSTANCE_ID",
   "SSL_KEY" : "cred:TEST_SSL_KEY",
