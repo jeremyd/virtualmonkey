@@ -13,6 +13,7 @@ module VirtualMonkey
         opt :only, "regex string to use for subselection matching on deployments.  Eg. --only x86_64", :type => :string
         opt :terminate, "Terminate if feature successfully completes. (No destroy)", :short => "-r"
         opt :mysql, "Use special MySQL TERMINATE script, instead of normal shutdown of all servers. Specify --terminate also", :short => "-m"
+        opt :no_resume, "Do not use current test-in-progress, start from scratch", :short => "-n"
       end
       EM.run {
         cm = CukeMonk.new
@@ -41,7 +42,7 @@ module VirtualMonkey
                   else
                     @runner = VirtualMonkey::SimpleRunner.new(job.deployment.nickname)
                   end
-                  @runner.stop_all(false)
+                  @runner.behavior(:stop_all, false)
                 end
               end
             end

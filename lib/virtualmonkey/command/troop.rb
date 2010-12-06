@@ -88,7 +88,7 @@ module VirtualMonkey
                 if job.status == 0
                   runner = eval("VirtualMonkey::#{config['runner']}.new(job.deployment.nickname)")
                   puts "destroying successful deployment: #{runner.deployment.nickname}"
-                  runner.stop_all(false)
+                  runner.behavior(:stop_all, false)
                   runner.deployment.destroy
                 end
               end    

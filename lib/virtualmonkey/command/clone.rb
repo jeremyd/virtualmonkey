@@ -27,7 +27,7 @@ module VirtualMonkey
       end
 
       # run to breakpoint
-      if option[:feature]
+      if options[:feature]
         EM.run {
           cm = CukeMonk.new
           dm.deployments.each do |deploy|

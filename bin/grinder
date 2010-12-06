@@ -68,7 +68,7 @@ begin
   line = testcase.readline
   if line =~ /runner =/ or (resume < linenum and linenum <= breakpoint)
     log.puts line
-    log.puts eval(line)
+    eval(line)
     state = linenum
   end
   if linenum > breakpoint

@@ -24,7 +24,7 @@ module VirtualMonkey
         else
           @runner = VirtualMonkey::SimpleRunner.new(deploy.nickname)
         end
-        @runner.stop_all(false)
+        @runner.behavior(:stop_all, false)
       end
 
       @dm.destroy_all unless options[:no_delete]
