@@ -54,7 +54,7 @@ if File.directory?(state_dir)
       @resume += 1
     rescue EOFError => e
       done = true
-    end while state_file.readline
+    end while @state_file.readline
     @state_file.close
   end
 else
@@ -71,13 +71,14 @@ begin
     eval(line)
     @state_file.puts line
   end
-  if linenum > breakpoint
+  if linenum > @breakpoint
+    @log.puts "Pausing for breakpoint (line #{@breakpoint})"
     done = true
   else
     linenum += 1
   end
 rescue EOFError => e
-  state_file.close
+  @state_file.close
   File.delete(File.join(state_dir, testname))
   Dir.rmdir(state_dir)
   done = true
