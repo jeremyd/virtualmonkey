@@ -67,7 +67,7 @@ done = false
 begin
   line = testcase.readline
   if line =~ /runner =/ or (resume < linenum and linenum <= breakpoint)
-    log.puts line
+    log.puts line unless line =~ /^[ \t#]*/
     eval(line)
     state = linenum
   end

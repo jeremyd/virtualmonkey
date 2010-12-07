@@ -55,7 +55,7 @@ class DeploymentMonk
         new_deploy = Deployment.create(:nickname => dep_tempname)
         @deployments << new_deploy
         @server_templates.each do |st|
-          server_params = { :nickname => "tempserver-#{st.nickname}", 
+          server_params = { :nickname => "tempserver-#{rand(1000000)}-#{st.nickname}", 
                             :deployment_href => new_deploy.href, 
                             :server_template_href => st.href, 
                             :cloud_id => cloud

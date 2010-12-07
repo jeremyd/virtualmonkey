@@ -13,48 +13,43 @@
 # Old school hand crafted deployment: https://my.rightscale.com/deployments/49925.  Make sure
 # The one server is still up and running as master DB.
 #
-#    Given A MySQL deployment
-  raise "FATAL:  Please set the environment variable $DEPLOYMENT" unless ENV['DEPLOYMENT']
+# Given A MySQL deployment
   @runner = VirtualMonkey::MysqlRunner.new(ENV['DEPLOYMENT'])
-  @runner.lookup_scripts
+  @runner.behavior(:lookup_scripts)
 
-#    Then I should stop the servers
-  @runner.stop_all
+# Then I should stop the servers
+  @runner.behavior(:stop_all)
 
-#    Then I should set a variation lineage
-  @runner.set_variation_lineage
+# Then I should set a variation lineage
+  @runner.behavior(:set_variation_lineage)
 
-#    Then I should set a variation stripe count of "3"
-  stripe=3
-  @runner.set_variation_stripe_count(stripe)
+# Then I should set a variation stripe count of "3"
+  @runner.behavior(:set_variation_stripe_count, 3)
 
 #
 # PHASE 2) Launch a new v2 server and migrate from v1
 #
-#    Then I should launch all servers
-  @runner.launch_all
+# Then I should launch all servers
+  @runner.behavior(:launch_all)
 
-#    Then I should wait for the state of "all" servers to be "operational"
-    state = "operational"
-    @runner.wait_for_all(state)
+# Then I should wait for the state of "all" servers to be "operational"
+  @runner.behavior(:wait_for_all, "operational")
 
-#    Then I should create the migration script
-  @runner.create_migration_script
+# Then I should create the migration script
+  @runner.behavior(:create_migration_script)
 
-#    Then I should migrate a new slave
-  @runner.migrate_slave
+# Then I should migrate a new slave
+  @runner.behavior(:migrate_slave)
 
-#
 #
 # PHASE 3) Initialize additional slave from v2 snapshots
 #
-#    Then I should init a new v2 slave
-  @runner.launch_v2_slave
+# Then I should init a new v2 slave
+  @runner.behavior(:launch_v2_slave)
 
-#    Then I should test the new v2 slave
-  @runner.run_checks
+# Then I should test the new v2 slave
+  @runner.behavior(:run_checks)
 
-#    Then I should check that ulimit was set correctly
-  @runner.ulimit_check
-
+# Then I should check that ulimit was set correctly
+  @runner.behavior(:ulimit_check)
 
