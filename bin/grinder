@@ -26,54 +26,52 @@ EOS
 raise usage unless ENV['DEPLOYMENT']
 raise usage unless ARGV[0].class == "".class
 if ARGV[1]
-  breakpoint = ARGV[1].to_i
+  @breakpoint = ARGV[1].to_i
 else
-  breakpoint = 1000000
+  @breakpoint = 1000000
 end
 if ARGV[2]
   raise usage unless ARGV[2].class == "".class
-  log = File.open(ARGV[2], "a")
+  @log = File.open(ARGV[2], "a")
 else
-  log = $stdout
+  @log = $stdout
 end
 
-testcase = File.open(ARGV[0], "r")
+@testcase = File.open(ARGV[0], "r")
 testname = ARGV[0].split(/\//).last
 
 linenum = 0
-resume = 0
+@resume = 0
 
 test_states = "test_states"
 state_dir = File.join(test_states, ENV['DEPLOYMENT'])
 if File.directory?(state_dir)
   unless ENV['MONKEY_NO_RESUME']
     puts "Resuming previous testcase..."
-    state_file = File.open(File.join(state_dir, testname), "r")
+    @state_file = File.open(File.join(state_dir, testname), "r")
   
     begin
-      resume += state_file.readline.to_i
+      @resume += 1
     rescue EOFError => e
       done = true
-    end while !done
-    state_file.close
+    end while state_file.readline
+    @state_file.close
   end
 else
   Dir.mkdir(test_states) unless File.directory?(test_states)
   Dir.mkdir(state_dir)
 end
-state_file = File.open(File.join(state_dir, testname), "w")
+@state_file = File.open(File.join(state_dir, testname), "a")
 
 done = false
 begin
   line = testcase.readline
-  if line =~ /runner =/ or (resume < linenum and linenum <= breakpoint)
-    log.puts line unless line =~ /^[ \t#]*/
+  if line =~ /=/ or (@resume < linenum and linenum <= @breakpoint)
+    @log.puts line unless line =~ /^[ \t#]*/
     eval(line)
-    state = linenum
+    @state_file.puts line
   end
   if linenum > breakpoint
-    state_file.puts state
-    state_file.close
     done = true
   else
     linenum += 1
