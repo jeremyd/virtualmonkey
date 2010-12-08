@@ -36,6 +36,7 @@ if ARGV[2]
 else
   @log = $stdout
 end
+@log = $stdout
 
 @testcase = File.open(ARGV[0], "r")
 testname = ARGV[0].split(/\//).last

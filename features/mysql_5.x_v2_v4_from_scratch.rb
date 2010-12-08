@@ -7,7 +7,7 @@
 # PHASE 1) Bootstrap and test promote
 #
 # Given A MySQL deployment
-  @runner = VirtualMonkey::SimpleRunner.new(ENV['DEPLOYMENT'])
+  @runner = VirtualMonkey::MysqlRunner.new(ENV['DEPLOYMENT'])
 
 # Then I should stop the servers
   @runner.behavior(:stop_all)
