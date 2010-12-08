@@ -56,6 +56,8 @@ if File.directory?(state_dir)
       done = true
     end while !done
     @state_file.close
+  else
+    @log.puts
   end
 else
   Dir.mkdir(test_states) unless File.directory?(test_states)
@@ -66,10 +68,10 @@ end
 done = false
 begin
   line = @testcase.readline
-  if line =~ /=/ or (@resume < linenum and linenum <= @breakpoint)
-    @log.puts line unless line =~ /^[ \t#]*/
+  if line =~ /=/ or (@resume <= linenum and linenum <= @breakpoint)
+    @log.puts(line) unless line =~ /^[ \t]*#/ or line =~ /^[ \t]*$/
     eval(line)
-    @state_file.puts line
+    @state_file.puts(line) unless @resume > 0 and line =~ /=/
   end
   if linenum > @breakpoint
     @log.puts "Pausing for breakpoint (line #{@breakpoint})"
