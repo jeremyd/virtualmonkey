@@ -23,7 +23,8 @@ module VirtualMonkey
       reboot_all(true) # serially_reboot = true
       wait_for_all("operational")
       # This sleep is for waiting for the slave to catch up to the master since they both reboot at once
-      # sleep 120
+      # This sleep does more than that. It waits for the master to be fully up.
+      sleep 120
       run_reboot_checks
     end
 
@@ -35,15 +36,28 @@ module VirtualMonkey
       end
     end
 
+
     # lookup all the RightScripts that we will want to run
     def lookup_scripts
+     @scripts_mysql = [
+                         [ 'restore', 'restore and become' ],
+                         [ 'slave_init', 'slave init' ],
+                         [ 'promote', 'EBS promote to master' ],
+                         [ 'backup', 'EBS backup' ],
+                         [ 'terminate', 'TERMINATE SERVER' ]
+                       ]
       st = ServerTemplate.find(s_two.server_template_href)
       @scripts_to_run = {}
-      @scripts_to_run['restore'] = st.executables.detect { |ex| ex.name =~  /restore and become/i }
-      @scripts_to_run['slave_init'] = st.executables.detect { |ex| ex.name =~ /slave init v2/ }
-      @scripts_to_run['promote'] = st.executables.detect { |ex| ex.name =~ /promote to master/ }
-      @scripts_to_run['backup'] = st.executables.detect { |ex| ex.name =~ /EBS backup/ }
-      @scripts_to_run['terminate'] = st.executables.detect { |ex| ex.name =~ /TERMINATE/ }
+      @scripts_mysql.each { |a|
+        @scripts_to_run[ a[0] ] = st.executables.detect { |ex| ex.name =~ /#{a[1]}/ }
+        raise "FATAL: Script #{a[1]} not found" unless @scripts_to_run[ a[0] ]
+      }
+
+#      @scripts_to_run['restore'] = st.executables.detect { |ex| ex.name =~  /restore and become/i }
+#      @scripts_to_run['slave_init'] = st.executables.detect { |ex| ex.name =~ /slave init v2/ }
+#      @scripts_to_run['promote'] = st.executables.detect { |ex| ex.name =~ /promote to master/ }
+#      @scripts_to_run['backup'] = st.executables.detect { |ex| ex.name =~ /EBS backup/ }
+#      @scripts_to_run['terminate'] = st.executables.detect { |ex| ex.name =~ /TERMINATE/ }
       # hardwired script! (this is an 'anyscript' that users typically use to setup the master dns)
       @scripts_to_run['master_init'] = RightScript.new('href' => "/api/acct/2901/right_scripts/195053")
       @scripts_to_run['create_stripe'] = RightScript.new('href' => "/api/acct/2901/right_scripts/198381")
@@ -57,7 +71,7 @@ module VirtualMonkey
     def migrate_slave
       s_one.settings
       s_one.spot_check_command("/tmp/init_slave.sh")
-      run_script("backup", s_one)
+      eun_script("backup", s_one)
     end
    
     def launch_v2_slave

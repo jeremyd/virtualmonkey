@@ -36,6 +36,12 @@ Then /^I should set a variation stripe count of "([^\"]*)"$/ do |stripe|
   @runner.set_variation_stripe_count(stripe)
 end
 
+# This is a hack - when we get rid of cucumber we can clean this up
+# so we only have one DNS variation method
+Then /^I should set a variation AWSDNS provider/ do
+  @runner.setup_dns("virtualmonkey_awsdns")
+end
+
 Then /^I should set a variation DNS provider/ do
   @runner.setup_dns("virtualmonkey_dyndns")
 end
