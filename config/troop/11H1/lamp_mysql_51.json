@@ -1,10 +1,10 @@
 {
+  "tag":"TROOP_LAMP_MYSQL51",
   "feature":"lamp.feature",
-  "cloud_variables":"west.json",
+  "cloud_variables":"all_clouds.json",
   "runner":"SimpleRunner",
   "common_inputs":"lamp.json",
-  "tag":"MONKEY_LAMP_v5_TESTING",
   "server_template_ids":[
-    "76278"
+    "84655"
   ]
 }

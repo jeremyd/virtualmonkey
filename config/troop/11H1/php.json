@@ -1,13 +1,13 @@
 {
+  "tag":"TROOP_PHP"
   "feature":"php.feature",
   "runner":"SimpleRunner",
   "server_template_ids":[
-    "52800",
-    "52800",
-    "52799",
-    "52799"
+    "84645",
+    "84645",
+    "84644",
+    "84644"
   ],
-  "cloud_variables":"east.json",
+  "cloud_variables":"all_clouds.json",
   "common_inputs":"php.json",
-  "tag":"TROOP2-php-v10-head"
 }
