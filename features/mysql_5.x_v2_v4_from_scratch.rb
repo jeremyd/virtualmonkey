@@ -13,13 +13,13 @@
   @runner.behavior(:stop_all)
 
 # Then I should set a variation lineage
-  @runner.behavior(:set_variation_lineage)
+  @runner.set_var(:set_variation_lineage)
 
-# Then I should set a variation stripe count of "1" 
-  @runner.behavior(:set_variation_stripe_count, 1)
+# Then I should set a variation stripe count of "1"
+  @runner.set_var(:set_variation_stripe_count, 1)
 
 # Then I should set a variation MySQL DNS
-  @runner.behavior(:setup_dns, "virtualmonkey_shared_resources") # DNSMadeEasy
+  @runner.set_var(:setup_dns, "virtualmonkey_shared_resources") # DNSMadeEasy
 
 # Then I should launch all servers
   @runner.behavior(:launch_all)

@@ -6,7 +6,7 @@ require 'eventmachine'
 require 'right_popen'
 
 class CukeJob
-  attr_accessor :status, :output, :logfile, :deployment, :rest_log
+  attr_accessor :status, :output, :logfile, :deployment, :rest_log, :no_resume
 
   def link_to_rightscale
     i = deployment.href.split(/\//).last
@@ -44,7 +44,7 @@ class CukeJob
                                             "AWS_ACCESS_KEY_ID" => Fog.credentials[:aws_access_key_id],
                                             "AWS_SECRET_ACCESS_KEY" => Fog.credentials[:aws_secret_access_key],
                                             "REST_CONNECTION_LOG" => @rest_log,
-                                           # "MONKEY_NO_RESUME" => "1",
+                                            "MONKEY_NO_RESUME" => @no_resume,
                                             "AUTO_MONKEY" => "1"},
                         :stdout_handler => :on_read_stdout,
                         :stderr_handler => :on_read_stderr,
@@ -54,6 +54,7 @@ end
 
 class CukeMonk
   attr_accessor :jobs
+  attr_accessor :options
   # Runs a cucumber test on a single Deployment
   # * deployment<~String> the nickname of the deployment
   # * feature<~String> the feature filename 
@@ -62,6 +63,8 @@ class CukeMonk
     new_job.logfile = File.join(@log_dir, "#{deployment.nickname}.log")
     new_job.rest_log = "#{@log_dir}/#{deployment.nickname}.rest_connection.log"
     new_job.deployment = deployment
+    new_job.no_resume = @options[:no_resume]
+    break_point = @options[:breakpoint] if @options[:breakpoint]
     cmd = "bin/grinder #{feature} #{break_point} '#{new_job.logfile}'"
     @jobs << new_job
     puts "running #{cmd}"

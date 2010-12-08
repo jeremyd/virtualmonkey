@@ -8,6 +8,7 @@ module VirtualMonkey
         opt :feature, "path to feature(s) to run against the deployments", :type => :string
         opt :breakpoint, "feature file line to stop at", :type => :integer, :short => '-b'
         opt :copies, "number of copies to make (default is 1)", :type => :integer, :short => '-c'
+        opt :no_resume, "Do not use current test-in-progress, start from scratch", :short => "-n"
       end
 
       options[:copies] = 1 unless options[:copies] > 1
@@ -30,12 +31,9 @@ module VirtualMonkey
       if options[:feature]
         EM.run {
           cm = CukeMonk.new
+          cm.options = options
           dm.deployments.each do |deploy|
-            if options[:breakpoint]
-              cm.run_test(deploy, options[:feature], options[:breakpoint])
-            else
-              cm.run_test(deploy, options[:feature])
-            end
+            cm.run_test(deploy, options[:feature])
           end
 
           watch = EM.add_periodic_timer(10) {

@@ -1,5 +1,9 @@
 module VirtualMonkey
   module TestCaseInterface
+    def set_var(sym, *args)
+      behavior(sym, *args)
+    end
+
     def behavior(sym, *args)
       begin
         #pre-command

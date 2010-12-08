@@ -28,9 +28,10 @@ module VirtualMonkey
         when "clone"
           VirtualMonkey::Command.clone
         when "help" || "--help" || "-h"
-          "Help usage: monkey <command> --help"
+          puts "Help usage: monkey <command> --help"
+          puts "Valid commands for monkey: create, destroy, list, run, troop, clone or help"
         else
-          STDERR.puts "Invalid command #{command}: You need to specify a command for monkey: create, destroy, list, run, troop or help\n"
+          STDERR.puts "Invalid command #{command}: You need to specify a command for monkey: create, destroy, list, run, troop, clone or help\n"
           exit(1)
       end
     end

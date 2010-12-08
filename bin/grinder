@@ -48,7 +48,7 @@ test_states = "test_states"
 state_dir = File.join(test_states, ENV['DEPLOYMENT'])
 if File.directory?(state_dir)
   unless ENV['MONKEY_NO_RESUME']
-    @log.syswrite "Resuming previous testcase..."
+    @log.syswrite "Resuming previous testcase...\n"
     @state_file = File.open(File.join(state_dir, testname), "r")
   
     begin
@@ -58,7 +58,7 @@ if File.directory?(state_dir)
     end while !done
     @state_file.close
   else
-    @log.syswrite "Scrapping previous testcase; Starting over..."
+    @log.syswrite "Scrapping previous testcase; Starting over...\n"
     File.delete(File.join(state_dir, testname))
   end
 else
@@ -71,13 +71,17 @@ end
 done = false
 begin
   line = @testcase.readline
-  if line =~ /=/ or (@resume < linenum and linenum <= @breakpoint)
-    @log.syswrite(line) unless line =~ /^[ \t]*#/ or line =~ /^[ \t]*$/
+  if line =~ /((=)|(set_var))/ or (@resume < linenum and linenum <= @breakpoint)
+    unless line =~ /^[ \t]*#/ or line =~ /^[ \t]*$/
+      @log.syswrite(("=" * line.length) + "\n")
+      @log.syswrite(line)
+      @log.syswrite(("=" * line.length) + "\n")
+    end
     eval(line)
-    @state_file.syswrite(line) unless @resume > 0 and line =~ /=/
+    @state_file.syswrite(line) unless @resume > 0 and line =~ /((=)|(set_var))/
   end
   if linenum > @breakpoint
-    @log.syswrite "Pausing for breakpoint (line #{@breakpoint})"
+    @log.syswrite "Pausing for breakpoint (line #{@breakpoint})\n"
     @log.close
     done = true
   else

@@ -23,12 +23,9 @@ module VirtualMonkey
         else
           do_these = dm.deployments
         end
+        cm.options = options
         do_these.each do |deploy|
-          if options[:breakpoint]
-            cm.run_test(deploy, options[:feature], options[:breakpoint])
-          else
-            cm.run_test(deploy, options[:feature])
-          end
+          cm.run_test(deploy, options[:feature])
         end
 
         watch = EM.add_periodic_timer(10) {
