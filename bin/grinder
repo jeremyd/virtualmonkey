@@ -47,7 +47,7 @@ linenum = 0
 test_states = "test_states"
 state_dir = File.join(test_states, ENV['DEPLOYMENT'])
 if File.directory?(state_dir)
-  unless ENV['MONKEY_NO_RESUME']
+  unless ENV['MONKEY_NO_RESUME'] =~ /true/i
     @log.syswrite "Resuming previous testcase...\n"
     @state_file = File.open(File.join(state_dir, testname), "r")
   

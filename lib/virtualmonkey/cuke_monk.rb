@@ -63,7 +63,7 @@ class CukeMonk
     new_job.logfile = File.join(@log_dir, "#{deployment.nickname}.log")
     new_job.rest_log = "#{@log_dir}/#{deployment.nickname}.rest_connection.log"
     new_job.deployment = deployment
-    new_job.no_resume = @options[:no_resume] if @options[:no_resume]
+    new_job.no_resume = "true" if @options[:no_resume]
     break_point = @options[:breakpoint] if @options[:breakpoint]
     cmd = "bin/grinder #{feature} #{break_point} '#{new_job.logfile}'"
     @jobs << new_job
