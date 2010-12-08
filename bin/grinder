@@ -43,6 +43,7 @@ testname = ARGV[0].split(/\//).last
 linenum = 0
 @resume = 0
 
+# Should we resume?
 test_states = "test_states"
 state_dir = File.join(test_states, ENV['DEPLOYMENT'])
 if File.directory?(state_dir)
@@ -57,7 +58,8 @@ if File.directory?(state_dir)
     end while !done
     @state_file.close
   else
-    @log.syswrite
+    @log.syswrite "Scrapping previous testcase; Starting over..."
+    File.delete(File.join(state_dir, testname))
   end
 else
   Dir.mkdir(test_states) unless File.directory?(test_states)
@@ -65,6 +67,7 @@ else
 end
 @state_file = File.open(File.join(state_dir, testname), "a")
 
+# Grinding
 done = false
 begin
   line = @testcase.readline
