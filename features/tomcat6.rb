@@ -12,7 +12,7 @@
   @runner.behavior(:stop_all)
 
 # Then I should set a variation for connecting to shared database host
-  @runner.behavior(:set_master_db_dnsname)
+  @runner.set_var(:set_master_db_dnsname)
 
 # When I launch the "Front End" servers
   @runner.behavior(:launch_set, "Front End")
@@ -24,7 +24,7 @@
   @runner.behavior(:wait_for_set, "Front End", "operational")
 
 # Then I should set a variation LB_HOSTNAME
-  @runner.behavior(:set_lb_hostname)
+  @runner.set_var(:set_lb_hostname)
 
 # When I launch the "App Server" servers
   @runner.behavior(:launch_set, "App Server")

@@ -15,22 +15,22 @@ module VirtualMonkey
     AWS_KEY = ENV['AWS_SECRET_ACCESS_KEY']
 
     ELBS = { 1 => { 
-								:endpoint => "https://elasticloadbalancing.us-east-1.amazonaws.com",
-							  :azs => [ "us-east-1a", "us-east-1b", "us-east-1c", "us-east-1d" ]
-						    },
-						 2 => {
-								:endpoint => "https://elasticloadbalancing.eu-west-1.amazonaws.com",
-							  :azs => [ "eu-west-1a", "eu-west-1b" ] 
-						    },
-						 3 => {
-								:endpoint => "https://elasticloadbalancing.us-west-1.amazonaws.com",
-							  :azs => [ "us-west-1a", "us-west-1b" ] 
-						    },
-						 4 => {
-								:endpoint => "https://elasticloadbalancing.ap-southeast-1.amazonaws.com",
-							  :azs => [ "ap-southeast-1a", "ap-southeast-1a" ] 
-						    }
-					}
+                :endpoint => "https://elasticloadbalancing.us-east-1.amazonaws.com",
+                :azs => [ "us-east-1a", "us-east-1b", "us-east-1c", "us-east-1d" ]
+                },
+             2 => {
+                :endpoint => "https://elasticloadbalancing.eu-west-1.amazonaws.com",
+                :azs => [ "eu-west-1a", "eu-west-1b" ] 
+                },
+             3 => {
+                :endpoint => "https://elasticloadbalancing.us-west-1.amazonaws.com",
+                :azs => [ "us-west-1a", "us-west-1b" ] 
+                },
+             4 => {
+                :endpoint => "https://elasticloadbalancing.ap-southeast-1.amazonaws.com",
+                :azs => [ "ap-southeast-1a", "ap-southeast-1a" ] 
+                }
+          }
     
     # It's not that I'm a Java fundamentalist; I merely believe that mortals should
     # not be calling the following methods directly. Instead, they should use the
