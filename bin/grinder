@@ -68,7 +68,7 @@ end
 done = false
 begin
   line = @testcase.readline
-  if line =~ /=/ or (@resume <= linenum and linenum <= @breakpoint)
+  if line =~ /=/ or (@resume < linenum and linenum <= @breakpoint)
     @log.syswrite(line) unless line =~ /^[ \t]*#/ or line =~ /^[ \t]*$/
     eval(line)
     @state_file.syswrite(line) unless @resume > 0 and line =~ /=/
