@@ -65,7 +65,7 @@ class CukeMonk
     new_job.deployment = deployment
     new_job.no_resume = "true" if @options[:no_resume]
     break_point = @options[:breakpoint] if @options[:breakpoint]
-    cmd = "bin/grinder #{feature} #{break_point} '#{new_job.logfile}'"
+    cmd = "bin/grinder #{feature} #{break_point}"
     @jobs << new_job
     puts "running #{cmd}"
     new_job.run(deployment, cmd)

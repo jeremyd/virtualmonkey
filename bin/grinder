@@ -12,7 +12,7 @@ require 'ruby-debug'
 usage = <<-EOS
 After setting the 'DEPLOYMENT' and 'REST_CONNECTION_LOG' environment variables, run the grinder using:
 
-grinder "testcase.rb" breakpoint_linenum "logfile.log"
+grinder "testcase.rb" breakpoint_linenum
 
 DEVELOPERS: Setting the 'MONKEY_DEBUG' environment variable will drop you into ruby-debug at an exception.
 
@@ -30,12 +30,6 @@ if ARGV[1]
 else
   @breakpoint = 1000000
 end
-if ARGV[2]
-  raise usage unless ARGV[2].class == "".class
-  @log = File.open(ARGV[2], "a+")
-else
-  @log = $stdout
-end
 
 @testcase = File.open(ARGV[0], "r")
 testname = ARGV[0].split(/\//).last
@@ -48,7 +42,7 @@ test_states = "test_states"
 state_dir = File.join(test_states, ENV['DEPLOYMENT'])
 if File.directory?(state_dir)
   unless ENV['MONKEY_NO_RESUME'] =~ /true/i
-    @log.syswrite "Resuming previous testcase...\n"
+    puts "Resuming previous testcase...\n"
     @state_file = File.open(File.join(state_dir, testname), "r")
   
     begin
@@ -58,7 +52,7 @@ if File.directory?(state_dir)
     end while !done
     @state_file.close
   else
-    @log.syswrite "Scrapping previous testcase; Starting over...\n"
+    puts "Scrapping previous testcase; Starting over...\n"
     File.delete(File.join(state_dir, testname))
   end
 else
@@ -84,15 +78,13 @@ begin
     @state_file.syswrite(line) unless @resume > 0 and line =~ /((=)|(set_var))/
   end
   if linenum > @breakpoint
-    @log.syswrite "Pausing for breakpoint (line #{@breakpoint})\n"
-    @log.close
+    puts "Halting test at breakpoint (line #{@breakpoint})\n"
     done = true
   else
     linenum += 1
   end
 rescue EOFError => e
   @state_file.close
-  @log.close
   File.delete(File.join(state_dir, testname))
   Dir.rmdir(state_dir)
   done = true
