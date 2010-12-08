@@ -40,7 +40,8 @@
 #  @runner.behavior(:run_mysqlslap_check)
 
 # Then I should check that ulimit was set correctly
-  @runner.behavior(:ulimit_check)
+#  @runner.behavior(:ulimit_check)
+  @runner.probe(".*", "su - mysql -s /bin/bash -c \"ulimit -n\"")
 
 # Then I should check that monitoring is enabled
   @runner.behavior(:check_monitoring)

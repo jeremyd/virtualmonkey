@@ -48,7 +48,7 @@ module VirtualMonkey
         begin
           result_temp = s.spot_check_command(command)
           if not result_temp =~ /#{expect}/
-            raise "FATAL: Failed probe"
+            raise "FATAL: Server #{s.nickname} failed probe. Expecting /#{expect}/, got #{result_temp}"
           end
         rescue Exception => e
           dev_mode?(e)
