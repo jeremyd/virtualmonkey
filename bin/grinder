@@ -51,10 +51,10 @@ if File.directory?(state_dir)
     @state_file = File.open(File.join(state_dir, testname), "r")
   
     begin
-      @resume += 1
+      @resume += 1 if @state_file.readline
     rescue EOFError => e
       done = true
-    end while @state_file.readline
+    end while !done
     @state_file.close
   end
 else
@@ -65,7 +65,7 @@ end
 
 done = false
 begin
-  line = testcase.readline
+  line = @testcase.readline
   if line =~ /=/ or (@resume < linenum and linenum <= @breakpoint)
     @log.puts line unless line =~ /^[ \t#]*/
     eval(line)
