@@ -73,11 +73,14 @@ begin
   line = @testcase.readline
   if line =~ /((=)|(set_var))/ or (@resume < linenum and linenum <= @breakpoint)
     unless line =~ /^[ \t]*#/ or line =~ /^[ \t]*$/
-      @log.syswrite(("=" * line.length) + "\n")
-      @log.syswrite(line)
-      @log.syswrite(("=" * line.length) + "\n")
+      puts("=" * line.length)
+      puts(line)
+      puts("=" * line.length)
+      eval(line)
+      puts("Success")
+    else
+      eval(line)
     end
-    eval(line)
     @state_file.syswrite(line) unless @resume > 0 and line =~ /((=)|(set_var))/
   end
   if linenum > @breakpoint
