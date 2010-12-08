@@ -7,11 +7,25 @@ module VirtualMonkey
       @deployment = Deployment.find_by_nickname_speed(deployment).first
       raise "Fatal: Could not find a deployment named #{deployment}" unless @deployment
       @servers = @deployment.servers_no_reload
+      @scripts_to_run = {}
       lookup_scripts
     end
 
     def lookup_scripts
       puts "WARNING: lookup_scripts is undefined, this must be set in mixin classes"
+      scripts = [
+                 [ 'script_ref1', 'name' ],
+                 [ 'script_ref2', 'name' ]
+               ]
+#      st = ServerTemplate.find(s_two.server_template_href)
+#      lookup_scripts_table(st,scripts)
+    end
+
+    def lookup_scripts_table(st,table)
+      table.each { |a|
+        @scripts_to_run[ a[0] ] = st.executables.detect { |ex| ex.name =~ /#{a[1]}/ }
+        raise "FATAL: Script #{a[1]} not found" unless @scripts_to_run[ a[0] ]
+      }
     end
 
     def s_one
