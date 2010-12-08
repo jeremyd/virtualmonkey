@@ -47,7 +47,7 @@ test_states = "test_states"
 state_dir = File.join(test_states, ENV['DEPLOYMENT'])
 if File.directory?(state_dir)
   unless ENV['MONKEY_NO_RESUME']
-    @log.puts "Resuming previous testcase..."
+    @log.syswrite "Resuming previous testcase..."
     @state_file = File.open(File.join(state_dir, testname), "r")
   
     begin
@@ -57,7 +57,7 @@ if File.directory?(state_dir)
     end while !done
     @state_file.close
   else
-    @log.puts
+    @log.syswrite
   end
 else
   Dir.mkdir(test_states) unless File.directory?(test_states)
@@ -69,12 +69,12 @@ done = false
 begin
   line = @testcase.readline
   if line =~ /=/ or (@resume <= linenum and linenum <= @breakpoint)
-    @log.puts(line) unless line =~ /^[ \t]*#/ or line =~ /^[ \t]*$/
+    @log.syswrite(line) unless line =~ /^[ \t]*#/ or line =~ /^[ \t]*$/
     eval(line)
-    @state_file.puts(line) unless @resume > 0 and line =~ /=/
+    @state_file.syswrite(line) unless @resume > 0 and line =~ /=/
   end
   if linenum > @breakpoint
-    @log.puts "Pausing for breakpoint (line #{@breakpoint})"
+    @log.syswrite "Pausing for breakpoint (line #{@breakpoint})"
     @log.close
     done = true
   else
