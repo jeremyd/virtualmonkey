@@ -15,7 +15,6 @@
 #
 # Given A MySQL deployment
   @runner = VirtualMonkey::MysqlRunner.new(ENV['DEPLOYMENT'])
-  @runner.behavior(:lookup_scripts)
 
 # Then I should stop the servers
   @runner.behavior(:stop_all)

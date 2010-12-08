@@ -1,9 +1,9 @@
 #@lb_test
 #
-#Feature: PHP Server Templates
-#  Tests the PHP servers
+#Feature: Tomcat6 Server Templates
+#  Tests the Tomcat6 servers
 #
-#Scenario: PHP server test
+#Scenario: Tomcat6 server test
 #
 # Given A frontend with application servers deployment
   @runner = VirtualMonkey::FeAppRunner.new(ENV['DEPLOYMENT'])

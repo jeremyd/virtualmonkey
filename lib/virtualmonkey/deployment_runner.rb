@@ -8,6 +8,7 @@ module VirtualMonkey
       @deployment = Deployment.find_by_nickname_speed(deployment).first
       raise "Fatal: Could not find a deployment named #{deployment}" unless @deployment
       @servers = @deployment.servers_no_reload
+      @servers.each { |s| s.settings }
       lookup_scripts
     end
 

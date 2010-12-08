@@ -3,6 +3,8 @@ module VirtualMonkey
     def behavior(sym, *args)
       begin
         #pre-command
+        populate_settings unless @populated
+        #command
         result = __send__(sym, *args)
         #post-command
       rescue Exception => e
@@ -65,5 +67,10 @@ module VirtualMonkey
       raise e
     end
 
+    def populate_settings
+      # @servers.each { |s| s.settings }
+      # lookup_scripts
+      @populated = 1
+    end
   end
 end
