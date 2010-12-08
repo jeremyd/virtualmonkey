@@ -70,7 +70,7 @@
     <ul class="failed">
       <% failed.each do |failed_job| %>
         <li>
-        <a href="<%= File.basename(failed_job.logfile) %>"><%= File.basename(failed_job.logfile) %></A> <br><a href="<%= failed_job.link_to_rightscale %>">Click here view in RightScale</a>
+        <a href="<%= File.basename(failed_job.logfile) %>"><%= File.basename(failed_job.logfile) %></A> <br><a href="<%= File.basename(failed_job.rest_log) %>"><%= File.basename(failed_job.rest_log) %></A> <br><a href="<%= failed_job.link_to_rightscale %>">Click here to view in RightScale Dashboard</a>
         </li>
       <% end %>
     </ul>
@@ -80,7 +80,7 @@
     <ul class="success">
       <% passed.each do |passed_job| %>
         <li>
-        <a href="<%= File.basename(passed_job.logfile) %>"><%= File.basename(passed_job.logfile) %></A> <br><a href="<%= passed_job.link_to_rightscale %>">Click here to view in RightScale Dashboard</a>
+        <a href="<%= File.basename(passed_job.logfile) %>"><%= File.basename(passed_job.logfile) %></A> <br><a href="<%= File.basename(passed_job.rest_log) %>"><%= File.basename(passed_job.rest_log) %></A> <br><a href="<%= passed_job.link_to_rightscale %>">Click here to view in RightScale Dashboard</a>
         </li>
       <% end %>
     </ul>

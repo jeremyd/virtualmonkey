@@ -32,11 +32,10 @@ else
 end
 if ARGV[2]
   raise usage unless ARGV[2].class == "".class
-  @log = File.open(ARGV[2], "a")
+  @log = File.open(ARGV[2], "a+")
 else
   @log = $stdout
 end
-@log = $stdout
 
 @testcase = File.open(ARGV[0], "r")
 testname = ARGV[0].split(/\//).last
@@ -48,7 +47,7 @@ test_states = "test_states"
 state_dir = File.join(test_states, ENV['DEPLOYMENT'])
 if File.directory?(state_dir)
   unless ENV['MONKEY_NO_RESUME']
-    puts "Resuming previous testcase..."
+    @log.puts "Resuming previous testcase..."
     @state_file = File.open(File.join(state_dir, testname), "r")
   
     begin
@@ -74,12 +73,14 @@ begin
   end
   if linenum > @breakpoint
     @log.puts "Pausing for breakpoint (line #{@breakpoint})"
+    @log.close
     done = true
   else
     linenum += 1
   end
 rescue EOFError => e
   @state_file.close
+  @log.close
   File.delete(File.join(state_dir, testname))
   Dir.rmdir(state_dir)
   done = true

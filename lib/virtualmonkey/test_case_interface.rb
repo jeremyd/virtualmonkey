@@ -62,7 +62,7 @@ module VirtualMonkey
 
     def exception_handle(e)
       puts "WARNING: exception_handle(e) is undefined, this must be set in mixin classes"
-      raise e.message
+      raise e
     end
 
   end
