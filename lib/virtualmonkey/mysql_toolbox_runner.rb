@@ -17,14 +17,15 @@ module VirtualMonkey
                               [ 'create_migrate_script', 'DB EBS create migrate script from MySQL EBS v1' ],
                               [ 'create_mysql_ebs_stripe', 'DB Create MySQL EBS stripe' ],
                               [ 'grow_volume', 'DB EBS slave init and grow stripe volume' ],
-                              [ 'restore', 'DB EBS restore stripe volume v2' ]
+                              [ 'restore', 'DB EBS restore stripe volume' ]
                             ]
       st = ServerTemplate.find(s_one.server_template_href)
       lookup_scripts_table(st,scripts_mysql)
       # hardwired script! (this is an 'anyscript' that users typically use to setup the master dns)
       # This a special version of the register that uses MASTER_DB_DNSID instead of a test DNSID
       # This is identical to "DB register master" However it is not part of the template.
-      @scripts_to_run['master_init'] = RightScript.find_by("name") { |n| n =~ /DB register master \-ONLY FOR TESTING/ }
+#      @scripts_to_run['master_init'] = RightScript.find_by("name") { |n| n =~ /DB register master \-ONLY FOR TESTING/ }
+      @scripts_to_run['master_init'] = RightScript.new('href' => "/api/acct/2901/right_scripts/195053")
       raise "Did not find script" unless @scripts_to_run['master_init']
 
 #      @scripts_to_run['master_init'] = RightScript.new('href' => "/api/acct/2901/right_scripts/195053")
