@@ -34,7 +34,7 @@ end
 @testcase = File.open(ARGV[0], "r")
 testname = ARGV[0].split(/\//).last
 
-linenum = 0
+linenum = 1
 @resume = 0
 
 # Should we resume?
