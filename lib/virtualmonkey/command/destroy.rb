@@ -18,6 +18,7 @@ module VirtualMonkey
         raise "Aborting." unless confirm
       end
 
+      global_state_dir = File.join(__FILE__, "..", "..", "..", "test_states")
       @dm.deployments.each do |deploy|
         if options[:mysql]
           @runner = VirtualMonkey::MysqlRunner.new(deploy.nickname)
@@ -25,6 +26,15 @@ module VirtualMonkey
           @runner = VirtualMonkey::SimpleRunner.new(deploy.nickname)
         end
         @runner.behavior(:stop_all, false)
+        state_dir = File.join(global_state_dir, deploy.nickname)
+        if File.directory?(state_dir)
+          Dir.new(state_dir).each do |state_file|
+            if File.extname(state_file) == ".rb"
+              File.delete(File.join(state_dir, state_file))
+            end
+          end
+          Dir.rmdir(state_dir)
+        end
       end
 
       @dm.destroy_all unless options[:no_delete]

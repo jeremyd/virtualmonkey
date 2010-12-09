@@ -6,6 +6,7 @@ module VirtualMonkey
 
     def behavior(sym, *args)
       begin
+        @rerun_last_command = false
         #pre-command
         populate_settings unless @populated
         #command
@@ -13,7 +14,7 @@ module VirtualMonkey
         #post-command
       rescue Exception => e
         dev_mode?(e)
-      end
+      end while @rerun_last_command
       result
     end
 
@@ -30,6 +31,7 @@ module VirtualMonkey
       end
 
       begin
+        @rerun_last_command = false
         result = __send__(command, *args)
         if expect != "pass" and not (result == nil and expect == "nil")
           raise "FATAL: Failed verification"
@@ -38,7 +40,7 @@ module VirtualMonkey
         if not (e.message =~ /#{error_msg}/ and expect == "fail")
           dev_mode?(e)
         end
-      end
+      end while @rerun_last_command
     end
 
     def probe(server, command, expect)
@@ -46,13 +48,14 @@ module VirtualMonkey
       result = ""
       @servers.select { |s| s.nickname =~ /#{server}/ }.each { |s|
         begin
+          @rerun_last_command = false
           result_temp = s.spot_check_command(command)
           if not result_temp =~ /#{expect}/
             raise "FATAL: Server #{s.nickname} failed probe. Expecting /#{expect}/, got #{result_temp}"
           end
         rescue Exception => e
           dev_mode?(e)
-        end
+        end while @rerun_last_command
         result += result_temp
       }
     end
@@ -61,6 +64,7 @@ module VirtualMonkey
       if ENV['MONKEY_DEBUG'] and not ENV['AUTO_MONKEY']
         puts "Got \"#{e.message}\". Pausing for debugging..."
         debugger
+        @rerun_last_command = true
       else
         exception_handle(e)
       end

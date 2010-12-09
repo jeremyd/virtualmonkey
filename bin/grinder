@@ -44,13 +44,19 @@ if File.directory?(state_dir)
   unless ENV['MONKEY_NO_RESUME'] =~ /true/i
     puts "Resuming previous testcase...\n"
     @state_file = File.open(File.join(state_dir, testname), "r")
-  
-    begin
-      @resume += 1 if @state_file.readline
-    rescue EOFError => e
-      done = true
-    end while !done
-    @state_file.close
+    if @state_file.mtime < @testcase.mtime
+      puts "WARNING: testcase has been changed since state file."
+      puts "Scrapping previous testcase; Starting over...\n"
+      @state_file.close
+      File.delete(File.join(state_dir, testname))
+    else
+      begin
+        @resume += 1 if @state_file.readline
+      rescue EOFError => e
+        done = true
+      end while !done
+      @state_file.close
+    end
   else
     puts "Scrapping previous testcase; Starting over...\n"
     File.delete(File.join(state_dir, testname))
