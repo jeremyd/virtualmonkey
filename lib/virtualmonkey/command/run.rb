@@ -14,16 +14,34 @@ module VirtualMonkey
         opt :terminate, "Terminate if feature successfully completes. (No destroy)", :short => "-r"
         opt :mysql, "Use special MySQL TERMINATE script, instead of normal shutdown of all servers. Specify --terminate also", :short => "-m"
         opt :no_resume, "Do not use current test-in-progress, start from scratch", :short => "-n"
+        opt :yes, "Turn off confirmation", :short => "-y"
       end
+
+      global_state_dir = File.join(__FILE__, "..", "..", "..", "test_states")
       EM.run {
         cm = CukeMonk.new
         dm = DeploymentMonk.new(options[:tag])
         if options[:only]
-          do_these = dm.deployments.select { |s| s.nickname =~ /#{options[:only]}/ }
+          do_these = dm.deployments.select { |d| d.nickname =~ /#{options[:only]}/ }
         else
           do_these = dm.deployments
         end
+
+        unless options[:no_resume]
+          temp = do_these.select do |d|
+            File.exist?(File.join(global_state_dir, d.nickname, File.basename(options[:feature])))
+          end
+          do_these = temp if temp.length > 0
+        end
+
         cm.options = options
+        do_these.each { |d| say d.nickname }
+
+        unless options[:yes]
+          confirm = ask("Run tests on these deployments (y/n)?", lambda { |ans| true if (ans =~ /^[y,Y]{1}/) })
+          raise "Aborting." unless confirm
+        end
+
         do_these.each do |deploy|
           cm.run_test(deploy, options[:feature])
         end

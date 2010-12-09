@@ -8,10 +8,10 @@ module VirtualMonkey
         opt :feature, "path to feature(s) to run against the deployments", :type => :string
         opt :breakpoint, "feature file line to stop at", :type => :integer, :short => '-b'
         opt :copies, "number of copies to make (default is 1)", :type => :integer, :short => '-c'
-        opt :no_resume, "Do not use current test-in-progress, start from scratch", :short => "-n"
       end
 
       options[:copies] = 1 unless options[:copies] > 1
+      options[:no_resume] = true
       dm = DeploymentMonk.new(options[:deployment])
       if dm.deployments.length > 1
         raise "FATAL: Ambiguous Regex; more than one deployment matched /#{options[:deployment]}/"
@@ -19,12 +19,13 @@ module VirtualMonkey
         raise "FATAL: Ambiguous Regex; no deployment matched /#{options[:deployment]}/"
       end
       origin = dm.deployments.first
+      do_these ||= []
       # clone deployment
       for i in 1 .. options[:copies]
         new_deploy = origin.clone
         new_deploy.nickname = "#{origin.nickname}-clone-#{i}"
         new_deploy.save
-        dm.deployments << new_deploy
+        do_these << new_deploy
       end
 
       # run to breakpoint
@@ -32,7 +33,7 @@ module VirtualMonkey
         EM.run {
           cm = CukeMonk.new
           cm.options = options
-          dm.deployments.each do |deploy|
+          do_these.each do |deploy|
             cm.run_test(deploy, options[:feature])
           end
 
