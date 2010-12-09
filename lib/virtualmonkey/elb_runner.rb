@@ -146,7 +146,6 @@ puts "USING EP: #{endpoint_url}"
       if array.length == 1
         @elb_dns = array.first[:dns_name]
       else
-        raise "ERROR: No ELB with name \"#{@elb_name}\" found." if array.length < 1
         raise "ERROR: More than one ELB with name \"#{@elb_name}\" found." if array.length > 1
         az = ELBS[get_cloud_id][:azs]
 puts "Using az: #{az}"
