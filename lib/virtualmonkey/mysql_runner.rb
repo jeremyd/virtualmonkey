@@ -29,7 +29,8 @@ module VirtualMonkey
       reboot_all(true) # serially_reboot = true
       wait_for_all("operational")
       # This sleep is for waiting for the slave to catch up to the master since they both reboot at once
-      # sleep 120
+      # This sleep does more than that. It waits for the master to be fully up.
+      sleep 120
       run_reboot_checks
     end
 
@@ -41,29 +42,51 @@ module VirtualMonkey
       end
     end
 
+
     # lookup all the RightScripts that we will want to run
     def lookup_scripts
+#TODO fix this so epoch is not hard coded.
+puts "WE ARE HARDCODING THE TOOL BOX NAMES TO USE 11H1.b1"
+     scripts = [
+                 [ 'restore', 'restore and become' ],
+                 [ 'slave_init', 'slave init' ],
+                 [ 'promote', 'EBS promote to master' ],
+                 [ 'backup', 'EBS backup' ],
+                 [ 'terminate', 'TERMINATE SERVER' ]
+               ]
+      ebs_toolbox_scripts = [
+                              [ 'create_stripe' , 'EBS stripe volume create - 11H1.b1' ],
+                            ]
+      mysql_toolbox_scripts = [
+                              [ 'create_mysql_ebs_stripe' , 'DB Create MySQL EBS stripe volume - 11H1.b1' ],
+                              [ 'create_migrate_script' , 'DB EBS create migrate script from MySQL EBS v1' ],
+                            ]
       st = ServerTemplate.find(s_two.server_template_href)
-      @scripts_to_run = {}
-      @scripts_to_run['restore'] = st.executables.detect { |ex| ex.name =~  /restore and become/i }
-      @scripts_to_run['slave_init'] = st.executables.detect { |ex| ex.name =~ /slave init v2/ }
-      @scripts_to_run['promote'] = st.executables.detect { |ex| ex.name =~ /promote to master/ }
-      @scripts_to_run['backup'] = st.executables.detect { |ex| ex.name =~ /EBS backup/ }
-      @scripts_to_run['terminate'] = st.executables.detect { |ex| ex.name =~ /TERMINATE/ }
-      # hardwired script! (this is an 'anyscript' that users typically use to setup the master dns)
+      lookup_scripts_table(st,scripts)
       @scripts_to_run['master_init'] = RightScript.new('href' => "/api/acct/2901/right_scripts/195053")
-      @scripts_to_run['create_stripe'] = RightScript.new('href' => "/api/acct/2901/right_scripts/198381")
-      @scripts_to_run['create_mysql_ebs_stripe'] = RightScript.new('href' => "/api/acct/2901/right_scripts/212492")
-      tbx = ServerTemplate.find_by(:nickname) { |n| n =~ /MySQL EBS Toolbox v2/ }
+      #This does not work - does not create the same type as call above does.
+      #@scripts_to_run['master_init'] = RightScript.find_by("name") { |n| n =~ /DB register master \-ONLY FOR TESTING/ }
+      raise "Did not find script" unless @scripts_to_run['master_init']
+
+      tbx = ServerTemplate.find_by(:nickname) { |n| n =~ /EBS Stripe Toolbox - 11H1.b1/ }
+      raise "Did not find toolbox template" unless tbx[0]
       # Use the HEAD revision.
-      @scripts_to_run['create_migrate_script'] = tbx[0].executables.detect { |ex| ex.name =~ /DB EBS create migrate script from MySQL EBS v1 master/ }
+      lookup_scripts_table(tbx[0],ebs_toolbox_scripts)
+#      @scripts_to_run['create_stripe'] = RightScript.new('href' => "/api/acct/2901/right_scripts/198381")
+#TODO - does not account for 5.0/5.1 toolbox differences
+puts "USING MySQL 5.0 toolbox"
+      tbx = ServerTemplate.find_by(:nickname) { |n| n =~ /MySQL 5.0 Stripe Toolbox - 11H1.b1/ }
+      raise "Did not find toolbox template" unless tbx[0]
+      lookup_scripts_table(tbx[0],mysql_toolbox_scripts)
+#      @scripts_to_run['create_mysql_ebs_stripe'] = RightScript.new('href' => "/api/acct/2901/right_scripts/212492")
+#      @scripts_to_run['create_migrate_script'] = tbx[0].executables.detect { |ex| ex.name =~ /DB EBS create migrate script from MySQL EBS v1 master/ }
      raise "FATAL: Need 2 MySQL servers in the deployment" unless @servers.size == 2
     end
 
     def migrate_slave
       s_one.settings
       s_one.spot_check_command("/tmp/init_slave.sh")
-      run_script("backup", s_one)
+      eun_script("backup", s_one)
     end
    
     def launch_v2_slave

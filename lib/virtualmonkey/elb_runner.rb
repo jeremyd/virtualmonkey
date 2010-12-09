@@ -108,12 +108,17 @@ puts "USING EP: #{endpoint_url}"
     
     # Grab the scripts we plan to excersize
     def lookup_scripts
-      @scripts_to_run = {}
+      scripts = [
+                 [ 'connect', 'ELB connect' ],
+                 [ 'disconnect', 'ELB disconnect' ]
+               ]
+#      @scripts_to_run = {}
       server = @servers.first
       server.settings 
       st = ServerTemplate.find(server.server_template_href)
-      @scripts_to_run['connect'] = st.executables.detect { |ex| ex.name =~  /ELB connect/i }
-      @scripts_to_run['disconnect'] = st.executables.detect { |ex| ex.name =~  /ELB disconnect/i }
+      lookup_scripts_table(st,scripts)
+#      @scripts_to_run['connect'] = st.executables.detect { |ex| ex.name =~  /ELB connect/i }
+#      @scripts_to_run['disconnect'] = st.executables.detect { |ex| ex.name =~  /ELB disconnect/i }
     end 
     
     # This is really just a PHP server check. relocate?

@@ -1,0 +1,11 @@
+{
+  "tag":"TROOP_MYSQL_50_TOOLBOX",
+  "runner":"MysqlRunner",
+  "common_inputs":"",
+  "server_template_ids":[
+    "84658",
+    "84649"
+  ]
+  "feature":"simple_fail.feature",
+  "cloud_variables":"all_clouds.json"
+}

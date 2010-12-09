@@ -1,5 +1,5 @@
 {
-  "OPT_SVN_USERNAME" : "cred:cary",
+  "OPT_SVN_USERNAME" : "text:cary",
   "OPT_PHP_ENABLE" : "text:yes",
   "PRIVATE_SSH_KEY" : "key:publish-test:1",
   "WEBSITE_DNS" : "text:reg-php.test.rightscale.com",
