@@ -45,7 +45,7 @@ class CukeJob
                                             "AWS_SECRET_ACCESS_KEY" => Fog.credentials[:aws_secret_access_key],
                                             "REST_CONNECTION_LOG" => @rest_log,
                                             "MONKEY_NO_RESUME" => "#{@no_resume}",
-                                            "AUTO_MONKEY" => "1"},
+                                            "MONKEY_NO_DEBUG" => "true"},
                         :stdout_handler => :on_read_stdout,
                         :stderr_handler => :on_read_stderr,
                         :exit_handler   => :on_exit)

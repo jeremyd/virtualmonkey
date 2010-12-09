@@ -61,10 +61,10 @@ module VirtualMonkey
     end
 
     def dev_mode?(e)
-      if not ENV['MONKEY_NO_DEBUG']
+      if not ENV['MONKEY_NO_DEBUG'] =~ /true/i
         puts "Got \"#{e.message}\". Pausing for debugging..."
-        debugger
         @rerun_last_command = true
+        debugger
       else
         exception_handle(e)
       end

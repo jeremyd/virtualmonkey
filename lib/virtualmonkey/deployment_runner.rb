@@ -8,9 +8,9 @@ module VirtualMonkey
       @deployment = Deployment.find_by_nickname_speed(deployment).first
       raise "Fatal: Could not find a deployment named #{deployment}" unless @deployment
       @servers = @deployment.servers_no_reload
-      @servers.each { |s| s.settings }
       @scripts_to_run = {}
       lookup_scripts
+      @servers.each { |s| s.settings }
     end
 
     # It's not that I'm a Java fundamentalist; I merely believe that mortals should

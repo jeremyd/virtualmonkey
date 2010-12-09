@@ -134,7 +134,7 @@ puts "USING EP: #{endpoint_url}"
     end
     
     def create_elb
-      array = retry_elb_fn("describe_load_balancer",@elb_name)
+      array = retry_elb_fn("describe_load_balancers",@elb_name)
       if array.length == 1
         @elb_dns = array.first[:dns_name]
       else
