@@ -43,15 +43,15 @@ module VirtualMonkey
       end while @rerun_last_command
     end
 
-    def probe(server, command, expect)
+    def probe(server, command, &block)
       # run command on servers matching "server" over ssh
       result = ""
       @servers.select { |s| s.nickname =~ /#{server}/ }.each { |s|
         begin
           @rerun_last_command = false
           result_temp = s.spot_check_command(command)
-          if not result_temp =~ /#{expect}/
-            raise "FATAL: Server #{s.nickname} failed probe. Expecting /#{expect}/, got #{result_temp}"
+          if not yield(result_temp)
+            raise "FATAL: Server #{s.nickname} failed probe. Got #{result_temp}"
           end
         rescue Exception => e
           dev_mode?(e)
@@ -61,7 +61,7 @@ module VirtualMonkey
     end
 
     def dev_mode?(e)
-      if ENV['MONKEY_DEBUG'] and not ENV['AUTO_MONKEY']
+      if not ENV['MONKEY_NO_DEBUG']
         puts "Got \"#{e.message}\". Pausing for debugging..."
         debugger
         @rerun_last_command = true

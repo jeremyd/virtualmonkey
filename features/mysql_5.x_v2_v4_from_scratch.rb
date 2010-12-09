@@ -41,7 +41,7 @@
 
 # Then I should check that ulimit was set correctly
 #  @runner.behavior(:ulimit_check)
-  @runner.probe(".*", "su - mysql -s /bin/bash -c \"ulimit -n\"")
+  @runner.probe(".*", "su - mysql -s /bin/bash -c \"ulimit -n\"") { |s| s.to_i > 1024 }
 
 # Then I should check that monitoring is enabled
   @runner.behavior(:check_monitoring)
