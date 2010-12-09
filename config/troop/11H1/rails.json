@@ -2,12 +2,12 @@
   "feature":"rails.feature",
   "runner":"SimpleRunner",
   "server_template_ids":[
-    "53376",
-    "53376",
-    "53377",
-    "53377"
+    "84646",
+    "84646",
+    "84647",
+    "84647"
   ],
   "cloud_variables":"all_clouds.json",
   "common_inputs":"rails.json",
-  "tag":"TROOP-rails-v10-head"
+  "tag":"TROOP_RAILS"
 }

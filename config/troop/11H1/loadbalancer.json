@@ -1,13 +1,14 @@
 {
+  "tag":"TROOP_APACHE_HAPROX",
   "feature":"lb-apache-haproxy.feature",
   "common_inputs":"apache_haproxy.json",
   "runner":"SimpleRunner",
   "server_template_ids":[
-    "53958",
-    "53958",
-    "52799",
-    "52799"
+    "84648",
+    "84649",
+    "84651",
+    "84643", 
+    "84647"
   ],
-  "tag":"APACHE-HAPROXY-10-MONKEY-TROOP",
-  "cloud_variables":"west.json"
+  "cloud_variables":"all_clouds.json"
 }

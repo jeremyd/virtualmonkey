@@ -1,0 +1,11 @@
+{
+  "tag":"TROOP_PHP_ELB",
+  "feature":"php_elb.feature",
+  "runner":"SimpleRunner",
+  "server_template_ids":[
+    "84643",
+    "84643"
+  ],
+  "cloud_variables":"all_clouds.json",
+  "common_inputs":"php_elb.json"
+}
