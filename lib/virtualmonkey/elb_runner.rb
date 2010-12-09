@@ -61,7 +61,7 @@ puts "USING EP: #{endpoint_url}"
             sleep (rand(backoff))
             retry_loop += 1
           else
-            raise "#{e.message}"
+            raise e
           end
         end
       end while !done
@@ -134,7 +134,15 @@ puts "USING EP: #{endpoint_url}"
     end
     
     def create_elb
-      array = retry_elb_fn("describe_load_balancers",@elb_name)
+      begin
+        array = retry_elb_fn("describe_load_balancers",@elb_name)
+      rescue Exception => e
+        if e.message =~ /Cannot find Load Balancer/
+          array = []
+        else
+          raise e
+        end
+      end
       if array.length == 1
         @elb_dns = array.first[:dns_name]
       else
