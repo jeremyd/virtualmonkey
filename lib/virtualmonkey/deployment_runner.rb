@@ -220,7 +220,6 @@ module VirtualMonkey
     # Checks that monitoring is enabled on all servers in the deployment.  Will raise an error if monitoring is not enabled.
     def check_monitoring
       @servers.each do |server|
-debugger
         server.settings
         response = nil
         count = 0
