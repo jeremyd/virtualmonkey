@@ -17,10 +17,10 @@ grinder "testcase.rb" [breakline number]
 DEVELOPERS: Grinder will drop you into ruby-debug at an exception. Setting the 'MONKEY_NO_DEBUG' environment variable will turn off this behavior.
 
 Here are your environment variables:
-DEPLOYMENT            = #{ENV['DEPLOYMENT']}
-REST_CONNECTION_LOG   = #{ENV['REST_CONNECTION_LOG']}
-MONKEY_NO_DEBUG       = #{ENV['MONKEY_NO_DEBUG']}
-MONKEY_NO_RESUME      = #{ENV['MONKEY_NO_RESUME']}
+export DEPLOYMENT=#{ENV['DEPLOYMENT']}
+export REST_CONNECTION_LOG=#{ENV['REST_CONNECTION_LOG']}
+export MONKEY_NO_DEBUG=#{ENV['MONKEY_NO_DEBUG']}
+export MONKEY_NO_RESUME=#{ENV['MONKEY_NO_RESUME']}
 EOS
 
 raise usage unless ENV['DEPLOYMENT']
