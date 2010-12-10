@@ -71,8 +71,9 @@ module VirtualMonkey
     end
 
     def exception_handle(e)
-      puts "WARNING: exception_handle(e) is undefined, this must be set in mixin classes"
+      puts "ATTENTION: Using default exception_handle(e). This can be overridden in mixin classes."
       if e.message =~ /Insufficient capacity/
+        puts "Got \"#{e.message}\". Retrying...."
         sleep 10
         @rerun_last_command = true
       else

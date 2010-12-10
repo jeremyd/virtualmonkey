@@ -28,10 +28,9 @@ module VirtualMonkey
         @runner.behavior(:stop_all, false)
         state_dir = File.join(global_state_dir, deploy.nickname)
         if File.directory?(state_dir)
+          puts "Deleting state files for #{deploy.nickname}..."
           Dir.new(state_dir).each do |state_file|
-            if File.extname(state_file) == ".rb"
-              File.delete(File.join(state_dir, state_file))
-            end
+            File.delete(File.join(state_dir, state_file))
           end
           Dir.rmdir(state_dir)
         end
