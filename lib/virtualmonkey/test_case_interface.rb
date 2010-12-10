@@ -72,7 +72,12 @@ module VirtualMonkey
 
     def exception_handle(e)
       puts "WARNING: exception_handle(e) is undefined, this must be set in mixin classes"
-      raise e
+      if e.message =~ /Insufficient capacity/
+        sleep 10
+        @rerun_last_command = true
+      else
+        raise e
+      end
     end
 
     def populate_settings
