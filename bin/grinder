@@ -23,7 +23,8 @@ MONKEY_NO_DEBUG       = #{ENV['MONKEY_NO_DEBUG']}
 MONKEY_NO_RESUME      = #{ENV['MONKEY_NO_RESUME']}
 EOS
 
-raise usage unless ENV['DEPLOYMENT'] and File.exist?(ARGV[0])
+raise usage unless ENV['DEPLOYMENT']
+raise usage unless ARGV[0] and File.exist?(ARGV[0])
 if ARGV[1]
   @breakpoint = ARGV[1].to_i
 else
