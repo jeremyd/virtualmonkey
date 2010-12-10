@@ -12,7 +12,7 @@
   @runner.set_var(:create_elb)
   
 # Then I should stop the servers
-  @runner.set_var(:set_elb_name)
+  @runner.set_var(:stop_all)
 
 # Then I should set a variation for connecting to shared database host 
   @runner.set_var(:set_master_db_dnsname)
