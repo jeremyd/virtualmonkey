@@ -31,7 +31,7 @@ module VirtualMonkey
 #      @scripts_to_run['master_init'] = RightScript.new('href' => "/api/acct/2901/right_scripts/195053")
 #TODO - this is hardcoded for 5.0 toolbox - need to deal with issue that we have two
 #toolboxes and their names are going to change
-      tbx = ServerTemplate.find_by(:nickname) { |n| n =~ /MySQL 5.0 Stripe Toolbox - 11H1.b1/ }
+      tbx = ServerTemplate.find_by(:nickname) { |n| n =~ /Database Manager with MySQL 5.0 Toolbox - 11H1.b1/ }
       raise "FATAL: could not find toolbox" unless tbx
       # Use the HEAD revision.
       st = tbx[0]
