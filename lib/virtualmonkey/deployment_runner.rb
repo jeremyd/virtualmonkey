@@ -243,13 +243,12 @@ module VirtualMonkey
         raise "Fatal: Failed to verify that monitoring is operational" unless response
 #TODO: pass in some list of plugin info to check multiple values.  For now just
 # hardcoding the df check
-        monitor=response.get_sketchy_data({'start'=>-180,'end'=>-20,'plugin_name'=>"df",'plugin_type'=>"df-mnt"})
-        data=monitor['data']
-        free=data['free']
-        raise "No df free data" unless free.length > 0
-        raise "DF not free" unless free[0] > 0
-        puts "Monitoring is OK for #{server.nickname}"
-raise "Just becuase I got here"
+#        monitor=response.get_sketchy_data({'start'=>-180,'end'=>-20,'plugin_name'=>"df",'plugin_type'=>"df-mnt"})
+#        data=monitor['data']
+#        free=data['free']
+#        raise "No df free data" unless free.length > 0
+#        raise "DF not free" unless free[0] > 0
+#        puts "Monitoring is OK for #{server.nickname}"
       end
     end
 
