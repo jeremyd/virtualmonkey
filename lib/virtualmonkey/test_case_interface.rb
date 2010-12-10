@@ -50,13 +50,13 @@ module VirtualMonkey
         begin
           @rerun_last_command = false
           result_temp = s.spot_check_command(command)
-          if not yield(result_temp)
-            raise "FATAL: Server #{s.nickname} failed probe. Got #{result_temp}"
+          if not yield(result_temp[:output])
+            raise "FATAL: Server #{s.nickname} failed probe. Got #{result_temp[:output]}"
           end
         rescue Exception => e
           dev_mode?(e)
         end while @rerun_last_command
-        result += result_temp
+        result += result_temp[:output]
       }
     end
 
