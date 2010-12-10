@@ -75,7 +75,7 @@ puts "WE ARE HARDCODING THE TOOL BOX NAMES TO USE 11H1.b1"
 #      @scripts_to_run['create_stripe'] = RightScript.new('href' => "/api/acct/2901/right_scripts/198381")
 #TODO - does not account for 5.0/5.1 toolbox differences
 puts "USING MySQL 5.0 toolbox"
-      tbx = ServerTemplate.find_by(:nickname) { |n| n =~ /MySQL 5.0 Stripe Toolbox - 11H1.b1/ }
+      tbx = ServerTemplate.find_by(:nickname) { |n| n =~ /Database Manager with MySQL 5.0 Toolbox - 11H1.b1/ }
       raise "Did not find toolbox template" unless tbx[0]
       lookup_scripts_table(tbx[0],mysql_toolbox_scripts)
 #      @scripts_to_run['create_mysql_ebs_stripe'] = RightScript.new('href' => "/api/acct/2901/right_scripts/212492")
