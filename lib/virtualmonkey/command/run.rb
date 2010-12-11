@@ -18,6 +18,7 @@ module VirtualMonkey
       end
 
       global_state_dir = File.join(__FILE__, "..", "..", "..", "test_states")
+      say global_state_dir
       EM.run {
         cm = CukeMonk.new
         dm = DeploymentMonk.new(options[:tag])
