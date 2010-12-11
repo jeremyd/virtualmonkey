@@ -17,8 +17,7 @@ module VirtualMonkey
         opt :yes, "Turn off confirmation", :short => "-y"
       end
 
-      global_state_dir = File.join(__FILE__, "..", "..", "..", "test_states")
-      say global_state_dir
+      global_state_dir = File.join(File.dirname(__FILE__), "..", "..", "..", "test_states")
       EM.run {
         cm = CukeMonk.new
         dm = DeploymentMonk.new(options[:tag])

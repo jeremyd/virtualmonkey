@@ -18,7 +18,7 @@ module VirtualMonkey
         raise "Aborting." unless confirm
       end
 
-      global_state_dir = File.join(__FILE__, "..", "..", "..", "test_states")
+      global_state_dir = File.join(File.dirname(__FILE__), "..", "..", "..", "test_states")
       @dm.deployments.each do |deploy|
         if options[:mysql]
           @runner = VirtualMonkey::MysqlRunner.new(deploy.nickname)
