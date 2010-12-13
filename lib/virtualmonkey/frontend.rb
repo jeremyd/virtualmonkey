@@ -32,7 +32,7 @@ module VirtualMonkey
     end
 
     def frontend_checks
-      detect_os
+      behavior(:detect_os)
 
       behavior(:run_unified_application_checks, fe_servers, 80)
 

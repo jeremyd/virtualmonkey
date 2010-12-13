@@ -29,21 +29,21 @@ module VirtualMonkey
 # Duplicate code here because we need to wait between the master and the slave time
       #reboot_all(true) # serially_reboot = true
       @servers.each do |s|
-        s.reboot(true)
-        s.wait_for_state("operational")
+        object_behavior(s, :reboot, true)
+        object_behavior(s, :wait_for_state, "operational")
 # TODO put a check in here to see if mysql is fully up before rebooting the next server
 # The slave was rebooting to soon after the master came up.
         sleep 300
       end
-      wait_for_all("operational")
-      run_reboot_checks
+      object_behavior(:wait_for_all, "operational")
+      behavior(:run_reboot_checks)
     end
 
     # This is where we perform multiple checks on the deployment after a reboot.
     def run_reboot_checks
       # one simple check we can do is the backup.  Backup can fail if anything is amiss
       @servers.each do |server|
-        run_script("backup", server)
+        behavior(:run_script, "backup", server)
       end
     end
 
@@ -90,21 +90,21 @@ puts "USING MySQL 5.0 toolbox"
 
     def migrate_slave
       s_one.settings
-      s_one.spot_check_command("/tmp/init_slave.sh")
-      eun_script("backup", s_one)
+      object_behavior(s_one, :spot_check_command, "/tmp/init_slave.sh")
+      behavior(:run_script, "backup", s_one)
     end
    
     def launch_v2_slave
       s_two.settings
-      wait_for_snapshots
-      run_script("slave_init",s_two)
+      behavior(:wait_for_snapshots)
+      behavior(:run_script, "slave_init", s_two)
     end
 
     def run_restore_with_timestamp_override
-      s_one.relaunch
+      object_behavior(s_one, :relaunch)
       s_one.dns_name = nil
       s_one.wait_for_operational_with_dns
-      audit = s_one.run_executable(@scripts_to_run['restore'], { "OPT_DB_RESTORE_TIMESTAMP_OVERRIDE" => "text:#{find_snapshot_timestamp}" } )
+      audit = object_behavior(s_one, :run_executable, @scripts_to_run['restore'], { "OPT_DB_RESTORE_TIMESTAMP_OVERRIDE" => "text:#{find_snapshot_timestamp}" } )
       audit.wait_for_completed
     end
   end

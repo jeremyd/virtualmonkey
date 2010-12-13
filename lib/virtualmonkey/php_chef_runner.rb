@@ -20,35 +20,35 @@ module VirtualMonkey
     end
  
     def frontend_checks
-      detect_os
+      behavior(:detect_os)
 
-      run_unified_application_checks(fe_servers, 80)
+      behavior(:run_unified_application_checks, fe_servers, 80)
 
       # check that all application servers exist in the haproxy config file on all fe_servers
       server_ips = Array.new
       app_servers.each { |app| server_ips << app['private-ip-address'] }
       fe_servers.each do |fe|
         fe.settings
-        haproxy_config = fe.spot_check_command('cat /home/haproxy/rightscale_lb.cfg | grep server')
+        haproxy_config = object_behavior(fe, :spot_check_command, 'cat /home/haproxy/rightscale_lb.cfg | grep server')
         server_ips.each { |ip|  haproxy_config.to_s.include?(ip).should == true }
       end
 
       # restart haproxy and check that it succeeds
       fe_servers.each_with_index do |server,i|
-        response = server.spot_check_command?('service haproxy stop')
+        response = object_behavior(server, :spot_check_command?, 'service haproxy stop')
         raise "Haproxy stop command failed" unless response
 
         stopped = false
         count = 0
         until response || count > 3 do
-          response = server.spot_check_command(server.haproxy_check)
+          response = object_behavior(server, :spot_check_command, server.haproxy_check)
           stopped = response.include?("not running")
           break if stopped
           count += 1
           sleep 10
         end
 
-        response = server.spot_check_command?('service haproxy start')
+        response = object_behavior(server, :spot_check_command?, 'service haproxy start')
         raise "Haproxy start failed" unless response
       end
     end

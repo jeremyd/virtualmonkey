@@ -69,15 +69,15 @@ module VirtualMonkey
     # Performs steps necessary to bootstrap a MySQL Master server from a pristine state.
     # * server<~Server> the server to use as MASTER
     def config_master_from_scratch(server)
-      create_stripe(server)
-      server.spot_check_command("service mysqld start")
+      behavior(:create_stripe, server)
+      object_behavior(server, :spot_check_command, "service mysqld start")
 #TODO the service name depends on the OS
 #      server.spot_check_command("service mysql start")
-      run_query("create database mynewtest", server)
-      set_master_dns(server)
+      behavior(:run_query, "create database mynewtest", server)
+      behavior(:set_master_dns, server)
       # This sleep is to wait for DNS to settle - must sleep
       sleep 120
-      run_script("backup", server)
+      behavior(:run_script, "backup", server)
     end
 
     # Runs a mysql query on specified server.
@@ -161,6 +161,7 @@ module VirtualMonkey
     end
 
     # check that ulimit has been set correctly
+    # XXX: DEPRECATED
     def ulimit_check
       @servers.each do |server|
         result = server.spot_check_command("su - mysql -s /bin/bash -c \"ulimit -n\"")

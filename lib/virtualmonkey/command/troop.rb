@@ -73,6 +73,7 @@ module VirtualMonkey
         end  
         @dm.generate_variations(options)
         # RUN PHASE
+        global_state_dir = File.join(File.dirname(__FILE__), "..", "..", "..", "test_states")
         EM.run {
           cm = CukeMonk.new
           cm.options = {}
@@ -90,6 +91,16 @@ module VirtualMonkey
                   runner = eval("VirtualMonkey::#{config['runner']}.new(job.deployment.nickname)")
                   puts "destroying successful deployment: #{runner.deployment.nickname}"
                   runner.behavior(:stop_all, false)
+                  state_dir = File.join(global_state_dir, deploy.nickname)
+                  if File.directory?(state_dir)
+                    puts "Deleting state files for #{deploy.nickname}..."
+                    Dir.new(state_dir).each do |state_file|
+                      if File.extname(state_file) == ".rb"
+                        File.delete(File.join(state_dir, state_file))
+                      end 
+                    end 
+                    Dir.rmdir(state_dir)
+                  end 
                   runner.deployment.destroy
                 end
               end    
