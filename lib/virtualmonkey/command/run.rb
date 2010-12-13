@@ -12,12 +12,12 @@ module VirtualMonkey
         opt :tag, "Tag to match prefix of the deployments.", :type => :string, :required => true, :short => "-t"
         opt :only, "regex string to use for subselection matching on deployments.  Eg. --only x86_64", :type => :string
         opt :terminate, "Terminate if feature successfully completes. (No destroy)", :short => "-r"
-        opt :mysql, "Use special MySQL TERMINATE script, instead of normal shutdown of all servers. Specify --terminate also", :short => "-m"
+#        opt :mysql, "Use special MySQL TERMINATE script, instead of normal shutdown of all servers. Specify --terminate also", :short => "-m"
         opt :no_resume, "Do not use current test-in-progress, start from scratch", :short => "-n"
         opt :yes, "Turn off confirmation", :short => "-y"
       end
 
-      global_state_dir = File.join(__FILE__, "..", "..", "..", "test_states")
+      global_state_dir = File.join(File.dirname(__FILE__), "..", "..", "..", "test_states")
       EM.run {
         cm = CukeMonk.new
         dm = DeploymentMonk.new(options[:tag])

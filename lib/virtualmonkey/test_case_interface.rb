@@ -6,15 +6,16 @@ module VirtualMonkey
 
     def behavior(sym, *args)
       begin
-        @rerun_last_command = false
+        rerun_test
         #pre-command
         populate_settings unless @populated
         #command
         result = __send__(sym, *args)
         #post-command
+        continue_test
       rescue Exception => e
         dev_mode?(e)
-      end while @rerun_last_command
+      end while @rerun_last_command.last
       result
     end
 
@@ -31,16 +32,17 @@ module VirtualMonkey
       end
 
       begin
-        @rerun_last_command = false
+        rerun_test
         result = __send__(command, *args)
         if expect != "pass" and not (result == nil and expect == "nil")
           raise "FATAL: Failed verification"
         end
+        continue_test
       rescue Exception => e
         if not (e.message =~ /#{error_msg}/ and expect == "fail")
           dev_mode?(e)
         end
-      end while @rerun_last_command
+      end while @rerun_last_command.last
     end
 
     def probe(server, command, &block)
@@ -48,17 +50,20 @@ module VirtualMonkey
       result = ""
       @servers.select { |s| s.nickname =~ /#{server}/ }.each { |s|
         begin
-          @rerun_last_command = false
+          rerun_test
           result_temp = s.spot_check_command(command)
           if not yield(result_temp[:output])
             raise "FATAL: Server #{s.nickname} failed probe. Got #{result_temp[:output]}"
           end
+          continue_test
         rescue Exception => e
           dev_mode?(e)
-        end while @rerun_last_command
+        end while @rerun_last_command.last
         result += result_temp[:output]
       }
     end
+
+    private
 
     def dev_mode?(e)
       if not ENV['MONKEY_NO_DEBUG'] =~ /true/i
@@ -75,7 +80,6 @@ module VirtualMonkey
       if e.message =~ /Insufficient capacity/
         puts "Got \"#{e.message}\". Retrying...."
         sleep 10
-        @rerun_last_command = true
       else
         raise e
       end
@@ -85,6 +89,29 @@ module VirtualMonkey
       # @servers.each { |s| s.settings }
       # lookup_scripts
       @populated = 1
+    end
+
+    def object_behavior(obj, sym, *args)
+      begin
+        rerun_test
+        #pre-command
+        populate_settings unless @populated
+        #command
+        result = obj.__send__(sym, *args)
+        #post-command
+        continue_test
+      rescue Exception => e
+        dev_mode?(e)
+      end while @rerun_last_command.last
+      result
+    end
+
+    def rerun_test
+      @rerun_last_command.push(true)
+    end
+
+    def continue_test
+      @rerun_last_command.pop
     end
   end
 end
