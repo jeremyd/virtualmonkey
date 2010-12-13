@@ -75,6 +75,7 @@ module VirtualMonkey
         # RUN PHASE
         EM.run {
           cm = CukeMonk.new
+          cm.options = {}
           @dm.deployments.each do |deploy|
             cm.run_test(deploy, File.join(features_dir, config['feature']))
           end
