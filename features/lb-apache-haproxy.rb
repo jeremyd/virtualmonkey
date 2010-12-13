@@ -30,7 +30,7 @@
   @runner.behavior(:wait_for_set, "App Server", "operational")
 
 # Then I should run unified application checks on app servers
-  @runner.behavior(:run_unified_application_checks, :app_servers)
+  @runner.behavior(:run_unified_application_checks, @runner.send(:app_servers))
 
 # Then I should run frontend checks
   @runner.behavior(:frontend_checks)
