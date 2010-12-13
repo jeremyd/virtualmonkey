@@ -3,8 +3,10 @@
   "runner":"SimpleRunner",
   "common_inputs":"",
   "server_template_ids":[
+    "84656",
+    "84656",
     "84656"
-  ]
+  ],
   "feature":"simple_fail.feature",
   "cloud_variables":"all_clouds.json"
 }
