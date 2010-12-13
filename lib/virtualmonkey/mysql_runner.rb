@@ -26,11 +26,16 @@ module VirtualMonkey
     end
 
     def run_reboot_operations
-      reboot_all(true) # serially_reboot = true
+# Duplicate code here because we need to wait between the master and the slave time
+      #reboot_all(true) # serially_reboot = true
+      @servers.each do |s|
+        s.reboot(true)
+        s.wait_for_state("operational")
+# TODO put a check in here to see if mysql is fully up before rebooting the next server
+# The slave was rebooting to soon after the master came up.
+        sleep 300
+      end
       wait_for_all("operational")
-      # This sleep is for waiting for the slave to catch up to the master since they both reboot at once
-      # This sleep does more than that. It waits for the master to be fully up.
-      sleep 120
       run_reboot_checks
     end
 
