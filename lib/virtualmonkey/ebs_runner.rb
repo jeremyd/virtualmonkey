@@ -25,16 +25,6 @@ module VirtualMonkey
                ]
       st = ServerTemplate.find(s_one.server_template_href)
       lookup_scripts_table(st,scripts)
-#      @scripts_to_run = {}
-#      @scripts_to_run['backup'] = st.executables.detect { |ex| ex.name =~ /EBS stripe volume backup/ }
-#      @scripts_to_run['restore'] = st.executables.detect { |ex| ex.name =~  /EBS stripe volume restore/i }
-#      @scripts_to_run['continuous_backup'] = st.executables.detect { |ex| ex.name =~  /EBS continuous backups/i }
-#      @scripts_to_run['unfreeze'] = st.executables.detect { |ex| ex.name =~  /EBS unfreeze volume backups/i }
-#      @scripts_to_run['freeze'] = st.executables.detect { |ex| ex.name =~  /EBS freeze volume backups/i }
-#      @scripts_to_run['create_stripe'] = st.executables.detect { |ex| ex.name =~  /EBS stripe volume create/i }
-#      @scripts_to_run['create_backup_scripts'] = st.executables.detect { |ex| ex.name =~  /EBS create backup scripts/i }
-#      @scripts_to_run['grow_volume'] = st.executables.detect { |ex| ex.name =~  /EBS stripe volume grow and restore/i }
-#      @scripts_to_run['terminate'] = st.executables.detect { |ex| ex.name =~ /TERMINATE/ }
     end
     
     # Create a stripe and write some data to it
