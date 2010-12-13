@@ -156,13 +156,13 @@ module VirtualMonkey
       wait_for_reboot = true
       # Do NOT thread this each statement
       @servers.each do |s| 
-        s.reboot(wait_for_reboot)
+        object_behavior(s, :reboot, wait_for_reboot)
         if serially_reboot
-          s.wait_for_state("operational")
+          object_behavior(s, :wait_for_state, "operational")
         end
       end
       @servers.each do |s| 
-        s.wait_for_state("operational")
+        object_behavior(s, :wait_for_state, "operational")
       end
     end
 
@@ -179,7 +179,7 @@ module VirtualMonkey
     def detect_os
       @server_os = Array.new
       @servers.each do |server|
-        if server.spot_check_command?("lsb_release -is | grep Ubuntu")
+        if object_behavior(server, :spot_check_command?, "lsb_release -is | grep Ubuntu")
           puts "setting server to ubuntu"
           server.os = "ubuntu"
           server.apache_str = "apache2"
@@ -262,21 +262,21 @@ module VirtualMonkey
 # correct for the new instance data.
 #
     def perform_start_stop_operations
-      detect_os
+      behavior(:detect_os)
       s=@servers.first
       # Save configuration files for comparison after starting
-      save_configuration_files(s)
+      behavior(:save_configuration_files, s)
       # Stop the servers
-      stop_ebs_all
+      behavior(:stop_ebs_all)
       # Verify all stopped
       # Start the servers
-      start_ebs_all(true)
+      behavior(:start_ebs_all, true)
 #      Do this for all? Or just the one?
 #      @servers.each { |server| server.wait_for_operational_with_dns }
       s=@servers.first
-      s.wait_for_operational_with_dns
+      object_behavior(s, :wait_for_operational_with_dns)
       # Verify operational
-      run_simple_check(s)
+      behavior(:run_simple_check, s)
     end
 
 # TODO there will be other files that need compares et al.  Create a list
@@ -284,9 +284,9 @@ module VirtualMonkey
     # Copy configuration files into some location for usage after start
     def save_configuration_files(server)
       puts "Saving config files"
-      server.spot_check_command('mkdir -p /root/start_stop_backup')
-      server.spot_check_command('cp /etc/postfix/main.cf /root/start_stop_backup/.')
-      server.spot_check_command('cp /etc/syslog-ng/syslog-ng.conf /root/start_stop_backup/.')
+      object_behavior(server, :spot_check_command, 'mkdir -p /root/start_stop_backup')
+      object_behavior(server, :spot_check_command, 'cp /etc/postfix/main.cf /root/start_stop_backup/.')
+      object_behavior(server, :spot_check_command, 'cp /etc/syslog-ng/syslog-ng.conf /root/start_stop_backup/.')
     end
 
     # Diff the new config file with the saved one and check that the only
@@ -304,13 +304,13 @@ module VirtualMonkey
     end
     
     def run_simple_checks
-      @servers.each { |s| run_simple_check(s) }
+      @servers.each { |s| behavior(:run_simple_check, s) }
     end
     
     # this is where ALL the generic application server checks live, this could get rather long but for now it's a single method with a sequence of checks
     def run_simple_check(server)
-      test_mail_config(server)
-      test_syslog_config(server)
+      behavior(:test_mail_config, server)
+      behavior(:test_syslog_config, server)
     end
   end
 end

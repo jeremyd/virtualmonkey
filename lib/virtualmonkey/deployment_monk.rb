@@ -68,6 +68,7 @@ class DeploymentMonk
           @variables_for_cloud[cloud]['parameters'].each do |key,val|
             server.set_input(key,val)
           end
+#         server.set_inputs(@variables_for_cloud[cloud]['parameters'])
          
           # uses a special internal call for setting the MCI on the server
           if options[:mci_override] && !options[:mci_override].empty?

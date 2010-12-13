@@ -47,7 +47,7 @@ module VirtualMonkey
       step=10
       while timeout > 0
         puts "Checking for snapshot completed"
-        snapshots = find_snapshots
+        snapshots = behavior(:find_snapshots)
         status= snapshots.map { |x| x.aws_status } 
         break unless status.include?("pending")
         sleep step
@@ -68,7 +68,7 @@ module VirtualMonkey
 
     # Returns the timestamp of the latest snapshot for testing OPT_DB_RESTORE_TIMESTAMP_OVERRIDE
     def find_snapshot_timestamp
-      last_snap = find_snapshots.last
+      last_snap = behavior(:find_snapshots).last
       last_snap.tags.detect { |t| t["name"] =~ /timestamp=(\d+)$/ }
       timestamp = $1
     end
@@ -142,19 +142,19 @@ puts "Check that the server's volumes are #{expected_size}"
     end
     def test_restore_grow
       grow_to_size=100
-      restore_and_grow(s_three,grow_to_size,false)
-      test_volume_data(s_three)
-      test_volume_size(s_three,grow_to_size)
+      behavior(:restore_and_grow, s_three, grow_to_size, false)
+      behavior(:test_volume_data, s_three)
+      behavior(:test_volume_size, s_three, grow_to_size)
     end
 
     def test_restore
-      restore_from_backup(s_two,false)
-      test_volume_data(s_two)
+      behavior(:restore_from_backup, s_two, false)
+      behavior(:test_volume_data, s_two)
     end
 
     def create_backup
-      run_script("backup",s_one)
-      wait_for_snapshots
+      behavior(:run_script, "backup", s_one)
+      behavior(:wait_for_snapshots)
     end
 
   end

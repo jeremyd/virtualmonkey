@@ -39,30 +39,30 @@ module VirtualMonkey
     
     # Create a stripe and write some data to it
     def create_stripe
-      create_stripe_volume(s_one)
-      populate_volume(s_one)
+      behavior(:create_stripe_volume, s_one)
+      behavior(:populate_volume, s_one)
     end
 
     def test_backup_script_operations
       backup_script="/usr/local/bin/ebs-backup.rb"
 # create backup scripts
-      run_script("create_backup_scripts",s_one)
-      s_one.spot_check_command("test -x #{backup_script}")
+      behavior(:run_script, "create_backup_scripts", s_one)
+      object_behavior(s_one, :spot_check_command, "test -x #{backup_script}")
 # enable continuous backups
-      run_script("continuous_backup",s_one)
-      s_one.spot_check_command("egrep \"^[0-6].*#{backup_script}\" /etc/crontab")
+      behavior(:run_script, "continuous_backup", s_one)
+      object_behavior(s_one, :spot_check_command, "egrep \"^[0-6].*#{backup_script}\" /etc/crontab")
 # freeze backups
-      run_script("freeze",s_one)
-      s_one.spot_check_command("egrep \"^#[0-6].*#{backup_script}\" /etc/crontab")
+      behavior(:run_script, "freeze", s_one)
+      object_behavior(s_one, :spot_check_command, "egrep \"^#[0-6].*#{backup_script}\" /etc/crontab")
 # unfreeze backups
-      run_script("unfreeze",s_one)
-      s_one.spot_check_command("egrep \"^[0-6].*#{backup_script}\" /etc/crontab")
+      behavior(:run_script, "unfreeze", s_one)
+      object_behavior(s_one, :spot_check_command, "egrep \"^[0-6].*#{backup_script}\" /etc/crontab")
     end
 
     def run_reboot_operations
-      s_one.reboot(true)
-      s_one.wait_for_state("operational")
-      create_backup
+      object_behavior(s_one, :reboot, true)
+      object_behavior(s_one, :wait_for_state, "operational")
+      behavior(:create_backup)
     end
 
   end
