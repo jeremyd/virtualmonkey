@@ -13,16 +13,16 @@ module VirtualMonkey
     private
 
     def run_promotion_operations
-      config_master_from_scratch(s_one)
-      s_one.relaunch
+      behavior(:config_master_from_scratch, s_one)
+      object_behavior(s_one, :relaunch)
       s_one.dns_name = nil
-      wait_for_snapshots
+      behavior(:wait_for_snapshots)
 # need to wait for ebs snapshot, otherwise this could easily fail
-      restore_server(s_two)
-      s_one.wait_for_operational_with_dns
-      wait_for_snapshots
-      slave_init_server(s_one)
-      promote_server(s_one)
+      behavior(:restore_server, s_two)
+      object_behavior(s_one, :wait_for_operational_with_dns)
+      behavior(:wait_for_snapshots)
+      behavior(:slave_init_server, s_one)
+      behavior(:promote_server, s_one)
     end
 
     def run_reboot_operations

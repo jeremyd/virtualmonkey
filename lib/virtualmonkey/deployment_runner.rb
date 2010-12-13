@@ -9,6 +9,7 @@ module VirtualMonkey
       raise "Fatal: Could not find a deployment named #{deployment}" unless @deployment
       @servers = @deployment.servers_no_reload
       @scripts_to_run = {}
+      @rerun_last_command = []
       lookup_scripts
       @servers.each { |s| s.settings }
     end
