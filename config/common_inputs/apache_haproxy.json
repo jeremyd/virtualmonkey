@@ -20,9 +20,8 @@
 		"LB_APPLISTENER_NAME":"text:railsapp",
 		"MAX_CONN_PER_SERVER":"text:100",
 		"HEALTH_CHECK_URI":"text:/index.html",
-		"SVN_APP_REPOSITORY":"text:https://wush.net/svn/rightscale/unified_test_app/rails",
 		"DB_SCHEMA_NAME":"text:app_test",
 		"DBAPPLICATION_PASSWORD":"cred:DBAPPLICATION_PASSWORD"
-		}
+}
 
 
