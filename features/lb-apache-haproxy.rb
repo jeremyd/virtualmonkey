@@ -29,8 +29,8 @@
 # Then I should wait for the state of "App Server" servers to be "operational"
   @runner.behavior(:wait_for_set, "App Server", "operational")
 
-# Then I should run unified application checks
-  @runner.behavior(:run_unified_application_checks)
+# Then I should run unified application checks on app servers
+  @runner.behavior(:run_unified_application_checks, app_servers)
 
 # Then I should run frontend checks
   @runner.behavior(:frontend_checks)
