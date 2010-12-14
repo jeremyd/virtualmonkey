@@ -39,7 +39,7 @@
   @runner.behavior(:cross_connect_frontends)
 
 # Then I should run unified application checks
-  @runner.behavior(:run_unified_application_checks)
+  @runner.behavior(:run_unified_application_checks, @runner.send(:app_servers))
 
 # Then I should run frontend checks
   @runner.behavior(:frontend_checks)
