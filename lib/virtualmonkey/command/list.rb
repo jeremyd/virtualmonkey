@@ -9,8 +9,7 @@ module VirtualMonkey
       else
         all = Deployment.find(:all)
       end
-      all_names = all.map { |d| d.nickname }
-      puts all_names.join("\n")
+      all.each { |d| puts d.nickname }
     end
   end 
 end
