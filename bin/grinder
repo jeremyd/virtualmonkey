@@ -69,6 +69,7 @@ end
 
 # Grinding
 done = false
+timer = Time.now
 begin
   line = @testcase.readline
   if line =~ /((=)|(set_var))/ or (@resume < linenum and linenum <= @breakpoint)
@@ -76,8 +77,10 @@ begin
       puts("=" * line.length)
       puts(line)
       puts("=" * line.length)
+      line_timer = Time.now
       eval(line)
-      puts("Success")
+      line_elapsed = Time.now - line_timer
+      puts("Success. Time Elapsed: #{line_elapsed} seconds")
     else
       eval(line)
     end
@@ -95,3 +98,5 @@ rescue EOFError => e
   Dir.rmdir(state_dir)
   done = true
 end while !done
+elapsed = Time.now - line_timer
+puts "Total time elapsed: #{elapsed} seconds"
