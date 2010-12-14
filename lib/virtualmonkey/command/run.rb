@@ -35,6 +35,7 @@ module VirtualMonkey
         end
 
         cm.options = options
+        raise "No deployments matched!" unless do_these.length > 0
         do_these.each { |d| say d.nickname }
 
         unless options[:yes]
