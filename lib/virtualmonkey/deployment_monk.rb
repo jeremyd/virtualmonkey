@@ -65,10 +65,13 @@ class DeploymentMonk
           
           server = Server.create(server_params.merge(@variables_for_cloud[cloud]))
           # since the create call does not set the parameters, we need to set them separate
-          @variables_for_cloud[cloud]['parameters'].each do |key,val|
-            server.set_input(key,val)
+          if server.respond_to?(:set_inputs)
+            server.set_inputs(@variables_for_cloud[cloud]['parameters'])
+          else
+            @variables_for_cloud[cloud]['parameters'].each do |key,val|
+              server.set_input(key,val)
+            end
           end
-#         server.set_inputs(@variables_for_cloud[cloud]['parameters'])
          
           # uses a special internal call for setting the MCI on the server
           if options[:mci_override] && !options[:mci_override].empty?
