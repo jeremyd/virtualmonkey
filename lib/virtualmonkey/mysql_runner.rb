@@ -35,7 +35,7 @@ module VirtualMonkey
 # The slave was rebooting to soon after the master came up.
         sleep 300
       end
-      object_behavior(:wait_for_all, "operational")
+      behavior(:wait_for_all, "operational")
       behavior(:run_reboot_checks)
     end
 
