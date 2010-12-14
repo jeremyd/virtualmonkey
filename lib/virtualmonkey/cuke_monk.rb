@@ -15,26 +15,30 @@ class CukeJob
   end
 
   def on_read_stdout(data)
-    @output ||= ""
-    @output << data
+#    @output ||= ""
+#    @output << data
+    @output ||= File.open(@logfile, "a")
+    @output.write(data)
   end
 
   def on_read_stderr(data)
-    @output ||= ""
-    @output << data
+#    @output ||= ""
+#    @output << data
+    @output ||= File.open(@logfile, "a")
+    @output.write(data)
   end
     
-  def receive_data data
-    @output += data
-  end
+#  def receive_data data
+#    @output += data
+#  end
 
-  def unbind
-    @status = get_status.exitstatus
-  end
+#  def unbind
+#    @status = get_status.exitstatus
+#  end
 
   def on_exit(status)
     @status = status.exitstatus
-    File.open(@logfile, "a") { |f| f.write(@output) }
+#    File.open(@logfile, "a") { |f| f.write(@output) }
   end
 
   def run(deployment, cmd)
