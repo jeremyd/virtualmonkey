@@ -60,11 +60,11 @@ puts "WE ARE HARDCODING THE TOOL BOX NAMES TO USE 11H1.b1"
                  [ 'terminate', 'TERMINATE SERVER' ]
                ]
       ebs_toolbox_scripts = [
-                              [ 'create_stripe' , 'EBS stripe volume create - 11H1.b1' ],
+                              [ 'create_stripe' , 'EBS stripe volume create - 11H1.b1' ]
                             ]
       mysql_toolbox_scripts = [
                               [ 'create_mysql_ebs_stripe' , 'DB Create MySQL EBS stripe volume - 11H1.b1' ],
-                              [ 'create_migrate_script' , 'DB EBS create migrate script from MySQL EBS v1' ],
+                              [ 'create_migrate_script' , 'DB EBS create migrate script from MySQL EBS v1' ]
                             ]
       st = ServerTemplate.find(s_two.server_template_href)
       lookup_scripts_table(st,scripts)
