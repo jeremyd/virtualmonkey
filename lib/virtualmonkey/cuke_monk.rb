@@ -155,6 +155,7 @@ END_OF_MESSAGE
   end
   
   def report_lost_deployments(jobs = {})
+    global_state_dir
     running_change = jobs[:old_running] - jobs[:running]
     passed_change = jobs[:passed] - jobs[:old_passed]
     failed_change = jobs[:failed] - jobs[:old_failed]
@@ -163,7 +164,10 @@ END_OF_MESSAGE
       puts "LOST JOB---------------------------------"
       puts "Deployment Name: #{j.deployment.nickname}"
       puts "Status Code: #{j.status}"
-      puts j.link_to_rightscale
+      puts "Audit Entries: #{j.link_to_rightscale}"
+      puts "Log File: #{j.logfile}"
+      puts "Rest_Connection Log File: #{j.rest_log}"
+      puts "-----------------------------------------"
     end
   end
 end
