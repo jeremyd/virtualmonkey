@@ -93,10 +93,19 @@ class CukeMonk
   def watch_and_report
     old_passed = @passed
     old_failed = @failed
+    old_running = @running
+    old_sum = old_passed.size + old_failed.size + old_running.size
     @passed = @jobs.select { |s| s.status == 0 }
     @failed = @jobs.select { |s| s.status == 1 }
     @running = @jobs.select { |s| s.status == nil }
-      puts "#{@passed.size} features passed.  #{@failed.size} features failed.  #{@running.size} features running."
+    new_sum = @passed.size + @failed.size + @running.size
+    puts "#{@passed.size} features passed.  #{@failed.size} features failed.  #{@running.size} features running."
+    if new_sum < old_sum and new_sum < @jobs.size
+      puts "WARNING: Jobs Lost! Finding..."
+      report_lost_deployments({ :old_passed => old_passed, :passed => @passed,
+                                :old_failed => old_failed, :failed => @failed,
+                                :old_running => old_running, :running => @running })
+    end
     if old_passed != @passed || old_failed != @failed
       status_change_hook
     end
@@ -145,5 +154,17 @@ END_OF_MESSAGE
     puts msg
   end
   
+  def report_lost_deployments(jobs = {})
+    running_change = jobs[:old_running] - jobs[:running]
+    passed_change = jobs[:passed] - jobs[:old_passed]
+    failed_change = jobs[:failed] - jobs[:old_failed]
+    lost_jobs = running_change - passed_change - failed_change
+    lost_jobs.each do |j|
+      puts "LOST JOB---------------------------------"
+      puts "Deployment Name: #{j.deployment.nickname}"
+      puts "Status Code: #{j.status}"
+      puts j.link_to_rightscale
+    end
+  end
 end
 
