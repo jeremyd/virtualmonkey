@@ -12,10 +12,10 @@ module VirtualMonkey
         #command
         result = __send__(sym, *args)
         #post-command
-        continue_test
+        @rerun_last_command = false
       rescue Exception => e
         dev_mode?(e)
-      end while @rerun_last_command.last
+      end while continue_test
       result
     end
 
@@ -37,12 +37,12 @@ module VirtualMonkey
         if expect != "pass" and not (result == nil and expect == "nil")
           raise "FATAL: Failed verification"
         end
-        continue_test
+        @rerun_last_command = false
       rescue Exception => e
         if not (e.message =~ /#{error_msg}/ and expect == "fail")
           dev_mode?(e)
         end
-      end while @rerun_last_command.last
+      end while continue_test
     end
 
     def probe(server, command, &block)
@@ -55,10 +55,10 @@ module VirtualMonkey
           if not yield(result_temp[:output])
             raise "FATAL: Server #{s.nickname} failed probe. Got #{result_temp[:output]}"
           end
-          continue_test
+          @rerun_last_command = false
         rescue Exception => e
           dev_mode?(e)
-        end while @rerun_last_command.last
+        end while continue_test
         result += result_temp[:output]
       }
     end
@@ -99,10 +99,10 @@ module VirtualMonkey
         #command
         result = obj.__send__(sym, *args)
         #post-command
-        continue_test
+        @rerun_last_command = false
       rescue Exception => e
         dev_mode?(e)
-      end while @rerun_last_command.last
+      end while continue_test
       result
     end
 
