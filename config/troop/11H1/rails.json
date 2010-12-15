@@ -1,5 +1,5 @@
 {
-  "feature":"rails.feature",
+  "feature":"rails.rb",
   "runner":"SimpleRunner",
   "server_template_ids":[
     "84646",

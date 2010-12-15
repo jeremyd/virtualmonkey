@@ -1,6 +1,6 @@
 {
   "tag":"TROOP_TOMCAT6",
-  "feature":"tomcat6.feature",
+  "feature":"tomcat6.rb",
   "common_inputs":"tomcat.json",
   "runner":"SimpleRunner",
   "server_template_ids":[

@@ -6,6 +6,6 @@
     "84650",
     "84650"
   ],
-  "feature":"mysql_5.x_v2_v4_from_scratch.feature",
+  "feature":"mysql_5.x_v2_v4_from_scratch.rb",
   "cloud_variables":"all_clouds.json"
 }

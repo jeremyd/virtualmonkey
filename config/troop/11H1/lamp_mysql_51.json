@@ -1,6 +1,6 @@
 {
   "tag":"TROOP_LAMP_MYSQL51",
-  "feature":"lamp.feature",
+  "feature":"lamp.rb",
   "cloud_variables":"all_clouds.json",
   "runner":"SimpleRunner",
   "common_inputs":"lamp.json",

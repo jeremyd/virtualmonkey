@@ -1,6 +1,6 @@
 {
   "tag":"TROOP_MYSQL_50",
-  "feature":"mysql_5.x_v2_v4_from_scratch.feature",
+  "feature":"mysql_5.x_v2_v4_from_scratch.rb",
   "common_inputs":"mysql.json",
   "runner":"MysqlRunner",
   "server_template_ids":[
