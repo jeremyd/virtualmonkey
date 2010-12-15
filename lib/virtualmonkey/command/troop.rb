@@ -122,7 +122,7 @@ module VirtualMonkey
           }
         end
 
-        if options['step'] =~ /destroy/
+        if options[:step] =~ /destroy/
           @dm = DeploymentMonk.new(tag)
           @dm.deployments.each do |deploy|
             state_dir = File.join(global_state_dir, deploy.nickname)
