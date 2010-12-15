@@ -5,7 +5,7 @@ module VirtualMonkey
     def self.destroy
       options = Trollop::options do
         opt :tag, "Tag to match prefix of the deployments to destroy.", :type => :string, :required => true, :short => '-t'
-#        opt :mysql, "Use special MySQL TERMINATE script, instead of normal shutdown of all servers."
+        opt :mysql, "Use special MySQL TERMINATE script, instead of normal shutdown of all servers."
         opt :no_delete, "only terminate, no deletion."
         opt :yes, "Turn off confirmation for destroy operation"
       end
