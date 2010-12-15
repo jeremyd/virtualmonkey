@@ -6,6 +6,8 @@ module VirtualMonkey
         text "This command performs all the operations of the monkey in one execution.  Create/Run/Destroy"
         opt :file, "troop config, see config/troop/*sample.json for example format", :type => :string, :required => true
         opt :no_spot, "do not use spot instances"
+        opt :step, "use the troop config file to do either: create, run, or destroy", :type => :string
+        opt :tag, "add an additional tag to the deployments", :type => :string
         opt :create, "interactive mode: create troop config"
         opt :mci_override, "list of mcis to use instead of the ones from the server template. expects full hrefs.", :type => :string, :multi => true, :required => false
       end
@@ -20,6 +22,9 @@ module VirtualMonkey
       cloud_variables_glob = cloud_variables_glob.collect { |c| File.basename(c) }
       common_inputs_glob = Dir.glob(File.join(config_dir, "common_inputs", "**"))
       common_inputs_glob = common_inputs_glob.collect { |c| File.basename(c) }
+      global_state_dir = File.join(File.dirname(__FILE__), "..", "..", "..", "test_states")
+      options[:tag] += "-" if options[:tag]
+      options[:tag] = "" unless options[:tag]
       
       # CREATE NEW CONFIG
       if options[:create]
@@ -65,50 +70,76 @@ module VirtualMonkey
       else
         # Execute Main
         config = JSON::parse(IO.read(options[:file]))
-        # CREATE PHASE
-        @dm = DeploymentMonk.new(config['tag'], config['server_template_ids'])
-        @dm.variables_for_cloud = JSON::parse(IO.read(File.join(config_dir, "cloud_variables", config['cloud_variables'])))
-        config['common_inputs'].each do |cipath|
-          @dm.load_common_inputs(File.join(config_dir, "common_inputs", cipath))
-        end  
-        @dm.generate_variations(options)
-        # RUN PHASE
-        global_state_dir = File.join(File.dirname(__FILE__), "..", "..", "..", "test_states")
-        EM.run {
-          cm = CukeMonk.new
-          cm.options = {}
-          @dm.deployments.each do |deploy|
-            cm.run_test(deploy, File.join(features_dir, config['feature']))
-          end
+        options['step'] = "all" unless options['step']
+        tag = options[:tag] + config['tag']
 
-          watch = EM.add_periodic_timer(10) {
-            if cm.all_done?
-              # DESTROY PHASE
-              watch.cancel 
-              cm.jobs.each do |job|
-                # destroy on success only (keep failed deploys)
-                if job.status == 0
-                  runner = eval("VirtualMonkey::#{config['runner']}.new(job.deployment.nickname)")
-                  puts "destroying successful deployment: #{runner.deployment.nickname}"
-                  runner.behavior(:stop_all, false)
-                  state_dir = File.join(global_state_dir, deploy.nickname)
-                  if File.directory?(state_dir)
-                    puts "Deleting state files for #{deploy.nickname}..."
-                    Dir.new(state_dir).each do |state_file|
-                      if File.extname(state_file) == ".rb"
-                        File.delete(File.join(state_dir, state_file))
-                      end 
-                    end 
-                    Dir.rmdir(state_dir)
-                  end 
-                  runner.deployment.destroy
-                end
-              end    
+        # CREATE PHASE
+        if options['step'] =~ /((all)|(create))/
+          @dm = DeploymentMonk.new(tag, config['server_template_ids'])
+          @dm.variables_for_cloud = JSON::parse(IO.read(File.join(config_dir, "cloud_variables", config['cloud_variables'])))
+          config['common_inputs'].each do |cipath|
+            @dm.load_common_inputs(File.join(config_dir, "common_inputs", cipath))
+          end  
+          @dm.generate_variations(options)
+        end
+
+        # RUN PHASE
+        if options['step'] =~ /((all)|(run))/
+          @dm = DeploymentMonk.new(tag) if options['step'] =~ /run/
+          EM.run {
+            @cm = CukeMonk.new
+            @cm.options = {}
+            @dm.deployments.each do |deploy|
+              @cm.run_test(deploy, File.join(features_dir, config['feature']))
             end
-            cm.watch_and_report
+
+            watch = EM.add_periodic_timer(10) {
+              if @cm.all_done?
+                # DESTROY PHASE
+                watch.cancel 
+                @cm.jobs.each do |job|
+                  # destroy on success only (keep failed deploys)
+                  if job.status == 0
+                    runner = eval("VirtualMonkey::#{config['runner']}.new(job.deployment.nickname)")
+                    puts "destroying successful deployment: #{runner.deployment.nickname}"
+                    runner.behavior(:stop_all, false)
+                    state_dir = File.join(global_state_dir, runner.deployment.nickname)
+                    if File.directory?(state_dir)
+                      puts "Deleting state files for #{runner.deployment.nickname}..."
+                      Dir.new(state_dir).each do |state_file|
+                        if File.extname(state_file) == ".rb"
+                          File.delete(File.join(state_dir, state_file))
+                        end 
+                      end 
+                      Dir.rmdir(state_dir)
+                    end 
+                    runner.deployment.destroy
+                  end
+                end    
+              end
+              @cm.watch_and_report
+            }
           }
-        }
+        end
+
+        if options['step'] =~ /destroy/
+          @dm = DeploymentMonk.new(tag)
+          @dm.deployments.each do |deploy|
+            state_dir = File.join(global_state_dir, deploy.nickname)
+            if File.directory?(state_dir)
+              puts "Deleting state files for #{deploy.nickname}..."
+              Dir.new(state_dir).each do |state_file|
+                if File.extname(state_file) == ".rb"
+                   File.delete(File.join(state_dir, state_file))
+                end 
+              end 
+              Dir.rmdir(state_dir)
+            end
+          end
+          @dm.destroy_all
+        end
       end
+      puts "Troop done."
     end
   end
 end
