@@ -30,7 +30,7 @@ module VirtualMonkey
         if File.directory?(state_dir)
           puts "Deleting state files for #{deploy.nickname}..."
           Dir.new(state_dir).each do |state_file|
-            if File.extname(state_file) == ".rb"
+            if File.extname(state_file) =~ /((rb)|(feature))/
               File.delete(File.join(state_dir, state_file))
             end
           end
