@@ -39,7 +39,7 @@ module VirtualMonkey
         do_these.each { |d| say d.nickname }
 
         unless options[:yes]
-          confirm = ask("Run tests on these deployments (y/n)?", lambda { |ans| true if (ans =~ /^[y,Y]{1}/) })
+          confirm = ask("Run tests on these #{do_these.length} deployments (y/n)?", lambda { |ans| true if (ans =~ /^[y,Y]{1}/) })
           raise "Aborting." unless confirm
         end
 

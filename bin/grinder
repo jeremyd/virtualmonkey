@@ -98,5 +98,5 @@ rescue EOFError => e
   Dir.rmdir(state_dir)
   done = true
 end while !done
-elapsed = Time.now - line_timer
+elapsed = Time.now - timer
 puts "Total time elapsed: #{elapsed} seconds"
