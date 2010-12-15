@@ -14,7 +14,7 @@ module VirtualMonkey
       nicks = @dm.deployments.map { |d| d.nickname }
       nicks.each { |n| say n }
       unless options[:yes]
-        confirm = ask("Really destroy these #{nick.length} deployments (y/n)?", lambda { |ans| true if (ans =~ /^[y,Y]{1}/) })
+        confirm = ask("Really destroy these #{nicks.length} deployments (y/n)?", lambda { |ans| true if (ans =~ /^[y,Y]{1}/) })
         raise "Aborting." unless confirm
       end
 
