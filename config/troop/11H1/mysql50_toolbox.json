@@ -3,7 +3,8 @@
   "runner":"MysqlRunner",
   "common_inputs":"",
   "server_template_ids":[
-    "84658",
+    "84657",
+    "84649",
     "84649"
   ]
   "feature":"simple_fail.feature",

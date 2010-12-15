@@ -70,11 +70,11 @@ module VirtualMonkey
       else
         # Execute Main
         config = JSON::parse(IO.read(options[:file]))
-        options['step'] = "all" unless options['step']
+        options[:step] = "all" unless options[:step]
         tag = options[:tag] + config['tag']
 
         # CREATE PHASE
-        if options['step'] =~ /((all)|(create))/
+        if options[:step] =~ /((all)|(create))/
           @dm = DeploymentMonk.new(tag, config['server_template_ids'])
           @dm.variables_for_cloud = JSON::parse(IO.read(File.join(config_dir, "cloud_variables", config['cloud_variables'])))
           config['common_inputs'].each do |cipath|
@@ -84,8 +84,8 @@ module VirtualMonkey
         end
 
         # RUN PHASE
-        if options['step'] =~ /((all)|(run))/
-          @dm = DeploymentMonk.new(tag) if options['step'] =~ /run/
+        if options[:step] =~ /((all)|(run))/
+          @dm = DeploymentMonk.new(tag) if options[:step] =~ /run/
           EM.run {
             @cm = CukeMonk.new
             @cm.options = {}
@@ -99,7 +99,7 @@ module VirtualMonkey
                 watch.cancel 
                 @cm.jobs.each do |job|
                   # destroy on success only (keep failed deploys)
-                  if job.status == 0
+                  if job.status == 0 and options[:step] =~ /all/
                     runner = eval("VirtualMonkey::#{config['runner']}.new(job.deployment.nickname)")
                     puts "destroying successful deployment: #{runner.deployment.nickname}"
                     runner.behavior(:stop_all, false)
