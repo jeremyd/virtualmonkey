@@ -5,9 +5,15 @@ module VirtualMonkey
     def self.destroy
       options = Trollop::options do
         opt :tag, "Tag to match prefix of the deployments to destroy.", :type => :string, :required => true, :short => '-t'
-        opt :mysql, "Use special MySQL TERMINATE script, instead of normal shutdown of all servers."
+        opt :terminate, "Terminate using the specified runner", :type => :string, :required => true, :short => "-r"
         opt :no_delete, "only terminate, no deletion."
         opt :yes, "Turn off confirmation for destroy operation"
+      end
+      begin
+        eval("VirtualMonkey::#{options[:terminate]}.new('fgasvgreng243o520sdvnsals')")
+      rescue Exception => e
+        raise e unless e.message =~ /Could not find a deployment named/
+        options[:terminate] = "SimpleRunner" if options[:terminate]
       end
       @dm = DeploymentMonk.new(options[:tag])
 #      nicks = @dm.deployments.map &:nickname
@@ -20,11 +26,7 @@ module VirtualMonkey
 
       global_state_dir = File.join(File.dirname(__FILE__), "..", "..", "..", "test_states")
       @dm.deployments.each do |deploy|
-        if options[:mysql]
-          @runner = VirtualMonkey::MysqlRunner.new(deploy.nickname)
-        else
-          @runner = VirtualMonkey::SimpleRunner.new(deploy.nickname)
-        end
+        @runner = eval("VirtualMonkey::#{options[:terminate]}.new(#{deploy.nickname})")
         @runner.behavior(:stop_all, false)
         state_dir = File.join(global_state_dir, deploy.nickname)
         if File.directory?(state_dir)
