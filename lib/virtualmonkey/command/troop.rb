@@ -36,6 +36,7 @@ module VirtualMonkey
         troop_config[:runner] = 
           choose do |menu|
             menu.prompt = "What kind of deployment is this (runner type)?"
+            menu.choice("MysqlToolboxRunner")
             menu.choice("MysqlRunner")
             menu.choice("SimpleRunner")
           end

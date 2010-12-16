@@ -11,13 +11,18 @@ module VirtualMonkey
         opt :breakpoint, "feature file line to stop at", :type => :integer, :short => '-b'
         opt :tag, "Tag to match prefix of the deployments.", :type => :string, :required => true, :short => "-t"
         opt :only, "regex string to use for subselection matching on deployments.  Eg. --only x86_64", :type => :string
-        opt :terminate, "Terminate if feature successfully completes. (No destroy)", :short => "-r"
-        opt :mysql, "Use special MySQL TERMINATE script, instead of normal shutdown of all servers. Specify --terminate also", :short => "-m"
+        opt :terminate, "Terminate using the specified runner if feature successfully completes. (No destroy)", :type => :string, :short => "-r"
         opt :no_resume, "Do not use current test-in-progress, start from scratch", :short => "-n"
         opt :yes, "Turn off confirmation", :short => "-y"
       end
 
       global_state_dir = File.join(File.dirname(__FILE__), "..", "..", "..", "test_states")
+      begin
+        eval("VirtualMonkey::#{options[:terminate]}.new('fgasvgreng243o520sdvnsals')")
+      rescue Exception => e
+        raise e unless e.message =~ /Could not find a deployment named/
+        options[:terminate] = "SimpleRunner" if options[:terminate]
+      end
       EM.run {
         cm = CukeMonk.new
         dm = DeploymentMonk.new(options[:tag])
@@ -53,11 +58,7 @@ module VirtualMonkey
             if options[:terminate]
               cm.jobs.each do |job|
                 if job.status == 0
-                  if options[:mysql]
-                    @runner = VirtualMonkey::MysqlRunner.new(job.deployment.nickname)
-                  else
-                    @runner = VirtualMonkey::SimpleRunner.new(job.deployment.nickname)
-                  end
+                  @runner = eval("VirtualMonkey::#{options[:terminate]}.new(#{job.deployment.nickname})")
                   @runner.behavior(:stop_all, false)
                 end
               end
