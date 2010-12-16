@@ -1,5 +1,5 @@
 {
-  "tag":"TROOP_LAMP_MYSQL50",
+  "tag":"LAMP_MYSQL50_TROOP",
   "feature":"lamp.rb",
   "cloud_variables":"all_clouds.json",
   "runner":"SimpleRunner",

@@ -9,5 +9,5 @@
   ],
   "cloud_variables":"all_clouds.json",
   "common_inputs":"rails.json",
-  "tag":"TROOP_RAILS"
+  "tag":"RAILS_TROOP"
 }

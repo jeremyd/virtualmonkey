@@ -1,5 +1,5 @@
 {
-  "tag":"TROOP_TOMCAT6",
+  "tag":"TOMCAT6_TROOP",
   "feature":"tomcat6.rb",
   "common_inputs":"tomcat.json",
   "runner":"SimpleRunner",

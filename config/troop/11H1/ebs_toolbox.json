@@ -1,5 +1,5 @@
 {
-  "tag":"TROOP_EBS_TOOLBOX",
+  "tag":"EBS_TOOLBOX_TROOP",
   "runner":"SimpleRunner",
   "common_inputs":"ebs_toolbox.json",
   "server_template_ids":[

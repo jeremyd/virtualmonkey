@@ -1,5 +1,5 @@
 {
-  "tag":"TROOP_PURE_PHP"
+  "tag":"PHP_TROOP"
   "feature":"php.rb",
   "runner":"SimpleRunner",
   "server_template_ids":[
