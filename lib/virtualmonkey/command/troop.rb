@@ -95,6 +95,7 @@ module VirtualMonkey
             end
 
             watch = EM.add_periodic_timer(10) {
+              @cm.watch_and_report
               if @cm.all_done?
                 # DESTROY PHASE
                 watch.cancel 
@@ -118,7 +119,6 @@ module VirtualMonkey
                   end
                 end    
               end
-              @cm.watch_and_report
             }
           }
         end
