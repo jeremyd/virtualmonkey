@@ -1,5 +1,5 @@
 {
-  "tag":"TROOP_MYSQL_50_TOOLBOX",
+  "tag":"MYSQL_50_TOOLBOX_TROOP",
   "runner":"MysqlRunner",
   "common_inputs":"mysql.json",
   "server_template_ids":[

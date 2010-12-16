@@ -1,5 +1,5 @@
 {
-  "tag":"TROOP_MYSQL_50",
+  "tag":"MYSQL_50_TROOP",
   "feature":"mysql_5.x_v2_v4_from_scratch.rb",
   "common_inputs":"mysql.json",
   "runner":"MysqlRunner",
