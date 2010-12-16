@@ -10,7 +10,7 @@ module VirtualMonkey
         opt :yes, "Turn off confirmation for destroy operation"
       end
       begin
-        eval("VirtualMonkey::#{options[:terminate]}.new('fgasvgreng243o520sdvnsals')")
+        eval("VirtualMonkey::#{options[:terminate]}.new('fgasvgreng243o520sdvnsals')") if options[:terminate]
       rescue Exception => e
         raise e unless e.message =~ /Could not find a deployment named/
         options[:terminate] = "SimpleRunner" if options[:terminate]
@@ -26,7 +26,7 @@ module VirtualMonkey
 
       global_state_dir = File.join(File.dirname(__FILE__), "..", "..", "..", "test_states")
       @dm.deployments.each do |deploy|
-        @runner = eval("VirtualMonkey::#{options[:terminate]}.new(#{deploy.nickname})")
+        @runner = eval("VirtualMonkey::#{options[:terminate]}.new(deploy.nickname)")
         @runner.behavior(:stop_all, false)
         state_dir = File.join(global_state_dir, deploy.nickname)
         if File.directory?(state_dir)

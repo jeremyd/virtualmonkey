@@ -18,7 +18,7 @@ module VirtualMonkey
 
       global_state_dir = File.join(File.dirname(__FILE__), "..", "..", "..", "test_states")
       begin
-        eval("VirtualMonkey::#{options[:terminate]}.new('fgasvgreng243o520sdvnsals')")
+        eval("VirtualMonkey::#{options[:terminate]}.new('fgasvgreng243o520sdvnsals')") if options[:terminate]
       rescue Exception => e
         raise e unless e.message =~ /Could not find a deployment named/
         options[:terminate] = "SimpleRunner" if options[:terminate]
@@ -58,7 +58,7 @@ module VirtualMonkey
             if options[:terminate]
               cm.jobs.each do |job|
                 if job.status == 0
-                  @runner = eval("VirtualMonkey::#{options[:terminate]}.new(#{job.deployment.nickname})")
+                  @runner = eval("VirtualMonkey::#{options[:terminate]}.new(job.deployment.nickname)")
                   @runner.behavior(:stop_all, false)
                 end
               end
