@@ -1,0 +1,54 @@
+#!/usr/bin/ruby
+
+require 'rubygems'
+require 'rest_connection'
+require 'trollop'
+require 'highline/import'
+
+options = Trollop::options do
+  opt :tag, "Tag of the DeploymentSet that you want to vary the sizes on", :type => :string, :required => true
+  opt :spot, "Use spot instances", :default => false
+end
+
+class VariationEngine
+
+  def initialize(options)
+    @options = options
+    @instance_vars32 = { "m1.small" => "0.095", "c1.medium" => "0.19" }
+    @instance_vars64 = { "m1.large" => "0.38", "m1.xlarge" => "0.76", "m2.xlarge" => "0.57", "m2.2xlarge" => "1.34", "m2.4xlarge" => "2.68", "c1.xlarge" => "0.76" }
+    @deployments = Deployment.find_by(:nickname) {|n| n =~ /^#{@options[:tag]}/ }
+    puts "loading #{@deployments.size} deployments matching your tag #{@options[:tag]}"
+    return @deployments
+  end
+
+  # select different instance types for every server
+  def vary_instance_types
+    small_counter = 0
+    large_counter = 0
+    @deployments.each do |deployment|
+      deployment.servers_no_reload.each do |server|
+        server.reload
+        server.settings
+	server.parameters
+        if server.ec2_instance_type =~ /small/ 
+          small_counter += 1
+          new_type = @instance_vars32.keys[small_counter % @instance_vars32.size]
+          server.instance_type = new_type
+          server.max_spot_price = @instance_vars32[new_type] if @options[:spot]
+        elsif server.ec2_instance_type =~ /large/
+          large_counter += 1
+          new_type = @instance_vars64.keys[large_counter % @instance_vars64.size]
+          server.instance_type = new_type
+          server.max_spot_price = @instance_vars64[new_type] if @options[:spot]
+        end
+        server.pricing = "spot" if @options[:spot]
+        server.save
+      end
+    end
+  end
+end
+
+e = VariationEngine.new(options)
+e.vary_instance_types
+
+puts "Done."
