@@ -8,6 +8,7 @@ require 'highline/import'
 options = Trollop::options do
   opt :tag, "Tag of the DeploymentSet that you want to vary the sizes on", :type => :string, :required => true
   opt :spot, "Use spot instances", :default => false
+  opt :micro_mayhem, "Set everything to Micros", :default => false
 end
 
 class VariationEngine
@@ -16,6 +17,10 @@ class VariationEngine
     @options = options
     @instance_vars32 = { "m1.small" => "0.095", "c1.medium" => "0.19" }
     @instance_vars64 = { "m1.large" => "0.38", "m1.xlarge" => "0.76", "m2.xlarge" => "0.57", "m2.2xlarge" => "1.34", "m2.4xlarge" => "2.68", "c1.xlarge" => "0.76" }
+    if options[:micro_mayhem]
+      @instance_vars32 = { "t1.micro" => "0.02" } 
+      @instance_vars64 = { "t1.micro" => "0.02" }
+    end
     @deployments = Deployment.find_by(:nickname) {|n| n =~ /^#{@options[:tag]}/ }
     puts "loading #{@deployments.size} deployments matching your tag #{@options[:tag]}"
     return @deployments
