@@ -1,6 +1,6 @@
 {
   "tag":"MYSQL_50_TOOLBOX_TROOP",
-  "runner":"MysqlRunner",
+  "runner":"MysqlToolboxRunner",
   "common_inputs":"mysql.json",
   "server_template_ids":[
     "84649",

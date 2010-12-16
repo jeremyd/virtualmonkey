@@ -55,7 +55,13 @@ module VirtualMonkey
 
     # Launch all servers in the deployment.
     def launch_all
-      @servers.each { |s| s.start }
+      @servers.each { |s|
+        begin
+          object_behavior(s, :start)
+        rescue Exception => e
+          raise e unless e.message =~ /AlreadyLaunchedError/
+        end
+      }
     end
 
     # sets the MASTER_DB_DNSNAME to this machine's ip address
@@ -75,12 +81,24 @@ module VirtualMonkey
     # * nickname_substr<~String> - regex compatible string to match
     def launch_set(nickname_substr)
       set = select_set(nickname_substr)  
-      set.each { |server| server.start }
+      set.each { |s|
+        begin
+          object_behavior(s, :start)
+        rescue Exception => e
+          raise e unless e.message =~ /AlreadyLaunchedError/
+        end
+      }
     end
 
     # Re-Launch all server
     def relaunch_all
-      @servers.each { |s| s.relaunch }
+      @servers.each { |s|
+        begin
+          object_behavior(s, :relaunch)
+        rescue Exception => e
+          raise e #unless e.message =~ /AlreadyLaunchedError/
+        end
+      }
     end
 
     # un-set all tags on all servers in the deployment
