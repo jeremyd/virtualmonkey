@@ -10,6 +10,7 @@ module VirtualMonkey
         opt :tag, "add an additional tag to the deployments", :type => :string
         opt :create, "interactive mode: create troop config"
         opt :mci_override, "list of mcis to use instead of the ones from the server template. expects full hrefs.", :type => :string, :multi => true, :required => false
+        opt :no_delete, "only terminate, no deletion.", :short => "-d"
       end
 
       # PATHs SETUP
@@ -137,7 +138,7 @@ module VirtualMonkey
               Dir.rmdir(state_dir)
             end
           end
-          @dm.destroy_all
+          @dm.destroy_all unless options[:no_delete]
         end
       end
       puts "Troop done."
