@@ -127,6 +127,8 @@ module VirtualMonkey
         if options[:step] =~ /destroy/
           @dm = DeploymentMonk.new(tag)
           @dm.deployments.each do |deploy|
+            runner = eval("VirtualMonkey::#{config['runner']}.new(deploy.nickname)")
+            runner.behavior(:stop_all, false)
             state_dir = File.join(global_state_dir, deploy.nickname)
             if File.directory?(state_dir)
               puts "Deleting state files for #{deploy.nickname}..."
