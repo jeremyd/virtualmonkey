@@ -91,6 +91,7 @@ module VirtualMonkey
           EM.run {
             @cm = CukeMonk.new
             @cm.options = {}
+            remaining_jobs = @cm.jobs
             @dm.deployments.each do |deploy|
               @cm.run_test(deploy, File.join(features_dir, config['feature']))
             end
@@ -98,27 +99,27 @@ module VirtualMonkey
             watch = EM.add_periodic_timer(10) {
               @cm.watch_and_report
               if @cm.all_done?
-                # DESTROY PHASE
                 watch.cancel 
-                @cm.jobs.each do |job|
-                  # destroy on success only (keep failed deploys)
-                  if job.status == 0 and options[:step] =~ /all/
-                    runner = eval("VirtualMonkey::#{config['runner']}.new(job.deployment.nickname)")
-                    puts "destroying successful deployment: #{runner.deployment.nickname}"
-                    runner.behavior(:stop_all, false)
-                    state_dir = File.join(global_state_dir, runner.deployment.nickname)
-                    if File.directory?(state_dir)
-                      puts "Deleting state files for #{runner.deployment.nickname}..."
-                      Dir.new(state_dir).each do |state_file|
-                        if File.extname(state_file) =~ /((rb)|(feature))/
-                          File.delete(File.join(state_dir, state_file))
-                        end 
+              end
+              remaining_jobs.each do |job|
+                # destroy on success only (keep failed deploys)
+                if job.status == 0 and options[:step] =~ /all/
+                  runner = eval("VirtualMonkey::#{config['runner']}.new(job.deployment.nickname)")
+                  puts "destroying successful deployment: #{runner.deployment.nickname}"
+                  runner.behavior(:stop_all, false)
+                  state_dir = File.join(global_state_dir, runner.deployment.nickname)
+                  if File.directory?(state_dir)
+                    puts "Deleting state files for #{runner.deployment.nickname}..."
+                    Dir.new(state_dir).each do |state_file|
+                      if File.extname(state_file) =~ /((rb)|(feature))/
+                        File.delete(File.join(state_dir, state_file))
                       end 
-                      Dir.rmdir(state_dir)
                     end 
-                    runner.deployment.destroy
-                  end
-                end    
+                    Dir.rmdir(state_dir)
+                  end 
+                  runner.deployment.destroy unless options[:no_delete]
+                  remaining_jobs.delete(job)
+                end
               end
             }
           }

@@ -48,6 +48,7 @@ module VirtualMonkey
           raise "Aborting." unless confirm
         end
 
+        remaining_jobs = cm.jobs
         do_these.each do |deploy|
           cm.run_test(deploy, options[:feature])
         end
@@ -56,12 +57,13 @@ module VirtualMonkey
           cm.watch_and_report
           if cm.all_done?
             watch.cancel
-            if options[:terminate]
-              cm.jobs.each do |job|
-                if job.status == 0
-                  @runner = eval("VirtualMonkey::#{options[:terminate]}.new(job.deployment.nickname)")
-                  @runner.behavior(:stop_all, false)
-                end
+          end
+          if options[:terminate]
+            remaining_jobs.each do |job|
+              if job.status == 0
+                @runner = eval("VirtualMonkey::#{options[:terminate]}.new(job.deployment.nickname)")
+                @runner.behavior(:stop_all, false)
+                remaining_jobs.delete(job)
               end
             end
           end
