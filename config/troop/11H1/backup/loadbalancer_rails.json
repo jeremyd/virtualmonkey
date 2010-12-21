@@ -1,0 +1,13 @@
+{
+  "tag":"TROOP_RAILS_APACHE_HAPROXY",
+  "feature":"lb-apache-haproxy.rb",
+  "common_inputs":"rails.json",
+  "runner":"SimpleRunner",
+  "server_template_ids":[
+    "84648",
+    "84648",
+    "84647",
+    "84647"
+  ],
+  "cloud_variables":"east.json"
+}

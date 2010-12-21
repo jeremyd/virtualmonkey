@@ -1,0 +1,10 @@
+{
+  "tag":"TROOP_BASE",
+  "feature":"base.rb",
+  "cloud_variables":"all_clouds.json",
+  "runner":"SimpleRunner",
+  "common_inputs":"base.json",
+  "server_template_ids":[
+    "84653"
+  ]
+}

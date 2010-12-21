@@ -7,7 +7,7 @@
     "84647",
     "84647"
   ],
-  "cloud_variables":"all_clouds.json",
+  "cloud_variables":"east.json",
   "common_inputs":"rails.json",
-  "tag":"RAILS_TROOP"
+  "tag":"TROOP_RAILS"
 }

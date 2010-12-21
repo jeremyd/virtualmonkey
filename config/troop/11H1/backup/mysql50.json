@@ -1,0 +1,11 @@
+{
+  "tag":"MYSQL_50_TROOP",
+  "feature":"mysql_5.x_v2_v4_from_scratch.rb",
+  "common_inputs":"mysql.json",
+  "runner":"MysqlRunner",
+  "server_template_ids":[
+    "84649",
+    "84649"
+  ],
+  "cloud_variables":"all_clouds.json"
+}

@@ -1,5 +1,5 @@
 {
-  "tag":"PHP_TROOP"
+  "tag":"TROOP_PURE_PHP",
   "feature":"php.rb",
   "runner":"SimpleRunner",
   "server_template_ids":[
@@ -8,6 +8,6 @@
     "84644",
     "84644"
   ],
-  "cloud_variables":"all_clouds.json",
-  "common_inputs":"php.json",
+  "cloud_variables":"east.json",
+  "common_inputs":"php.json"
 }
