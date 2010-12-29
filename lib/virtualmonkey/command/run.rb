@@ -48,7 +48,7 @@ module VirtualMonkey
           raise "Aborting." unless confirm
         end
 
-        remaining_jobs = cm.jobs
+        remaining_jobs = cm.jobs.dup
         do_these.each do |deploy|
           cm.run_test(deploy, options[:feature])
         end
