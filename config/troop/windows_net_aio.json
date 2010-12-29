@@ -1,0 +1,10 @@
+{
+  "tag":"ASP.NET_AIO_TROOP",
+  "feature":"base.rb",
+  "cloud_variables":"all_clouds.json",
+  "runner":"SimpleRunner",
+  "common_inputs":"windows_net_aio.json",
+  "server_template_ids":[
+    "88600"
+  ]
+}
