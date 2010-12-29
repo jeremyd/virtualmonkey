@@ -1,0 +1,10 @@
+{
+  "tag":"BLOG_ENGINE_TROOP",
+  "feature":"base.rb",
+  "cloud_variables":"all_clouds.json",
+  "runner":"SimpleRunner",
+  "common_inputs":"windows_blog_engine.json",
+  "server_template_ids":[
+    "88321"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "db_sqlserver/backup/backups_to_keep":"text:3",
+  "db_sqlserver/database_name":"text:app_test",
+  "utilities/admin_password":"text:miramar",
+  "sys_monitoring/monitor_processes":"text:w3wp.exe, ruby.exe",
+  "sys_monitoring/monitor_files":"text:c\:/pagefile.sys",
+  "svn/username":"ignore:$ignore",
+  "svn/repo_path":"text:http://svn.github.com/alexpop/sample_www.git",
+  "svn/password":"ignore:$ignore",
+  "schtasks/hourly_frequency":"text:8",
+  "s3/file_dump":"text:app_test_mssql.sql.zip",
+  "s3/bucket_dump":"text:rightscale-us-east-dev",
+  "s3/bucket":"text:myBucket"
+}
