@@ -1,7 +1,7 @@
 {
   "tag":"BASE_TROOP",
   "feature":"base.rb",
-  "cloud_variables":"all_clouds.json",
+  "cloud_variables":"east.json",
   "runner":"SimpleRunner",
   "common_inputs":"base.json",
   "server_template_ids":[

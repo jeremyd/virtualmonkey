@@ -1,10 +1,10 @@
 {
-  "tag":"MYSQL_51_TROOP",
+  "tag":"MYSQL_51_DEBUG_TROOP",
   "runner":"MysqlRunner",
   "common_inputs":"mysql.json",
   "server_template_ids":[
-    "84650",
-    "84650"
+    "88818",
+    "88818"
   ],
   "feature":"mysql_5.x_v2_v4_from_scratch.rb",
   "cloud_variables":"east.json"
