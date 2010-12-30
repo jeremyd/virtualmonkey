@@ -4,5 +4,7 @@
   "EBS_LINEAGE"         : "text:testlineageUNSET",
   "SYSLOG_SERVER"       : "env:RS_SYSLOG",
   "EBS_STRIPE_COUNT"    : "text:1",
-  "EBS_VOLUME_SIZE_GB"  : "text:3"
+  "EBS_VOLUME_SIZE_GB"  : "text:3",
+  "EBS_VOLUME_SIZE"  : "text:3",
+  "EBS_TOTAL_VOLUME_GROUP_SIZE"  : "text:3"
 }
