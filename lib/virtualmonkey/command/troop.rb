@@ -91,7 +91,7 @@ module VirtualMonkey
           EM.run {
             @cm = CukeMonk.new
             @cm.options = {}
-            remaining_jobs = @cm.jobs
+            remaining_jobs = @cm.jobs.dup
             @dm.deployments.each do |deploy|
               @cm.run_test(deploy, File.join(features_dir, config['feature']))
             end
