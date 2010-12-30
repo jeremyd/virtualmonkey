@@ -1,11 +1,11 @@
 {
-  "tag":"TROOP_TOMCAT6",
-  "feature":"tomcat6.rb",
+  "tag":"TROOP_T^_APACHE_HAPROXY",
+  "feature":"lb-apache-haproxy.rb",
   "common_inputs":"tomcat.json",
   "runner":"SimpleRunner",
   "server_template_ids":[
-    "84652",
-    "84652",
+    "84648",
+    "84648",
     "84651",
     "84651"
   ],

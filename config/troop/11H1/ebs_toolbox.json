@@ -1,5 +1,5 @@
 {
-  "tag":"EBS_TOOLBOX_TROOP",
+  "tag":"TROOP_EBS_TOOLBOX",
   "runner":"SimpleRunner",
   "common_inputs":"ebs_toolbox.json",
   "server_template_ids":[
@@ -8,5 +8,5 @@
     "84656"
   ],
   "feature":"ebs_toolbox.rb",
-  "cloud_variables":"all_clouds.json"
+  "cloud_variables":"east.json"
 }

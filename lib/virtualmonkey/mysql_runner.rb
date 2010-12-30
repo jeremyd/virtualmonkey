@@ -29,11 +29,11 @@ module VirtualMonkey
 # Duplicate code here because we need to wait between the master and the slave time
       #reboot_all(true) # serially_reboot = true
       @servers.each do |s|
-        object_behavior(s, :reboot, true)
-        object_behavior(s, :wait_for_state, "operational")
 # TODO put a check in here to see if mysql is fully up before rebooting the next server
 # The slave was rebooting to soon after the master came up.
         sleep 600
+        object_behavior(s, :reboot, true)
+        object_behavior(s, :wait_for_state, "operational")
       end
       behavior(:wait_for_all, "operational")
       behavior(:run_reboot_checks)

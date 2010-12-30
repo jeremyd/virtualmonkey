@@ -1,0 +1,11 @@
+{
+  "tag":"MYSQL_51_TROOP_AWSDNS",
+  "runner":"MysqlRunner",
+  "common_inputs":"mysql.json",
+  "server_template_ids":[
+    "84650",
+    "84650"
+  ],
+  "feature":"mysql_5.x_v2_v4_from_scratch_awsdns.rb",
+  "cloud_variables":"all_clouds.json"
+}

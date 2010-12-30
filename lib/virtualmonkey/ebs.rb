@@ -78,7 +78,7 @@ module VirtualMonkey
     def create_stripe_volume(server)
       options = { "EBS_MOUNT_POINT" => "text:#{@mount_point}",
               "EBS_STRIPE_COUNT" => "text:#{@stripe_count}",
-              "EBS_TOTAL_VOLUME_GROUP_SIZE_GB" => "text:#{@volume_size}",
+              "EBS_TOTAL_VOLUME_GROUP_SIZE" => "text:#{@volume_size}",
               "EBS_LINEAGE" => "text:#{@lineage}" }
       audit = server.run_executable(@scripts_to_run['create_stripe'], options)
       audit.wait_for_completed
@@ -96,7 +96,7 @@ module VirtualMonkey
     # * server<~Server> the server to restore to
     def restore_and_grow(server,new_size,force)
       options = { "EBS_MOUNT_POINT" => "text:#{@mount_point}",
-              "EBS_TOTAL_VOLUME_GROUP_SIZE_GB" => "text:#{new_size}",
+              "EBS_TOTAL_VOLUME_GROUP_SIZE" => "text:#{new_size}",
               "OPT_DB_FORCE_RESTORE" => "text:#{force}",
               "EBS_LINEAGE" => "text:#{@lineage}" }
       audit = server.run_executable(@scripts_to_run['grow_volume'], options)

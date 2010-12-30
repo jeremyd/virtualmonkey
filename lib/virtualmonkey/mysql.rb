@@ -52,7 +52,7 @@ module VirtualMonkey
     def create_stripe(server)
       options = { "EBS_MOUNT_POINT" => "text:/mnt/mysql", 
               "EBS_STRIPE_COUNT" => "text:#{@stripe_count}", 
-              "EBS_VOLUME_SIZE_GB" => "text:1", 
+              "EBS_VOLUME_SIZE" => "text:1", 
               "DBAPPLICATION_USER" => "text:someuser", 
               "DB_MYSQLDUMP_BUCKET" => "ignore:$ignore",
               "DB_MYSQLDUMP_FILENAME" => "ignore:$ignore",
@@ -60,7 +60,7 @@ module VirtualMonkey
               "AWS_SECRET_ACCESS_KEY" => "ignore:$ignore",
               "DB_SCHEMA_NAME" => "ignore:$ignore",
               "DBAPPLICATION_PASSWORD" => "text:somepass", 
-              "EBS_TOTAL_VOLUME_GROUP_SIZE_GB" => "text:1",
+              "EBS_TOTAL_VOLUME_GROUP_SIZE" => "text:1",
               "EBS_LINEAGE" => "text:#{@lineage}" }
       audit = server.run_executable(@scripts_to_run['create_mysql_ebs_stripe'], options)
       audit.wait_for_completed

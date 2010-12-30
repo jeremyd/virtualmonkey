@@ -1,0 +1,12 @@
+{
+  "tag":"MYSQL_50_TOOLBOX_TROOP",
+  "runner":"MysqlRunner",
+  "common_inputs":"mysql.json",
+  "server_template_ids":[
+    "84649",
+    "84649",
+    "84649"
+  ],
+  "feature":"db_toolbox.rb",
+  "cloud_variables":"all_clouds.json"
+}

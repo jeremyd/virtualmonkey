@@ -16,6 +16,7 @@ class SharedDns
     set_these = sdb_result.body['Attributes'].reject {|k,v| k == 'owner'}
     set_these.each do |key,val|
       deployment.set_input(key, val.to_s)
+      deployment.servers.each { |s| s.set_input(key, "text:") }
     end
   end
 

@@ -1,0 +1,13 @@
+{
+  "tag":"TROOP_APACHE_HAPROXY",
+  "feature":"lb-apache-haproxy.rb",
+  "common_inputs":"php.json",
+  "runner":"SimpleRunner",
+  "server_template_ids":[
+    "84648",
+    "84648",
+    "84644",
+    "84644"
+  ],
+  "cloud_variables":"all_clouds.json"
+}
