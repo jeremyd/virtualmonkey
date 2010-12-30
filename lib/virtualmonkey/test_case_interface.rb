@@ -28,7 +28,7 @@ module VirtualMonkey
       elsif expectation =~ /nil/i
         expect = "nil"
       else
-        raise 'Syntax Error: verify expects a "pass", "fail", or "quiet"'
+        raise 'Syntax Error: verify expects a "pass", "fail", or "nil"'
       end
 
       begin
@@ -39,7 +39,7 @@ module VirtualMonkey
         end
         continue_test
       rescue Exception => e
-        if not (e.message =~ /#{error_msg}/ and expect == "fail")
+        if not ("#{e}" =~ /#{error_msg}/ and expect == "fail")
           dev_mode?(e)
         end
       end while @rerun_last_command.pop
@@ -85,9 +85,42 @@ module VirtualMonkey
       end
     end
 
+    def help
+      puts "Here are some of the wrapper methods that may be of use to you in your debugging quest:\n"
+      puts "behavior(sym, *args): Pass the method name (as a symbol or string) and the optional arguments"
+      puts "                      that you wish to pass to that method; behavior() will call that method"
+      puts "                      with those arguments while handling nested exceptions, retries, and"
+      puts "                      debugger calls.\n"
+      puts "                      Examples:"
+      puts "                        behavior(:launch_all)"
+      puts "                        behavior(:launch_set, 'Load Balancer')\n"
+      puts "verify(sym, expectation_string, *args): Pass the method name (as a symbol or string), the expected" 
+      puts "                                        result, and any arguments to pass to that method. The"
+      puts "                                        expectation_string should consist of 'Error: MyRegex',"
+      puts "                                        'Pass', or 'nil'. 'Error: MyRegex' tells verify() that it"
+      puts "                                        should expect an exception to be raised, and the message "
+      puts "                                        or exception name should match /MyRegex/. 'Pass' tells"
+      puts "                                        verify() that it should expect the method to return normally,"
+      puts "                                        and 'nil' tells verify() that it should expect the method to"
+      puts "                                        return nil.\n"
+      puts "                                        Example:"
+      puts "                                          verify(:launch_all, 'Error: execution expired')\n"
+      puts "probe(server_regex, shell_command, &block): Provides a one-line interface for running a command on"
+      puts "                                            a set of servers and verifying their output. The block"
+      puts "                                            should take one argument, the output string from one of"
+      puts "                                            the servers, and return true or false based on however"
+      puts "                                            the developer wants to verify correctness.\n"
+      puts "                                            Examples:"
+      puts "                                              probe('.*', 'ls') { |s| puts s }"
+      puts "                                              probe('.*', 'uname -a') { |s| s =~ /x64/ }\n"
+      puts "continue_test: Disables the retry loop that reruns the last command (the current command that you're"
+      puts "               debugging.\n"
+      puts "help: Prints this help message."
+    end
+
     def populate_settings
-      # @servers.each { |s| s.settings }
-      # lookup_scripts
+      @servers.each { |s| s.settings }
+      lookup_scripts
       @populated = 1
     end
 
