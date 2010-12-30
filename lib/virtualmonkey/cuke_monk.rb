@@ -158,7 +158,6 @@ END_OF_MESSAGE
   end
   
   def report_lost_deployments(jobs = {})
-    global_state_dir
     running_change = jobs[:old_running] - jobs[:running]
     passed_change = jobs[:passed] - jobs[:old_passed]
     failed_change = jobs[:failed] - jobs[:old_failed]
