@@ -64,6 +64,14 @@
     <div id="results">
     <% if running.size > 0 %>
       <p class="running"><%= running.size %> tests running</p>  
+
+      <ul class="running">
+        <% running.each do |running_job| %>
+          <li>
+          <a href="<%= running_job.link_to_rightscale %>"><%= running_job.deployment.nickname %></a>
+          </li>
+        <% end %>
+      </ul>
     <% end %>
     <p class="failed"><%= failed.size %> tests failed</p>
 
