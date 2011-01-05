@@ -59,3 +59,13 @@
 
 # Then I should run a restore using OPT_DB_RESTORE_TIMESTAMP_OVERRIDE
   @runner.behavior(:run_restore_with_timestamp_override)
+
+# 
+# PHASE 4) Terminate
+#
+
+# Then I should terminate the servers
+  @runner.behavior(:stop_all, true)
+
+# Then I should release the DNS
+  @runner.behavior(:release_dns)

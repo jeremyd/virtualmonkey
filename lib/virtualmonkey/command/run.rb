@@ -62,6 +62,7 @@ module VirtualMonkey
             remaining_jobs.each do |job|
               if job.status == 0
                 @runner = eval("VirtualMonkey::#{options[:terminate]}.new(job.deployment.nickname)")
+                puts "destroying successful deployment: #{@runner.deployment.nickname}"
                 @runner.behavior(:stop_all, false)
                 remaining_jobs.delete(job)
               end

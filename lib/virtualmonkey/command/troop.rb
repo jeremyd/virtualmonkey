@@ -107,16 +107,6 @@ module VirtualMonkey
                   runner = eval("VirtualMonkey::#{config['runner']}.new(job.deployment.nickname)")
                   puts "destroying successful deployment: #{runner.deployment.nickname}"
                   runner.behavior(:stop_all, false)
-                  state_dir = File.join(global_state_dir, runner.deployment.nickname)
-                  if File.directory?(state_dir)
-                    puts "Deleting state files for #{runner.deployment.nickname}..."
-                    Dir.new(state_dir).each do |state_file|
-                      if File.extname(state_file) =~ /((rb)|(feature))/
-                        File.delete(File.join(state_dir, state_file))
-                      end 
-                    end 
-                    Dir.rmdir(state_dir)
-                  end 
                   runner.deployment.destroy unless options[:no_delete]
                   remaining_jobs.delete(job)
                 end
