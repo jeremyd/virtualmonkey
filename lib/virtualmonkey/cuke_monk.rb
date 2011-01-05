@@ -156,6 +156,7 @@ class CukeMonk
         unless e.message =~ /bad file descriptor/i
           raise e
         end
+        sleep 1
       end while not done
     end
     
