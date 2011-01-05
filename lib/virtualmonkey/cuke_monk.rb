@@ -153,7 +153,7 @@ class CukeMonk
         s3.put_object(bucket_name, "#{@log_started}/#{File.basename(j.rest_log)}", IO.read(j.rest_log), 'Content-Type' => 'text/plain', 'x-amz-acl' => 'public-read')
         done = 1
       rescue Exception => e
-        unless e.message =~ /bad file descriptor/i
+        unless e.message =~ /Bad file descriptor/i
           raise e
         end
         sleep 1
