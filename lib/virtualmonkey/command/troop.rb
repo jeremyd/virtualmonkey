@@ -109,6 +109,9 @@ module VirtualMonkey
                   runner.behavior(:stop_all, false)
                   runner.deployment.destroy unless options[:no_delete]
                   remaining_jobs.delete(job)
+                  if runner.respond_to?(:release_dns) and not options[:no_delete]
+                    runner.behavior(:release_dns)
+                  end
                 end
               end
             }
@@ -129,6 +132,9 @@ module VirtualMonkey
                 end 
               end 
               Dir.rmdir(state_dir)
+            end
+            if runner.respond_to?(:release_dns) and not options[:no_delete]
+              runner.behavior(:release_dns)
             end
           end
           @dm.destroy_all unless options[:no_delete]

@@ -38,6 +38,9 @@ module VirtualMonkey
           end
           Dir.rmdir(state_dir)
         end
+        if @runner.respond_to?(:release_dns) and not options[:no_delete]
+          @runner.behavior(:release_dns)
+        end
       end
 
       @dm.destroy_all unless options[:no_delete]
