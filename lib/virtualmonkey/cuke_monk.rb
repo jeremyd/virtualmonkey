@@ -1,7 +1,6 @@
 require 'rubygems'
 require 'erb'
 require 'fog'
-require 'fog/credentials'
 require 'eventmachine'
 require 'right_popen'
 
