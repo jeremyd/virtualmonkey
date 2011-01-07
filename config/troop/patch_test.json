@@ -1,0 +1,10 @@
+{
+  "tag":"PATCH_TEST_TROOP",
+  "feature":"patch_test.rb",
+  "cloud_variables":"east.json",
+  "runner":"PatchRunner",
+  "common_inputs":"none.json",
+  "server_template_ids":[
+    "89731"
+  ]
+}
