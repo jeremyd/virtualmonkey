@@ -9,10 +9,10 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Jeremy Deininger"]
-  s.date = %q{2010-11-16}
+  s.date = %q{2011-01-07}
   s.description = %q{monkey see, monkey do, monkey repeat}
   s.email = %q{jeremy@rightscale.com}
-  s.executables = ["monkey", "mcicp"]
+  s.executables = ["mcicp", "grinder", "monkey", "vary_instance_types"]
   s.extra_rdoc_files = [
     "LICENSE",
      "README.rdoc"
@@ -24,13 +24,16 @@ Gem::Specification.new do |s|
      "README.rdoc",
      "Rakefile",
      "VERSION",
+     "bin/grinder",
      "bin/mcicp",
      "bin/monkey",
+     "bin/vary_instance_types",
      "config/cloud_variables/all_clouds.json",
      "config/cloud_variables/east.json",
      "config/cloud_variables/rackspace.json",
      "config/cloud_variables/west.json",
      "config/common_inputs/apache_haproxy.json",
+     "config/common_inputs/base.json",
      "config/common_inputs/ebs_toolbox.json",
      "config/common_inputs/haproxy.json",
      "config/common_inputs/lamp.json",
@@ -46,50 +49,95 @@ Gem::Specification.new do |s|
      "config/common_inputs/rails_aio_developer_chef_alpha.json",
      "config/common_inputs/rsgrid.json",
      "config/common_inputs/tomcat.json",
-     "config/troop/apache_haproxy_10_sprint21.json",
+     "config/common_inputs/windows_blog_engine.json",
+     "config/common_inputs/windows_net_aio.json",
+     "config/troop/11H1/backup/base.json",
+     "config/troop/11H1/backup/lamp_mysql_50.json",
+     "config/troop/11H1/backup/lamp_mysql_51.json",
+     "config/troop/11H1/backup/loadbalancer-php.json",
+     "config/troop/11H1/backup/loadbalancer.json",
+     "config/troop/11H1/backup/loadbalancer_rails.json",
+     "config/troop/11H1/backup/loadbalancer_tomcat6.json",
+     "config/troop/11H1/backup/mysql50.json",
+     "config/troop/11H1/backup/mysql50_toolbox.json",
+     "config/troop/11H1/backup/mysql51.json",
+     "config/troop/11H1/backup/mysql51_toolbox.json",
+     "config/troop/11H1/backup/php_elb.json",
+     "config/troop/11H1/base.json",
+     "config/troop/11H1/ebs_toolbox.json",
+     "config/troop/11H1/lamp_mysql_50.json",
+     "config/troop/11H1/lamp_mysql_51.json",
+     "config/troop/11H1/loadbalancer-php.json",
+     "config/troop/11H1/loadbalancer.json",
+     "config/troop/11H1/loadbalancer_rails.json",
+     "config/troop/11H1/loadbalancer_tomcat6.json",
+     "config/troop/11H1/mysql50.json",
+     "config/troop/11H1/mysql50_toolbox.json",
+     "config/troop/11H1/mysql51.json",
+     "config/troop/11H1/mysql51_awsdns.json",
+     "config/troop/11H1/mysql51_debug.json",
+     "config/troop/11H1/mysql51_toolbox.json",
+     "config/troop/11H1/php.json",
+     "config/troop/11H1/php_elb.json",
+     "config/troop/11H1/rails.json",
+     "config/troop/11H1/tomcat6.json",
      "config/troop/chef_quickstart.json",
-     "config/troop/lamp.json",
-     "config/troop/lamp_v5.json",
-     "config/troop/mysql51.json",
-     "config/troop/mysql51_sprint21.json",
-     "config/troop/mysqlv2.json",
-     "config/troop/php.json",
-     "config/troop/php_elb.json",
-     "config/troop/php_half_cloud.json",
-     "config/troop/rails.json",
+     "config/troop/lamp_v4.json",
+     "config/troop/patch_test.json",
      "config/troop/rightlink.json",
      "config/troop/simple_fail.json",
      "config/troop/simple_pass.json",
-     "config/troop/tomcat6_sprint21.json",
+     "config/troop/windows_blog_engine.json",
+     "config/troop/windows_net_aio.json",
+     "config/troop/windows_quick_start.json",
      "features/Rakefile",
      "features/Steps-TODO",
      "features/app_state.feature",
      "features/app_test.feature",
+     "features/base.feature",
+     "features/base.rb",
      "features/chef_quickstart.feature",
      "features/db_toolbox.feature",
+     "features/db_toolbox.rb",
      "features/ebs_toolbox.feature",
+     "features/ebs_toolbox.rb",
      "features/elb_create_delete.feature",
+     "features/elb_generic.feature",
      "features/fe_app_checks.feature",
+     "features/inputs_set.txt",
+     "features/just-start.feature",
      "features/just_elb",
      "features/lamp.feature",
+     "features/lamp.rb",
      "features/lb-apache-haproxy.feature",
+     "features/lb-apache-haproxy.rb",
      "features/mysql_5.x_v2_v4_from_scratch.feature",
+     "features/mysql_5.x_v2_v4_from_scratch.rb",
+     "features/mysql_5.x_v2_v4_from_scratch_awsdns.feature",
+     "features/mysql_5.x_v2_v4_from_scratch_awsdns.rb",
      "features/mysql_5.x_v2_v4_from_scratch_dyndns.feature",
+     "features/mysql_5.x_v2_v4_from_scratch_dyndns.rb",
      "features/mysql_chef_premium.feature",
      "features/mysql_chef_premium_from_scratch.feature",
      "features/mysql_v1_upgrade_v2.feature",
+     "features/mysql_v1_upgrade_v2.rb",
+     "features/patch_test.rb",
      "features/php.feature",
+     "features/php.rb",
      "features/php_aio_trial_chef_alpha.feature",
      "features/php_chef.feature",
      "features/php_elb.feature",
-     "features/qstart.feature",
+     "features/php_elb.rb",
      "features/rails.feature",
+     "features/rails.rb",
      "features/rails_aio_developer_chef.feature",
      "features/reboot.feature",
      "features/rightlink.feature",
      "features/rsgrid.feature",
      "features/simple.feature",
      "features/simple_fail.feature",
+     "features/start-stop.feature",
+     "features/start_only.rb",
      "features/step_definitions/app.rb",
      "features/step_definitions/deployment_steps.rb",
      "features/step_definitions/ebs.rb",
@@ -99,10 +147,12 @@ Gem::Specification.new do |s|
      "features/terminate.feature",
      "features/tomcat6-tests-TODO",
      "features/tomcat6.feature",
+     "features/tomcat6.rb",
      "lib/virtualmonkey.rb",
      "lib/virtualmonkey/application.rb",
      "lib/virtualmonkey/application_frontend.rb",
      "lib/virtualmonkey/command.rb",
+     "lib/virtualmonkey/command/clone.rb",
      "lib/virtualmonkey/command/create.rb",
      "lib/virtualmonkey/command/destroy.rb",
      "lib/virtualmonkey/command/list.rb",
@@ -123,18 +173,25 @@ Gem::Specification.new do |s|
      "lib/virtualmonkey/mysql.rb",
      "lib/virtualmonkey/mysql_runner.rb",
      "lib/virtualmonkey/mysql_toolbox_runner.rb",
+     "lib/virtualmonkey/patch_runner.rb",
      "lib/virtualmonkey/php_aio_trial_chef_runner.rb",
      "lib/virtualmonkey/php_chef_runner.rb",
      "lib/virtualmonkey/rails_aio_developer_chef_runner.rb",
      "lib/virtualmonkey/shared_dns.rb",
+     "lib/virtualmonkey/simple.rb",
      "lib/virtualmonkey/simple_runner.rb",
+     "lib/virtualmonkey/test_case_interface.rb",
      "lib/virtualmonkey/unified_application.rb",
      "spec/bug3518.rb",
      "spec/concurrent_writes_spec.rb",
      "spec/cuke_job_spec.rb",
      "spec/ek.rb",
+     "spec/little_ruby.rb",
      "spec/mini.rb",
+     "spec/monitoring.rb",
+     "spec/release_aws_dns.rb",
      "spec/release_dns.rb",
+     "spec/release_dyndns.rb",
      "spec/shared_resources_spec.rb",
      "spec/spec.opts",
      "spec/spec_helper.rb",
@@ -144,64 +201,68 @@ Gem::Specification.new do |s|
   s.homepage = %q{http://github.com/jeremyd/virtualmonkey}
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.3.7}
+  s.rubygems_version = %q{1.3.5}
   s.summary = %q{testing cluster deployments}
   s.test_files = [
-    "spec/cuke_job_spec.rb",
-     "spec/ek.rb",
-     "spec/mini.rb",
-     "spec/shared_resources_spec.rb",
+    "spec/bug3518.rb",
      "spec/spec_helper.rb",
-     "spec/bug3518.rb",
-     "spec/concurrent_writes_spec.rb",
+     "spec/release_dns.rb",
+     "spec/little_ruby.rb",
+     "spec/release_dyndns.rb",
+     "spec/release_aws_dns.rb",
+     "spec/monitoring.rb",
+     "spec/ek.rb",
      "spec/virtualmonkey_spec.rb",
-     "spec/release_dns.rb"
+     "spec/concurrent_writes_spec.rb",
+     "spec/shared_resources_spec.rb",
+     "spec/mini.rb",
+     "spec/cuke_job_spec.rb"
   ]
 
   if s.respond_to? :specification_version then
     current_version = Gem::Specification::CURRENT_SPECIFICATION_VERSION
     s.specification_version = 3
 
-    if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
+    if Gem::Version.new(Gem::RubyGemsVersion) >= Gem::Version.new('1.2.0') then
       s.add_development_dependency(%q<rspec>, [">= 1.2.9"])
+      s.add_development_dependency(%q<jeweler>, [">= 0"])
+      s.add_development_dependency(%q<gemedit>, [">= 0"])
       s.add_runtime_dependency(%q<json>, [">= 0"])
       s.add_runtime_dependency(%q<trollop>, [">= 0"])
       s.add_runtime_dependency(%q<rest_connection>, [">= 0"])
       s.add_runtime_dependency(%q<fog>, [">= 0"])
       s.add_runtime_dependency(%q<highline>, [">= 0"])
       s.add_runtime_dependency(%q<rspec>, [">= 0"])
-      s.add_runtime_dependency(%q<gherkin>, [">= 0"])
-      s.add_runtime_dependency(%q<cucumber>, [">= 0"])
-      s.add_runtime_dependency(%q<uuidtools>, [">= 0"])
       s.add_runtime_dependency(%q<eventmachine>, [">= 0"])
       s.add_runtime_dependency(%q<right_popen>, [">= 0"])
+      s.add_runtime_dependency(%q<ruby-debug>, [">= 0"])
     else
       s.add_dependency(%q<rspec>, [">= 1.2.9"])
+      s.add_dependency(%q<jeweler>, [">= 0"])
+      s.add_dependency(%q<gemedit>, [">= 0"])
       s.add_dependency(%q<json>, [">= 0"])
       s.add_dependency(%q<trollop>, [">= 0"])
       s.add_dependency(%q<rest_connection>, [">= 0"])
       s.add_dependency(%q<fog>, [">= 0"])
       s.add_dependency(%q<highline>, [">= 0"])
       s.add_dependency(%q<rspec>, [">= 0"])
-      s.add_dependency(%q<gherkin>, [">= 0"])
-      s.add_dependency(%q<cucumber>, [">= 0"])
-      s.add_dependency(%q<uuidtools>, [">= 0"])
       s.add_dependency(%q<eventmachine>, [">= 0"])
       s.add_dependency(%q<right_popen>, [">= 0"])
+      s.add_dependency(%q<ruby-debug>, [">= 0"])
     end
   else
     s.add_dependency(%q<rspec>, [">= 1.2.9"])
+    s.add_dependency(%q<jeweler>, [">= 0"])
+    s.add_dependency(%q<gemedit>, [">= 0"])
     s.add_dependency(%q<json>, [">= 0"])
     s.add_dependency(%q<trollop>, [">= 0"])
     s.add_dependency(%q<rest_connection>, [">= 0"])
     s.add_dependency(%q<fog>, [">= 0"])
     s.add_dependency(%q<highline>, [">= 0"])
     s.add_dependency(%q<rspec>, [">= 0"])
-    s.add_dependency(%q<gherkin>, [">= 0"])
-    s.add_dependency(%q<cucumber>, [">= 0"])
-    s.add_dependency(%q<uuidtools>, [">= 0"])
     s.add_dependency(%q<eventmachine>, [">= 0"])
     s.add_dependency(%q<right_popen>, [">= 0"])
+    s.add_dependency(%q<ruby-debug>, [">= 0"])
   end
 end
 
